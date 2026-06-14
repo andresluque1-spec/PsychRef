@@ -2744,6 +2744,619 @@ function HandoutsModule() {
 }
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
+// ─── CRISIS REFERENCE MODULE ──────────────────────────────────────────────────
+
+const CRISIS_DATA = {
+  bakerAct: {
+    title: "Baker Act — Florida Involuntary Examination",
+    statute: "Florida Statute §394.463",
+    criteria: {
+      heading: "All 3 criteria must be met:",
+      items: [
+        "Person has a mental illness (as defined in the statute)",
+        "Because of the mental illness, the person has refused voluntary examination OR is unable to determine if examination is necessary",
+        "AND at least ONE of the following: (a) Without care or treatment, person is likely to suffer from neglect/refuse care necessary for health or safety AND is not protected by those willing/able to do so OR (b) There is substantial likelihood that without care, person will cause serious bodily harm to self or others in the near future, as evidenced by recent behavior"
+      ]
+    },
+    who_can_initiate: [
+      "Law enforcement officer (most common in community)",
+      "Physician — including PMHNP under collaborative agreement in Florida (verify your specific agreement)",
+      "Clinical psychologist",
+      "Psychiatric nurse (verify scope under your license and agreement)",
+      "Mental health counselor, marriage and family therapist, clinical social worker (licensed)",
+      "Judge"
+    ],
+    process: [
+      "Complete the BA-52 form (Involuntary Examination form) — available from your EHR or county",
+      "Document: specific recent behaviors supporting criteria, why voluntary admission was refused or not possible, clinical basis for mental illness",
+      "Person is transported to a designated Baker Act receiving facility",
+      "Receiving facility must examine within 72 hours",
+      "After 72 hours: release, voluntary admission, or petition for involuntary placement (Marchman or Baker Act extension)"
+    ],
+    documentation: {
+      heading: "Medicolegally defensible documentation must include:",
+      items: [
+        "Specific recent behaviors (with dates/times if known) — not just diagnoses",
+        "Direct quotes from patient when possible ('I want to kill myself, I have a gun at home')",
+        "Why voluntary treatment was refused or patient lacks capacity to consent",
+        "Your clinical reasoning connecting behavior to mental illness",
+        "Who was notified (family, law enforcement, receiving facility)",
+        "Time and date of initiation"
+      ]
+    },
+    pitfalls: [
+      "Baker Act is NOT appropriate for: suicidal ideation without plan/intent/means, chronic passive ideation at baseline, intoxication alone without mental illness",
+      "Involuntary does NOT mean inpatient — the receiving facility decides disposition after evaluation",
+      "You cannot Baker Act someone who is not present — phone call SI alone is insufficient for initiation without direct clinical contact",
+      "Document that you considered and rejected less restrictive alternatives"
+    ]
+  },
+  suicideRisk: {
+    title: "Suicide Risk Stratification",
+    framework: "Columbia Protocol — Clinical Decision Framework",
+    levels: [
+      {
+        level: "LOW RISK",
+        color: "#22c55e",
+        bg: "#052e16",
+        border: "#14532d",
+        criteria: [
+          "Passive ideation only ('I wish I were dead') — no active plan, no intent, no means",
+          "No prior attempt history",
+          "Strong protective factors (family, religious beliefs, future plans, engaged in treatment)",
+          "Able to contract for safety and means restriction",
+          "Good therapeutic alliance"
+        ],
+        action: [
+          "Intensify outpatient monitoring — shorten appointment interval",
+          "Safety plan (Stanley-Brown) — document in chart",
+          "Means restriction counseling — specific, not generic ('remove firearms from home this week')",
+          "Crisis line numbers provided — 988, local crisis",
+          "Identify support person and involve with consent",
+          "Document reasoning for outpatient management explicitly"
+        ]
+      },
+      {
+        level: "MODERATE RISK",
+        color: "#f59e0b",
+        bg: "#1c1200",
+        border: "#92400e",
+        criteria: [
+          "Active ideation with method but no specific plan or stated intent",
+          "Prior attempt(s) — especially if medically serious",
+          "Multiple risk factors present (hopelessness, isolation, recent loss, access to means)",
+          "Impaired judgment (intoxication, psychosis, severe impulsivity)",
+          "Limited protective factors",
+          "Inconsistent therapeutic engagement"
+        ],
+        action: [
+          "Consider higher level of care — IOP, PHP, or inpatient depending on clinical picture",
+          "Do NOT leave patient alone during assessment",
+          "Contact collateral — family member, significant other (with or without consent if imminent risk)",
+          "Safety plan with SPECIFIC steps, not generic",
+          "Means restriction — verify completion, not just counseling",
+          "If outpatient: next-day or same-week follow-up mandatory",
+          "Document why higher LOC was or was not chosen"
+        ]
+      },
+      {
+        level: "HIGH RISK",
+        color: "#f87171",
+        bg: "#1a0505",
+        border: "#7f1d1d",
+        criteria: [
+          "Active ideation with specific plan AND intent AND/OR access to means",
+          "Recent serious attempt (within weeks/months)",
+          "Current psychosis with command hallucinations",
+          "Severe hopelessness + active plan",
+          "Unable to contract for safety / poor insight",
+          "Stated intent to act"
+        ],
+        action: [
+          "Do NOT leave patient alone — notify staff immediately",
+          "Remove access to means in the immediate environment (bag, car)",
+          "Baker Act initiation if refusing voluntary admission",
+          "Call 911 if patient attempts to leave and poses imminent risk",
+          "Contact family/emergency contact — document",
+          "Warm handoff to ED or crisis team — do not release",
+          "Document: exact words used, behaviors observed, your clinical reasoning, every action taken with timestamps"
+        ]
+      }
+    ],
+    riskFactors: {
+      static: ["Prior suicide attempt (strongest single predictor)", "Family history of suicide or attempt", "History of trauma/abuse", "Chronic medical illness with pain", "Male sex (higher lethality methods)", "Older age (men) or adolescent/young adult (women)"],
+      dynamic: ["Current depressive episode — especially with hopelessness", "Active psychosis", "Severe anxiety or agitation", "Recent significant loss (relationship, job, financial)", "Social isolation", "Recent discharge from inpatient", "Access to lethal means (firearms in home)", "Active SUD", "Non-adherence to treatment"],
+      protective: ["Strong reasons for living (children, pets, beliefs)", "Future orientation — plans, goals", "Social support — not just presence but quality", "Religious or spiritual beliefs against suicide", "Engaged in treatment / therapeutic alliance", "Willingness to contact provider or crisis line"]
+    },
+    safetyPlan: {
+      heading: "Stanley-Brown Safety Planning — 6 Steps",
+      steps: [
+        "Warning signs — what thoughts, images, moods, situations, or behaviors indicate a crisis may be developing?",
+        "Internal coping strategies — things I can do on my own to take my mind off problems (without contacting another person)",
+        "People and social settings that provide distraction — people I can ask for help or places I can go",
+        "People I can ask for help — name + phone number (at least 2)",
+        "Professionals and agencies I can contact during a crisis — therapist, psychiatrist, crisis line (988), ED address",
+        "Making the environment safe — means restriction specific to this patient (firearms, medications, other)"
+      ]
+    }
+  },
+  marchmanAct: {
+    title: "Marchman Act — Florida Involuntary SUD Assessment",
+    statute: "Florida Statute §397",
+    summary: "Florida's involuntary assessment and stabilization act for substance use disorders — the SUD equivalent of the Baker Act.",
+    criteria: {
+      heading: "Person must meet ALL of the following:",
+      items: [
+        "Has lost the power of self-control with respect to substance use",
+        "AND either: (a) has inflicted or threatened to inflict harm on self or others OR (b) is so impaired that they are incapable of appreciating the need for substance abuse services and making a rational decision about treatment"
+      ]
+    },
+    who_can_initiate: [
+      "Law enforcement officer",
+      "Physician or clinical psychologist",
+      "Three adults with personal knowledge of the person's substance abuse"
+    ],
+    process: [
+      "File a petition with the county court OR law enforcement can initiate emergency admission",
+      "Emergency admission: person transported to licensed service provider for up to 5 days assessment/stabilization",
+      "Court-ordered treatment can follow if assessment confirms criteria"
+    ],
+    key_difference: "Unlike Baker Act (administrative — clinician initiates), Marchman Act court petitions are filed with the court. Law enforcement can initiate emergency admission without a court order."
+  },
+  crisisResources: {
+    title: "Crisis Resources — Florida",
+    national: [
+      {name:"988 Suicide & Crisis Lifeline", contact:"Call or text 988", notes:"24/7. Also chat at 988lifeline.org. Specialized lines for veterans (press 1), LGBTQ+ (press 3), Spanish (press 2)"},
+      {name:"Crisis Text Line", contact:"Text HOME to 741741", notes:"24/7 text-based crisis counseling"},
+      {name:"SAMHSA National Helpline", contact:"1-800-662-4357", notes:"24/7 free, confidential SUD and mental health treatment referral"},
+      {name:"National Domestic Violence Hotline", contact:"1-800-799-7233", notes:"24/7, also text START to 88788"},
+    ],
+    florida: [
+      {name:"Florida Crisis Support Line", contact:"1-844-FL-CRISIS (1-844-352-7474)", notes:"24/7 statewide crisis line"},
+      {name:"2-1-1 Florida", contact:"Dial 2-1-1", notes:"Local community resource referral including mental health and SUD"},
+      {name:"Henderson Behavioral Health (Broward)", contact:"954-463-0911", notes:"24/7 crisis"},
+      {name:"Behavioral Health of the Palm Beaches", contact:"561-844-6400", notes:"Local resource"},
+    ],
+    emergency: [
+      {name:"Emergency / Imminent Danger", contact:"911", notes:"Patient in immediate danger or refusing Baker Act transport"},
+      {name:"Palm Beach County Crisis Line", contact:"561-383-1800", notes:"24/7 mobile crisis team available"},
+    ]
+  },
+  documentationTemplates: {
+    title: "Risk Assessment Documentation Templates",
+    templates: [
+      {
+        name: "Outpatient SI Assessment — Safe to Discharge",
+        text: `Patient was assessed for suicidal ideation. Patient reports [passive ideation / active ideation without plan / denies ideation]. [If SI present: Patient denies specific plan, intent to act, or access to means. Patient is able to identify reasons for living including [X]. Patient has support from [X].]
+
+Risk factors present: [list relevant static and dynamic risk factors].
+Protective factors present: [list relevant protective factors].
+
+Columbia Suicide Severity Rating Scale (C-SSRS) completed: [score and category].
+
+Risk stratification: LOW / MODERATE (circle one). Patient does not meet Baker Act criteria at this time based on [absence of specific plan/intent/means / patient willing to engage in voluntary safety planning / adequate protective factors / patient able to contract for safety].
+
+Safety planning completed and reviewed with patient: [yes]. Patient verbalizes understanding of [warning signs / coping strategies / crisis contacts]. Crisis line numbers provided: 988. Next appointment scheduled: [date]. Patient instructed to call 911 or go to nearest ED if safety concerns arise before next appointment.
+
+Means restriction counseling provided: [specific discussion — e.g., 'discussed removing firearms from home, patient agreed and states partner will secure them'].`
+      },
+      {
+        name: "Baker Act Initiation Documentation",
+        text: `I have evaluated [patient] today, [date] at [time]. Based on my clinical evaluation, I am initiating an involuntary examination under Florida Statute §394.463.
+
+Mental illness present: Patient meets criteria for [diagnosis] as evidenced by [specific symptoms observed today].
+
+Basis for involuntary examination: Patient [refused voluntary evaluation / lacks capacity to determine need for examination] AND [select applicable]:
+— There is substantial likelihood that patient will cause serious bodily harm to self or others in the near future, as evidenced by the following recent behavior: [SPECIFIC BEHAVIOR WITH DATE — direct quotes from patient where possible].
+— OR: Patient is likely to suffer from neglect or refuse care necessary for health or safety, as evidenced by: [specific evidence].
+
+Voluntary treatment was [offered and refused / not possible because patient lacks capacity to consent to or refuse treatment, as evidenced by: X].
+
+Less restrictive alternatives considered and rejected because: [specific clinical reasoning].
+
+Baker Act form BA-52 completed. [Receiving facility name] notified at [time]. [Law enforcement / transport] notified at [time]. [Family member name] notified at [time] [with patient's consent / under emergency exception per §394.4615].
+
+Clinician: Andres Luque, PMHNP-BC | Date/Time: ___________`
+      },
+      {
+        name: "Moderate Risk — Higher LOC Considered, Outpatient Chosen",
+        text: `Patient presents with [describe SI/risk factors]. Risk is assessed as MODERATE based on [specific factors].
+
+Higher level of care was considered. Patient was [offered voluntary inpatient and declined / assessed for Baker Act criteria]. Patient does not meet Baker Act criteria at this time because [does not have specific plan with intent / retains capacity / agreed to voluntary safety plan / adequate protective factors].
+
+Outpatient management chosen based on: [patient engages in safety planning / strong protective factors / means restriction confirmed / collateral support confirmed / next-day follow-up arranged].
+
+Actions taken:
+— Safety plan completed (Stanley-Brown format), copy given to patient
+— Means restriction: [specific discussion and outcome]
+— Collateral contact: [who, what discussed, with/without consent]
+— Next appointment: [date] — earlier than standard interval
+— Crisis resources provided: 988, [local crisis line]
+— Patient instructed to go to ED or call 911 if condition worsens before next appointment
+— [Family member / emergency contact] notified and provided with crisis plan: [yes/no, with reason]
+
+Clinical reasoning for outpatient disposition documented above. Risk/benefit of current disposition has been weighed and patient is being managed at the least restrictive level appropriate to their current clinical presentation.`
+      }
+    ]
+  }
+};
+
+// ─── CRISIS MODULE COMPONENT ──────────────────────────────────────────────────
+
+function CrisisModule() {
+  const [section, setSection] = useState("risk");
+  const [copiedIdx, setCopiedIdx] = useState(null);
+
+  const copyTemplate = (text, idx) => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopiedIdx(idx);
+      setTimeout(() => setCopiedIdx(null), 2000);
+    });
+  };
+
+  const navItems = [
+    {id:"risk", label:"Suicide Risk", icon:"⚠"},
+    {id:"baker", label:"Baker Act", icon:"📋"},
+    {id:"marchman", label:"Marchman Act", icon:"📋"},
+    {id:"resources", label:"Crisis Resources", icon:"📞"},
+    {id:"templates", label:"Documentation", icon:"📝"},
+  ];
+
+  return (
+    <div>
+      {/* Emergency banner */}
+      <div style={{background:"#1a0505",border:"1px solid #7f1d1d",borderRadius:"10px",padding:"12px 18px",marginBottom:"20px",display:"flex",alignItems:"center",gap:"12px"}}>
+        <div style={{fontSize:"1.2rem"}}>🚨</div>
+        <div>
+          <span style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem"}}>Imminent danger: </span>
+          <span style={{color:"#fca5a5",fontSize:"0.875rem"}}>Call 911 · </span>
+          <span style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem"}}>Crisis line: </span>
+          <span style={{color:"#fca5a5",fontSize:"0.875rem"}}>988 · </span>
+          <span style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem"}}>FL Crisis: </span>
+          <span style={{color:"#fca5a5",fontSize:"0.875rem"}}>1-844-352-7474</span>
+        </div>
+      </div>
+
+      {/* Sub-nav */}
+      <div style={{display:"flex",gap:"4px",marginBottom:"24px",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"4px",flexWrap:"wrap"}}>
+        {navItems.map(n=>(
+          <button key={n.id} onClick={()=>setSection(n.id)}
+            style={{background:section===n.id?"#1e293b":"transparent",border:"none",color:section===n.id?"#e2e8f0":"#64748b",borderRadius:"7px",padding:"9px 14px",cursor:"pointer",fontSize:"0.82rem",fontWeight:section===n.id?600:400,display:"flex",alignItems:"center",gap:"6px"}}>
+            <span>{n.icon}</span>{n.label}
+          </button>
+        ))}
+      </div>
+
+      {/* Suicide Risk Section */}
+      {section==="risk"&&(
+        <div>
+          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.suicideRisk.title}</h2>
+          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"20px"}}>{CRISIS_DATA.suicideRisk.framework}</div>
+
+          {/* Risk levels */}
+          {CRISIS_DATA.suicideRisk.levels.map((level,i)=>(
+            <div key={i} style={{background:level.bg,border:`1px solid ${level.border}`,borderRadius:"12px",padding:"18px",marginBottom:"14px"}}>
+              <div style={{color:level.color,fontWeight:800,fontSize:"1rem",marginBottom:"14px",letterSpacing:"0.03em"}}>{level.level}</div>
+              <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"16px"}}>
+                <div>
+                  <div style={{color:"#94a3b8",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px",fontWeight:600}}>Criteria</div>
+                  {level.criteria.map((c,j)=>(
+                    <div key={j} style={{color:"#cbd5e1",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"5px",paddingLeft:"10px",borderLeft:`2px solid ${level.color}40`}}>{c}</div>
+                  ))}
+                </div>
+                <div>
+                  <div style={{color:"#94a3b8",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px",fontWeight:600}}>Actions</div>
+                  {level.action.map((a,j)=>(
+                    <div key={j} style={{color:"#cbd5e1",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"5px",paddingLeft:"10px",borderLeft:`2px solid ${level.color}40`}}>{a}</div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+
+          {/* Risk factors */}
+          <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"12px",marginTop:"8px"}}>
+            {[
+              ["Static Risk Factors",CRISIS_DATA.suicideRisk.riskFactors.static,"#f87171","#1a0505","#7f1d1d"],
+              ["Dynamic Risk Factors",CRISIS_DATA.suicideRisk.riskFactors.dynamic,"#f59e0b","#1c1200","#92400e"],
+              ["Protective Factors",CRISIS_DATA.suicideRisk.riskFactors.protective,"#22c55e","#052e16","#14532d"],
+            ].map(([title,items,col,bg,border])=>(
+              <div key={title} style={{background:bg,border:`1px solid ${border}`,borderRadius:"10px",padding:"14px"}}>
+                <div style={{color:col,fontSize:"0.72rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"10px"}}>{title}</div>
+                {items.map((item,i)=><div key={i} style={{color:"#94a3b8",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"4px"}}>• {item}</div>)}
+              </div>
+            ))}
+          </div>
+
+          {/* Safety plan */}
+          <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"18px",marginTop:"14px"}}>
+            <div style={{color:"#38bdf8",fontWeight:700,fontSize:"0.875rem",marginBottom:"12px"}}>{CRISIS_DATA.suicideRisk.safetyPlan.heading}</div>
+            {CRISIS_DATA.suicideRisk.safetyPlan.steps.map((step,i)=>(
+              <div key={i} style={{display:"flex",gap:"12px",padding:"8px 0",borderBottom:i<CRISIS_DATA.suicideRisk.safetyPlan.steps.length-1?"1px solid #1e293b":"none"}}>
+                <div style={{color:"#38bdf8",fontWeight:800,fontSize:"0.85rem",minWidth:"20px"}}>{i+1}</div>
+                <div style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6}}>{step}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Baker Act Section */}
+      {section==="baker"&&(
+        <div>
+          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.bakerAct.title}</h2>
+          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"20px"}}>{CRISIS_DATA.bakerAct.statute}</div>
+
+          <div style={{background:"#1a0a0a",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"16px",marginBottom:"16px"}}>
+            <div style={{color:"#f87171",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.bakerAct.criteria.heading}</div>
+            {CRISIS_DATA.bakerAct.criteria.items.map((item,i)=>(
+              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.7,marginBottom:"8px",paddingLeft:"12px",borderLeft:"2px solid #f8717140"}}>{item}</div>
+            ))}
+          </div>
+
+          {[
+            ["Who Can Initiate", CRISIS_DATA.bakerAct.who_can_initiate, "#38bdf8"],
+            ["Process Steps", CRISIS_DATA.bakerAct.process, "#a78bfa"],
+          ].map(([title, items, col])=>(
+            <div key={title} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+              <div style={{color:col,fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{title}</div>
+              {items.map((item,i)=>(
+                <div key={i} style={{display:"flex",gap:"10px",color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px"}}>
+                  <span style={{color:col,fontWeight:700,minWidth:"16px"}}>{title==="Process Steps"?`${i+1}.`:"•"}</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+
+          <div style={{background:"#0a1a0a",border:"1px solid #14532d40",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+            <div style={{color:"#22c55e",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.bakerAct.documentation.heading}</div>
+            {CRISIS_DATA.bakerAct.documentation.items.map((item,i)=>(
+              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"6px",paddingLeft:"12px",borderLeft:"2px solid #22c55e40"}}>✓ {item}</div>
+            ))}
+          </div>
+
+          <div style={{background:"#1c1200",border:"1px solid #92400e40",borderRadius:"10px",padding:"16px"}}>
+            <div style={{color:"#f59e0b",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>⚠ Common Pitfalls</div>
+            {CRISIS_DATA.bakerAct.pitfalls.map((item,i)=>(
+              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px",paddingLeft:"12px",borderLeft:"2px solid #f59e0b40"}}>• {item}</div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Marchman Act Section */}
+      {section==="marchman"&&(
+        <div>
+          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.marchmanAct.title}</h2>
+          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"8px"}}>{CRISIS_DATA.marchmanAct.statute}</div>
+          <div style={{color:"#94a3b8",fontSize:"0.84rem",lineHeight:1.6,marginBottom:"20px"}}>{CRISIS_DATA.marchmanAct.summary}</div>
+
+          <div style={{background:"#1a0a0a",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"16px",marginBottom:"14px"}}>
+            <div style={{color:"#f87171",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.marchmanAct.criteria.heading}</div>
+            {CRISIS_DATA.marchmanAct.criteria.items.map((item,i)=>(
+              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.7,marginBottom:"8px",paddingLeft:"12px",borderLeft:"2px solid #f8717140"}}>{item}</div>
+            ))}
+          </div>
+
+          {[
+            ["Who Can Initiate", CRISIS_DATA.marchmanAct.who_can_initiate, "#38bdf8"],
+            ["Process", CRISIS_DATA.marchmanAct.process, "#a78bfa"],
+          ].map(([title, items, col])=>(
+            <div key={title} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+              <div style={{color:col,fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{title}</div>
+              {items.map((item,i)=>(
+                <div key={i} style={{display:"flex",gap:"10px",color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px"}}>
+                  <span style={{color:col,fontWeight:700,minWidth:"16px"}}>•</span>
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          ))}
+
+          <div style={{background:"#0a1a1a",border:"1px solid #0e4040",borderRadius:"10px",padding:"16px"}}>
+            <div style={{color:"#34d399",fontWeight:700,fontSize:"0.82rem",marginBottom:"8px"}}>Key difference from Baker Act</div>
+            <div style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6}}>{CRISIS_DATA.marchmanAct.key_difference}</div>
+          </div>
+        </div>
+      )}
+
+      {/* Crisis Resources Section */}
+      {section==="resources"&&(
+        <div>
+          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"20px"}}>{CRISIS_DATA.crisisResources.title}</h2>
+          {[
+            ["🚨 Emergency", CRISIS_DATA.crisisResources.emergency, "#f87171"],
+            ["Florida Resources", CRISIS_DATA.crisisResources.florida, "#38bdf8"],
+            ["National Resources", CRISIS_DATA.crisisResources.national, "#a78bfa"],
+          ].map(([title, items, col])=>(
+            <div key={title} style={{marginBottom:"20px"}}>
+              <div style={{color:col,fontSize:"0.75rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"10px"}}>{title}</div>
+              {items.map((r,i)=>(
+                <div key={i} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"14px 16px",marginBottom:"8px",display:"grid",gridTemplateColumns:"1fr auto",alignItems:"start",gap:"12px"}}>
+                  <div>
+                    <div style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.875rem",marginBottom:"3px"}}>{r.name}</div>
+                    <div style={{color:"#64748b",fontSize:"0.78rem",lineHeight:1.5}}>{r.notes}</div>
+                  </div>
+                  <div style={{color:col,fontWeight:700,fontSize:"0.875rem",textAlign:"right",whiteSpace:"nowrap"}}>{r.contact}</div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Documentation Templates Section */}
+      {section==="templates"&&(
+        <div>
+          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"6px"}}>{CRISIS_DATA.documentationTemplates.title}</h2>
+          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"20px"}}>Click Copy to paste directly into your note. Customize bracketed fields.</div>
+          {CRISIS_DATA.documentationTemplates.templates.map((t,i)=>(
+            <div key={i} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",marginBottom:"16px",overflow:"hidden"}}>
+              <div style={{padding:"14px 16px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid #1e293b"}}>
+                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.875rem"}}>{t.name}</div>
+                <button onClick={()=>copyTemplate(t.text,i)}
+                  style={{background:copiedIdx===i?"#22c55e":"#1e293b",border:"none",color:copiedIdx===i?"#fff":"#94a3b8",borderRadius:"7px",padding:"6px 14px",cursor:"pointer",fontSize:"0.78rem",fontWeight:600,transition:"background 0.2s",fontFamily:"inherit"}}>
+                  {copiedIdx===i?"✓ Copied":"Copy"}
+                </button>
+              </div>
+              <div style={{padding:"16px",fontFamily:"'SF Mono', 'Fira Code', monospace",fontSize:"0.75rem",lineHeight:1.8,color:"#94a3b8",whiteSpace:"pre-wrap",maxHeight:"220px",overflowY:"auto"}}>
+                {t.text}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── OPENFDA DRUG LOOKUP ──────────────────────────────────────────────────────
+
+function FDALookup() {
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const [selected, setSelected] = useState(null);
+
+  const search = async () => {
+    if(!query.trim()) return;
+    setLoading(true); setError(null); setResults(null); setSelected(null);
+    try {
+      const encoded = encodeURIComponent(query.trim());
+      const url = `https://api.fda.gov/drug/label.json?search=openfda.brand_name:"${encoded}"+openfda.generic_name:"${encoded}"&limit=5`;
+      const res = await fetch(url);
+      if(!res.ok) {
+        // Try broader search
+        const url2 = `https://api.fda.gov/drug/label.json?search=(openfda.brand_name:${encoded}+openfda.generic_name:${encoded})&limit=5`;
+        const res2 = await fetch(url2);
+        if(!res2.ok) throw new Error("No results found for that drug name.");
+        const data2 = await res2.json();
+        if(!data2.results||data2.results.length===0) throw new Error("No FDA label found for that drug name.");
+        setResults(data2.results);
+      } else {
+        const data = await res.json();
+        if(!data.results||data.results.length===0) throw new Error("No FDA label found for that drug name.");
+        setResults(data.results);
+      }
+    } catch(e) {
+      setError(e.message||"FDA API error. Check the drug name and try again.");
+    }
+    setLoading(false);
+  };
+
+  const handleKey = (e) => { if(e.key==="Enter") search(); };
+
+  const getField = (result, ...fields) => {
+    for(const f of fields) {
+      if(result[f]&&result[f].length>0) return result[f][0];
+    }
+    return null;
+  };
+
+  const clean = (text) => {
+    if(!text) return null;
+    return text.replace(/\s+/g," ").trim().slice(0, 2000) + (text.length > 2000 ? "..." : "");
+  };
+
+  return (
+    <div>
+      <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+        🔬 Live FDA drug label lookup via openFDA public API. Search any medication by brand or generic name. Data is pulled directly from current FDA labeling.
+      </div>
+
+      <div style={{display:"flex",gap:"10px",marginBottom:"20px"}}>
+        <div style={{position:"relative",flex:1}}>
+          <input value={query} onChange={e=>setQuery(e.target.value)} onKeyDown={handleKey}
+            placeholder="Enter drug name (brand or generic) — e.g. sertraline, Zoloft, lithium..."
+            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 14px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
+        </div>
+        <button onClick={search} disabled={loading||!query.trim()}
+          style={{background:loading||!query.trim()?"#1e293b":"#0ea5e9",border:"none",color:loading||!query.trim()?"#475569":"#fff",borderRadius:"10px",padding:"12px 24px",cursor:loading||!query.trim()?"not-allowed":"pointer",fontWeight:700,fontSize:"0.875rem",fontFamily:"inherit",whiteSpace:"nowrap"}}>
+          {loading?"Searching...":"Search FDA"}
+        </button>
+      </div>
+
+      {error&&(
+        <div style={{background:"#1a0505",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"14px 16px",color:"#f87171",fontSize:"0.83rem",marginBottom:"16px"}}>
+          ⚠ {error}
+        </div>
+      )}
+
+      {results&&!selected&&(
+        <div>
+          <div style={{color:"#475569",fontSize:"0.78rem",marginBottom:"12px"}}>{results.length} result{results.length!==1?"s":""} from FDA label database — click to view full label</div>
+          {results.map((r,i)=>{
+            const brand = r.openfda?.brand_name?.[0]||"—";
+            const generic = r.openfda?.generic_name?.[0]||"—";
+            const mfr = r.openfda?.manufacturer_name?.[0]||"—";
+            const route = r.openfda?.route?.[0]||"—";
+            return (
+              <div key={i} onClick={()=>setSelected(r)}
+                style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"14px 16px",marginBottom:"8px",cursor:"pointer",transition:"border-color 0.15s"}}
+                onMouseEnter={e=>e.currentTarget.style.borderColor="#0ea5e9"}
+                onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+                <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
+                  <div>
+                    <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.925rem"}}>{brand}</div>
+                    <div style={{color:"#64748b",fontSize:"0.78rem",marginTop:"2px"}}>{generic} · {route} · {mfr}</div>
+                  </div>
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      )}
+
+      {selected&&(
+        <div>
+          <button onClick={()=>setSelected(null)} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"20px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to results</button>
+
+          <div style={{marginBottom:"20px"}}>
+            <h2 style={{color:"#e2e8f0",fontSize:"1.25rem",fontWeight:700,margin:"0 0 4px 0"}}>{selected.openfda?.brand_name?.[0]||"Unknown"}</h2>
+            <div style={{color:"#64748b",fontSize:"0.82rem"}}>{selected.openfda?.generic_name?.[0]} · {selected.openfda?.route?.[0]} · {selected.openfda?.manufacturer_name?.[0]}</div>
+            {selected.openfda?.application_number&&<div style={{color:"#334155",fontSize:"0.75rem",marginTop:"3px"}}>FDA Application: {selected.openfda.application_number[0]}</div>}
+          </div>
+
+          <div style={{background:"#1a0505",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"16px",color:"#fca5a5",fontSize:"0.78rem",lineHeight:1.6}}>
+            ⚠ Data sourced directly from FDA label database. Verify against current prescribing information before clinical use. Labels may not reflect the most recent REMS updates.
+          </div>
+
+          {[
+            ["Indications & Usage", getField(selected,"indications_and_usage")],
+            ["Dosage & Administration", getField(selected,"dosage_and_administration")],
+            ["Contraindications", getField(selected,"contraindications")],
+            ["Warnings & Precautions", getField(selected,"warnings_and_precautions","warnings","boxed_warning")],
+            ["Adverse Reactions", getField(selected,"adverse_reactions")],
+            ["Drug Interactions", getField(selected,"drug_interactions")],
+            ["Use in Specific Populations", getField(selected,"use_in_specific_populations")],
+            ["Mechanism of Action", getField(selected,"mechanism_of_action")],
+            ["Pharmacokinetics", getField(selected,"pharmacokinetics")],
+          ].filter(([,val])=>val).map(([label, val])=>(
+            <div key={label} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",marginBottom:"10px",overflow:"hidden"}}>
+              <div style={{padding:"12px 16px",borderBottom:"1px solid #1e293b",color:"#38bdf8",fontWeight:700,fontSize:"0.8rem",textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</div>
+              <div style={{padding:"14px 16px",color:"#94a3b8",fontSize:"0.82rem",lineHeight:1.75,whiteSpace:"pre-wrap",maxHeight:"280px",overflowY:"auto"}}>
+                {clean(val)}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {!results&&!loading&&!error&&(
+        <div style={{textAlign:"center",padding:"60px 20px",color:"#334155"}}>
+          <div style={{fontSize:"2rem",marginBottom:"12px"}}>🔬</div>
+          <div style={{color:"#475569",fontSize:"0.875rem",marginBottom:"6px"}}>Search any medication to pull its current FDA label</div>
+          <div style={{color:"#334155",fontSize:"0.78rem"}}>Brand names, generic names, and combinations supported</div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─── APP ─────────────────────────────────────────────────────────────────────
 const TABS = [
   {id:"meds",label:"Medications",icon:"💊"},
   {id:"scales",label:"Rating Scales",icon:"📋"},
@@ -2754,6 +3367,8 @@ const TABS = [
   {id:"compare",label:"Drug Comparisons",icon:"⚖️"},
   {id:"tapers",label:"Tapers",icon:"📉"},
   {id:"handouts",label:"Patient Handouts",icon:"🖨"},
+  {id:"crisis",label:"Crisis Reference",icon:"🚨"},
+  {id:"fdalookup",label:"FDA Lookup",icon:"🔬"},
   {id:"notes",label:"My Notes",icon:"📝"},
 ];
 
@@ -2767,7 +3382,7 @@ function App() {
             <div style={{width:"32px",height:"32px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"16px",color:"#fff",fontWeight:700}}>Ψ</div>
             <span style={{color:"#e2e8f0",fontWeight:800,fontSize:"1.1rem",letterSpacing:"-0.02em"}}>PsychRef</span>
           </div>
-          <div style={{color:"#475569",fontSize:"0.75rem"}}>Outpatient Psychiatry Clinical Reference · Andres Luque, PMHNP-BC</div>
+          <div style={{color:"#475569",fontSize:"0.75rem"}}>Andres Luque, PMHNP-BC · Psychiatry of the Palm Beaches</div>
         </div>
       </div>
       <div style={{background:"#0a0e17",borderBottom:"1px solid #1e293b"}}>
@@ -2790,6 +3405,8 @@ function App() {
         {tab==="compare"&&<ComparisonsModule/>}
         {tab==="tapers"&&<TapersModule/>}
         {tab==="handouts"&&<HandoutsModule/>}
+        {tab==="crisis"&&<CrisisModule/>}
+        {tab==="fdalookup"&&<FDALookup/>}
         {tab==="notes"&&<NotesModule/>}
       </div>
       <div style={{borderTop:"1px solid #1e293b",padding:"16px 24px",textAlign:"center",color:"#334155",fontSize:"0.75rem"}}>
