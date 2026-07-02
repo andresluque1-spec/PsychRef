@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Therapy Techniques — PsychRef</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F7F4;
+    --surface: #FFFFFF;
+    --ink: #1F2A28;
+    --ink-soft: #5C6B68;
+    --line: #DEE4DE;
+    --sft: #2E7D6B;
+    --sft-tint: #E8F3EF;
+    --cbt: #3D5A80;
+    --cbt-tint: #E9EEF5;
+    --trauma: #A8632F;
+    --trauma-tint: #F6EDE2;
+    --mi: #6B4E8E;
+    --mi-tint: #EFEAF5;
+    --gen: #4A6B5C;
+    --gen-tint: #E7EEEA;
+    --cbti: #3D556F;
+    --cbti-tint: #EAF0F5;
+    --chart-bg: #12201E;
+    --chart-text: #B8E8D4;
+    --radius: 10px;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Source Sans 3', sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px; margin:0 auto; padding:32px 24px 80px;}
+
+  header.top{
+    display:flex; flex-wrap:wrap; align-items:flex-end; justify-content:space-between;
+    gap:16px; margin-bottom:20px; padding-bottom:20px; border-bottom:1px solid var(--line);
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--ink-soft); margin:0 0 6px;
+  }
+  h1{
+    font-family:'Space Grotesk', sans-serif; font-size:32px; font-weight:700;
+    margin:0; letter-spacing:-0.01em;
+  }
+  .subline{color:var(--ink-soft); font-size:14px; margin-top:6px; max-width:520px;}
+
+  .quickstat{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; color:var(--ink-soft);
+    text-align:right;
+  }
+  .quickstat b{color:var(--ink); font-size:20px; display:block; font-family:'Space Grotesk',sans-serif;}
+
+  /* View switcher */
+  .viewswitch{display:flex; gap:8px; margin-bottom:24px;}
+  .vbtn{
+    font-family:'Space Grotesk', sans-serif; font-size:14px; font-weight:600;
+    padding:10px 18px; border-radius:8px; border:1px solid var(--line);
+    background:var(--surface); color:var(--ink-soft); cursor:pointer; transition:all .15s ease;
+  }
+  .vbtn:focus-visible{outline:2px solid var(--cbt); outline-offset:2px;}
+  .vbtn.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  /* Master formula card */
+  .formula{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; margin-bottom:28px;
+  }
+  .formula h2{
+    font-family:'Space Grotesk', sans-serif; font-size:15px; margin:0 0 4px; display:flex; align-items:center; gap:8px;
+  }
+  .formula h2 .dot{width:8px; height:8px; border-radius:50%; background:var(--sft); display:inline-block;}
+  .formula p.hint{color:var(--ink-soft); font-size:13px; margin:0 0 14px;}
+  .formula-body{
+    background:var(--chart-bg); color:var(--chart-text); border-radius:8px;
+    padding:16px 18px; font-family:'IBM Plex Mono', monospace; font-size:13px; line-height:1.7;
+    position:relative; white-space:pre-wrap;
+  }
+  .copy-btn{
+    position:absolute; top:10px; right:10px; background:rgba(255,255,255,.08);
+    color:var(--chart-text); border:1px solid rgba(255,255,255,.2); border-radius:6px;
+    font-family:'IBM Plex Mono', monospace; font-size:11px; padding:5px 10px; cursor:pointer;
+    transition:background .15s ease;
+  }
+  .copy-btn:hover{background:rgba(255,255,255,.18);}
+  .copy-btn.copied{background:var(--sft); border-color:var(--sft); color:#fff;}
+
+  /* Controls */
+  .controls{
+    display:flex; flex-wrap:wrap; gap:10px; margin-bottom:22px; align-items:center;
+  }
+  .search{
+    flex:1 1 220px; padding:10px 14px; border:1px solid var(--line); border-radius:8px;
+    font-family:'Source Sans 3', sans-serif; font-size:14px; background:var(--surface); color:var(--ink);
+  }
+  .search:focus{outline:2px solid var(--cbt); outline-offset:1px;}
+  .tabs{display:flex; flex-wrap:wrap; gap:8px;}
+  .tab{
+    font-family:'IBM Plex Mono', monospace; font-size:12px; padding:8px 13px; border-radius:20px;
+    border:1px solid var(--line); background:var(--surface); color:var(--ink-soft); cursor:pointer;
+    transition:all .15s ease;
+  }
+  .tab:hover{border-color:var(--ink-soft);}
+  .tab:focus-visible{outline:2px solid var(--cbt); outline-offset:2px;}
+  .tab.active[data-mod="all"]{background:var(--ink); color:#fff; border-color:var(--ink);}
+  .tab.active[data-mod="sft"]{background:var(--sft); color:#fff; border-color:var(--sft);}
+  .tab.active[data-mod="cbt"]{background:var(--cbt); color:#fff; border-color:var(--cbt);}
+  .tab.active[data-mod="trauma"]{background:var(--trauma); color:#fff; border-color:var(--trauma);}
+  .tab.active[data-mod="mi"]{background:var(--mi); color:#fff; border-color:var(--mi);}
+  .tab.active[data-mod="gen"]{background:var(--gen); color:#fff; border-color:var(--gen);}
+
+  /* Grid */
+  .grid{display:grid; grid-template-columns:repeat(auto-fill, minmax(300px,1fr)); gap:16px;}
+  .card{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px 18px 16px; display:flex; flex-direction:column; gap:10px;
+  }
+  .card .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.06em; text-transform:uppercase;
+    padding:3px 8px; border-radius:4px; width:fit-content;
+  }
+  .tag.sft{background:var(--sft-tint); color:var(--sft);}
+  .tag.cbt{background:var(--cbt-tint); color:var(--cbt);}
+  .tag.trauma{background:var(--trauma-tint); color:var(--trauma);}
+  .tag.mi{background:var(--mi-tint); color:var(--mi);}
+  .tag.gen{background:var(--gen-tint); color:var(--gen);}
+
+  .card h3{font-family:'Space Grotesk', sans-serif; font-size:16.5px; margin:0; letter-spacing:-.005em;}
+  .card p.desc{font-size:13.5px; color:var(--ink-soft); margin:0;}
+
+  .say{
+    font-size:13px; padding:10px 12px; border-left:2.5px solid var(--line);
+    background:var(--bg); border-radius:0 6px 6px 0; color:var(--ink);
+  }
+  .say b{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); display:block; margin-bottom:4px;}
+
+  .chart-it{
+    background:var(--chart-bg); color:var(--chart-text); border-radius:6px; padding:12px 12px 10px;
+    font-family:'IBM Plex Mono', monospace; font-size:11.5px; line-height:1.55; position:relative;
+  }
+  .chart-it b{display:block; font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:#7FB8A0; margin-bottom:5px;}
+  .card .copy-btn{position:static; margin-top:8px; display:inline-block;}
+
+  /* ---------- Playbook view ---------- */
+  #playbookView{display:none;}
+  .pb-intro{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:22px 24px; margin-bottom:20px;
+  }
+  .pb-intro h2{font-family:'Space Grotesk',sans-serif; font-size:18px; margin:0 0 8px;}
+  .pb-intro p{font-size:14px; color:var(--ink-soft); margin:0 0 10px; max-width:760px;}
+  .pb-intro p:last-child{margin-bottom:0;}
+  .pb-intro strong{color:var(--ink);}
+
+  .pivot{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:18px 22px 8px; margin-bottom:24px;
+  }
+  .pivot h3{font-family:'Space Grotesk',sans-serif; font-size:15px; margin:0 0 4px;}
+  .pivot p.hint{font-size:13px; color:var(--ink-soft); margin:0 0 12px;}
+  .pivot-row{
+    display:flex; gap:14px; align-items:baseline; padding:9px 0; border-top:1px dashed var(--line);
+    font-size:13.5px;
+  }
+  .pivot-row:first-of-type{border-top:none;}
+  .pivot-row .cue{flex:1 1 55%;}
+  .pivot-row .goto{
+    flex:0 0 auto; font-family:'IBM Plex Mono',monospace; font-size:11px; letter-spacing:.05em;
+    text-transform:uppercase; padding:3px 9px; border-radius:4px;
+  }
+  .goto.cbt{background:var(--cbt-tint); color:var(--cbt);}
+  .goto.mi{background:var(--mi-tint); color:var(--mi);}
+  .goto.sft{background:var(--sft-tint); color:var(--sft);}
+  .goto.trauma{background:var(--trauma-tint); color:var(--trauma);}
+  .goto.cbti{background:var(--cbti-tint); color:var(--cbti);}
+
+  .pb-tabs{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;}
+  .pb-tab{
+    font-family:'Space Grotesk',sans-serif; font-size:14px; font-weight:600; padding:10px 16px;
+    border-radius:8px; border:1px solid var(--line); background:var(--surface); color:var(--ink-soft);
+    cursor:pointer; transition:all .15s ease;
+  }
+  .pb-tab:focus-visible{outline:2px solid var(--cbt); outline-offset:2px;}
+  .pb-tab.active[data-pb="cbt"]{background:var(--cbt); color:#fff; border-color:var(--cbt);}
+  .pb-tab.active[data-pb="mi"]{background:var(--mi); color:#fff; border-color:var(--mi);}
+  .pb-tab.active[data-pb="sft"]{background:var(--sft); color:#fff; border-color:var(--sft);}
+  .pb-tab.active[data-pb="cbti"]{background:var(--cbti); color:#fff; border-color:var(--cbti);}
+
+  .pb-panel{display:none;}
+  .pb-panel.active{display:block;}
+
+  .pb-section{
+    background:var(--surface); border:1px solid var(--line); border-radius:var(--radius);
+    padding:20px 22px; margin-bottom:16px;
+  }
+  .pb-section > h3{
+    font-family:'Space Grotesk',sans-serif; font-size:16px; margin:0 0 4px;
+    display:flex; align-items:center; gap:8px;
+  }
+  .pb-section > h3 .dot{width:8px; height:8px; border-radius:50%; display:inline-block;}
+  .pb-panel[data-pb="cbt"] .dot{background:var(--cbt);}
+  .pb-panel[data-pb="mi"] .dot{background:var(--mi);}
+  .pb-panel[data-pb="sft"] .dot{background:var(--sft);}
+  .pb-panel[data-pb="cbti"] .dot{background:var(--cbti);}
+  .pb-section p.hint{color:var(--ink-soft); font-size:13px; margin:0 0 12px;}
+  .pb-section p, .pb-section li{font-size:14px;}
+  .pb-section ul{margin:8px 0; padding-left:20px;}
+  .pb-section li{margin-bottom:7px;}
+  .pb-section li:last-child{margin-bottom:0;}
+  .pb-section li b{font-weight:600;}
+
+  .pb-hero{
+    border-radius:var(--radius); padding:22px 24px; margin-bottom:16px; color:#fff;
+  }
+  .pb-panel[data-pb="cbt"] .pb-hero{background:var(--cbt);}
+  .pb-panel[data-pb="mi"] .pb-hero{background:var(--mi);}
+  .pb-panel[data-pb="sft"] .pb-hero{background:var(--sft);}
+  .pb-panel[data-pb="cbti"] .pb-hero{background:var(--cbti);}
+  .pb-hero h2{font-family:'Space Grotesk',sans-serif; font-size:22px; margin:0 0 6px; letter-spacing:-.01em;}
+  .pb-hero p{margin:0; font-size:14px; opacity:.92; max-width:760px;}
+
+  .timeline{border-top:1px dashed var(--line); margin-top:4px;}
+  .tl-row{display:flex; gap:14px; padding:10px 0; border-bottom:1px dashed var(--line); align-items:baseline;}
+  .tl-row .t{
+    flex:0 0 86px; font-family:'IBM Plex Mono',monospace; font-size:11.5px; color:var(--ink-soft);
+    letter-spacing:.03em;
+  }
+  .tl-row .what{flex:1; font-size:14px;}
+  .tl-row .what b{font-weight:600;}
+
+  .qsay{
+    font-size:13.5px; padding:10px 12px; border-left:2.5px solid var(--line);
+    background:var(--bg); border-radius:0 6px 6px 0; color:var(--ink); margin:8px 0;
+  }
+  .pb-panel[data-pb="cbt"] .qsay{border-left-color:var(--cbt);}
+  .pb-panel[data-pb="mi"] .qsay{border-left-color:var(--mi);}
+  .pb-panel[data-pb="sft"] .qsay{border-left-color:var(--sft);}
+  .pb-panel[data-pb="cbti"] .qsay{border-left-color:var(--cbti);}
+  .qsay b{font-family:'IBM Plex Mono',monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); display:block; margin-bottom:3px;}
+
+  .twocol{display:grid; grid-template-columns:1fr 1fr; gap:14px;}
+  .minicard{
+    border:1px solid var(--line); border-radius:8px; padding:14px 16px; background:var(--bg);
+  }
+  .minicard h4{font-family:'Space Grotesk',sans-serif; font-size:13.5px; margin:0 0 8px;}
+  .minicard ul{margin:0; padding-left:18px;}
+  .minicard li{font-size:13.5px; margin-bottom:6px;}
+  .minicard.warn{border-color:#E4C9B0; background:#FBF4EC;}
+  .minicard.warn h4{color:var(--trauma);}
+
+  .pb-chart{
+    background:var(--chart-bg); color:var(--chart-text); border-radius:8px;
+    padding:16px 18px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; line-height:1.7;
+    position:relative; white-space:pre-wrap;
+  }
+
+  footer{
+    margin-top:40px; padding-top:18px; border-top:1px solid var(--line);
+    font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--ink-soft); text-align:center;
+  }
+
+  @media (max-width:640px){
+    .twocol{grid-template-columns:1fr;}
+  }
+  @media (max-width:520px){
+    h1{font-size:24px;}
+    .quickstat{text-align:left;}
+    header.top{flex-direction:column; align-items:flex-start;}
+    .tl-row{flex-direction:column; gap:2px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .copy-btn, .tab, .vbtn, .pb-tab{transition:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="top">
+    <div>
+      <p class="eyebrow">PsychRef · Module 06 · Therapy Reference</p>
+      <h1>Therapy Techniques</h1>
+      <p class="subline">Quick-reference prompts and ready-to-chart language for the psychotherapy portion of a med-management visit.</p>
+    </div>
+    <div class="quickstat"><b id="countLabel">42</b>techniques</div>
+  </header>
+
+  <div class="viewswitch" role="tablist" aria-label="Module views">
+    <button class="vbtn active" id="viewCards" onclick="switchView('cards')">Technique Cards</button>
+    <button class="vbtn" id="viewPlaybook" onclick="switchView('playbook')">Core 3 Playbook</button>
+  </div>
+
+  <!-- ============ CARDS VIEW ============ -->
+  <div id="cardsView">
+    <div class="formula">
+      <h2><span class="dot" style="background:var(--trauma);"></span>Billing-critical visit opener — first sentence of every HPI</h2>
+      <p class="hint">Claims get denied without this, regardless of note quality. State modality of visit and both locations before anything else.</p>
+      <div class="formula-body" id="openerBody">Telehealth (patient at home):
+"Patient is a [marital status] [demographic] with [diagnoses] who presents for telemedicine follow-up with me in the office and patient at home."
+
+Telehealth (anywhere other than home):
+"…presents for telemedicine follow-up with me in the office and patient in a private place."
+
+In person:
+"…presents for in-person follow-up with me in the office."</div>
+      <button class="copy-btn" onclick="copyText('openerBody', this)">Copy</button>
+    </div>
+
+    <div class="formula">
+      <h2><span class="dot"></span>Master therapy paragraph — supervisor's standard</h2>
+      <p class="hint">Lives in the Treatment Plan. Written fresh every visit — never carried forward — and always ends with the minutes statement that anchors the 90833.</p>
+      <div class="formula-body" id="formulaBody">Insight-oriented, [solution-focused / CBT-focused / supportive] therapy used to address mood and anxiety.
+We explored ___ since last visit.
+I helped the patient understand ___.
+I taught the patient ___ (skill/concept).
+I challenged the patient with the concept of ___.
+I laid framework for future therapy sessions by ___.
+I gave homework to ___.
+[X] minutes spent in therapy separate from med management.</div>
+      <button class="copy-btn" onclick="copyText('formulaBody', this)">Copy</button>
+    </div>
+
+    <div class="controls">
+      <input class="search" id="searchInput" type="text" placeholder="Search techniques (e.g. avoidance, dissociation, exposure)…">
+      <div class="tabs" id="tabs">
+        <button class="tab active" data-mod="all">All</button>
+        <button class="tab" data-mod="sft">Solution-Focused</button>
+        <button class="tab" data-mod="cbt">CBT</button>
+        <button class="tab" data-mod="trauma">Trauma-Informed</button>
+        <button class="tab" data-mod="mi">Motivational Interviewing</button>
+        <button class="tab" data-mod="gen">Session Structure</button>
+      </div>
+    </div>
+
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <!-- ============ PLAYBOOK VIEW ============ -->
+  <div id="playbookView">
+
+    <div class="pb-intro">
+      <h2>The Core 3 + CBT-I — chosen from your actual panel</h2>
+      <p>Across your caseload, the recurring picture is <strong>moderate-to-severe MDD+GAD, frequent alcohol and nicotine ambivalence</strong> (often minimized or denied), <strong>chronic insomnia as a maintaining factor</strong> (F51.05), <strong>caregiver and adjustment stress</strong>, and trauma histories in patients who want <strong>present-focused work only</strong>. Four modalities cover ~95% of that ground in a 16-minute 90833 window:</p>
+      <p><strong>Brief CBT</strong> is the workhorse for acute anxiety spirals and avoidance-driven depression. <strong>Motivational Interviewing</strong> is the tool for everything the patient is ambivalent about — drinking, smoking, therapy referrals, medication adherence. <strong>Solution-Focused</strong> is built for time-limited contact and fits caregiver stress, high-functioners, and "med management only" patients. <strong>CBT-I</strong> addresses insomnia as a distinct clinical target — it's often the keystone intervention that allows the depression and anxiety to resolve (sleep loss drives them both). Your trauma-informed grounding cards remain the cross-cutting safety layer for any visit that destabilizes.</p>
+      <p><strong>The one rule for 30-minute visits:</strong> one modality, one skill, one piece of homework per visit. Depth over breadth — a completed 5-minute intervention documents and works better than three half-started ones. CBT-I is often a 3–4 visit sequence (stimulus control, then sleep restriction, then cognitive restructuring), so plan accordingly; it's not a one-visit intervention.</p>
+    </div>
+
+    <div class="pivot">
+      <h3>Pre-signature QA — the supervisor's audit points</h3>
+      <p class="hint">Run this checklist before signing any follow-up note with a 90833.</p>
+      <div class="pivot-row"><span class="cue"><b>First sentence of HPI</b> states telemedicine vs. in-person, provider location ("with me in the office"), and patient location ("at home" vs. "in a private place")</span><span class="goto trauma">Claim gate</span></div>
+      <div class="pivot-row"><span class="cue"><b>Therapy paragraph is in the Treatment Plan</b>, written fresh for today's visit — no carryover from the initial eval or prior visit</span><span class="goto trauma">Audit flag</span></div>
+      <div class="pivot-row"><span class="cue"><b>Modality is named</b> in the opening sentence ("Insight-oriented, solution-focused, and supportive therapy used to address…")</span><span class="goto cbt">Required</span></div>
+      <div class="pivot-row"><span class="cue"><b>Active first-person verbs</b> throughout: We explored… I helped… I taught… I challenged… I laid framework… I gave homework</span><span class="goto cbt">Required</span></div>
+      <div class="pivot-row"><span class="cue"><b>Minutes statement closes the paragraph:</b> "[X] minutes spent in therapy separate from med management" — this is what anchors the 90833</span><span class="goto trauma">Claim gate</span></div>
+      <div class="pivot-row"><span class="cue"><b>Billing matches visit type:</b> follow-ups are 99214/99215 + 90833, never a new-patient code</span><span class="goto trauma">Claim gate</span></div>
+      <div class="pivot-row"><span class="cue"><b>Study material:</b> psychotherapy.net CBT and solution-focused demo videos; review supervisor's sample notes (Teran, Fordham, Magenheim, Marta, Stone) for paragraph structure</span><span class="goto sft">Learning</span></div>
+    </div>
+
+    <div class="pivot">
+      <h3>Pivot map — what you hear → what you reach for</h3>
+      <p class="hint">A modality choice is a hypothesis. If the session isn't moving, switch frames.</p>
+      <div class="pivot-row"><span class="cue">Avoidance, anhedonia, "I've stopped doing everything"</span><span class="goto cbt">CBT — Behavioral Activation</span></div>
+      <div class="pivot-row"><span class="cue">Catastrophic worry, rumination, "what if" spirals</span><span class="goto cbt">CBT — Restructuring / Worry Time</span></div>
+      <div class="pivot-row"><span class="cue">Insomnia, early (wakes 1-2 AM), mood/anxiety persistent despite meds</span><span class="goto cbti">CBT-I — stimulus control</span></div>
+      <div class="pivot-row"><span class="cue">Patient reports "trying hard to sleep" or catastrophizing about sleep loss</span><span class="goto cbti">CBT-I — cognitive restructuring</span></div>
+      <div class="pivot-row"><span class="cue">Nighttime worry spirals, racing thoughts, can't shut off brain</span><span class="goto cbti">CBT-I — worry time scheduling</span></div>
+      <div class="pivot-row"><span class="cue">Chronic insomnia (6+ months) as barrier to behavioral activation or therapy</span><span class="goto cbti">CBT-I — full sequence</span></div>
+      <div class="pivot-row"><span class="cue">"I don't really have a problem with drinking"</span><span class="goto mi">MI — never disputation</span></div>
+      <div class="pivot-row"><span class="cue">Declines therapy referral, spotty med adherence</span><span class="goto mi">MI — rulers &amp; menu of options</span></div>
+      <div class="pivot-row"><span class="cue">Homework repeatedly not done in CBT work</span><span class="goto mi">MI — it's ambivalence, not skill</span></div>
+      <div class="pivot-row"><span class="cue">Caregiver overload, situational stress, "I just need to cope"</span><span class="goto sft">SFT — scaling &amp; coping questions</span></div>
+      <div class="pivot-row"><span class="cue">High-functioning, goal-oriented, wants efficiency</span><span class="goto sft">SFT — full sequence</span></div>
+      <div class="pivot-row"><span class="cue">Dissociation, flooding, trauma activation in session</span><span class="goto trauma">Grounding → stabilize first</span></div>
+      <div class="pivot-row"><span class="cue">"Nothing's better" repeatedly + worsening scores in SFT</span><span class="goto cbt">Reframe as depression → BA</span></div>
+    </div>
+
+    <div class="pb-tabs">
+      <button class="pb-tab active" data-pb="cbt" onclick="switchPb('cbt', this)">Brief CBT</button>
+      <button class="pb-tab" data-pb="mi" onclick="switchPb('mi', this)">Motivational Interviewing</button>
+      <button class="pb-tab" data-pb="sft" onclick="switchPb('sft', this)">Solution-Focused</button>
+      <button class="pb-tab" data-pb="cbti" onclick="switchPb('cbti', this)">CBT-I</button>
+    </div>
+
+    <!-- ================= CBT PANEL ================= -->
+    <div class="pb-panel active" data-pb="cbt" id="pb-cbt">
+      <div class="pb-hero">
+        <h2>Brief CBT — the depression &amp; anxiety workhorse</h2>
+        <p>For your F32/F33 + F41.1 core, avoidance-driven functional decline, and chronic insomnia. CBT works in 15-minute doses when — and only when — you target one thought or one behavior per visit and always close with written homework.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Who it fits on your panel</h3>
+        <ul>
+          <li><b>Depression with avoidance/anhedonia</b> — behavioral activation first, cognitive work second. A patient at PHQ-9 ≥ 15 usually can't out-think depression; they have to out-act it.</li>
+          <li><b>Anxiety with catastrophic or ruminative worry</b> — verbal thought record, decatastrophizing, worry time.</li>
+          <li><b>Chronic insomnia (F51.05)</b> — stimulus control + worry time; behavioral conditioning is almost always a maintaining factor in insomnia older than a few months.</li>
+          <li><b>Social/work avoidance</b> — graded exposure, one rung per visit.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The 16-minute skeleton (inside a 30-min follow-up)</h3>
+        <p class="hint">Med management first, then a clean transition: "Now let's spend some time on the skills side of this."</p>
+        <div class="timeline">
+          <div class="tl-row"><span class="t">Min 0–2</span><span class="what"><b>Bridge + homework review.</b> "Last time you agreed to ___ — how did it go, or what got in the way?" Never skip this; it's what makes homework real.</span></div>
+          <div class="tl-row"><span class="t">Min 2–5</span><span class="what"><b>Pick one target.</b> "Walk me through one specific moment this week when it hit hardest." One situation, not the whole week.</span></div>
+          <div class="tl-row"><span class="t">Min 5–12</span><span class="what"><b>The intervention.</b> Verbal thought record, BA prescription, or one exposure rung — pick one, finish it.</span></div>
+          <div class="tl-row"><span class="t">Min 12–14</span><span class="what"><b>Assign homework.</b> Specific, scheduled, small. Have the patient say it back.</span></div>
+          <div class="tl-row"><span class="t">Min 14–16</span><span class="what"><b>Summary + confirm.</b> "Today we caught the thought ___, and you're trying ___ before next visit. Sound right?"</span></div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 1 — the 5-minute verbal thought record</h3>
+        <p class="hint">No worksheet needed. Six questions, in order. Write the automatic thought down verbatim — you'll reuse it in your note.</p>
+        <div class="qsay"><b>1 · Situation</b>"Give me one specific moment this week when the anxiety spiked. Where were you, what was happening?"</div>
+        <div class="qsay"><b>2 · Thought</b>"What went through your mind right at that moment?"</div>
+        <div class="qsay"><b>3 · Emotion + intensity</b>"And what did you feel — and how strong, 0 to 100?"</div>
+        <div class="qsay"><b>4 · Evidence</b>"What tells you that thought is true? … And is there anything from that day that doesn't quite fit it?"</div>
+        <div class="qsay"><b>5 · Alternative</b>"Knowing both sides — what's a fairer, more accurate way to say it?"</div>
+        <div class="qsay"><b>6 · Re-rate</b>"Sitting with that new version, where's the feeling now, 0 to 100?"</div>
+        <p><b>The cardinal rule:</b> the patient generates the alternative thought, not you. If they're stuck, ask "What would you tell a friend who had this exact thought?" — never supply the answer.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 2 — the behavioral activation prescription</h3>
+        <p class="hint">For anhedonia and avoidance. Frame it as an experiment on mood, never as exercise, productivity, or "should."</p>
+        <ul>
+          <li><b>Pick one:</b> "What's one thing you've dropped that used to matter to you, even a little?"</li>
+          <li><b>Shrink it:</b> cut it to a 10-minute version. Walking the dog once, not "getting back in shape."</li>
+          <li><b>Schedule it:</b> exact day and time. "Tuesday after dinner" — vague homework is unfinished homework.</li>
+          <li><b>Pre-empt the obstacle:</b> "What's most likely to get in the way? And what's your workaround?"</li>
+          <li><b>Set the frame:</b> "This is data collection. Rate your mood before and after, and we'll look at what happened."</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 3 — CBT-I mini-toolkit</h3>
+        <p class="hint">You can deliver the two highest-yield CBT-I components in one visit each. Pairs naturally with hypnotic-sparing conversations.</p>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Stimulus control (visit one)</h4>
+            <ul>
+              <li>Bed is for sleep only — no phone, TV, or worrying in bed</li>
+              <li>Awake ~20 min? Out of bed, dim light, boring activity, return when drowsy</li>
+              <li>Fixed wake time seven days a week — this is the anchor, not bedtime</li>
+              <li>No daytime naps while retraining</li>
+            </ul>
+          </div>
+          <div class="minicard">
+            <h4>Cognitive arm (visit two)</h4>
+            <ul>
+              <li>Worry time: 15 scheduled minutes in the early evening; worries earlier in the day get parked on a list</li>
+              <li>Reframe sleep effort: "Trying hard to sleep is the one thing guaranteed to prevent it"</li>
+              <li>De-catastrophize the bad night: "You've functioned on bad sleep before — uncomfortable, not dangerous"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Homework menu — patient-facing wording</h3>
+        <ul>
+          <li><b>Thought log:</b> "Catch three thoughts this week — jot down the situation, the thought, the feeling. Just notice, don't fix anything yet."</li>
+          <li><b>BA step:</b> "One 10-minute walk Tuesday and Thursday after dinner — not for exercise, as an experiment on your mood. Rate it before and after."</li>
+          <li><b>Behavioral experiment:</b> "You're predicting ___. Test it once this week and write down what actually happened."</li>
+          <li><b>Worry time:</b> "15 minutes at 7 PM is your worry appointment. Anything earlier goes on the list for later."</li>
+          <li><b>Exposure rung:</b> "Do the bottom item on our list twice this week. Rate the distress before, during, and after — you're watching for the 'during' number to drop."</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to look for</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Progress markers</h4>
+            <ul>
+              <li>Patient labels their own distortions unprompted ("I know, I'm catastrophizing again")</li>
+              <li>Homework completion — the single best predictor of brief-CBT outcome</li>
+              <li>Distress ratings drop within and across exposures</li>
+              <li>PHQ-9/GAD-7 move in step with behavior change, not just med changes</li>
+            </ul>
+          </div>
+          <div class="minicard warn">
+            <h4>Red flags — pivot signals</h4>
+            <ul>
+              <li>Homework never done twice running → stop assigning, switch to MI; it's ambivalence, not skill deficit</li>
+              <li>Hopelessness blocks all cognitive work → drop to pure BA; action before insight</li>
+              <li>Trauma content keeps surfacing → stabilize, ground, and make the therapy referral concrete</li>
+              <li>You catch yourself disputing the thought <i>for</i> the patient → back to questions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>En español — the core CBT questions</h3>
+        <p class="hint">Usted forms throughout. The verbal thought record, in order, plus the BA frame.</p>
+        <div class="qsay"><b>1 · Situación</b>"Cuénteme un momento específico de esta semana en que la ansiedad estuvo más fuerte. ¿Dónde estaba, qué estaba pasando?"</div>
+        <div class="qsay"><b>2 · Pensamiento</b>"¿Qué pasó por su mente en ese momento exacto?"</div>
+        <div class="qsay"><b>3 · Emoción + intensidad</b>"¿Y qué sintió — y qué tan fuerte, del 0 al 100?"</div>
+        <div class="qsay"><b>4 · Evidencia</b>"¿Qué le dice que ese pensamiento es cierto? … ¿Y hay algo de ese día que no encaje con ese pensamiento?"</div>
+        <div class="qsay"><b>5 · Alternativa</b>"Tomando en cuenta los dos lados, ¿cuál sería una forma más justa y realista de decirlo?" <i>(Si se traba: "¿Qué le diría a un amigo que tuviera ese mismo pensamiento?")</i></div>
+        <div class="qsay"><b>6 · Re-evaluar</b>"Con esa nueva versión, ¿dónde está el sentimiento ahora, del 0 al 100?"</div>
+        <div class="qsay"><b>Activación conductual</b>"¿Qué es una cosa que ha dejado de hacer que antes le importaba, aunque sea un poco?" … "Esto es un experimento sobre su estado de ánimo — no es ejercicio ni obligación. Califique su ánimo antes y después, y lo revisamos juntos."</div>
+        <div class="qsay"><b>Tarea (encuadre)</b>"Esta semana, atrape tres pensamientos — anote la situación, el pensamiento y lo que sintió. Solo obsérvelos, no los arregle todavía."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Chart it — CBT paragraph (supervisor's format)</h3>
+        <div class="pb-chart" id="pbChartCbt">Insight-oriented, CBT-focused, and supportive therapy used to address mood and anxiety. We explored developments since last visit, and I reviewed the behavioral task assigned at the prior visit, exploring what supported or interfered with completion. I taught the patient a structured thought-examination exercise, identifying the automatic thought ("___"), examining evidence for and against it; I helped the patient generate a more balanced alternative, which reduced self-rated distress from _/10 to _/10. I challenged the patient with the concept that ___. I laid framework for future therapy sessions by identifying ___ as the next treatment target. I gave homework to ___. [X] minutes spent in therapy separate from med management.</div>
+        <button class="copy-btn" onclick="copyText('pbChartCbt', this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- ================= MI PANEL ================= -->
+    <div class="pb-panel" data-pb="mi" id="pb-mi">
+      <div class="pb-hero">
+        <h2>Motivational Interviewing — for everything they're ambivalent about</h2>
+        <p>Alcohol and nicotine minimization, declined therapy referrals, spotty adherence, drinking against the antidepressant. The core inversion: the patient voices the argument for change, never you. The moment you argue for change, they argue against it.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The spirit and the four processes</h3>
+        <p><b>Spirit:</b> partnership (two experts in the room — you on medicine, them on their life), acceptance, compassion, evocation (the reasons for change already exist inside the patient; your job is to draw them out).</p>
+        <p><b>Four processes:</b> Engage → Focus → Evoke → Plan. In a 16-minute window you'll usually do <b>two</b> of these well, not all four. Evoking across two or three visits before planning is normal and correct.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The 16-minute skeleton</h3>
+        <div class="timeline">
+          <div class="tl-row"><span class="t">Min 0–3</span><span class="what"><b>Engage.</b> One open question, then reflect. No agenda yet. "How have things been going with everything on your plate?"</span></div>
+          <div class="tl-row"><span class="t">Min 3–6</span><span class="what"><b>Focus — ask permission.</b> "Would it be okay if we talked about the drinking for a few minutes?" Asking permission is itself the intervention — it disarms defensiveness.</span></div>
+          <div class="tl-row"><span class="t">Min 6–13</span><span class="what"><b>Evoke.</b> Importance/confidence rulers, then mine for change talk (DARN below). Elaborate every scrap of it: "Tell me more about that part."</span></div>
+          <div class="tl-row"><span class="t">Min 13–16</span><span class="what"><b>Plan only if ready.</b> If change talk is flowing: menu of options, patient picks one small step. If not: summarize both sides, end on the change side, leave the door open. That's still a complete MI session.</span></div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Question bank — eliciting change talk (DARN)</h3>
+        <div class="qsay"><b>Desire</b>"What would you want to be different about your drinking, if anything?"</div>
+        <div class="qsay"><b>Ability</b>"If you did decide to cut back, how would you go about it? What's worked before, even briefly?"</div>
+        <div class="qsay"><b>Reasons</b>"What are the not-so-good things about how it's going right now?"</div>
+        <div class="qsay"><b>Need</b>"Honestly, where does this sit on your priority list? How important is it to you?"</div>
+        <div class="qsay"><b>The rulers</b>"On a 0–10 scale, how important is making this change? … And separately, how confident are you that you could, if you decided to?"</div>
+        <div class="qsay"><b>The backward question</b>"You said a 4 — why a 4 and not a 2?" <i>(Always ask downward — it makes them argue for change. "Why not higher?" makes them argue against it.)</i></div>
+        <div class="qsay"><b>The key question (after a summary)</b>"So, given all of that — where does that leave you? What do you think you'll do?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The reflection ladder</h3>
+        <p class="hint">Aim for roughly two reflections per question you ask. Reflections are statements, voice dropping at the end — not questions.</p>
+        <ul>
+          <li><b>Simple:</b> restate or lightly rephrase. "It's been a rough month."</li>
+          <li><b>Complex:</b> continue the paragraph — name the unspoken feeling or meaning. "Part of you wonders whether the drinking is making the anxiety worse, not better."</li>
+          <li><b>Double-sided:</b> "On one hand, the wine is the only thing that shuts your brain off at night — and on the other, you're waking up more anxious than you went to bed." <i>Always end on the change side.</i></li>
+          <li><b>Amplified (use sparingly):</b> slightly overstate the sustain talk so the patient corrects toward change. "So the drinking really isn't affecting anything at all." Requires a solid alliance and a completely non-sarcastic tone.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to listen for</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Change talk → elaborate it</h4>
+            <ul>
+              <li>DARN statements, plus the stronger CAT: <b>C</b>ommitment ("I'm going to…"), <b>A</b>ctivation ("I'm ready to…"), <b>T</b>aking steps ("I already cut back on weeknights")</li>
+              <li>Response: reflect it, ask for more, put it in your end-of-visit summary — change talk the patient hears back is change talk reinforced</li>
+            </ul>
+          </div>
+          <div class="minicard warn">
+            <h4>Sustain talk &amp; discord → soften</h4>
+            <ul>
+              <li>Sustain talk ("It's how I unwind") is normal ambivalence — reflect it without amplifying, then pivot to the other side</li>
+              <li>Discord (arguing with <i>you</i>, interrupting, shutting down) is feedback about the relationship — drop the agenda, reflect, re-ask permission</li>
+              <li>Watch your own <b>righting reflex</b>: the urge to warn, list consequences, or convince. It reliably produces the opposite of what you want</li>
+            </ul>
+          </div>
+        </div>
+        <p style="margin-top:12px;"><b>Classic traps:</b> question–answer volleys (feels like an interrogation), the expert trap (prescribing the fix), the labeling trap (arguing about the word "alcoholic"), and premature focus (pushing your topic before they've been heard).</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Homework menu — MI-consistent (patient chooses)</h3>
+        <ul>
+          <li><b>Pattern diary:</b> "Would you be willing to just track it for a week — no changes required — so we can look at the pattern together?"</li>
+          <li><b>The noticing task:</b> "Notice one moment this week when you reach for a drink, and what's happening right before. That's all."</li>
+          <li><b>One call:</b> "Not committing to therapy — just one phone call to whichever name on the list looks least bad. Which one would you pick?"</li>
+          <li><b>Menu close:</b> "A few ways we could go: I hand-pick a therapist, I resend the list, or we table it until next visit. What sounds most doable?"</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>En español — the core MI questions</h3>
+        <div class="qsay"><b>Pedir permiso</b>"¿Le parece bien si hablamos unos minutos sobre el alcohol?"</div>
+        <div class="qsay"><b>Deseo</b>"¿Qué le gustaría que fuera diferente con la bebida — si algo?"</div>
+        <div class="qsay"><b>Habilidad</b>"Si decidiera tomar menos, ¿cómo lo haría? ¿Qué le ha funcionado antes, aunque sea por poco tiempo?"</div>
+        <div class="qsay"><b>Razones</b>"¿Cuáles son las cosas no tan buenas de cómo van las cosas ahora?"</div>
+        <div class="qsay"><b>Necesidad</b>"Sinceramente, ¿qué lugar ocupa esto en su lista de prioridades? ¿Qué tan importante es para usted?"</div>
+        <div class="qsay"><b>Las reglas (0–10)</b>"En una escala de 0 a 10, ¿qué tan importante es este cambio para usted? … Y aparte, ¿qué tan seguro se siente de poder lograrlo, si lo decidiera?"</div>
+        <div class="qsay"><b>La pregunta hacia abajo</b>"Dijo un 4 — ¿por qué un 4 y no un 2?" <i>(Siempre hacia abajo: hace que el paciente argumente a favor del cambio.)</i></div>
+        <div class="qsay"><b>La pregunta clave</b>"Entonces, con todo esto — ¿dónde lo deja? ¿Qué cree que va a hacer?"</div>
+        <div class="qsay"><b>Reflejo de dos lados</b>"Por un lado, el vino es lo único que le apaga la mente en la noche — y por otro lado, se está despertando con más ansiedad de la que tenía al acostarse."</div>
+        <div class="qsay"><b>Tarea (encuadre)</b>"¿Estaría dispuesto a solo anotarlo por una semana — sin cambiar nada — para que podamos ver el patrón juntos?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Chart it — MI paragraph (supervisor's format)</h3>
+        <div class="pb-chart" id="pbChartMi">Supportive therapy with motivational interviewing used to address mood and ambivalence regarding ___. We explored developments since last visit and, with the patient's permission, the patient's ambivalence about ___. I used open-ended questions, reflective listening, and importance/confidence rulers; the patient rated importance _/10 and confidence _/10, and I helped the patient articulate ___ as their own reason for change. I challenged the patient with the concept that ___, while deliberately avoiding direct persuasion to preserve autonomy and the therapeutic alliance. I laid framework for future therapy sessions by offering a menu of concrete options, from which the patient selected ___. I gave homework to ___. [X] minutes spent in therapy separate from med management.</div>
+        <button class="copy-btn" onclick="copyText('pbChartMi', this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- ================= SFT PANEL ================= -->
+    <div class="pb-panel" data-pb="sft" id="pb-sft">
+      <div class="pb-hero">
+        <h2>Solution-Focused — built for exactly your time constraint</h2>
+        <p>SFBT was designed for brief, intermittent contact — which is precisely a med-management follow-up cadence. Best for caregiver and adjustment stress, high-functioning patients, and "medication only" patients who'd reject anything that smells like therapy. You're not solving the problem; you're amplifying what already works.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Who it fits on your panel</h3>
+        <ul>
+          <li><b>Caregiver overload</b> — spouse with cognitive decline, parent in the ICU, adult children in crisis. The problem won't resolve; coping capacity can grow.</li>
+          <li><b>High-functioning professionals</b> — goal-oriented patients who respond to concrete, forward-facing structure and would bristle at exploratory work.</li>
+          <li><b>"Med management only" patients</b> — SFT doesn't feel like therapy from the inside, so it lands where CBT homework would be refused.</li>
+          <li><b>Adjustment reactions</b> — situational distress with an intact baseline underneath.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The 16-minute skeleton (EARS — the follow-up engine)</h3>
+        <p class="hint">The miracle question is a first-visit tool; use it once. EARS + scaling is what runs every follow-up after that.</p>
+        <div class="timeline">
+          <div class="tl-row"><span class="t">Min 0–2</span><span class="what"><b>Elicit.</b> "What's been better — even slightly — since we last talked?" Not "how are you." The question presupposes something improved.</span></div>
+          <div class="tl-row"><span class="t">Min 2–6</span><span class="what"><b>Amplify.</b> Whatever surfaces, dig in: "How did you do that? What was different that day? Who else noticed?"</span></div>
+          <div class="tl-row"><span class="t">Min 6–10</span><span class="what"><b>Reflect + scale.</b> "Where are you today, 1–10? … What's keeping it from being a point lower?" (That second question surfaces coping they're not crediting themselves for.)</span></div>
+          <div class="tl-row"><span class="t">Min 10–14</span><span class="what"><b>Start again — next small step.</b> "What would a [current number + 0.5] look like this week? What's the smallest visible sign?"</span></div>
+          <div class="tl-row"><span class="t">Min 14–16</span><span class="what"><b>Compliment + summary.</b> One specific, evidence-based affirmation of something they actually did, then the recap.</span></div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The full question ladder (first visit or reset)</h3>
+        <div class="qsay"><b>1 · Best hopes</b>"What are your best hopes for our work together — what would make these visits worth your time?"</div>
+        <div class="qsay"><b>2 · Miracle question</b>"Suppose tonight, while you sleep, this problem resolves — but you don't know it happened. Tomorrow morning, what's the first small thing you'd notice that tells you something changed?"</div>
+        <div class="qsay"><b>3 · Pieces already present</b>"When was the last time you saw even a small piece of that morning happen for real?"</div>
+        <div class="qsay"><b>4 · Scale it</b>"If 10 is that morning and 1 is the worst it's been — where are you today?"</div>
+        <div class="qsay"><b>5 · Coping (for the defeated patient)</b>"Given everything you're carrying, how have you kept going at all? What does that take?"</div>
+        <div class="qsay"><b>6 · First step</b>"What's one small thing this week that would tell you the number moved, even half a point?"</div>
+        <p><b>Handling "I don't know":</b> wait three full seconds — most patients answer into the silence. If not: "Suppose you did know — what might you say?" It works surprisingly often.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Homework menu — SFT-style tasks</h3>
+        <ul>
+          <li><b>Formula first-session task:</b> "Between now and next visit, notice what's happening in your life that you want to keep happening. That's the whole assignment."</li>
+          <li><b>Exception watch:</b> "Notice the moments the problem is a little smaller than usual, and what's different about those moments."</li>
+          <li><b>Do-more-of:</b> once an exception is identified — "You said Tuesday was better because you got outside before the boys woke up. Do that on purpose twice this week."</li>
+          <li><b>Pretend task:</b> "Pick one morning and act as if the miracle already happened. Don't tell anyone which morning — see who notices something's different."</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to look for</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Progress markers</h4>
+            <ul>
+              <li>Patient arrives reporting exceptions unprompted</li>
+              <li>Scaling numbers creep upward — or the patient starts defining the numbers in behavioral terms without help</li>
+              <li>Language shifts from problem-talk ("everything's falling apart") to solution-talk ("Tuesday went okay because…")</li>
+              <li>They take ownership of the next step before you ask</li>
+            </ul>
+          </div>
+          <div class="minicard warn">
+            <h4>Red flags — pivot signals</h4>
+            <ul>
+              <li>Flat "nothing's better" across multiple visits with worsening scores → this may be depression needing BA/CBT, not a coping problem</li>
+              <li>Any safety content → drop the frame entirely, full risk assessment</li>
+              <li>You're cheerleading past real distress → validate first ("this is genuinely hard"), <i>then</i> pivot to coping</li>
+              <li>Miracle question during acute crisis → wrong tool, wrong moment; use the coping question instead</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>En español — the core SFT questions</h3>
+        <div class="qsay"><b>Provocar (apertura)</b>"¿Qué ha estado mejor — aunque sea un poquito — desde la última vez que hablamos?"</div>
+        <div class="qsay"><b>Amplificar</b>"¿Cómo lo logró? ¿Qué fue diferente ese día? ¿Quién más lo notó?"</div>
+        <div class="qsay"><b>Escala</b>"Del 1 al 10, ¿dónde está hoy? … ¿Y qué evita que sea un punto más bajo?"</div>
+        <div class="qsay"><b>Pregunta del milagro</b>"Suponga que esta noche, mientras duerme, este problema se resuelve — pero usted no sabe que pasó. Mañana por la mañana, ¿cuál sería la primera señal pequeña de que algo cambió?"</div>
+        <div class="qsay"><b>Pregunta de afrontamiento</b>"Con todo lo que está cargando, ¿cómo ha logrado seguir adelante? ¿Qué le ha tomado hacer eso?"</div>
+        <div class="qsay"><b>Primer paso</b>"¿Qué cosa pequeña esta semana le diría que el número subió, aunque sea medio punto?"</div>
+        <div class="qsay"><b>Cumplido con evidencia</b>"Dice mucho de usted que haya seguido ___ a pesar de todo — eso no es poca cosa."</div>
+        <div class="qsay"><b>Tarea (encuadre)</b>"De aquí a la próxima visita, fíjese en lo que está pasando en su vida que usted quiere que siga pasando. Esa es toda la tarea."</div>
+        <div class="qsay"><b>"No sé"</b><i>Espere tres segundos completos. Si no:</i> "Suponga que sí supiera — ¿qué diría?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Chart it — SFT paragraph (supervisor's format)</h3>
+        <div class="pb-chart" id="pbChartSft">Insight-oriented, solution-focused, and supportive therapy used to address mood and anxiety. We explored developments since last visit, and I elicited and amplified improvements the patient identified, including ___. I taught the patient a scaling technique, in which the patient rated ___ at _/10; I helped the patient understand what maintains the current level, highlighting coping strategies already in use, and defined what one point of improvement would look like in concrete behavioral terms. I challenged the patient's self-critical narrative with a specific competence affirmation. I laid framework for future therapy sessions by anchoring progress to the patient's own scale. I gave homework to ___. [X] minutes spent in therapy separate from med management.</div>
+        <button class="copy-btn" onclick="copyText('pbChartSft', this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- ================= CBT-I PANEL ================= -->
+    <div class="pb-panel" data-pb="cbti" id="pb-cbti">
+      <div class="pb-hero">
+        <h2>CBT-I — the keystone intervention for your panel</h2>
+        <p>Chronic insomnia (F51.05) is not a symptom of depression; it's a maintaining factor that keeps it locked in place. When you address insomnia directly, mood and anxiety often improve without additional psychotherapy. CBT-I is the gold standard and the one non-pharmacological intervention that outperforms most hypnotics in long-term outcomes.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Who it fits on your panel</h3>
+        <ul>
+          <li><b>F51.05 (Insomnia due to another mental disorder)</b> — when MDD or GAD has disrupted sleep for 6+ months.</li>
+          <li><b>Early morning awakening (3–5 AM)</b> — classic depression phenotype; stimulus control and cognitive work are the moves.</li>
+          <li><b>Nighttime worry spirals, racing thoughts</b> — patient "can't turn off my brain"; this is anxiety-driven insomnia and calls for worry time scheduling inside the sleep protocol.</li>
+          <li><b>Sleep effort ("I try too hard")</b> — paradoxical: trying to sleep prevents sleep; this is pure cognitive CBT-I work.</li>
+          <li><b>Medication-resistant insomnia</b> — patient on two or three hypnotics with minimal benefit; behavioral conditioning is almost always a maintaining factor by this point.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The 3–4 visit sequence (not a one-visit intervention)</h3>
+        <p class="hint">CBT-I works best as a series. Plan this into your follow-up cadence; it's not a single 90833 skill.</p>
+        <div class="timeline">
+          <div class="tl-row"><span class="t">Visit 1</span><span class="what"><b>Psychoeducation + stimulus control rules.</b> Explain the "window of sleep drive" and what's blocking it (sleep effort, bed behavior, napping). Assign: bed = sleep only, up if awake >20 min, fixed wake time.</span></div>
+          <div class="tl-row"><span class="t">Visit 2</span><span class="what"><b>Review stimulus control compliance + cognitive work.</b> Address "trying hard to sleep" belief. Teach decatastrophizing: "One bad night ≠ dangerous. You've functioned on poor sleep before." Assign: one thought log per week about sleep beliefs.</span></div>
+          <div class="tl-row"><span class="t">Visit 3</span><span class="what"><b>Sleep restriction (optional, advanced).</b> If stimulus control is helping: match time-in-bed to actual sleep time, then gradually expand. This requires more structure and patient buy-in. Alternative: worry time if nighttime thoughts are the barrier.</span></div>
+          <div class="tl-row"><span class="t">Visit 4+</span><span class="what"><b>Maintenance + troubleshooting.</b> Sleep is often the first thing that regresses when stress returns. Regular check-ins on sleep metrics, and quick re-teaching of whichever component was most helpful.</span></div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 1 — Stimulus control (visit 1, laser-focused)</h3>
+        <p class="hint">The single most effective component of CBT-I. Patients are often shocked how much bed behavior shapes sleep.</p>
+        <div class="qsay"><b>Psychoeducation frame</b>"Sleep drive builds up over the day. The problem is we're spending too much time in bed before we're actually sleepy — so the bed becomes a place of worry, not sleep. We need to reset that."</div>
+        <div class="qsay"><b>The rules (write them down)</b>"Bed is for sleep only — no phone, TV, reading, worrying, or 'trying to fall asleep.' If you're awake 20 minutes, get up, go to a different room, do something boring in dim light until you feel drowsy. Then return to bed. This might happen 3–4 times a night at first — that's normal and means it's working."</div>
+        <div class="qsay"><b>The anchor</b>"The single most important rule: wake up at the SAME time every day, even weekends, even if you barely slept. This sets your sleep drive clock. Everything else — when you go to bed, naps, exercise timing — follows from this one anchor."</div>
+        <div class="qsay"><b>The no-nap rule</b>"No daytime naps while we're retraining your sleep. Even 20 minutes will reset your sleep drive and make tonight harder."</div>
+        <div class="qsay"><b>Homework frame</b>"This might feel worse for the first week or two. You'll be more tired because we're concentrating your sleep into a shorter window. That's the goal — it intensifies sleep drive so you actually sleep when you're in bed. Stick with it for at least two weeks before we evaluate."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 2 — Cognitive restructuring for sleep effort (visit 2)</h3>
+        <p class="hint">The thought "I have to make myself fall asleep" is paradoxically the barrier to sleep. This is where CBT-I gets philosophical and sometimes surprising to patients.</p>
+        <div class="qsay"><b>The paradox</b>"The more you try to fall asleep, the less likely you are to fall asleep. Your brain can't force sleep — it can only allow it. Trying is the opposite of allowing."</div>
+        <div class="qsay"><b>1 · What's the fear?</b>"What worries you most about a night of poor sleep? What do you tell yourself will happen?"</div>
+        <div class="qsay"><b>2 · Reality-test it</b>"Have you had nights of poor sleep before? What actually happened? Did you crash the next day? Did you function, even if uncomfortable?"</div>
+        <div class="qsay"><b>3 · Decatastrophize</b>"Let's separate the worst-case (which hasn't happened) from what's more likely. Bad sleep is uncomfortable, but it's not dangerous. Your brain is resilient."</div>
+        <div class="qsay"><b>4 · The acceptance piece</b>"What if tonight you had 4 hours instead of 8? You'd function. It would be harder, but possible. That's true whether you're 'trying' or not. The trying doesn't actually help — it just adds anxiety on top of the insomnia."</div>
+        <div class="qsay"><b>Homework</b>"Jot down one sleep fear each night, then answer: 'Have I survived poor sleep before? What actually happened?' This is data collection, not positive thinking."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 3 — Worry time scheduling (visit 2 or 3, if nights are full of racing thoughts)</h3>
+        <p class="hint">Many insomnia cases have an anxiety layer that stimulus control alone won't touch. Nighttime is when the worry machine starts.</p>
+        <div class="qsay"><b>The frame</b>"When you lie in bed, your brain has nothing to do but think. And we tend to think about worries and problems at night. We're going to move that to a scheduled time during the day — 'worry time' — so it's not hijacking your sleep."</div>
+        <div class="qsay"><b>The prescription</b>"Pick 15 minutes in the early evening — say 6 or 7 PM — as your designated worry appointment. Write down the concerns you have. Then tell yourself: 'I'll think about this carefully at 6 PM.' When worries pop up during the day or at night, jot them on a list and tell yourself 'that's for 6 PM.' At 6 PM, spend 15 minutes actually worrying — no phone, no distractions, just the concerns. After 15 minutes, stop. The worries will still be there tomorrow if needed."</div>
+        <div class="qsay"><b>Why it works</b>"You're not suppressing worry — that doesn't work. You're containing it. Your brain gets that worries are important, but they have their time, not 3 AM."</div>
+        <div class="qsay"><b>Homework</b>"Worry time at [specific time], every day. Write down worries that come up outside that window. Review in two weeks."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to look for</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Progress markers</h4>
+            <ul>
+              <li>Patient reports following the rules (bed only for sleep, up if awake >20 min)</li>
+              <li>Sleep efficiency improves — time asleep / time in bed ratio climbs toward 85%+</li>
+              <li>Daytime mood and energy improve before sleep hours increase (this is classic CBT-I — behavior change precedes symptom resolution)</li>
+              <li>Patient spontaneously reports "it's so boring getting up at 2 AM, but I sleep better now"</li>
+            </ul>
+          </div>
+          <div class="minicard warn">
+            <h4>Red flags — troubleshooting points</h4>
+            <ul>
+              <li>Rules not followed (bed still used for phone/worry) → clarify that stimulus control is non-negotiable; motivation is about boredom, not willpower</li>
+              <li>Worse insomnia in week 1–2 → normal; sleep drive intensifies before sleep consolidates. Reassure and ask for 2-week commitment</li>
+              <li>No improvement after 3–4 weeks → add cognitive component (worry time, decatastrophizing) or consider sleep restriction if motivation is high</li>
+              <li>Patient quits early saying "it's not working" → it's ambivalence or activation barrier; switch to MI to explore resistance</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>En español — core CBT-I questions</h3>
+        <div class="qsay"><b>Psicoeducación</b>"El sueño es algo que su cuerpo hace naturalmente cuando está listo. El problema es que pasamos demasiado tiempo en la cama antes de tener sueño, así que la cama se convierte en un lugar de preocupación, no de sueño."</div>
+        <div class="qsay"><b>Las reglas</b>"La cama es solo para dormir — nada de teléfono, televisión, ni intentar dormir. Si está despierto 20 minutos, levántese, vaya a otro cuarto, haga algo aburrido con luz tenue. Cuando sienta sueño, regrese. Esto puede pasar varias veces las primeras noches — eso es normal."</div>
+        <div class="qsay"><b>El ancla más importante</b>"Despiértese a la MISMA hora cada día, incluso los fines de semana. Eso es lo más importante — eso configura su reloj del sueño. Todo lo demás depende de esto."</div>
+        <div class="qsay"><b>La paradoja del sueño</b>"Cuanto más intenta dormir, menos lo logra. El sueño no es algo que usted puede 'hacer.' Su cerebro solo puede permitirlo."</div>
+        <div class="qsay"><b>Decatastrofizar</b>"¿Ha tenido noches de poco sueño antes? ¿Qué pasó realmente? ¿Se murió de cansancio? Probablemente funcionó, aunque incómodo. Una noche mala no es peligrosa — es incómoda."</div>
+        <div class="qsay"><b>Hora de preocupación</b>"Escoja 15 minutos en la tarde — digamos a las 6 PM — como su cita para preocuparse. Anote las cosas que le preocupan. Si la preocupación vuelve en la noche, anótela en una lista y dígase: 'Eso es para las 6 PM.' A las 6 PM, preocúpese 15 minutos. Después de 15 minutos, termine."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Chart it — CBT-I paragraph (supervisor's format)</h3>
+        <div class="pb-chart" id="pbChartCbti">Insight-oriented, CBT-I (Cognitive Behavioral Therapy for Insomnia), and supportive therapy used to address chronic insomnia and its impact on mood and anxiety. We explored developments since last visit, and I provided psychoeducation on the relationship between sleep drive, time in bed, and the maintenance of insomnia, emphasizing that ___ (stimulus control / cognitive restructuring around sleep effort / worry time scheduling) is essential to resetting the sleep-wake cycle. I taught the patient the specific behavioral rules and rationale, including ___. I challenged the patient with the concept that trying harder to sleep paradoxically prevents sleep, and that behavioral consistency (not effort) is the pathway to restoration. I laid framework for future therapy sessions by establishing a ___ visit sequence to assess compliance and troubleshoot barriers. I gave homework to ___. [X] minutes spent in therapy separate from med management.</div>
+        <button class="copy-btn" onclick="copyText('pbChartCbti', this)">Copy</button>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>Built for personal clinical reference. Not a substitute for training, supervision, or CE. · PsychRef</footer>
+</div>
+
+<script>
+const DATA = [
+  // ---------- Solution-Focused Therapy ----------
+  {mod:"sft", name:"Miracle Question", desc:"Shifts focus from problem analysis to a concrete vision of change.",
+   say:"\"If you woke up tomorrow and this problem had disappeared, what's the first small thing you'd notice was different?\"",
+   chart:"I used the miracle question to help the patient articulate a concrete picture of what improvement would look like, shifting focus from problem analysis toward a future-oriented goal."},
+  {mod:"sft", name:"Scaling Questions", desc:"Turns a vague symptom into a trackable number and a next step.",
+   say:"\"On a scale of 1–10, where's your anxiety today? What would move you just one point higher?\"",
+   chart:"I used a scaling question (1–10) to quantify the patient's current anxiety and collaboratively identified one concrete step that could move them one point higher."},
+  {mod:"sft", name:"Exception-Finding", desc:"Surfaces times the problem was smaller or absent — evidence the patient already has capability.",
+   say:"\"Tell me about a recent moment when this was a little less present, even briefly. What was different about that moment?\"",
+   chart:"I helped the patient identify a recent exception — a time the presenting problem was less severe — and explored what factors contributed to that difference."},
+  {mod:"sft", name:"Coping Question", desc:"Reframes survival as evidence of skill, useful when a patient feels defeated or 'useless.'",
+   say:"\"Given how hard this has been, how have you managed to keep going?\"",
+   chart:"I used a coping question to help the patient recognize existing resilience and functional strategies already in use, reframing survival as evidence of capability rather than failure."},
+  {mod:"sft", name:"Presuppositional Language", desc:"Embeds the expectation of change into the phrasing itself.",
+   say:"\"When this gets easier — not if — what do you think will be the first sign?\"",
+   chart:"I used presuppositional, future-oriented language to reinforce the expectation of change and reduce the patient's sense of a fixed, stuck baseline."},
+  {mod:"sft", name:"Best Hopes Question", desc:"Opens a session by anchoring on the patient's own goal rather than the provider's agenda.",
+   say:"\"What are your best hopes for today's appointment? What would make this a useful conversation?\"",
+   chart:"I opened the therapeutic portion of the session by asking the patient's best hopes for today's visit, anchoring the session's focus to the patient's own stated priority."},
+  {mod:"sft", name:"Relationship Question", desc:"Uses a trusted third party's imagined perspective to surface insight the patient may not access directly.",
+   say:"\"If your [employer / sister] were here, what would they say is different about you on your better days?\"",
+   chart:"I used a relationship question, asking the patient to consider how a trusted other would describe their better days, to surface observable signs of progress from an outside perspective."},
+  {mod:"sft", name:"Flagging and Amplifying Exceptions", desc:"Once an exception surfaces, dig deeper into how it happened to make it repeatable.",
+   say:"\"You said you left the house without much worry on Tuesday — walk me through exactly what was different that day.\"",
+   chart:"After the patient identified an exception to the presenting problem, I amplified it by exploring the specific circumstances and actions that made it possible, aiming to make the exception repeatable."},
+  {mod:"sft", name:"First Small Step Question", desc:"Converts a scaling answer into an immediately actionable next step.",
+   say:"\"You said a 6 out of 10 this week. What's one small thing that would nudge that to a 6.5 or 7?\"",
+   chart:"Building on the patient's self-rated scaling score, I helped identify one small, concrete next step that could realistically move the score upward before the next visit."},
+  {mod:"sft", name:"Compliment / Competence Affirmation", desc:"Explicitly names strengths the patient displayed in-session, reinforcing self-efficacy.",
+   say:"\"It says a lot that you kept going to work eight hours a week through all of this — that's not nothing.\"",
+   chart:"I offered a direct compliment identifying a specific strength or competence the patient demonstrated, reinforcing self-efficacy and countering the patient's self-critical narrative."},
+
+  // ---------- CBT ----------
+  {mod:"cbt", name:"Cognitive Restructuring", desc:"Identify the automatic thought, weigh the evidence, build a balanced alternative.",
+   say:"\"What went through your mind right before the anxiety spiked? What's the evidence for and against that thought?\"",
+   chart:"I taught the patient a brief cognitive restructuring exercise, identifying the automatic thought (\"___\"), examining evidence for and against it, and generating a more balanced alternative thought."},
+  {mod:"cbt", name:"Socratic Questioning", desc:"Guides the patient to challenge their own thought rather than being told it's wrong.",
+   say:"\"What would you tell a friend who had this exact thought? What's another way to look at it?\"",
+   chart:"I used Socratic questioning to help the patient examine the accuracy of a distressing automatic thought and consider alternative interpretations."},
+  {mod:"cbt", name:"Cognitive Distortion Labeling", desc:"Naming the pattern (catastrophizing, mind-reading, etc.) builds self-monitoring skill.",
+   say:"\"That sounds like mind-reading — assuming you know what others are thinking of you. Does that pattern show up elsewhere?\"",
+   chart:"I helped the patient identify and label a recurring cognitive distortion (mind-reading/catastrophizing) and discussed how this pattern generalizes across social situations."},
+  {mod:"cbt", name:"Behavioral Activation", desc:"Counters avoidance by scheduling small, approach-oriented behaviors rather than analyzing mood.",
+   say:"\"What's one small thing you could do this week that you've been avoiding, even for 10 minutes?\"",
+   chart:"I used behavioral activation to identify one specific avoided activity and collaboratively scheduled a small, time-limited approach step before next session."},
+  {mod:"cbt", name:"Graded Exposure Hierarchy", desc:"For avoidance-driven anxiety (social, work); build a stepwise ladder from least to most distressing.",
+   say:"\"Let's list situations that trigger this, from mildly uncomfortable to very hard, and pick one near the bottom to try first.\"",
+   chart:"I began building a graded exposure hierarchy with the patient for [social/work] avoidance, ranking situations by distress level, and identified an initial low-difficulty target for practice."},
+  {mod:"cbt", name:"Downward Arrow Technique", desc:"Traces a surface worry down to the core fear or belief driving it.",
+   say:"\"If that were true, what would that mean about you? And if that were true, what then?\"",
+   chart:"I used the downward arrow technique, repeatedly asking what a surface-level worry would mean if true, to trace the thought to its underlying core belief."},
+  {mod:"cbt", name:"Behavioral Experiment", desc:"Tests a feared prediction against real-world outcome, rather than just discussing it.",
+   say:"\"You're predicting people will notice and judge you. What if we tested that prediction this week and looked at what actually happens?\"",
+   chart:"I designed a behavioral experiment with the patient to test a specific feared prediction (\"___\") against real-world outcome, to be reviewed at the next session."},
+  {mod:"cbt", name:"Decatastrophizing", desc:"Walks through the worst-case, most-likely-case, and coping plan to deflate catastrophic thinking.",
+   say:"\"Okay, say the worst happens — what would that actually look like? What's more likely to happen? And if the worst did happen, what would you do?\"",
+   chart:"I used a decatastrophizing exercise, walking the patient through the worst-case, most likely case, and a coping plan, to reduce the perceived severity of the feared outcome."},
+  {mod:"cbt", name:"Worry Time Scheduling", desc:"Contains rumination to a defined window rather than letting it run all day — useful for pervasive rumination.",
+   say:"\"Let's set aside 15 minutes each evening as designated worry time. When a worry pops up earlier, jot it down and tell yourself you'll deal with it then.\"",
+   chart:"I introduced scheduled worry time as a technique to contain ruminative worry to a defined daily window, aimed at reducing pervasive daytime rumination."},
+  {mod:"cbt", name:"Activity/Pleasant Events Scheduling", desc:"Deliberately schedules enjoyable or mastery-building activities to counter anhedonia and avoidance.",
+   say:"\"What's something that used to feel good that you haven't done in a while? Let's pencil it in for this week, even briefly.\"",
+   chart:"I collaboratively scheduled a specific pleasant/mastery activity with the patient to counter avoidance and low motivation, to be reviewed at the next visit."},
+
+  // ---------- Trauma-Informed / Present-Focused ----------
+  {mod:"trauma", name:"Grounding (5-4-3-2-1)", desc:"Sensory grounding technique for dissociative episodes or acute overwhelm in-session.",
+   say:"\"Let's pause — name 5 things you can see, 4 you can touch, 3 you can hear, 2 you can smell, 1 you can taste.\"",
+   chart:"When the patient showed signs of dissociation/overwhelm, I introduced a 5-4-3-2-1 sensory grounding technique in session; patient was able to reorient and re-engage."},
+  {mod:"trauma", name:"Window of Tolerance Psychoeducation", desc:"Normalizes dissociation/flooding as a nervous-system response rather than a personal failing.",
+   say:"\"What you're describing — 'going away for a while' — sounds like your nervous system tipping outside its window of tolerance. That's a protective response, not a flaw.\"",
+   chart:"I provided psychoeducation on the window of tolerance model, normalizing the patient's reported dissociative episodes as a nervous-system protective response rather than a personal deficit."},
+  {mod:"trauma", name:"Stabilization Before Content", desc:"Establish present-day coping and safety before any exploration of historical material — matches patients who reject deep trauma excavation.",
+   say:"\"Before we get into any of the history, let's make sure you've got a couple of tools that help you feel steady day to day.\"",
+   chart:"Consistent with the patient's stated preference for present-focused work, I prioritized stabilization and current coping-skill building over historical exploration this session."},
+  {mod:"trauma", name:"Externalizing Language", desc:"Separates identity from symptom, reducing shame — 'the anxiety,' not 'you.'",
+   say:"\"It sounds like the anxiety is telling you people are watching you. What would it look like to not let it drive today?\"",
+   chart:"I used externalizing language to help the patient separate identity from symptom (\"the anxiety,\" rather than \"you\"), which appeared to reduce shame and increase openness in session."},
+  {mod:"trauma", name:"Fight/Flight/Freeze/Fawn Psychoeducation", desc:"Helps patients recognize their automatic threat-response pattern without judgment.",
+   say:"\"When you feel that urge to just go along with what someone wants even though you're uncomfortable — that's a 'fawn' response, a nervous system trying to keep you safe.\"",
+   chart:"I provided psychoeducation on the fight/flight/freeze/fawn threat-response framework, helping the patient identify their own pattern (___) without self-judgment."},
+  {mod:"trauma", name:"Titration / Pendulation", desc:"Approaches difficult material in small doses, deliberately swinging back to safety/resource before it becomes overwhelming.",
+   say:"\"Let's touch on that for just a moment, and then come back to something steadying — like your breathing or a place that feels safe.\"",
+   chart:"I used titration and pendulation, allowing brief, dose-limited contact with distressing material followed by an intentional return to a resourced/grounded state, to keep the patient within a manageable window."},
+  {mod:"trauma", name:"Safe/Calm Place Imagery", desc:"Builds a portable internal resource the patient can access between sessions or during distress.",
+   say:"\"Think of a place, real or imagined, where you feel completely safe. Let's build that image in detail so you can call on it when things feel overwhelming.\"",
+   chart:"I guided the patient through building a safe/calm place imagery resource, intended for use as a self-regulation tool between sessions."},
+  {mod:"trauma", name:"Containment Exercise", desc:"Gives a patient a concrete way to set aside overwhelming material until it can be safely addressed, rather than suppressing it entirely.",
+   say:"\"Let's imagine putting that memory in a container you can close for now — not gone, just set aside until we're ready to work with it directly.\"",
+   chart:"I introduced a containment exercise to help the patient manage overwhelming material by consciously setting it aside until it can be addressed safely, rather than through suppression."},
+  {mod:"trauma", name:"Collaborative Pacing Check-In", desc:"Explicitly hands the patient control over how much/how fast to go, which is itself the intervention for trauma-related loss of control.",
+   say:"\"I want to check in — is this pace okay, or would you like to slow down or shift to something else?\"",
+   chart:"I explicitly checked in with the patient regarding session pacing, offering direct control over the depth and speed of exploration, consistent with a trauma-informed, patient-paced approach."},
+
+  // ---------- Motivational Interviewing ----------
+  {mod:"mi", name:"OARS (Open Q's / Affirm / Reflect / Summarize)", desc:"Core MI structure — keeps the patient doing the talking and change-planning.",
+   say:"\"It sounds like part of you wants to get back to work, and part of you is scared of that. Did I get that right?\"",
+   chart:"I used an OARS-based motivational interviewing approach — open-ended questions, affirmations, reflective listening, and summarizing — to explore the patient's ambivalence about [behavior]."},
+  {mod:"mi", name:"Eliciting Change Talk", desc:"Draws out the patient's own reasons for change rather than the provider supplying them.",
+   say:"\"What would be different for you if you made this change? What's one reason this matters to you?\"",
+   chart:"I elicited change talk by asking the patient to articulate their own reasons for [reducing alcohol use / returning to work], reinforcing intrinsic motivation over external pressure."},
+  {mod:"mi", name:"Affirming Small Steps", desc:"Reframes a minimal action as meaningful momentum, lowering the barrier to starting.",
+   say:"\"You don't have to solve this today — would you be willing to make just one phone call this week?\"",
+   chart:"I affirmed the patient's readiness for a single small, attainable step (one therapist phone call) rather than the full behavior change, to reduce activation barrier and build momentum."},
+  {mod:"mi", name:"Rolling with Resistance", desc:"Avoids confrontation when a patient pushes back — validates ambivalence instead of arguing for change.",
+   say:"\"It makes sense you're hesitant — this hasn't gone well before. What would need to be different this time?\"",
+   chart:"Patient expressed ambivalence/resistance regarding [therapy engagement]; I avoided direct confrontation and instead reflected and validated the ambivalence, preserving the therapeutic alliance."},
+  {mod:"mi", name:"Decisional Balance", desc:"Lays out the pros and cons of both changing and staying the same, surfacing ambivalence explicitly rather than arguing one side.",
+   say:"\"Let's map this out — what are the good things about drinking the way you do, and what are the downsides? Same for cutting back.\"",
+   chart:"I used a decisional balance exercise with the patient, exploring the pros and cons of both continuing and changing [behavior], to make the patient's ambivalence explicit and self-directed."},
+  {mod:"mi", name:"Importance / Confidence Rulers", desc:"Separates 'how much this matters' from 'how capable I feel' — often the barrier is confidence, not importance, or vice versa.",
+   say:"\"On a 0–10 scale, how important is this change to you? And separately, how confident are you that you could do it if you decided to?\"",
+   chart:"I used importance and confidence rulers (0–10) to separately assess the patient's valuation of and self-efficacy toward [behavior change], clarifying which factor is the greater barrier."},
+  {mod:"mi", name:"Elaborating on Change Talk", desc:"When the patient offers even a small statement favoring change, dig deeper rather than moving on — reinforces and strengthens it.",
+   say:"\"You said part of you is ready to try therapy again — tell me more about that part.\"",
+   chart:"When the patient offered spontaneous change talk regarding [behavior], I elaborated on it by asking the patient to expand, reinforcing and strengthening their own stated motivation."},
+  {mod:"mi", name:"Avoiding the Righting Reflex", desc:"Deliberately resists the urge to argue the patient into change, which tends to provoke defensiveness (\"sustain talk\").",
+   say:"\"I'm not going to push you toward this — it's genuinely your call. I just want to understand where you're at with it.\"",
+   chart:"I deliberately avoided the righting reflex — did not argue or push directly for change — instead reflecting the patient's own ambivalence to reduce defensiveness and preserve autonomy."},
+  {mod:"mi", name:"Menu of Options", desc:"Offers several concrete paths forward rather than one prescribed plan, increasing buy-in and sense of autonomy.",
+   say:"\"There are a few different ways we could approach this — I could hand-pick a therapist for you, send the referral list again, or we could revisit it next visit. What sounds most doable?\"",
+   chart:"I offered the patient a menu of concrete options for [next step] rather than a single prescribed plan, and the patient selected [option], increasing autonomy and buy-in."},
+
+  // ---------- Session Structure & General Check-In ----------
+  {mod:"gen", name:"Session Opener / Agenda-Setting", desc:"Briefly orients the visit and confirms what matters most to the patient today before diving into symptoms.",
+   say:"\"Before we get into everything, what's most on your mind today that you want to make sure we cover?\"",
+   chart:"I opened the therapeutic portion of the session by checking in on the patient's priorities for today's visit, and structured the remainder of the session around the patient's stated agenda."},
+  {mod:"gen", name:"Homework Review", desc:"Follows up on a prior session's assigned task — closes the loop and reinforces accountability without shame if it wasn't completed.",
+   say:"\"Last time we talked about trying [task]. How did that go, or what got in the way if it didn't happen?\"",
+   chart:"I reviewed the patient's progress on the behavioral task assigned at the prior visit (___), discussed what supported or interfered with completion, and adjusted the plan accordingly."},
+  {mod:"gen", name:"Closing Summary / Recap", desc:"Ends the therapeutic portion by reflecting back what was covered and what the patient is taking away — improves retention and gives a clean close for documentation.",
+   say:"\"Just to pull it together — today we talked about X and Y, and you're going to try Z before next time. Does that sound right?\"",
+   chart:"I closed the therapeutic portion of the session with a summary of the themes addressed and the specific plan the patient committed to before the next visit, which the patient confirmed as accurate."},
+  {mod:"gen", name:"Eliciting Session Feedback", desc:"Briefly checks whether the session was useful/on-target from the patient's perspective — small alliance-building move.",
+   say:"\"Was today's conversation helpful, or is there something you wish we'd spent more time on?\"",
+   chart:"I checked in with the patient regarding the usefulness and relevance of today's session, and the patient indicated [response], which was incorporated into planning for the next visit."},
+];
+
+const grid = document.getElementById('grid');
+const countLabel = document.getElementById('countLabel');
+const searchInput = document.getElementById('searchInput');
+const tabs = document.querySelectorAll('.tab');
+let activeMod = 'all';
+
+function render(){
+  const q = searchInput.value.trim().toLowerCase();
+  const filtered = DATA.filter(d=>{
+    const matchesMod = activeMod === 'all' || d.mod === activeMod;
+    const haystack = (d.name + ' ' + d.desc + ' ' + d.say + ' ' + d.chart).toLowerCase();
+    const matchesQ = q === '' || haystack.includes(q);
+    return matchesMod && matchesQ;
+  });
+  countLabel.textContent = filtered.length;
+  grid.innerHTML = filtered.map((d,i)=>{
+    const modLabel = {sft:'Solution-Focused', cbt:'CBT', trauma:'Trauma-Informed', mi:'Motivational Interviewing', gen:'Session Structure'}[d.mod];
+    const id = 'chart-'+i+'-'+d.mod;
+    return `
+    <div class="card">
+      <span class="tag ${d.mod}">${modLabel}</span>
+      <h3>${d.name}</h3>
+      <p class="desc">${d.desc}</p>
+      <div class="say"><b>Say</b>${d.say}</div>
+      <div class="chart-it"><b>Chart it</b><span id="${id}">${d.chart}</span></div>
+      <button class="copy-btn" onclick="copyText('${id}', this)">Copy chart language</button>
+    </div>`;
+  }).join('');
+}
+
+function copyText(id, btn){
+  const text = document.getElementById(id).innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const original = btn.textContent;
+    btn.textContent = 'Copied ✓';
+    btn.classList.add('copied');
+    setTimeout(()=>{ btn.textContent = original; btn.classList.remove('copied'); }, 1500);
+  }).catch(()=>{
+    btn.textContent = 'Select & copy manually';
+    setTimeout(()=>{ btn.textContent = 'Copy'; }, 1800);
+  });
+}
+
+function switchView(view){
+  const cards = document.getElementById('cardsView');
+  const playbook = document.getElementById('playbookView');
+  const bCards = document.getElementById('viewCards');
+  const bPb = document.getElementById('viewPlaybook');
+  const isCards = view === 'cards';
+  cards.style.display = isCards ? 'block' : 'none';
+  playbook.style.display = isCards ? 'none' : 'block';
+  bCards.classList.toggle('active', isCards);
+  bPb.classList.toggle('active', !isCards);
+  countLabel.textContent = isCards ? String(DATA.length) : '4';
+  document.querySelector('.quickstat').lastChild.textContent = isCards ? 'techniques' : 'core modalities';
+  if(isCards) render();
+}
+
+function switchPb(mod, btn){
+  document.querySelectorAll('.pb-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.pb-panel').forEach(p=>{
+    p.classList.toggle('active', p.dataset.pb === mod);
+  });
+}
+
+tabs.forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    tabs.forEach(t=>t.classList.remove('active'));
+    tab.classList.add('active');
+    activeMod = tab.dataset.mod;
+    render();
+  });
+});
+searchInput.addEventListener('input', render);
+
+render();
+</script>
+</body>
+</html>
