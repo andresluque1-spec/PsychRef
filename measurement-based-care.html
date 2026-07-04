@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Measurement-Based Care — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332; --paper:#f6f7f9; --card:#fff; --navy:#16324f;
+    --teal:#0e7c7b; --teal-soft:#e4f2f1; --amber:#8a5a00; --amber-soft:#fff4dc;
+    --red:#b3261e; --red-soft:#fdecea; --line:#dde3ea; --muted:#5b6675;
+    --es:#5b3d8a; --es-soft:#f0eaf9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  nav.jump{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:10px 14px;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;margin-right:8px}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  section{margin-bottom:26px}
+  h2{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;padding-top:8px}
+  h3{font-size:15px;font-weight:700;margin:14px 0 6px}
+  p{font-size:15px;margin-bottom:10px}
+  ul,ol{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .pearl{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .pearl b{color:var(--amber)}
+  .flag{border-left:4px solid var(--red);background:var(--red-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .flag b{color:var(--red)}
+  .script{background:var(--teal-soft);border:1px solid #bcdedd;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14.5px;font-style:italic}
+  .es{border-left:4px solid var(--es);background:var(--es-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .es b{color:var(--es)}
+  .doc{background:#eef3f8;border:1px dashed #a9c1d8;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px;font-family:Georgia,serif}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:13px}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  footer{max-width:760px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef · Rating Scales · Interpretation Layer</div>
+  <h1>Measurement-Based Care</h1>
+  <p>You already administer the scales. This page is the decision layer: what the numbers mean, when they demand action, and what to say to the patient about them.</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<nav class="jump">
+  <a href="#definitions">Definitions</a>
+  <a href="#thresholds">Scale thresholds</a>
+  <a href="#algorithm">Treat-to-target</a>
+  <a href="#scripts">Score conversations</a>
+  <a href="#pitfalls">Pitfalls</a>
+  <a href="#doc">Documentation</a>
+</nav>
+
+<main>
+
+<section id="definitions">
+  <h2>The four words that drive decisions</h2>
+  <table>
+    <tr><th>Term</th><th>Operational definition</th><th>Clinical meaning</th></tr>
+    <tr><td><b>Reliable change</b></td><td>PHQ-9 or GAD-7 change of ≥5 points</td><td>Movement beyond measurement noise — the minimum clinically important difference. A 3-point drop is not evidence the plan is working.</td></tr>
+    <tr><td><b>Response</b></td><td>≥50% reduction from the pre-treatment baseline</td><td>The plan is working; continue and consolidate.</td></tr>
+    <tr><td><b>Remission</b></td><td>PHQ-9 &lt; 5 · GAD-7 &lt; 5</td><td>The target. Response without remission still carries relapse risk — residual symptoms are the strongest predictor of recurrence.</td></tr>
+    <tr><td><b>Non-response</b></td><td>&lt;20–25% improvement after an adequate trial (adequate dose × 4–6 weeks)</td><td>Change something: dose, agent, augmentation, therapy intensity, or the diagnosis itself.</td></tr>
+  </table>
+  <div class="pearl"><b>Anchor everything to the pre-treatment baseline,</b> not last visit's score. A patient who went 22 → 16 → 15 → 15 looks "stable" visit-to-visit but is a 32% improver overall — a partial response stalled short of target, which is an action signal, not a maintenance signal.</div>
+</section>
+
+<section id="thresholds">
+  <h2>Severity bands at a glance</h2>
+  <table>
+    <tr><th>Scale</th><th>Bands</th><th>Notes</th></tr>
+    <tr><td><b>PHQ-9</b></td><td>0–4 minimal · 5–9 mild · 10–14 moderate · 15–19 mod-severe · 20–27 severe</td><td>≥10 is the common treatment threshold. Item 9 positive → C-SSRS same visit, every time, regardless of total score.</td></tr>
+    <tr><td><b>GAD-7</b></td><td>0–4 minimal · 5–9 mild · 10–14 moderate · 15–21 severe</td><td>≥10 warrants active treatment. Also screens reasonably for panic and social anxiety — a high score with normal "worry" content should prompt those questions.</td></tr>
+    <tr><td><b>PHQ-9 in bipolar</b></td><td>Same bands</td><td>Track alongside a mania measure during antidepressant exposure or dose changes — a falling PHQ-9 with emerging YMRS elevation is a switch, not a win.</td></tr>
+    <tr><td><b>AUDIT-C / DAST-10</b></td><td>AUDIT-C: ≥4 men, ≥3 women flag</td><td>Rising substance scores explain many "treatment-resistant" mood pictures before any med change does.</td></tr>
+  </table>
+</section>
+
+<section id="algorithm">
+  <h2>Treat-to-target algorithm (each follow-up)</h2>
+  <div class="card">
+    <ol>
+      <li><b>Score obtained and graphed?</b> If no — get it now; trend beats snapshot. Two data points is a line; one is a dot.</li>
+      <li><b>Item 9 / safety items first.</b> Any endorsement → C-SSRS and, if indicated, the Safety Plan page. This precedes everything else.</li>
+      <li><b>Compare to baseline:</b>
+        <ul>
+          <li><b>Remission</b> → consolidate, discuss maintenance duration (first episode: 6–12 months at full dose after remission; multiple episodes: longer), relapse early-warning signs.</li>
+          <li><b>Response, not remission</b> → optimize: dose to top of tolerated range, add the behavioral module targeting the residual symptom (insomnia → CBT-I; inactivity → BA), before switching agents.</li>
+          <li><b>Reliable change but &lt;50%</b> at 4–6 weeks adequate dose → increase dose or augment; recheck in 4 weeks.</li>
+          <li><b>Non-response</b> after adequate trial → verify adherence and diagnosis (bipolarity screen, substance use, thyroid/anemia, OSA), then switch or augment. Two adequate failed trials → treatment-resistance workup and psychotherapy referral if not already in place.</li>
+        </ul>
+      </li>
+      <li><b>Discuss the score with the patient</b> — the most-skipped step, and the one that makes MBC work (scripts below).</li>
+      <li><b>Chart the decision the score produced.</b> A score documented without a linked decision is data collection, not measurement-based care.</li>
+    </ol>
+  </div>
+  <div class="flag"><b>Discordance rule:</b> when the score and the patient's story disagree, the interview wins — but investigate the gap. Improving score + "I feel terrible" → look for a problem the PHQ-9 doesn't measure (anxiety, pain, marriage, meaning). Terrible score + "I'm fine" → minimization, misread items, or someone else filled it out in the waiting room.</div>
+</section>
+
+<section id="scripts">
+  <h2>Score conversations</h2>
+  <div class="card">
+    <h3>Improving</h3>
+    <div class="script">"Your score went from 18 to 9 since we started — that's a real response, more than half. And look at when it moved: the drop starts the month you got back to walking. You did that part, not the pill."</div>
+    <h3>Flat (the hard one)</h3>
+    <div class="script">"I want to show you something. Six weeks on a full dose and your score hasn't really moved — 16, 15, 16. To me that says this plan isn't strong enough yet, and I don't want to waste another month of your life on it. Here are our options..."</div>
+    <h3>Worsening</h3>
+    <div class="script">"Your number went the wrong direction this month, from 11 to 17. Before we blame the medication — what happened in the last four weeks? Sometimes the score is measuring life, not the treatment."</div>
+    <h3>Response-but-not-remission plateau</h3>
+    <div class="script">"You're genuinely better — but 'better' and 'well' aren't the same thing, and the leftover symptoms are what predict relapse. I don't want to park at halfway. Here's what closing that gap could look like."</div>
+  </div>
+  <div class="es"><b>Español:</b> "Su puntaje bajó de 18 a 9 — eso es una respuesta real." · "Seis semanas con la dosis completa y el número casi no se ha movido. Eso me dice que este plan todavía no es suficiente, y no quiero gastar otro mes de su vida en algo que no está funcionando." · "'Mejor' y 'bien' no son lo mismo — los síntomas que quedan son los que predicen una recaída."</div>
+</section>
+
+<section id="pitfalls">
+  <h2>Pitfalls</h2>
+  <div class="card">
+    <ul>
+      <li><b>Treating the number instead of the patient</b> — scores inform decisions; they don't make them. Function, side effects, and patient priorities share the table.</li>
+      <li><b>Score inflation/deflation with the audience</b> — patients may soften scores to please you or inflate them fearing med discontinuation. Naming this openly ("answer for the worst days, not for me") improves data quality.</li>
+      <li><b>Somatic-item contamination</b> — sleep, energy, appetite items elevate PHQ-9 in medical illness, pregnancy, and chemotherapy; weight the cognitive/affective items in those patients.</li>
+      <li><b>Language/literacy</b> — the validated Spanish PHQ-9/GAD-7 exist; use them rather than translating aloud on the fly, which changes the instrument.</li>
+      <li><b>Frequency</b> — every visit for active treatment; monthly minimum during acute-phase changes. Annual scores tell you nothing you can act on.</li>
+      <li><b>The abandoned graph</b> — if scores are collected but never shown to the patient, half of MBC's effect (patient activation) is left unused.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="doc">
+  <h2>Chart-ready documentation</h2>
+  <div class="doc">PHQ-9 today: [X] ([severity band]), from pre-treatment baseline of [Y] — a [Z]% change, consistent with [remission / response without remission / partial improvement / non-response] after [N] weeks at [dose]. Item 9: [negative / positive → C-SSRS completed, see risk assessment]. Score trend reviewed graphically with the patient, who [concurred / noted discordance, explored as follows: ...]. Based on measured trajectory, plan: [continue and consolidate / dose optimization to X / augmentation with Y / switch to Z / added behavioral target: (module)]. Will remeasure at next visit in [interval].</div>
+</section>
+
+</main>
+<footer>Reference only. Anchors: Kroenke &amp; Spitzer PHQ-9/GAD-7 validation; Löwe 2004 sensitivity-to-change; MBC outcome literature (routine outcome monitoring improves response rates vs. usual care). Pairs with: your Rating Scales tab, BA and CBT-I modules, Safety Plan page.</footer>
+</body>
+</html>
