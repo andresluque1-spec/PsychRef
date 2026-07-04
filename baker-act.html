@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Baker Act — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332;
+    --paper:#f6f7f9;
+    --card:#ffffff;
+    --navy:#16324f;
+    --teal:#0e7c7b;
+    --red:#b3261e;
+    --red-soft:#fdecea;
+    --amber:#8a5a00;
+    --amber-soft:#fff4dc;
+    --teal-soft:#e4f2f1;
+    --line:#dde3ea;
+    --muted:#5b6675;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  header a.back:hover{text-decoration:underline}
+  nav.jump{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;padding:10px 14px}
+  nav.jump a{display:inline-block;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;margin-right:8px;background:#fff}
+  nav.jump a:active{background:var(--teal-soft)}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  section{margin-bottom:26px}
+  h2{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;padding-top:8px}
+  h3{font-size:15px;font-weight:700;margin:14px 0 6px}
+  p{font-size:15px;margin-bottom:10px}
+  ul,ol{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .statute{font-size:13px;color:var(--muted)}
+  .prongs{display:grid;grid-template-columns:1fr;gap:10px;margin:12px 0}
+  @media(min-width:560px){.prongs{grid-template-columns:1fr 40px 1fr}}
+  .prong{background:var(--teal-soft);border:1px solid #bcdedd;border-radius:12px;padding:14px}
+  .prong .label{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+  .and{display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--navy);font-size:14px}
+  .flag{border-left:4px solid var(--red);background:var(--red-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .flag b{color:var(--red)}
+  .pearl{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .pearl b{color:var(--amber)}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:13px}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  .check{list-style:none;margin-left:0}
+  .check li{padding-left:30px;position:relative;margin-bottom:9px}
+  .check li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border:2px solid var(--teal);border-radius:5px}
+  .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;background:var(--teal-soft);color:var(--teal);border-radius:4px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+  footer{max-width:760px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef · Crisis &amp; Medicolegal</div>
+  <h1>Baker Act — Involuntary Examination</h1>
+  <p>Florida Mental Health Act · Fla. Stat. §394.463 · reflects the 2024 HB 7021 amendments (effective July 1, 2024)</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<nav class="jump">
+  <a href="#criteria">Criteria</a>
+  <a href="#not">Does NOT qualify</a>
+  <a href="#initiate">Who initiates</a>
+  <a href="#telehealth">Telehealth workflow</a>
+  <a href="#timeline">Timeline</a>
+  <a href="#documentation">Documentation</a>
+  <a href="#after">After 72h</a>
+  <a href="#marchman">vs. Marchman</a>
+</nav>
+
+<main>
+
+<section id="criteria">
+  <h2>Criteria — both prongs required</h2>
+  <div class="card">
+    <div class="prongs">
+      <div class="prong">
+        <div class="label">Prong 1 · Mental illness +</div>
+        The person has a mental illness <b>and</b> because of it has <b>refused voluntary examination</b> after conscientious explanation, <b>or</b> is <b>unable to determine</b> for themselves whether examination is necessary.
+      </div>
+      <div class="and">AND</div>
+      <div class="prong">
+        <div class="label">Prong 2 · Harm or neglect</div>
+        Without care or treatment, the person is likely to suffer from <b>self-neglect</b> posing a real and present threat of substantial harm, <b>or</b> there is a <b>substantial likelihood</b> that in the near future the person will cause <b>serious bodily harm to self or others</b>, as evidenced by <b>recent behavior</b>.
+      </div>
+    </div>
+    <p class="statute">"Substantial likelihood" requires evidence of <b>recent</b> behavior — recent threats, attempts, or acts. Remote history alone is insufficient. Post-HB 7021, the patient's treatment history and collateral information from knowledgeable individuals may also be considered.</p>
+  </div>
+  <div class="flag"><b>Third-party exception:</b> criteria are NOT met for the self-neglect prong if family or friends are willing, <b>able, and responsible</b> to provide the needed care (the "able and responsible" language was added in 2024). Document why this exception does or does not apply.</div>
+</section>
+
+<section id="not">
+  <h2>What does NOT qualify on its own</h2>
+  <div class="card">
+    <ul>
+      <li>Mental illness diagnosis alone, taking psychiatric medication, or "appearing mentally ill"</li>
+      <li>An emotional outburst or bizarre behavior without evidence of danger or self-neglect</li>
+      <li>Refusal of voluntary examination by itself (prong 2 must also be met)</li>
+      <li>Intellectual/developmental disability, dementia, or intoxication <b>alone</b> — there must be a co-occurring mental illness meeting criteria</li>
+      <li>Substance impairment as the primary picture &rarr; consider the <a href="#marchman">Marchman Act</a> instead</li>
+      <li>Chronic risk without recent behavior evidencing near-future harm</li>
+    </ul>
+  </div>
+</section>
+
+<section id="initiate">
+  <h2>Three ways an involuntary exam is initiated</h2>
+  <table>
+    <tr><th>Route</th><th>Who</th><th>Key form</th></tr>
+    <tr>
+      <td><b>Professional certificate</b></td>
+      <td>Physician, physician assistant, clinical psychologist, <b>psychiatric nurse</b> (PMHNP within an established protocol), APRN registered under §464.0123 (autonomous practice), LMHC, LMFT, or LCSW — based on an examination of the person <b>within the preceding 48 hours</b></td>
+      <td>CF-MH 3052b — Certificate of Professional Initiating Involuntary Examination</td>
+    </tr>
+    <tr>
+      <td><b>Law enforcement</b></td>
+      <td>Officer who has reason to believe criteria are met. Since HB 7021 (2024), officers <b>may</b> — rather than shall — take the person into custody, giving them discretion.</td>
+      <td>CF-MH 3052a — Report of Law Enforcement Officer</td>
+    </tr>
+    <tr>
+      <td><b>Ex parte order</b></td>
+      <td>Circuit court judge, on sworn testimony (typically a petition filed by family). Executed by law enforcement.</td>
+      <td>Court order (CF-MH 3001 petition)</td>
+    </tr>
+  </table>
+  <div class="pearl"><b>PMHNP note:</b> as a psychiatric nurse under §394.455 you can execute the professional certificate directly — no co-signature needed to initiate. Your examination (in person or telehealth) must have occurred within the preceding 48 hours, and the certificate must state your observations supporting each criterion.</div>
+</section>
+
+<section id="telehealth">
+  <h2>Telehealth / outpatient workflow <span class="tag">practice</span></h2>
+  <div class="card">
+    <ol>
+      <li><b>Safety first, keep them engaged.</b> Do not end the visit. Keep the patient on camera/line; if there's another clinician or staff member, have them coordinate steps 3–5 in parallel.</li>
+      <li><b>Complete and document the risk assessment</b> during the encounter: ideation, plan, intent, means, recent behavior, protective factors, and why voluntary options failed or are not feasible.</li>
+      <li><b>Confirm the patient's physical location</b> (address at time of visit — should be captured at check-in for every telehealth visit for exactly this reason).</li>
+      <li><b>Call law enforcement in the patient's county</b> (911 or non-emergency line depending on acuity) to request a welfare check / Baker Act transport. State: your name and credentials, that you are initiating an involuntary examination under §394.463, the address, clinical basis, and any safety concerns for responding officers (weapons access, agitation).</li>
+      <li><b>Execute CF-MH 3052b</b> the same day. Send/fax to the receiving facility or provide to law enforcement per local protocol. Certificate initiates the exam; it does not decide the outcome.</li>
+      <li><b>Notify per practice policy:</b> supervising psychiatrist, and for minors, parent/guardian coordination (law enforcement must provide facility information to the guardian when transporting a minor, per 2024 changes).</li>
+      <li><b>Close the loop:</b> document the time of each call, agency, badge/case number if given, disposition, and follow-up plan for after discharge from the receiving facility.</li>
+    </ol>
+  </div>
+  <div class="flag"><b>Law enforcement discretion (2024):</b> officers are no longer required to detain. If the responding officer declines and you believe criteria are met, document the call and outcome, escalate (supervisor request, second call with additional clinical detail), and consider whether the family can pursue an ex parte order. Your certificate remains valid regardless.</div>
+</section>
+
+<section id="timeline">
+  <h2>Timeline</h2>
+  <table>
+    <tr><th>Clock</th><th>Rule</th></tr>
+    <tr><td><b>48 hours</b></td><td>Maximum time between your examination of the patient and executing the professional certificate.</td></tr>
+    <tr><td><b>72 hours</b></td><td>Maximum involuntary examination period at the receiving facility. Exam must be performed by a physician, clinical psychologist, or psychiatric nurse within an established protocol with a psychiatrist at the facility.</td></tr>
+    <tr><td><b>12 hours (minors)</b></td><td>Receiving facility must initiate the examination of a minor within 12 hours of arrival.</td></tr>
+    <tr><td><b>12 hours (ED)</b></td><td>A non-receiving hospital must examine or transfer the patient to a receiving facility within 12 hours. The 72-hour clock pauses while an emergency medical condition is being stabilized.</td></tr>
+    <tr><td><b>72-hour petition rule (2024)</b></td><td>A petition for involuntary services must be filed within the 72-hour examination period or the court dismisses it.</td></tr>
+  </table>
+</section>
+
+<section id="documentation">
+  <h2>Documentation checklist — your note</h2>
+  <div class="card">
+    <ul class="check">
+      <li>Date/time of examination and modality (in person / telehealth with patient's confirmed physical address)</li>
+      <li>Mental status findings and diagnosis supporting mental illness</li>
+      <li>Specific <b>recent</b> statements/behaviors quoted or described (the evidence for near-future harm or self-neglect)</li>
+      <li>Voluntary options offered, and the patient's refusal or inability to consent to voluntary examination</li>
+      <li>Why less-restrictive alternatives are insufficient (safety plan not viable, no able-and-responsible family support, outpatient follow-up inadequate for acuity)</li>
+      <li>Collateral sources used (family, treatment history) — now explicitly permitted in the criteria analysis</li>
+      <li>Time law enforcement contacted, agency, and disposition</li>
+      <li>CF-MH 3052b completed, where it was sent, copy in chart</li>
+      <li>Supervising psychiatrist notified (time and mode)</li>
+      <li>Follow-up plan post-discharge from receiving facility</li>
+    </ul>
+  </div>
+  <div class="pearl"><b>Language pearl:</b> write the certificate in concrete behavioral terms — "stated tonight he will shoot himself with the handgun in his nightstand" beats "endorsed SI with plan." The certificate is a legal document read by non-clinicians.</div>
+</section>
+
+<section id="after">
+  <h2>After the 72 hours — one of four outcomes</h2>
+  <div class="card">
+    <ol>
+      <li><b>Release</b> — criteria no longer met; discharge with outpatient follow-up.</li>
+      <li><b>Voluntary status</b> — patient consents to remain for treatment (must be competent to consent).</li>
+      <li><b>Petition for involuntary services</b> — facility files with the court within the exam period. HB 7021 consolidated involuntary <i>inpatient</i> placement and involuntary <i>outpatient</i> services into a single streamlined petition process, giving courts flexibility to order either. Witnesses may appear remotely.</li>
+      <li><b>Transfer</b> — to an appropriate facility if medical or specialty needs require it.</li>
+    </ol>
+    <p class="statute">Patient rights persist throughout: dignity, communication with attorney/family (restrictions require CF-MH 3049 and prompt notice), express and informed consent for treatment except in emergencies, and a hearing if involuntary placement is sought.</p>
+  </div>
+</section>
+
+<section id="marchman">
+  <h2>Baker Act vs. Marchman Act</h2>
+  <table>
+    <tr><th></th><th>Baker Act</th><th>Marchman Act</th></tr>
+    <tr><td><b>Target</b></td><td>Mental illness</td><td>Substance abuse impairment</td></tr>
+    <tr><td><b>Statute</b></td><td>§394, Part I</td><td>§397</td></tr>
+    <tr><td><b>Hold basis</b></td><td>Professional certificate, LEO, or ex parte</td><td>Protective custody, certificate, or court petition</td></tr>
+    <tr><td><b>Assessment window</b></td><td>72 hours</td><td>72 hours (HB 7021 aligned and consolidated the involuntary treatment process)</td></tr>
+    <tr><td><b>Dual diagnosis</b></td><td colspan="2">If psychosis/mood pathology independent of intoxication meets criteria &rarr; Baker Act applies even with co-occurring substance use. Intoxication alone &rarr; Marchman.</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Quick pearls</h2>
+  <div class="card">
+    <ul>
+      <li>Initiating a Baker Act ≠ 72-hour hospitalization guaranteed — it authorizes an <b>examination</b>. The receiving facility decides disposition.</li>
+      <li>A copy or electronic version of the certificate is acceptable to the receiving facility.</li>
+      <li>Good-faith initiation within the statute carries civil immunity; documentation is your protection.</li>
+      <li>The person may not be released from custody at their request between initiation and the receiving facility exam.</li>
+      <li>If the patient elopes or leaves before transport, tell law enforcement immediately — the certificate remains active.</li>
+      <li>Over-initiation is a real problem (esp. minors and elders) — the criteria gate above exists to protect patients as much as to authorize action.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Reference only — not legal advice. Verify against current Fla. Stat. §394.451–.47892, 65E-5 F.A.C., and DCF's Baker Act forms page. Last reviewed July 2026 (HB 7021, 2024).
+</footer>
+
+</body>
+</html>
