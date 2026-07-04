@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Behavioral Activation — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332; --paper:#f6f7f9; --card:#fff; --navy:#16324f;
+    --teal:#0e7c7b; --teal-soft:#e4f2f1; --amber:#8a5a00; --amber-soft:#fff4dc;
+    --line:#dde3ea; --muted:#5b6675; --es:#5b3d8a; --es-soft:#f0eaf9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  nav.jump{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:10px 14px;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;margin-right:8px}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  section{margin-bottom:26px}
+  h2{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;padding-top:8px}
+  h3{font-size:15px;font-weight:700;margin:14px 0 6px}
+  p{font-size:15px;margin-bottom:10px}
+  ul,ol{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .pearl{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .pearl b{color:var(--amber)}
+  .es{border-left:4px solid var(--es);background:var(--es-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .es b{color:var(--es)}
+  .script{background:var(--teal-soft);border:1px solid #bcdedd;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14.5px;font-style:italic}
+  .doc{background:#eef3f8;border:1px dashed #a9c1d8;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px;font-family:Georgia,serif}
+  .doc b{font-family:inherit}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:13px}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  .min{display:inline-block;min-width:52px;font-weight:800;color:var(--teal)}
+  footer{max-width:760px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef · Core 3 Playbook · Module 5</div>
+  <h1>Behavioral Activation (Brief BA)</h1>
+  <p>The highest evidence-per-minute intervention for depression in a med-management visit. Validated in protocols as brief as two sessions; fits inside a 90833 add-on.</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<nav class="jump">
+  <a href="#rationale">Rationale</a>
+  <a href="#session1">Session 1 skeleton</a>
+  <a href="#followup">Follow-up skeleton</a>
+  <a href="#menu">Activity menu</a>
+  <a href="#trouble">Troubleshooting</a>
+  <a href="#spanish">Español</a>
+  <a href="#doc">Documentation</a>
+</nav>
+
+<main>
+
+<section id="rationale">
+  <h2>Why BA, and the 60-second rationale</h2>
+  <div class="card">
+    <p><b>Model:</b> depression shrinks the world — withdrawal removes contact with reward, which deepens depression. BA reverses the loop: action first, motivation follows. Outcomes for BA alone rival full CBT and antidepressants for mild–moderate depression; brief 2–4 contact protocols are validated in primary-care settings.</p>
+    <p><b>Best candidates:</b> depression with withdrawal/anergia, adjustment disorders, depression + chronic pain, patients who find "thought work" abstract. Works while waiting for medication onset — give patients something to <i>do</i> in weeks 0–4.</p>
+    <div class="script">"When people get depressed, they naturally pull back — less activity, fewer people, staying in. The problem is that pulling back feeds the depression. We're not going to wait for motivation to come back. We're going to schedule small activities first, because in depression, action comes before motivation, not after. The medication works from the inside; this works from the outside."</div>
+  </div>
+</section>
+
+<section id="session1">
+  <h2>Session 1 — inside a 30-minute combined visit</h2>
+  <table>
+    <tr><th>Min</th><th>Move</th></tr>
+    <tr><td><span class="min">0–12</span></td><td>E/M portion: interval history, scales, med review, plan. Close the med loop <i>first</i> so the therapy block is uninterrupted.</td></tr>
+    <tr><td><span class="min">12–15</span></td><td>Bridge + rationale script (above). Ask: <i>"What's one thing you used to do regularly that's dropped off since you've been feeling this way?"</i></td></tr>
+    <tr><td><span class="min">15–22</span></td><td><b>Values → activities.</b> Pick ONE life area (connection, body, mastery, pleasure). Generate 2–3 candidate activities. Shrink until success is near-certain: not "go to the gym" — "walk to the mailbox after lunch."</td></tr>
+    <tr><td><span class="min">22–27</span></td><td><b>Schedule it.</b> Specific: what, when, where, with whom. Anchor to an existing habit ("after my morning coffee"). Rate confidence 0–10; if &lt;7, shrink the task, not the goal. Set a backup plan for the most likely obstacle.</td></tr>
+    <tr><td><span class="min">27–30</span></td><td>Summarize, have THEM say the plan back, write it on the after-visit summary. Confirm you'll review it first thing next visit.</td></tr>
+  </table>
+  <div class="pearl"><b>The one rule:</b> the activity must be scheduled (day + time), not intended. "I'll try to walk more" predicts nothing. "Tuesday and Thursday after dropping the kids, 10 minutes around the block" is a prescription.</div>
+</section>
+
+<section id="followup">
+  <h2>Follow-up visits — the 5-minute BA review</h2>
+  <div class="card">
+    <ol>
+      <li><b>Review first, always.</b> "Last time you planned X — how did it go?" Skipping the review teaches patients homework doesn't matter.</li>
+      <li><b>If done:</b> reinforce effort, ask what they noticed in mood before vs. after the activity (builds the action→mood link). Then expand slightly — frequency before intensity.</li>
+      <li><b>If not done:</b> zero criticism. "That's useful information — what got in the way?" Treat it as a task-design problem: too big, wrong time, no anchor. Shrink and re-schedule.</li>
+      <li><b>Graph it against their PHQ-9</b> when scores improve: "Notice your score dropped the same month you got back to the garage projects. That's not a coincidence."</li>
+    </ol>
+  </div>
+</section>
+
+<section id="menu">
+  <h2>Activity menu by function</h2>
+  <table>
+    <tr><th>Function</th><th>Starter-size examples</th></tr>
+    <tr><td><b>Connection</b></td><td>Text one friend; sit outside while kids play; call a sibling for 5 min; eat one meal at the table with family</td></tr>
+    <tr><td><b>Body</b></td><td>10-min walk after a meal; stretch during first TV commercial; shower + dress by 9 a.m. on days off</td></tr>
+    <tr><td><b>Mastery</b></td><td>One sink of dishes; pay one bill; 15 min on a stalled project; make the bed</td></tr>
+    <tr><td><b>Pleasure</b></td><td>Music during a chore; sit with coffee outside; one episode of a show they used to love (as a scheduled activity, not a default)</td></tr>
+    <tr><td><b>Routine anchors</b></td><td>Fixed wake time; morning light exposure; meals at regular times — pairs naturally with the CBT-I module</td></tr>
+  </table>
+</section>
+
+<section id="trouble">
+  <h2>Troubleshooting</h2>
+  <div class="card">
+    <ul>
+      <li><b>"I don't enjoy anything anymore."</b> Anhedonia is expected — enjoyment is not the assignment, contact is. "Do it as an experiment, and just notice. We're collecting data, not chasing fun yet."</li>
+      <li><b>"I don't have the energy."</b> Shrink until the energy objection disappears. There is always a version small enough.</li>
+      <li><b>"I'll do it when I feel better."</b> Return to the rationale: in depression the sequence is reversed — action produces the feeling.</li>
+      <li><b>Did everything, felt nothing:</b> check dosing (once is not a trial), check whether the activity ties to a value, screen for untreated insomnia or substance use flattening reward.</li>
+      <li><b>Severe/melancholic depression or active SI:</b> BA is an adjunct, not a substitute — anchor to med optimization, safety planning, and level-of-care decisions.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="spanish">
+  <h2>Español — frases clave (forma usted)</h2>
+  <div class="es"><b>La lógica:</b> "Cuando uno está deprimido, es natural retirarse — menos actividad, menos gente. Pero eso alimenta la depresión. No vamos a esperar a que regrese la motivación. Vamos a programar actividades pequeñas primero, porque en la depresión, la acción viene antes que la motivación."</div>
+  <div class="es"><b>Elegir la actividad:</b> "¿Qué es algo que usted hacía con regularidad y que ha dejado de hacer desde que se siente así?" · "Vamos a hacerlo tan pequeño que sea casi imposible fallar."</div>
+  <div class="es"><b>Programar:</b> "¿Qué día? ¿A qué hora? ¿Con quién?" · "Del cero al diez, ¿qué tan seguro está de que lo va a hacer?" (si &lt;7: "Vamos a hacerlo más pequeño.")</div>
+  <div class="es"><b>Revisión:</b> "La última vez planeamos ___. ¿Cómo le fue?" · "¿Qué se le atravesó?" · "¿Notó algún cambio en su ánimo antes y después de la actividad?"</div>
+</section>
+
+<section id="doc">
+  <h2>Chart-ready documentation</h2>
+  <div class="doc"><b>Session 1:</b> Provided brief behavioral activation therapy (16+ minutes psychotherapy in addition to E/M). Reviewed behavioral model of depression linking withdrawal to symptom maintenance; patient identified reduced engagement in [valued area]. Collaboratively selected and scheduled specific activity: [activity, day/time]. Anticipated barrier of [barrier] addressed with [backup plan]. Patient verbalized understanding of rationale and confidence of [X]/10 in completing the plan. Will review adherence and mood response at next visit.</div>
+  <div class="doc"><b>Follow-up:</b> Continued behavioral activation focus during psychotherapy portion. Reviewed prior activity assignment: patient [completed/partially completed/did not complete] scheduled activity. [If completed: patient noted (mood observation); plan expanded to (next step).] [If not: identified barrier of (barrier); assignment restructured to (smaller/re-anchored task).] Reinforced action-before-motivation model. PHQ-9 trend reviewed with patient in relation to activity level.</div>
+  <div class="pearl"><b>QA check:</b> note names the modality (behavioral activation), the specific technique used, minutes of psychotherapy distinct from E/M, and links it to a treatment-plan goal — the four elements your 90833 needs.</div>
+</section>
+
+</main>
+<footer>Reference only. Brief BA evidence: Lejuez BATD-R; primary-care brief protocols (2 visits + boosters). Pairs with: CBT-I module, PHQ-9 tracking, 90833 visit architecture page.</footer>
+</body>
+</html>

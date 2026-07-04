@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safety Planning Intervention — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332; --paper:#f6f7f9; --card:#fff; --navy:#16324f;
+    --teal:#0e7c7b; --teal-soft:#e4f2f1; --amber:#8a5a00; --amber-soft:#fff4dc;
+    --red:#b3261e; --red-soft:#fdecea; --line:#dde3ea; --muted:#5b6675;
+    --es:#5b3d8a; --es-soft:#f0eaf9;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  nav.jump{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:10px 14px;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;margin-right:8px}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  section{margin-bottom:26px}
+  h2{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;padding-top:8px}
+  h3{font-size:15px;font-weight:700;margin:14px 0 6px}
+  p{font-size:15px;margin-bottom:10px}
+  ul,ol{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .pearl{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .pearl b{color:var(--amber)}
+  .flag{border-left:4px solid var(--red);background:var(--red-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .flag b{color:var(--red)}
+  .script{background:var(--teal-soft);border:1px solid #bcdedd;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14.5px;font-style:italic}
+  .es{border-left:4px solid var(--es);background:var(--es-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .es b{color:var(--es)}
+  .doc{background:#eef3f8;border:1px dashed #a9c1d8;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px;font-family:Georgia,serif}
+  .stepnum{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--navy);color:#fff;font-weight:800;font-size:14px;margin-right:8px;flex-shrink:0}
+  .step{display:flex;align-items:flex-start;gap:4px;margin-bottom:4px}
+  .plan-field{width:100%;border:none;border-bottom:1.5px solid var(--line);font-size:15px;padding:6px 2px;margin:4px 0 10px;background:transparent;font-family:inherit;color:var(--ink)}
+  .plan-field:focus{outline:none;border-bottom-color:var(--teal)}
+  .printbtn{display:inline-block;background:var(--teal);color:#fff;border:none;border-radius:999px;padding:10px 20px;font-size:15px;font-weight:700;cursor:pointer;margin-bottom:14px}
+  footer{max-width:760px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+  @media print{
+    header,nav.jump,.printbtn,section:not(#plan),footer{display:none!important}
+    body{background:#fff;padding:0}
+    #plan .card{border:1px solid #999}
+  }
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef · Crisis &amp; Medicolegal</div>
+  <h1>Safety Planning Intervention</h1>
+  <p>Stanley-Brown SPI — the evidence-based step <b>before</b> (and after) the Baker Act. A brief intervention, not a form: build it collaboratively, in the patient's own words.</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<nav class="jump">
+  <a href="#when">When</a>
+  <a href="#steps">The 6 steps</a>
+  <a href="#means">Lethal means</a>
+  <a href="#plan">Fillable plan</a>
+  <a href="#spanish">Español</a>
+  <a href="#doc">Documentation</a>
+</nav>
+
+<main>
+
+<section id="when">
+  <h2>When to use it</h2>
+  <div class="card">
+    <ul>
+      <li>Any positive C-SSRS ideation, recent attempt or self-harm, or discharge from a receiving facility — SPI plus structured follow-up reduced suicidal behavior vs. usual care in the 2018 JAMA Psychiatry ED trial.</li>
+      <li>Elevated but sub-Baker-Act risk: criteria not met, but you're not comfortable ending the visit with nothing in place.</li>
+      <li>Post-Baker-Act re-entry visit — rebuild the plan together; the crisis version made at the facility rarely survives contact with home life.</li>
+      <li><b>Not a no-suicide contract.</b> Contracts have no evidence and false reassurance value. SPI replaces them.</li>
+    </ul>
+  </div>
+  <div class="pearl"><b>Time & billing:</b> a well-done SPI takes 15–25 minutes — it IS the psychotherapy portion of that visit. Name it in the note as a crisis-focused therapeutic intervention.</div>
+</section>
+
+<section id="steps">
+  <h2>The six steps, with elicitation scripts</h2>
+  <div class="card">
+    <div class="step"><span class="stepnum">1</span><div><b>Warning signs</b> — personal signals a crisis is building (thoughts, images, moods, behaviors). <div class="script">"How will you know when the plan should be used? What do you notice in yourself right before things get that dark?"</div></div></div>
+    <div class="step"><span class="stepnum">2</span><div><b>Internal coping strategies</b> — things they can do alone to distract: walk, shower, music, game, gym, prayer. <div class="script">"What can you do, on your own, to take your mind off things — even for 20 minutes?"</div></div></div>
+    <div class="step"><span class="stepnum">3</span><div><b>People and places for distraction</b> — social contact without disclosing the crisis: the gym, a coffee shop, a cousin who talks football. <div class="script">"Who helps you feel less alone just by being around? Where can you go where there are people?"</div></div></div>
+    <div class="step"><span class="stepnum">4</span><div><b>People to ask for help</b> — those they'd actually tell. Confirm the person knows and agrees, when feasible. <div class="script">"If the feelings kept building, who could you tell what's really going on?"</div></div></div>
+    <div class="step"><span class="stepnum">5</span><div><b>Professionals and agencies</b> — your practice's number and after-hours line, 988 (call/text), Suicide &amp; Crisis Lifeline chat, nearest ER.</div></div>
+    <div class="step"><span class="stepnum">6</span><div><b>Making the environment safe</b> — lethal means counseling (below). Even without a stated plan, means safety buys time for the crisis to pass.</div></div>
+  </div>
+  <div class="pearl"><b>Quality markers:</b> the patient's own words, specific names and numbers, and a final ask — "Where will you keep this? How likely are you to use it, 0–10?" If &lt;7, ask what would make it more usable and revise now.</div>
+</section>
+
+<section id="means">
+  <h2>Lethal means counseling — the Florida conversation</h2>
+  <div class="card">
+    <h3>Firearms (lead with respect, not restriction)</h3>
+    <div class="script">"I ask everyone this because it's the single strongest thing families can do: are there firearms at home? ... I'm not asking you to give anything up permanently. During this rough stretch, the goal is time and distance — a crisis peaks and passes, often in under an hour. Options people choose: storing them with a trusted person, a gun shop or range that offers storage, or locked with ammunition separate and someone else holding the key."</div>
+    <ul>
+      <li>Offer the menu, let them pick — collaboration predicts follow-through. Involve a family member in the plan when possible, and set a specific plan: who moves them, by when.</li>
+      <li>Document what was agreed, not just "counseled on means."</li>
+    </ul>
+    <h3>Medications</h3>
+    <ul>
+      <li>Limit quantities dispensed during high-risk periods (14-day fills), have a family member hold and dispense, lock boxes for the rest.</li>
+      <li>Flag your own prescribing: avoid stockpiling TCAs, lithium without supervision, or large benzo supplies in at-risk patients.</li>
+    </ul>
+    <h3>Other</h3>
+    <ul>
+      <li>Ask directly about the method they've thought about — restrict that one specifically and first.</li>
+      <li>Alcohol is an accelerant: reducing access/planning around drinking belongs in step 6.</li>
+    </ul>
+  </div>
+  <div class="flag"><b>If the patient refuses all means-safety steps</b> and risk is elevated: that refusal is itself risk data. Re-weigh level of care, involve family per consent, document your reasoning — and if criteria are met, the Baker Act page is one tab away.</div>
+</section>
+
+<section id="plan">
+  <h2>Fillable plan — complete with the patient, then print</h2>
+  <button class="printbtn" onclick="window.print()">Print this plan</button>
+  <div class="card">
+    <p><b>1. My warning signs / Mis señales de alerta</b></p>
+    <input class="plan-field" type="text" aria-label="Warning sign 1"><input class="plan-field" type="text" aria-label="Warning sign 2">
+    <p><b>2. Things I can do on my own / Lo que puedo hacer por mi cuenta</b></p>
+    <input class="plan-field" type="text" aria-label="Coping strategy 1"><input class="plan-field" type="text" aria-label="Coping strategy 2">
+    <p><b>3. People &amp; places that take my mind off things / Personas y lugares que me distraen</b></p>
+    <input class="plan-field" type="text" aria-label="Distraction 1"><input class="plan-field" type="text" aria-label="Distraction 2">
+    <p><b>4. People I can ask for help / Personas a las que puedo pedir ayuda</b></p>
+    <input class="plan-field" type="text" placeholder="Name / Nombre — Phone / Teléfono" aria-label="Support person 1"><input class="plan-field" type="text" placeholder="Name / Nombre — Phone / Teléfono" aria-label="Support person 2">
+    <p><b>5. Professionals I can call / Profesionales a los que puedo llamar</b></p>
+    <input class="plan-field" type="text" placeholder="My provider / Mi proveedor:" aria-label="Provider">
+    <input class="plan-field" type="text" value="988 — Suicide & Crisis Lifeline (call or text / llame o envíe texto — español disponible)" aria-label="Crisis line">
+    <input class="plan-field" type="text" placeholder="Nearest ER / Sala de emergencias más cercana:" aria-label="ER">
+    <p><b>6. Making my environment safe / Hacer mi entorno más seguro</b></p>
+    <input class="plan-field" type="text" aria-label="Means safety step 1"><input class="plan-field" type="text" aria-label="Means safety step 2">
+    <p><b>One thing worth living for / Algo por lo que vale la pena vivir</b></p>
+    <input class="plan-field" type="text" aria-label="Reason for living">
+  </div>
+  <p style="font-size:13px;color:var(--muted)">Fields are not saved — print or photograph the completed plan before closing the page. Have the patient photograph it on their phone as well.</p>
+</section>
+
+<section id="spanish">
+  <h2>Español — frases de elicitación (forma usted)</h2>
+  <div class="es"><b>Señales:</b> "¿Cómo sabrá usted que es momento de usar el plan? ¿Qué nota en sí mismo justo antes de que las cosas se pongan tan oscuras?"</div>
+  <div class="es"><b>Afrontamiento:</b> "¿Qué puede hacer usted, por su cuenta, para distraerse — aunque sea por veinte minutos?"</div>
+  <div class="es"><b>Apoyo:</b> "Si los sentimientos siguieran creciendo, ¿a quién le podría contar lo que realmente está pasando?"</div>
+  <div class="es"><b>Medios letales:</b> "Le pregunto esto a todos mis pacientes porque es lo más importante que una familia puede hacer: ¿hay armas de fuego en casa? ... No le pido que renuncie a nada de forma permanente. Durante esta etapa difícil, la meta es tiempo y distancia — una crisis llega a su punto máximo y pasa."</div>
+  <div class="es"><b>Cierre:</b> "¿Dónde va a guardar este plan?" · "Del cero al diez, ¿qué tan probable es que lo use?"</div>
+</section>
+
+<section id="doc">
+  <h2>Chart-ready documentation</h2>
+  <div class="doc">Completed collaborative Safety Planning Intervention (Stanley-Brown model) as the psychotherapy focus of today's visit ([X] minutes, distinct from E/M). Patient identified personal warning signs of [signs], internal coping strategies including [strategies], social supports [names/relationships], and professional contacts including this office and 988. Lethal means counseling completed: [firearms disposition — e.g., patient agreed to transfer firearms to brother's residence by tomorrow evening; wife present and confirmed]; medication supply limited to 14-day fill. Patient rated likelihood of using the plan [X]/10, retained a printed and photographed copy. Follow-up scheduled [interval]; patient verbalized agreement to contact 988 or present to the ER if warning signs escalate before then.</div>
+</section>
+
+</main>
+<footer>Reference only. Model: Stanley &amp; Brown, Cogn Behav Pract 2012; SPI+follow-up: JAMA Psychiatry 2018. Free clinician training: suicidesafetyplan.com and the CALM (Counseling on Access to Lethal Means) course.</footer>
+</body>
+</html>

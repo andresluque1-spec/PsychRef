@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>90833 Visit Architecture — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332; --paper:#f6f7f9; --card:#fff; --navy:#16324f;
+    --teal:#0e7c7b; --teal-soft:#e4f2f1; --amber:#8a5a00; --amber-soft:#fff4dc;
+    --red:#b3261e; --red-soft:#fdecea; --line:#dde3ea; --muted:#5b6675;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  nav.jump{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:10px 14px;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;margin-right:8px}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  section{margin-bottom:26px}
+  h2{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;padding-top:8px}
+  p{font-size:15px;margin-bottom:10px}
+  ul,ol{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .pearl{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .pearl b{color:var(--amber)}
+  .flag{border-left:4px solid var(--red);background:var(--red-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .flag b{color:var(--red)}
+  .doc{background:#eef3f8;border:1px dashed #a9c1d8;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px;font-family:Georgia,serif}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:13px}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  .min{display:inline-block;min-width:52px;font-weight:800;color:var(--teal)}
+  .check{list-style:none;margin-left:0}
+  .check li{padding-left:30px;position:relative;margin-bottom:9px}
+  .check li::before{content:"";position:absolute;left:0;top:2px;width:18px;height:18px;border:2px solid var(--teal);border-radius:5px}
+  footer{max-width:760px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef · Documentation &amp; Billing</div>
+  <h1>The 90833 Visit Architecture</h1>
+  <p>How to structure, deliver, and document real psychotherapy inside a combined E/M + therapy visit — compliantly and repeatably.</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<nav class="jump">
+  <a href="#rules">The rules</a>
+  <a href="#skeleton">Visit skeleton</a>
+  <a href="#counts">What counts</a>
+  <a href="#split">Split treatment</a>
+  <a href="#note">Note template</a>
+  <a href="#audit">Self-audit</a>
+</nav>
+
+<main>
+
+<section id="rules">
+  <h2>The rules in five lines</h2>
+  <div class="card">
+    <ul>
+      <li><b>90833</b> = 16–37 minutes of psychotherapy performed <i>with</i> an E/M service (99212–99215, 99205/99214 in your pattern). <b>90836</b> = 38–52 minutes. Never billed alone.</li>
+      <li>Therapy time must be <b>distinct from</b> E/M time — the minutes counting toward psychotherapy cannot be the same minutes used to select the E/M level.</li>
+      <li>The E/M level is chosen by <b>medical decision making</b>, not time, when a psychotherapy add-on is billed.</li>
+      <li>Document a <b>good-faith time estimate</b> for the therapy portion, the <b>named modality</b>, the <b>technique(s) used</b>, and the link to a <b>treatment-plan goal</b>.</li>
+      <li>A total visit of ~30 minutes is the realistic floor for a defensible combined visit.</li>
+    </ul>
+  </div>
+  <div class="flag"><b>Audit red flags:</b> 90833 on nearly 100% of visits; identical therapy paragraphs across patients or across visits (copy-paste carryover); therapy time that is arithmetically impossible given the schedule; "supportive therapy provided" with no technique, content, or response described.</div>
+</section>
+
+<section id="skeleton">
+  <h2>The repeatable 30-minute skeleton</h2>
+  <table>
+    <tr><th>Min</th><th>Block</th><th>Mode</th></tr>
+    <tr><td><span class="min">0–2</span></td><td>Agenda set: "Today I want to check on the medication and the side effects, and then spend most of our time on the sleep plan we started. Anything you need on the list?"</td><td>Frame</td></tr>
+    <tr><td><span class="min">2–11</span></td><td>Interval history, scales review, side effects, adherence, med decision, e-prescribe. <b>Close the pharmacology loop completely.</b></td><td>E/M</td></tr>
+    <tr><td><span class="min">11–12</span></td><td>Explicit pivot: "Good — the medication plan is set. Now let's shift to the therapy piece."</td><td>Bridge</td></tr>
+    <tr><td><span class="min">12–28</span></td><td>One modality, one target: BA review-and-expand, MI around ambivalence, SFBT scaling, CBT-I adherence, cognitive restructuring of one hot thought. Review last assignment &rarr; work the technique &rarr; set the next assignment.</td><td>Psychotherapy (16 min)</td></tr>
+    <tr><td><span class="min">28–30</span></td><td>Patient states the plan back; confirm follow-up interval.</td><td>Close</td></tr>
+  </table>
+  <div class="pearl"><b>Why the pivot sentence matters:</b> it marks the boundary between E/M and therapy time in real life, which makes your time attestation honest and your AI scribe's job easy — tell Open Evidence to treat everything after the pivot as the psychotherapy portion.</div>
+</section>
+
+<section id="counts">
+  <h2>What counts as psychotherapy (and what doesn't)</h2>
+  <table>
+    <tr><th>Counts</th><th>Does NOT count</th></tr>
+    <tr>
+      <td>Named-modality interventions: behavioral activation, cognitive restructuring, MI (rolling with resistance, change talk), SFBT scaling/miracle question, exposure planning, CBT-I stimulus control coaching, supportive techniques applied deliberately (reframing, strengthening coping), safety-plan construction as a therapeutic intervention</td>
+      <td>Med education and consent discussion; reviewing side effects; scale administration; care coordination; general rapport and empathic listening alone; lifestyle advice without a therapeutic frame; scheduling</td>
+    </tr>
+  </table>
+  <p>The honest test: <i>could you name the technique, what you targeted, and how the patient responded?</i> If yes, it was psychotherapy. If the note could only say "we talked," it was E/M counseling.</p>
+</section>
+
+<section id="split">
+  <h2>Split-treatment etiquette (patient has an outside therapist)</h2>
+  <div class="card">
+    <ul>
+      <li><b>Don't run a competing therapy.</b> If they're doing trauma work with an LMHC, your therapy minutes support that work and the pharmacotherapy — adherence, skills reinforcement, psychoeducation — rather than opening a parallel modality.</li>
+      <li>Appropriate targets in split treatment: motivation for and healthy use of medication, reinforcing the therapist's homework, crisis/safety skills, sleep behavioral work if the therapist isn't doing it.</li>
+      <li>Name the division of labor to the patient: "Your therapist is leading the trauma work; my job is the medication and making sure everything supports what you two are building."</li>
+      <li>Document coordination: "Patient continues weekly therapy with [name/discipline]; today's psychotherapy portion focused on [non-overlapping target] in support of ongoing treatment."</li>
+    </ul>
+  </div>
+</section>
+
+<section id="note">
+  <h2>Drop-in note paragraph (your format)</h2>
+  <div class="doc"><b>Psychotherapy (add-on, 90833):</b> In addition to E/M services, provided [16–20] minutes of individual psychotherapy using [modality]. Session focused on [specific target tied to treatment plan goal]. Technique: [technique — e.g., reviewed activity scheduling adherence and restructured assignment / elicited change talk regarding alcohol reduction / conducted scaling exercise on return-to-work goal]. Patient response: [engaged/receptive; specific observation or quote]. Plan: [between-visit assignment], to be reviewed at next visit. Psychotherapy time was separate and distinct from time spent on evaluation and management.</div>
+  <div class="pearl"><b>Scribe prompt line to add:</b> "Generate a distinct 'Psychotherapy' section that names the modality, the specific technique used after the provider says a pivot phrase like 'let's shift to the therapy piece,' the patient's response, and the between-visit assignment. Never reuse psychotherapy language from prior notes."</div>
+</section>
+
+<section id="audit">
+  <h2>Pre-signature self-audit — six boxes</h2>
+  <div class="card">
+    <ul class="check">
+      <li>Time attested for the therapy portion (16–37 min) and stated as distinct from E/M</li>
+      <li>Modality named</li>
+      <li>Specific technique + content this visit (would fail a copy-paste comparison with last note)</li>
+      <li>Tied to a treatment-plan goal</li>
+      <li>Patient response documented</li>
+      <li>E/M level justified by MDM on its own — the visit stands even if the add-on were removed</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+<footer>Reference only — verify payer-specific policies. Built to align with the J Psychiatric Practice 2025 series on combining brief psychotherapy with pharmacotherapy visits.</footer>
+</body>
+</html>
