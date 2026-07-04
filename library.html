@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Reference Library — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332; --paper:#f6f7f9; --card:#fff; --navy:#16324f;
+    --teal:#0e7c7b; --teal-soft:#e4f2f1; --amber:#8a5a00; --amber-soft:#fff4dc;
+    --red:#b3261e; --line:#dde3ea; --muted:#5b6675;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  .searchwrap{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);padding:12px 16px}
+  .searchwrap input{width:100%;max-width:728px;display:block;margin:0 auto;font-size:16px;padding:12px 16px;border:1.5px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink)}
+  .searchwrap input:focus{outline:none;border-color:var(--teal)}
+  .filters{max-width:760px;margin:10px auto 0;display:flex;gap:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;padding:0 0 2px}
+  .filters button{flex-shrink:0;font-size:13px;font-weight:600;color:var(--teal);background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 12px;cursor:pointer}
+  .filters button.active{background:var(--teal);color:#fff;border-color:var(--teal)}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  .group-title{font-size:13px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:22px 0 10px}
+  a.entry{display:block;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;margin-bottom:10px;text-decoration:none;color:var(--ink)}
+  a.entry:active{background:var(--teal-soft)}
+  .entry h3{font-size:16px;font-weight:700;color:var(--navy);margin-bottom:3px}
+  .entry p{font-size:13.5px;color:var(--muted)}
+  .entry .meta{font-size:11.5px;color:var(--muted);margin-top:6px}
+  .entry .meta b{color:var(--teal)}
+  .empty{display:none;text-align:center;color:var(--muted);padding:40px 20px;font-size:15px}
+  .disclaimer{max-width:760px;margin:26px auto 0;padding:14px 16px;background:var(--amber-soft);border:1px solid #eadcae;border-radius:12px;font-size:13px;color:#6a4d00}
+  footer{max-width:760px;margin:14px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef</div>
+  <h1>Reference Library</h1>
+  <p>Every module and reference page, searchable. Type a drug, a form number, a technique, or a situation ("pregnant," "3052b," "clonus," "won't take meds").</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<div class="searchwrap">
+  <input type="search" id="q" placeholder="Search the library…" autocomplete="off" aria-label="Search reference library">
+  <div class="filters" id="filters">
+    <button data-cat="all" class="active">All</button>
+    <button data-cat="therapy">Therapy</button>
+    <button data-cat="meds">Medications</button>
+    <button data-cat="crisis">Crisis &amp; Legal</button>
+    <button data-cat="practice">Documentation &amp; Practice</button>
+  </div>
+</div>
+
+<main>
+  <div id="list"></div>
+  <div class="empty" id="empty">No matches — try a broader term (e.g., "lithium," "safety," "billing").</div>
+
+  <div class="disclaimer">
+    <b>Personal clinical study reference.</b> Built and maintained by one clinician for learning purposes. Not medical or legal advice; not a substitute for clinical judgment, supervision, or primary sources. Verify all content — doses, statutes, phone numbers, billing rules — at point of care before acting on it.
+  </div>
+</main>
+
+<footer>Tip: each entry lists a "reviewed" date — anything older than 12 months gets re-verified before you lean on it.</footer>
+
+<script>
+// ————— To add a page: copy one object, edit, done. Keep keywords generous — they power search.
+const PAGES = [
+  // Therapy modules
+  {t:"Behavioral Activation", u:"behavioral-activation.html", c:"therapy", d:"Brief BA protocol: rationale script, session skeletons, activity menu, troubleshooting, Spanish phrases.", k:"depression BA activity scheduling anergia withdrawal motivation homework values 90833 espanol spanish", r:"2026-07"},
+  {t:"Supportive Psychotherapy", u:"supportive-therapy.html", c:"therapy", d:"Ten named techniques with example language, session shape, traps, documentation.", k:"praise reassurance normalizing reframing anticipatory guidance defenses SPMI geriatric alliance", r:"2026-07"},
+  {t:"DBT Skills Sampler", u:"dbt-skills.html", c:"therapy", d:"STOP, TIPP, opposite action, paced breathing — teaching loop and safety screening.", k:"borderline emotion dysregulation anger impulsive crisis survival distress tolerance dive reflex", r:"2026-07"},
+  {t:"Alliance & Rupture Repair", u:"alliance-repair.html", c:"therapy", d:"Agenda setting, feedback elicitation, withdrawal vs confrontation ruptures, repair sequence, hard moments.", k:"meds arent working difficult patient controlled substance disagreement apology engagement noshow", r:"2026-07"},
+  {t:"Core 3 Playbook (existing)", u:"therapy.html", c:"therapy", d:"Brief CBT, MI, SFBT + CBT-I: session skeletons, Spanish question banks, QA checklists.", k:"CBT motivational interviewing solution focused insomnia sleep miracle question scaling change talk", r:"2026-06"},
+
+  // Medication deep dives
+  {t:"Lithium Handbook", u:"lithium.html", c:"meds", d:"Levels, monitoring, toxicity bands, interactions, kidney/thyroid/calcium, sick-day rules.", k:"trough 12 hour NSAID ibuprofen thiazide ACE toxicity tremor polyuria DI thyroid calcium PTH ebstein", r:"2026-07"},
+  {t:"Perinatal Prescribing", u:"perinatal.html", c:"meds", d:"Pregnancy & lactation by agent; relapse math; zuranolone; postpartum psychosis.", k:"pregnant pregnancy breastfeeding lactation sertraline valproate lamotrigine lithium PPD EPDS zurzuvae positive test", r:"2026-07"},
+  {t:"Serotonin Syndrome vs NMS", u:"ss-nms.html", c:"meds", d:"Side-by-side discriminators, Hunter criteria, telehealth triage, rechallenge rules.", k:"clonus rigidity hyperreflexia fever emergency hunter tramadol linezolid CK dantrolene cyproheptadine", r:"2026-07"},
+  {t:"Switching & Cross-Titration", u:"switching.html", c:"meds", d:"Four strategies, antidepressant switch matrix, MAOI washouts, antipsychotic switches, discontinuation vs relapse.", k:"cross taper washout fluoxetine venlafaxine paroxetine brain zaps MAOI aripiprazole cholinergic rebound", r:"2026-07"},
+  {t:"Medication Database (existing)", u:"index.html", c:"meds", d:"99+ agents: dosing, FDA indications, monitoring, augmentation, tapers, handouts.", k:"dose indications lab monitoring augmentation taper handout patient education", r:"2026-06"},
+
+  // Crisis & medicolegal
+  {t:"Baker Act — Involuntary Examination", u:"baker-act.html", c:"crisis", d:"Criteria, initiation routes, telehealth workflow, timelines, documentation checklist, HB 7021 updates.", k:"394.463 involuntary 3052b professional certificate ex parte law enforcement CIT 72 hours minor marchman", r:"2026-07"},
+  {t:"Safety Planning Intervention", u:"safety-plan.html", c:"crisis", d:"Stanley-Brown six steps, lethal means counseling scripts, fillable bilingual printable plan.", k:"suicide SI C-SSRS firearms means restriction 988 crisis plan warning signs espanol print", r:"2026-07"},
+  {t:"Palm Beach County Crisis Card", u:"crisis-card-pbc.html", c:"crisis", d:"Local receiving facilities, 988/211, mobile response, ex parte route, 60-second telehealth drill.", k:"receiving facility 211 CIT NeuroBehavioral Pavilion pediatric transport poison control DCF abuse hotline local", r:"2026-07"},
+
+  // Documentation & practice
+  {t:"90833 Visit Architecture", u:"visit-90833.html", c:"practice", d:"Compliance rules, visit skeleton with E/M→therapy pivot, split treatment, self-audit, scribe prompt line.", k:"billing add-on psychotherapy minutes 90836 audit copy paste E/M MDM open evidence documentation", r:"2026-07"},
+  {t:"Measurement-Based Care", u:"measurement-based-care.html", c:"practice", d:"Response/remission definitions, severity bands, treat-to-target algorithm, score conversation scripts.", k:"PHQ-9 GAD-7 remission response MCID item 9 baseline treat to target discordance scales", r:"2026-07"}
+];
+
+const list = document.getElementById('list');
+const empty = document.getElementById('empty');
+const q = document.getElementById('q');
+const filterBar = document.getElementById('filters');
+const CAT_NAMES = {therapy:"Therapy Modules", meds:"Medication Deep Dives", crisis:"Crisis & Medicolegal", practice:"Documentation & Practice"};
+let activeCat = 'all';
+
+function render(){
+  const term = q.value.trim().toLowerCase();
+  list.innerHTML = '';
+  let shown = 0;
+  ['therapy','meds','crisis','practice'].forEach(cat=>{
+    if(activeCat!=='all' && activeCat!==cat) return;
+    const matches = PAGES.filter(p=>p.c===cat && (!term || (p.t+' '+p.d+' '+p.k).toLowerCase().includes(term)));
+    if(!matches.length) return;
+    const h = document.createElement('div');
+    h.className='group-title'; h.textContent = CAT_NAMES[cat];
+    list.appendChild(h);
+    matches.forEach(p=>{
+      const a = document.createElement('a');
+      a.className='entry'; a.href=p.u;
+      a.innerHTML = '<h3>'+p.t+'</h3><p>'+p.d+'</p><div class="meta">Reviewed <b>'+p.r+'</b></div>';
+      list.appendChild(a); shown++;
+    });
+  });
+  empty.style.display = shown ? 'none':'block';
+}
+q.addEventListener('input', render);
+filterBar.addEventListener('click', e=>{
+  const btn = e.target.closest('button'); if(!btn) return;
+  filterBar.querySelectorAll('button').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active'); activeCat = btn.dataset.cat; render();
+});
+render();
+</script>
+</body>
+</html>

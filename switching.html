@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Switching &amp; Cross-Titration — PsychRef</title>
+<style>
+  :root{
+    --ink:#1a2332; --paper:#f6f7f9; --card:#fff; --navy:#16324f;
+    --teal:#0e7c7b; --teal-soft:#e4f2f1; --amber:#8a5a00; --amber-soft:#fff4dc;
+    --red:#b3261e; --red-soft:#fdecea; --line:#dde3ea; --muted:#5b6675;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--paper);color:var(--ink);line-height:1.55;padding-bottom:60px}
+  header{background:var(--navy);color:#fff;padding:26px 18px 20px}
+  header .eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9fc3d9;margin-bottom:6px}
+  header h1{font-size:26px;font-weight:800;line-height:1.15}
+  header p{margin-top:8px;font-size:14px;color:#c9d6e2;max-width:640px}
+  header a.back{display:inline-block;margin-top:12px;color:#9fc3d9;font-size:13px;text-decoration:none}
+  nav.jump{position:sticky;top:0;z-index:10;background:#fff;border-bottom:1px solid var(--line);overflow-x:auto;white-space:nowrap;padding:10px 14px;-webkit-overflow-scrolling:touch}
+  nav.jump a{display:inline-block;font-size:13px;font-weight:600;color:var(--teal);text-decoration:none;padding:6px 12px;border:1px solid var(--line);border-radius:999px;margin-right:8px}
+  main{max-width:760px;margin:0 auto;padding:18px 16px}
+  section{margin-bottom:26px}
+  h2{font-size:19px;font-weight:800;color:var(--navy);margin-bottom:10px;padding-top:8px}
+  h3{font-size:15px;font-weight:700;margin:14px 0 6px}
+  p{font-size:15px;margin-bottom:10px}
+  ul,ol{margin:0 0 12px 20px;font-size:15px}
+  li{margin-bottom:6px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;margin-bottom:14px}
+  .pearl{border-left:4px solid var(--amber);background:var(--amber-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .pearl b{color:var(--amber)}
+  .flag{border-left:4px solid var(--red);background:var(--red-soft);border-radius:8px;padding:12px 14px;margin:12px 0;font-size:14px}
+  .flag b{color:var(--red)}
+  .doc{background:#eef3f8;border:1px dashed #a9c1d8;border-radius:10px;padding:12px 14px;margin:10px 0;font-size:14px;font-family:Georgia,serif}
+  table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  th{background:var(--navy);color:#fff;text-align:left;padding:10px 12px;font-size:13px}
+  td{padding:10px 12px;border-top:1px solid var(--line);vertical-align:top}
+  footer{max-width:760px;margin:10px auto 0;padding:0 16px;font-size:12px;color:var(--muted)}
+  @media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">PsychRef · Medication Deep Dives</div>
+  <h1>Switching &amp; Cross-Titration</h1>
+  <p>Your taper page covers coming off; this one covers getting from drug A to drug B without a gap, a stack, or a syndrome.</p>
+  <a class="back" href="index.html">&larr; Back to PsychRef home</a>
+</header>
+
+<nav class="jump">
+  <a href="#strategies">The four strategies</a>
+  <a href="#ad">Antidepressants</a>
+  <a href="#maoi">MAOI washouts</a>
+  <a href="#ap">Antipsychotics</a>
+  <a href="#discont">Discontinuation vs relapse</a>
+  <a href="#doc">Documentation</a>
+</nav>
+
+<main>
+
+<section id="strategies">
+  <h2>The four strategies</h2>
+  <table>
+    <tr><th>Strategy</th><th>How</th><th>Use when</th></tr>
+    <tr><td><b>Direct switch</b></td><td>Stop A today, start B tomorrow at low-moderate dose</td><td>Same class, similar mechanism, moderate doses (SSRI→SSRI); short total exposure to A; intolerable adverse effect demanding a clean stop</td></tr>
+    <tr><td><b>Cross-taper</b></td><td>Step A down while stepping B up over 1–4 weeks</td><td>Different mechanisms, fragile patients, high doses, agents with bad discontinuation (paroxetine, venlafaxine). The default when unsure.</td></tr>
+    <tr><td><b>Taper then start</b> (washout)</td><td>Taper A to zero, wait a defined washout, start B</td><td>Mandatory around MAOIs; wise when the combination itself is dangerous (serotonergic stacking, additive QTc)</td></tr>
+    <tr><td><b>Overlap &amp; taper ("plateau")</b></td><td>Get B fully therapeutic, THEN withdraw A slowly</td><td>Antipsychotics in relapse-prone patients; anywhere a coverage gap is the worst outcome</td></tr>
+  </table>
+  <div class="pearl"><b>One dial at a time when possible:</b> if you change two drugs and add a supplement in the same month, the improvement — or the rash — has three fathers. Sequence changes so each result is attributable.</div>
+</section>
+
+<section id="ad">
+  <h2>Antidepressant switch matrix (the common moves)</h2>
+  <table>
+    <tr><th>From → To</th><th>Approach</th><th>Watch for</th></tr>
+    <tr><td><b>SSRI → SSRI</b></td><td>Direct switch at equivalent-or-lower dose usually fine (exception: taper paroxetine even here)</td><td>Brief overlap of effects is acceptable within class</td></tr>
+    <tr><td><b>SSRI → SNRI</b></td><td>Cross-taper over 1–2 weeks, or direct switch at low starting dose for robust patients</td><td>Serotonergic additivity mid-cross — keep total serotonergic load sane</td></tr>
+    <tr><td><b>SSRI/SNRI → bupropion</b></td><td>Start bupropion, then taper the serotonergic — mechanisms don't overlap, so true cross-taper is comfortable; bupropion does NOT treat serotonergic discontinuation, so taper A properly anyway</td><td>Seizure threshold (screen ED history, alcohol), activation on top of SSRI withdrawal being misread as relapse</td></tr>
+    <tr><td><b>SSRI → mirtazapine</b></td><td>Comfortable cross-taper; often deliberately overlapped short-term for sleep during the transition</td><td>Sedation + appetite counseling up front</td></tr>
+    <tr><td><b>Fluoxetine → anything</b></td><td>Stop fluoxetine (self-tapering, half-life weeks); start the next agent LOW and titrate slowly — active drug persists 2–5 weeks</td><td>Serotonergic stacking weeks after the "last dose"; with TCAs, fluoxetine's 2D6 inhibition raises TCA levels long after discontinuation</td></tr>
+    <tr><td><b>Venlafaxine → anything</b></td><td>Slow taper of venlafaxine regardless of destination (37.5 mg steps, slower at the bottom); start B during the taper if mechanisms permit</td><td>The worst discontinuation in the class — "brain zaps," dizziness, irritability within 24–48h of missed doses</td></tr>
+    <tr><td><b>Paroxetine → anything</b></td><td>Slow taper always (10 mg steps then 5s); consider bridging via a fluoxetine substitution in refractory discontinuation cases (supervised strategy)</td><td>Discontinuation + its own anticholinergic rebound</td></tr>
+    <tr><td><b>Anything → TCA</b></td><td>Cross-taper cautiously; check interactions (2D6 inhibitors raise TCA levels)</td><td>Baseline ECG, overdose lethality assessment in at-risk patients — a 2-week TCA supply is a lethal quantity</td></tr>
+  </table>
+</section>
+
+<section id="maoi">
+  <h2>MAOI washouts — the hard rules</h2>
+  <div class="card">
+    <ul>
+      <li><b>Serotonergic antidepressant → MAOI:</b> washout ≥ 5 half-lives of drug AND active metabolites. Practically: <b>2 weeks</b> for most SSRIs/SNRIs/TCAs; <b>5 weeks for fluoxetine</b> (norfluoxetine's half-life).</li>
+      <li><b>MAOI → serotonergic:</b> wait <b>2 weeks</b> after stopping the MAOI (enzyme regeneration), including when switching MAOI → MAOI.</li>
+      <li>Bupropion, stimulants, and sympathomimetics also respect the 2-week MAOI boundary (hypertensive risk, not serotonergic).</li>
+      <li>During any MAOI washout period the patient is untreated — plan support, visits, and safety around that window; it's a known relapse trap.</li>
+    </ul>
+  </div>
+  <div class="flag"><b>No exceptions exist to the MAOI rules.</b> This is the one switch where "the patient was doing badly so we compressed the washout" appears in malpractice files. Linezolid and methylene blue count as MAOIs when they show up from other specialties.</div>
+</section>
+
+<section id="ap">
+  <h2>Antipsychotic switches</h2>
+  <div class="card">
+    <ul>
+      <li><b>Default: cross-titrate over 2–4 weeks,</b> or plateau (B therapeutic first) in relapse-prone schizophrenia/schizoaffective patients — a coverage gap costs a hospitalization.</li>
+      <li><b>Cholinergic rebound:</b> stopping strongly anticholinergic agents (clozapine, olanzapine, quetiapine, chlorpromazine) too fast → nausea, insomnia, restlessness, flu-like misery misread as relapse. Taper these slowly even when the destination drug is already on board.</li>
+      <li><b>Withdrawal dyskinesia &amp; rebound psychosis:</b> abrupt exits from D2-tight agents can produce transient dyskinesias and, especially with clozapine, rapid rebound psychosis — clozapine discontinuation is its own careful protocol; never abrupt without medical necessity.</li>
+      <li><b>Switching TO aripiprazole (partial agonist):</b> in patients stable on full antagonists, adding aripiprazole can transiently worsen psychosis or akathisia — plateau approach, patient warned, slower is better.</li>
+      <li><b>To/from LAIs:</b> overlap oral coverage per each LAI's initiation kinetics; when leaving an LAI remember months of drug remain on board — factor that into "washouts" and adverse-effect attribution.</li>
+      <li><b>Track the metabolic handoff:</b> a switch olanzapine→aripiprazole is also a metabolic intervention — schedule the weight/A1c follow-up that proves it.</li>
+    </ul>
+  </div>
+</section>
+
+<section id="discont">
+  <h2>Discontinuation symptoms vs. relapse — the differentiator table</h2>
+  <table>
+    <tr><th></th><th>Discontinuation</th><th>Relapse</th></tr>
+    <tr><td><b>Timing</b></td><td>Days (1–7) after dose reduction/stop</td><td>Weeks later</td></tr>
+    <tr><td><b>Signature</b></td><td>Physical: dizziness, "brain zaps," nausea, paresthesias, vivid dreams, flu-like</td><td>The original illness: mood, anhedonia, worry content, sleep pattern of the index episode</td></tr>
+    <tr><td><b>Response to restarting</b></td><td>Resolves within 24–72 h</td><td>Takes weeks, like any treatment response</td></tr>
+    <tr><td><b>Course if untreated</b></td><td>Self-resolves over 1–3 weeks (longer tails exist, esp. venlafaxine/paroxetine)</td><td>Persists or deepens</td></tr>
+  </table>
+  <p>Teach this table to patients before the switch starts — a forewarned patient rides out day-4 dizziness; a blindsided one declares the new drug a failure and stops everything.</p>
+</section>
+
+<section id="doc">
+  <h2>Documentation</h2>
+  <div class="doc">Initiated switch from [A] to [B] for [reason: inadequate response after adequate trial / intolerable adverse effect / patient preference after informed discussion]. Strategy: [cross-taper per schedule: A reduced to X on (date), B initiated at Y…]. Counseled on discontinuation symptoms vs. relapse (timing, physical vs. mood symptoms, expected resolution), serotonergic warning signs during overlap, and the specific schedule in writing. Interim contact plan: [check-in at X days]. Washout requirements: [n/a / detailed]. Target dose of [B]: [dose], with adequacy to be assessed at [4–6 weeks] via [scale].</div>
+</section>
+
+</main>
+<footer>Reference only. Anchors: Maudsley Prescribing Guidelines switching chapters; SwitchRx-style equivalence practice; Hirsch/UpToDate discontinuation literature. Pairs with: taper protocols tab, SS-NMS page, MBC page (defining "adequate trial").</footer>
+</body>
+</html>
