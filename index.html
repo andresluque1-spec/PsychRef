@@ -4003,6 +4003,26 @@ const HANDOUTS = [
   },
 ];
 
+function printHandoutWindow(handout) {
+  const esc = s => String(s).replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  let body = "";
+  handout.sections.forEach(sec => {
+    body += `<h2 style="color:${handout.color};font-size:15px;text-transform:uppercase;letter-spacing:.05em;margin:22px 0 8px">${esc(sec.heading)}</h2>`;
+    if (sec.content) body += `<p style="margin:0 0 10px;line-height:1.7">${esc(sec.content)}</p>`;
+    if (sec.steps) { body += "<ol style='padding-left:22px;margin:0 0 10px'>"; sec.steps.forEach(s=>body+=`<li style="margin-bottom:6px;line-height:1.7">${esc(s)}</li>`); body += "</ol>"; }
+    if (sec.bullets) { body += "<ul style='padding-left:22px;margin:0 0 10px'>"; sec.bullets.forEach(b=>body+=`<li style="margin-bottom:5px;line-height:1.7">${esc(b)}</li>`); body += "</ul>"; }
+  });
+  const footer = handout.lang==="es"
+    ? "Proporcionado por Andres Luque, PMHNP-BC \u00b7 Psychiatry of the Palm Beaches \u2014 Folleto educativo, no sustituye su plan de tratamiento."
+    : "Provided by Andres Luque, PMHNP-BC \u00b7 Psychiatry of the Palm Beaches \u2014 Educational handout, not a substitute for your treatment plan.";
+  const w = window.open("", "_blank");
+  if (!w) { alert("Please allow pop-ups for this site to print handouts."); return; }
+  w.document.write(`<html><head><title>${esc(handout.title)}</title><style>@page{margin:1.6cm}body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;color:#1e293b;max-width:720px;margin:auto;padding:8px}h1{font-size:22px;margin:0 0 4px}.sub{color:#64748b;font-size:14px;margin-bottom:18px}.hd{border-bottom:3px solid ${handout.color};padding-bottom:14px;margin-bottom:8px}.ft{border-top:1px solid #e2e8f0;margin-top:26px;padding-top:12px;color:#94a3b8;font-size:12px}</style></head><body><div class="hd"><h1>${esc(handout.title)}</h1><div class="sub">${esc(handout.subtitle)}</div></div>${body}<div class="ft">${esc(footer)}</div></body></html>`);
+  w.document.close();
+  w.focus();
+  setTimeout(()=>{ w.print(); w.close(); }, 350);
+}
+
 function HandoutPrint({ handout, onClose }) {
   const catColor = handout.color;
   return (
@@ -4047,7 +4067,7 @@ function HandoutPrint({ handout, onClose }) {
         </div>
 
         <div style={{marginTop:"16px",display:"flex",gap:"10px"}}>
-          <button onClick={()=>window.print()}
+          <button onClick={()=>printHandoutWindow(handout)}
             style={{background:catColor,border:"none",color:"#fff",borderRadius:"8px",padding:"10px 20px",cursor:"pointer",fontWeight:700,fontSize:"0.875rem",fontFamily:"inherit"}}>
             {handout.lang==="es"?"🖨 Imprimir / Guardar como PDF":"🖨 Print / Save as PDF"}
           </button>
@@ -4143,13 +4163,6 @@ function HandoutsModule() {
         })}
       </div>
 
-      <style>{`
-        @media print {
-          body * { visibility: hidden; }
-          .psychref-print, .psychref-print * { visibility: visible; }
-          .psychref-print { position: absolute; left: 0; top: 0; width: 100%; }
-        }
-      `}</style>
     </div>
   );
 }
@@ -4768,6 +4781,57 @@ function FDALookup() {
 }
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
+const LIBRARY_PAGES = [
+  {group:"Crisis & Medicolegal", color:"#f87171", pages:[
+    {t:"Baker Act \u2014 Involuntary Exam", d:"Criteria, initiation, telehealth workflow, timelines, HB 7021 updates", u:"baker-act.html"},
+    {t:"Safety Planning Intervention", d:"Stanley-Brown six steps, lethal means, printable bilingual plan", u:"safety-plan.html"},
+    {t:"Palm Beach County Crisis Card", d:"Local receiving facilities, 988/211, 60-second telehealth drill", u:"crisis-card-pbc.html"},
+  ]},
+  {group:"Medication Deep Dives", color:"#38bdf8", pages:[
+    {t:"Lithium Handbook", d:"Levels, toxicity bands, interactions, kidney/thyroid, sick-day rules", u:"lithium.html"},
+    {t:"Perinatal Prescribing", d:"Pregnancy & lactation by agent; zuranolone; postpartum psychosis", u:"perinatal.html"},
+    {t:"Serotonin Syndrome vs NMS", d:"Side-by-side discriminators, Hunter criteria, triage, rechallenge", u:"ss-nms.html"},
+    {t:"Switching & Cross-Titration", d:"Four strategies, MAOI washouts, discontinuation vs relapse", u:"switching.html"},
+  ]},
+  {group:"Therapy Modules", color:"#818cf8", pages:[
+    {t:"Behavioral Activation", d:"Brief BA protocol, session skeletons, activity menu, Spanish", u:"behavioral-activation.html"},
+    {t:"Supportive Psychotherapy", d:"Ten named techniques, session shape, traps, documentation", u:"supportive-therapy.html"},
+    {t:"DBT Skills Sampler", d:"STOP, TIPP, opposite action, paced breathing, teaching loop", u:"dbt-skills.html"},
+    {t:"Alliance & Rupture Repair", d:"Rupture taxonomy, repair sequence, hard-moment playbook", u:"alliance-repair.html"},
+  ]},
+  {group:"Documentation & Practice", color:"#22c55e", pages:[
+    {t:"90833 Visit Architecture", d:"Compliance rules, visit skeleton, split treatment, self-audit", u:"visit-90833.html"},
+    {t:"Measurement-Based Care", d:"Response/remission, treat-to-target algorithm, score scripts", u:"measurement-based-care.html"},
+    {t:"Reference Library (searchable)", d:"Full-text search across every standalone page", u:"library.html"},
+  ]},
+];
+
+function LibraryModule() {
+  return (
+    <div>
+      <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+        \U0001f4da Standalone reference pages open in a new tab. Each includes a "reviewed" date \u2014 re-verify anything older than 12 months before relying on it.
+      </div>
+      {LIBRARY_PAGES.map(section=>(
+        <div key={section.group} style={{marginBottom:"22px"}}>
+          <div style={{color:section.color,fontSize:"0.75rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"10px"}}>{section.group}</div>
+          <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
+            {section.pages.map(p=>(
+              <a key={p.u} href={p.u} target="_blank" rel="noopener"
+                style={{background:"#0a0e17",border:"1px solid #1e293b",borderLeft:`3px solid ${section.color}`,borderRadius:"12px",padding:"16px",textDecoration:"none",transition:"border-color 0.15s"}}
+                onMouseEnter={e=>e.currentTarget.style.borderColor=section.color}
+                onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.95rem",marginBottom:"4px"}}>{p.t}</div>
+                <div style={{color:"#64748b",fontSize:"0.8rem",lineHeight:1.5}}>{p.d}</div>
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function TherapyModule() {
   return (
     <div>
@@ -4793,6 +4857,7 @@ const TABS = [
   {id:"fda",label:"FDA Indications",icon:"✅"},
   {id:"dx",label:"Diagnostic Interviews",icon:"🧠"},
   {id:"therapy",label:"Therapy Techniques",icon:"🗣"},
+  {id:"library",label:"Reference Library",icon:"📚"},
   {id:"labs",label:"Lab Monitoring",icon:"🧪"},
   {id:"aug",label:"Augmentation",icon:"📈"},
   {id:"compare",label:"Drug Comparisons",icon:"⚖️"},
@@ -4832,6 +4897,7 @@ function App() {
         {tab==="fda"&&<FDAModule/>}
         {tab==="dx"&&<DiagnosticModule/>}
         {tab==="therapy"&&<TherapyModule/>}
+        {tab==="library"&&<LibraryModule/>}
         {tab==="labs"&&<LabsModule/>}
         {tab==="aug"&&<AugmentationModule/>}
         {tab==="compare"&&<ComparisonsModule/>}
