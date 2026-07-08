@@ -194,6 +194,8 @@
   .pb-tab.active[data-pb="mi"]{background:var(--mi); color:#fff; border-color:var(--mi);}
   .pb-tab.active[data-pb="sft"]{background:var(--sft); color:#fff; border-color:var(--sft);}
   .pb-tab.active[data-pb="cbti"]{background:var(--cbti); color:#fff; border-color:var(--cbti);}
+  .pb-tab.active[data-pb="trauma"]{background:var(--trauma); color:#fff; border-color:var(--trauma);}
+  .pb-tab.active[data-pb="gen"]{background:var(--gen); color:#fff; border-color:var(--gen);}
 
   .pb-panel{display:none;}
   .pb-panel.active{display:block;}
@@ -211,6 +213,8 @@
   .pb-panel[data-pb="mi"] .dot{background:var(--mi);}
   .pb-panel[data-pb="sft"] .dot{background:var(--sft);}
   .pb-panel[data-pb="cbti"] .dot{background:var(--cbti);}
+  .pb-panel[data-pb="trauma"] .dot{background:var(--trauma);}
+  .pb-panel[data-pb="gen"] .dot{background:var(--gen);}
   .pb-section p.hint{color:var(--ink-soft); font-size:13px; margin:0 0 12px;}
   .pb-section p, .pb-section li{font-size:14px;}
   .pb-section ul{margin:8px 0; padding-left:20px;}
@@ -390,6 +394,8 @@ I gave homework to ___.
       <button class="pb-tab" data-pb="mi" onclick="switchPb('mi', this)">Motivational Interviewing</button>
       <button class="pb-tab" data-pb="sft" onclick="switchPb('sft', this)">Solution-Focused</button>
       <button class="pb-tab" data-pb="cbti" onclick="switchPb('cbti', this)">CBT-I</button>
+      <button class="pb-tab" data-pb="trauma" onclick="switchPb('trauma', this)">Trauma-Informed</button>
+      <button class="pb-tab" data-pb="gen" onclick="switchPb('gen', this)">Session Structure</button>
     </div>
 
     <!-- ================= CBT PANEL ================= -->
@@ -816,6 +822,269 @@ I gave homework to ___.
       </div>
     </div>
 
+    <!-- ================= TRAUMA-INFORMED PANEL ================= -->
+    <div class="pb-panel" data-pb="trauma" id="pb-trauma">
+      <div class="pb-hero">
+        <h2>Trauma-Informed &amp; Grounding — the cross-cutting safety layer</h2>
+        <p>Not a competing modality — this runs underneath any of the other three. Use it proactively with patients who want present-focused work only, and reactively the moment a session destabilizes, regardless of what you were working on.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Who it fits on your panel</h3>
+        <ul>
+          <li><b>Trauma history, present-focused preference</b> — patients who explicitly don't want to "go back there." Stabilization and coping come first; historical content is never required for progress.</li>
+          <li><b>Dissociation or flooding mid-session</b> — can happen during CBT, MI, or SFT work when a question lands closer to raw material than expected. This panel is your in-the-moment toolkit.</li>
+          <li><b>Hyperarousal / hypervigilance</b> — patients who startle easily, scan the room, or describe feeling "keyed up" without a clear trigger.</li>
+          <li><b>Shame-driven presentations</b> — self-blame, "something's wrong with me" — externalizing language does real work here.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>When a session destabilizes — the in-the-moment sequence</h3>
+        <p class="hint">This isn't a scheduled 16 minutes — it's what you reach for the moment you notice a shift. Stop whatever else you were doing.</p>
+        <div class="timeline">
+          <div class="tl-row"><span class="t">Notice</span><span class="what"><b>Name it out loud, gently.</b> "I want to pause for a second — I notice something shifted just now. Are you here with me?" Trust your read; you don't need certainty to check in.</span></div>
+          <div class="tl-row"><span class="t">Orient</span><span class="what"><b>Bring them back to the room.</b> Say their name. State the date, the location, your name and role. "You're here with me, in my office/on this call, it's [day]. You're safe right now."</span></div>
+          <div class="tl-row"><span class="t">Ground</span><span class="what"><b>Run the 5-4-3-2-1 sequence</b> (below) or a body-based anchor — feet on the floor, hands on the chair arms, one slow breath.</span></div>
+          <div class="tl-row"><span class="t">Check capacity</span><span class="what"><b>Ask, don't assume.</b> "Do you want to keep going, or would it help to stay here for a bit before we continue?" Handing back control is itself the intervention.</span></div>
+          <div class="tl-row"><span class="t">Decide</span><span class="what"><b>Pivot or close.</b> If grounded and willing: return to lighter content or move to med management for the remainder. If not fully settled: stay in stabilization and end the therapy portion there — that's a complete, billable visit.</span></div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 1 — 5-4-3-2-1 grounding (in-session script)</h3>
+        <p class="hint">Say each prompt slowly, and wait. Rushing defeats the purpose.</p>
+        <div class="qsay"><b>5 · See</b>"Look around the room and name five things you can see. Take your time — just say them out loud as you notice them."</div>
+        <div class="qsay"><b>4 · Touch</b>"Now four things you can feel — the chair under you, your feet on the floor, your hands together."</div>
+        <div class="qsay"><b>3 · Hear</b>"Three things you can hear right now, even quiet sounds."</div>
+        <div class="qsay"><b>2 · Smell</b>"Two things you can smell, or would smell if you noticed."</div>
+        <div class="qsay"><b>1 · Taste</b>"One thing you can taste, even just your own mouth."</div>
+        <div class="qsay"><b>Close</b>"Good. Take one more breath. Where are you now, on a scale of calm to overwhelmed?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 2 — Window of Tolerance psychoeducation</h3>
+        <p class="hint">Normalizes the response as physiology, not failure. Draw or describe three zones if helpful.</p>
+        <div class="qsay"><b>The frame</b>"There's a zone where your nervous system can think clearly and feel things without being overwhelmed — that's your window. Trauma makes that window narrower, so smaller things can push you outside it — either revved up and flooded, or shut down and foggy. What just happened to you is your body doing exactly what it's designed to do when it senses too much. It's not weakness, and it's not you doing something wrong."</div>
+        <div class="qsay"><b>Naming the state</b>"Right now, does it feel more like your system sped up — heart racing, hard to sit still — or slowed down — foggy, distant, hard to feel your body?" <i>(Answer tells you whether to use an activating or calming grounding technique next time.)</i></div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Core move 3 — titration &amp; pendulation</h3>
+        <p class="hint">For approaching material that's close to the edge of tolerance without overwhelming. Small doses, deliberate retreat.</p>
+        <ul>
+          <li><b>Dose it:</b> "We don't need the whole story today — just tell me as much as feels manageable, and we'll stop there."</li>
+          <li><b>Pendulate back on purpose:</b> "Let's step away from that for a second — tell me about something that felt steady or good this week." Then return only if the patient is ready.</li>
+          <li><b>Externalize the material:</b> "the anxiety," "the flashback," "that part of the memory" — not "you." Separates identity from symptom.</li>
+          <li><b>Collaborative pacing check-in:</b> "You're in the driver's seat here — tell me to slow down or stop any time, and I will, no explanation needed."</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Safe/calm place &amp; containment — building portable resources</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Safe/calm place imagery</h4>
+            <ul>
+              <li>"Think of a place, real or imagined, where you feel completely safe or at ease. Describe it to me — what you see, hear, feel there."</li>
+              <li>Build it in detail over 3–5 minutes; anchor with a word or image the patient can recall alone</li>
+              <li>Practice retrieving it briefly at the end of session so it's rehearsed, not just described</li>
+            </ul>
+          </div>
+          <div class="minicard">
+            <h4>Containment exercise</h4>
+            <ul>
+              <li>"Imagine a container — a box, a safe, anything sturdy. When something feels like too much right now, you can put it in the container and close the lid. It's not gone, it's just not due right now."</li>
+              <li>Useful for material that surfaces but can't be processed in the time remaining</li>
+              <li>Explicitly not suppression — frame as "later, on purpose" not "never"</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Homework menu — patient-facing wording</h3>
+        <ul>
+          <li><b>Grounding practice:</b> "Practice the 5-4-3-2-1 once a day when you're calm — not just in a crisis. It works better in an actual moment of need if it's already familiar."</li>
+          <li><b>Window noticing:</b> "Notice one moment this week when you felt pushed outside your window — what happened right before?"</li>
+          <li><b>Safe place rehearsal:</b> "Visit your calm place for two minutes before bed, just to keep it fresh."</li>
+          <li><b>Body check-ins:</b> "Twice a day, just notice: revved up, shut down, or in the window? No need to change it — just notice."</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to look for</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Progress markers</h4>
+            <ul>
+              <li>Patient self-initiates grounding without prompting ("I need a second, let me do the thing")</li>
+              <li>Faster return to baseline within a session over time</li>
+              <li>Patient can name their own state (revved up / shut down / in the window) accurately</li>
+              <li>Willing to approach slightly more material session over session — titration is working</li>
+            </ul>
+          </div>
+          <div class="minicard warn">
+            <h4>Red flags — escalate or refer</h4>
+            <ul>
+              <li>Dissociation doesn't resolve by end of session → do not send the patient home alone; involve support, consider higher level of care</li>
+              <li>Destabilization is increasing in frequency or severity → this needs trauma-specialist referral, not more grounding</li>
+              <li>Any safety content surfaces during flooding → drop this frame entirely, full risk assessment (see Crisis Reference)</li>
+              <li>Patient dissociates and cannot orient even with full sequence → err toward ending the visit and arranging same-day follow-up or higher level of care</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>En español — grounding y estabilización</h3>
+        <p class="hint">Forma usted. La secuencia de aterrizaje, la psicoeducación de la ventana de tolerancia, y el chequeo de ritmo.</p>
+        <div class="qsay"><b>Chequeo</b>"Quiero hacer una pausa un momento — noto que algo cambió. ¿Está usted aquí conmigo?"</div>
+        <div class="qsay"><b>Orientar</b>"Usted está aquí conmigo, en mi oficina/en esta llamada, hoy es [día]. Usted está seguro en este momento."</div>
+        <div class="qsay"><b>5-4-3-2-1</b>"Nombre cinco cosas que puede ver… cuatro que puede tocar… tres que puede escuchar… dos que puede oler… una que puede saborear."</div>
+        <div class="qsay"><b>Ventana de tolerancia</b>"Hay una zona donde su sistema nervioso puede pensar con claridad sin sentirse abrumado. Lo que le acaba de pasar es su cuerpo haciendo exactamente lo que fue diseñado para hacer — no es debilidad, no está haciendo nada mal."</div>
+        <div class="qsay"><b>Ritmo compartido</b>"Usted tiene el control aquí — dígame que vaya más despacio o que me detenga en cualquier momento, sin necesidad de explicar por qué."</div>
+        <div class="qsay"><b>Lugar seguro</b>"Piense en un lugar, real o imaginado, donde se sienta completamente seguro. Descríbamelo — qué ve, qué escucha, qué siente ahí."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Chart it — trauma-informed/stabilization paragraph</h3>
+        <div class="pb-chart" id="pbChartTrauma">Insight-oriented, trauma-informed, and supportive therapy used to address present-day coping and nervous system regulation. During the session, the patient exhibited signs of ___ (dissociation / flooding / hyperarousal); I paused the planned intervention to prioritize stabilization. I guided the patient through grounding (5-4-3-2-1 sensory technique), and provided psychoeducation on the window of tolerance, normalizing the response as a nervous-system pattern rather than a personal failing. I helped the patient identify ___ as a portable coping resource. Patient returned to baseline within session and [was able to continue with lighter content / preferred to close the therapy portion here]. I gave homework to ___. [X] minutes spent in therapy separate from med management.</div>
+        <button class="copy-btn" onclick="copyText('pbChartTrauma', this)">Copy</button>
+      </div>
+    </div>
+
+    <!-- ================= SESSION STRUCTURE PANEL ================= -->
+    <div class="pb-panel" data-pb="gen" id="pb-gen">
+      <div class="pb-hero">
+        <h2>Session Structure — the connective tissue under every modality</h2>
+        <p>Not a technique you choose — it's what carries every technique above. Opening well, staying on time, redirecting without feeling abrupt, and handling the moments that don't fit any protocol at all.</p>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Who it fits on your panel</h3>
+        <ul>
+          <li><b>Every visit, every modality</b> — this is the frame, not the content.</li>
+          <li><b>New or unstable patients</b> — clear structure builds trust faster than any specific technique.</li>
+          <li><b>Sessions that go sideways</b> — off-topic tangents, doorknob disclosures, unexpected emotion.</li>
+          <li><b>Alliance maintenance</b> — small structural moves (feedback, recap) are cheap and compound over time.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Opening a session well</h3>
+        <p class="hint">Ten seconds of agenda-setting saves five minutes of drift later, and signals the visit has a shape.</p>
+        <div class="qsay"><b>Orient + invite</b>"Before we get into the medication side — what's most on your mind today? I want to make sure we get to it."</div>
+        <div class="qsay"><b>Name the plan</b>"Today I want to check on the sertraline and also pick back up on the sleep work from last time — does that match what you need, or is something else more pressing?"</div>
+        <div class="qsay"><b>Following up on last visit</b>"Last time you left saying ___ — how's that sitting with you now?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Homework review — closing the loop without shame</h3>
+        <div class="qsay"><b>If done</b>"You actually did it — tell me how it went." <i>(Let them report before you comment; their read matters more than yours.)</i></div>
+        <div class="qsay"><b>If not done</b>"That's okay — a lot gets in the way. What happened, or what made it harder than it sounded in here?" <i>(Never "why didn't you." Curiosity, not accountability-as-punishment.)</i></div>
+        <div class="qsay"><b>Reframing a "failed" attempt</b>"You tried it and it didn't go the way we planned — that's still useful information. What did we learn?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Handling silence</h3>
+        <p class="hint">Silence is data, not a problem to fix immediately. Most clinicians break it too soon.</p>
+        <ul>
+          <li><b>Let it sit:</b> count five seconds in your head before you speak. Most patients are formulating, not stuck.</li>
+          <li><b>If it continues:</b> "Take your time — I'm not going anywhere." Removes the pressure that's often causing the silence itself.</li>
+          <li><b>If it feels like shutdown, not thought:</b> "I notice it's gotten quiet — is this a thinking pause, or did something just get harder to say?"</li>
+          <li><b>Never fill it with your own content</b> to relieve your own discomfort — that's the single most common structural error.</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to say when a patient cries</h3>
+        <div class="qsay"><b>The instinct to resist</b>"Take whatever time you need — there's no rush." <i>(Do not immediately hand a tissue and change the subject; let the emotion complete.)</i></div>
+        <div class="qsay"><b>Naming it gently</b>"Something real just came up. Can you tell me what's underneath the tears, or is it okay to just sit with it a moment?"</div>
+        <div class="qsay"><b>When it passes</b>"That took something to let show. Thank you for letting me see it." <i>(Validates without over-processing if time is short.)</i></div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Redirecting an off-track session</h3>
+        <p class="hint">Redirect the topic, not the person — the difference is everything.</p>
+        <div class="qsay"><b>Gentle bridge</b>"This is important, and I don't want to rush it — can I flag that we also need a few minutes for the medication side today, and come back to this next time if we run short?"</div>
+        <div class="qsay"><b>Naming the drift kindly</b>"We've drifted a bit from where we started — which is fine — but I want to check: is this where you need us to be right now?"</div>
+        <div class="qsay"><b>Time-boxing out loud</b>"Let's give this five more minutes, and then I want to make sure we land the plan for the week."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>The doorknob disclosure — SI or big news at minute 29</h3>
+        <p class="hint">The most common structural crisis: significant disclosure right as the visit is ending.</p>
+        <ul>
+          <li><b>Never rush a safety disclosure to protect the schedule.</b> "I'm really glad you told me that, even now — let's take the time we need." The visit's length is now determined by clinical need, not the original slot.</li>
+          <li><b>For non-safety big news</b> arriving late: "That's significant, and it deserves real time. I have a few minutes now — can we go deeper into it next visit, or does it need to be sooner than that?"</li>
+          <li><b>Name the pattern if it recurs:</b> "I've noticed some of our most important stuff tends to come up right as we're wrapping — no judgment, just wondering if starting there next time might serve you better."</li>
+        </ul>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Difficult in-session moments — phrase bank</h3>
+        <p class="hint">Cuts across every modality above. The move is almost always: name it, don't push past it, hand back some control.</p>
+        <div class="qsay"><b>"I don't want to talk about it"</b>"That's completely okay — you don't owe me that today. Is there something else that would be more useful to spend our time on?"</div>
+        <div class="qsay"><b>Anger directed at you</b>"I hear that you're frustrated with me right now. I'd rather you say it directly than sit with it — what's not working?" <i>(Do not get defensive; the willingness to say it to your face is a sign of alliance, not its absence.)</i></div>
+        <div class="qsay"><b>Silent shutdown, won't re-engage</b>"It seems like something closed off just now. You don't have to open back up today — I just want you to know I noticed, and I'm here when you're ready."</div>
+        <div class="qsay"><b>Intellectualizing to avoid feeling</b>"You're describing this really clearly — I'm curious what it actually felt like in the moment, underneath the explanation."</div>
+        <div class="qsay"><b>"Nothing's going to help anyway"</b>"That sounds like real hopelessness talking, not just an opinion about therapy. Can we slow down and look at that feeling directly for a second?" <i>(Treat as clinical content, not a debate to win — assess mood/safety if this is new or intensifying.)</i></div>
+        <div class="qsay"><b>Patient challenges your competence/experience</b>"That's a fair question to ask. Here's what I can tell you about how I'm thinking about this…" <i>(Answer directly and briefly; defensiveness reads as confirmation.)</i></div>
+        <div class="qsay"><b>Patient wants you to just tell them what to do</b>"I have thoughts, and I'll share them — but you know your life better than I do. Let's get there together rather than me handing you an answer that might not fit."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Ending on time — closing summary + eliciting feedback</h3>
+        <div class="qsay"><b>Closing summary</b>"Let's land it — today we talked about ___, and you're going to try ___ before next time. Does that match what you're taking away?"</div>
+        <div class="qsay"><b>Eliciting session feedback</b>"Quick check before you go — did today feel useful, or was there something we should do differently next time?" <i>(Small, cheap, and one of the strongest alliance-building moves available.)</i></div>
+        <div class="qsay"><b>Warm close</b>"I'll see you [date]. If anything comes up before then, you know how to reach us."</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>What to look for</h3>
+        <div class="twocol">
+          <div class="minicard">
+            <h4>Progress markers</h4>
+            <ul>
+              <li>Patient arrives with their own agenda item unprompted — structure has become collaborative, not imposed</li>
+              <li>Sessions land on time without feeling rushed</li>
+              <li>Patient names their own emotional shifts ("I think I just shut down for a second there")</li>
+              <li>Feedback becomes more specific and honest over time — a sign of real trust</li>
+            </ul>
+          </div>
+          <div class="minicard warn">
+            <h4>Red flags — structural trouble signs</h4>
+            <ul>
+              <li>Doorknob disclosures every visit → the agenda-setting at minute 0 isn't landing; ask directly earlier</li>
+              <li>You're consistently running over → tighten the bridge-out language, don't just apologize and continue</li>
+              <li>Patient never gives critical feedback → may not feel safe to; ask a more specific question than "how was that"</li>
+              <li>You notice yourself avoiding a topic to protect the schedule → that's a structural failure, not efficiency</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>En español — estructura de la sesión</h3>
+        <p class="hint">Forma usted. Apertura, silencio, redirección y cierre.</p>
+        <div class="qsay"><b>Apertura</b>"Antes de hablar del medicamento — ¿qué es lo que más le preocupa hoy? Quiero asegurarme de que lleguemos a eso."</div>
+        <div class="qsay"><b>Silencio</b>"Tómese su tiempo — no tengo prisa."</div>
+        <div class="qsay"><b>No quiere hablar de algo</b>"Está bien — no me debe eso hoy. ¿Hay algo más en lo que sería más útil usar nuestro tiempo?"</div>
+        <div class="qsay"><b>Enojo hacia usted</b>"Escucho que está frustrado conmigo ahora mismo. Prefiero que me lo diga directamente — ¿qué no está funcionando?"</div>
+        <div class="qsay"><b>Redirección amable</b>"Esto es importante y no quiero apurarlo — ¿puedo señalar que también necesitamos unos minutos para el medicamento hoy, y volvemos a esto la próxima vez si nos falta tiempo?"</div>
+        <div class="qsay"><b>Cierre</b>"Hoy hablamos de ___, y usted va a intentar ___ antes de la próxima vez. ¿Eso refleja lo que se lleva de hoy?"</div>
+        <div class="qsay"><b>Retroalimentación</b>"Antes de que se vaya — ¿sintió que hoy fue útil, o hay algo que deberíamos hacer diferente la próxima vez?"</div>
+      </div>
+
+      <div class="pb-section">
+        <h3><span class="dot"></span>Chart it — documenting structural moves</h3>
+        <p class="hint">Use when the structural work itself is clinically meaningful — a rupture handled, a redirection, a late disclosure.</p>
+        <div class="pb-chart" id="pbChartGen">Insight-oriented and supportive therapy used to address the therapeutic relationship and session process. Patient [presented with unplanned disclosure of ___ / demonstrated frustration directed at the therapeutic relationship / required redirection from tangential content] during today's visit. I [prioritized the disclosed content over the planned agenda / directly acknowledged the patient's frustration and invited further discussion / gently redirected while validating the topic's importance]. Patient's engagement [improved / stabilized] following this intervention. Closing summary and session feedback were elicited collaboratively; patient confirmed today's focus matched their needs. I gave homework to ___. [X] minutes spent in therapy separate from med management.</div>
+        <button class="copy-btn" onclick="copyText('pbChartGen', this)">Copy</button>
+      </div>
+    </div>
+
   </div>
 
   <footer>Built for personal clinical reference. Not a substitute for training, supervision, or CE. · PsychRef</footer>
@@ -1013,7 +1282,7 @@ function switchView(view){
   playbook.style.display = isCards ? 'none' : 'block';
   bCards.classList.toggle('active', isCards);
   bPb.classList.toggle('active', !isCards);
-  countLabel.textContent = isCards ? String(DATA.length) : '4';
+  countLabel.textContent = isCards ? String(DATA.length) : '6';
   document.querySelector('.quickstat').lastChild.textContent = isCards ? 'techniques' : 'core modalities';
   if(isCards) render();
 }
