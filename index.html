@@ -1438,7 +1438,13 @@ function MedCard({ med, onClose }) {
             <h2 style={{color:"#e2e8f0",fontSize:"1.5rem",fontWeight:700,margin:0}}>{med.name}</h2>
             <div style={{color:"#64748b",fontSize:"0.875rem",marginTop:"4px"}}>{med.brand} · <span style={{color:"#38bdf8"}}>{med.class}</span></div>
           </div>
-          <button onClick={onClose} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"8px 12px",cursor:"pointer",fontSize:"0.875rem"}}>✕ Close</button>
+          <div style={{display:"flex",gap:"8px"}}>
+            <button onClick={()=>printHandoutWindow(buildMedHandout(med))}
+              style={{background:"#22c55e",border:"none",color:"#06210f",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
+              🖨 Print Patient Handout
+            </button>
+            <button onClick={onClose} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"8px 12px",cursor:"pointer",fontSize:"0.875rem"}}>✕ Close</button>
+          </div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"12px",marginBottom:"24px"}}>
           {[["Dosing",med.dosing],["Half-Life",med.halfLife],["Pregnancy",med.pregnancy]].map(([label,val])=>(
@@ -4003,6 +4009,150 @@ const HANDOUTS = [
   },
 ];
 
+// ─── AUTO-GENERATED PER-MEDICATION PATIENT HANDOUTS ───────────────────────────
+// Builds a printable, patient-friendly handout for every medication in
+// MEDICATIONS, reusing the clinical facts already curated there so content
+// stays accurate and stays in sync if a medication entry is edited.
+
+function classSafetyGuidance(med) {
+  const c = med.class.toLowerCase();
+  const extraSafety = [];
+  const extraWarnings = [];
+
+  if (c.includes("benzodiazepine") || c.includes("z-drug")) {
+    extraSafety.push("This medication can cause physical dependence with regular use. Do not combine it with alcohol or opioid pain medications — this combination can slow or stop breathing and can be fatal. Avoid driving or operating machinery until you know how it affects you.");
+    extraWarnings.push("Do not stop this medication abruptly after regular use — stopping suddenly can cause withdrawal symptoms or seizures. Any dose reduction should be tapered slowly under your provider's guidance.");
+  }
+  if (c.includes("stimulant") && !c.includes("non-stimulant")) {
+    extraSafety.push("This is a controlled substance with potential for misuse. Store it securely, do not share it with anyone, and take it exactly as prescribed. Avoid dosing late in the day, as it can interfere with sleep.");
+    extraWarnings.push("Seek prompt medical care for chest pain, fainting, shortness of breath, or a racing/irregular heartbeat. Tell your provider about any personal or family history of heart problems.");
+  }
+  // Opioid-related classes need to be told apart carefully: "antagonist" contains the
+  // literal substring "agonist", and antagonists (e.g. naltrexone, naloxone) have the
+  // opposite risk profile from agonists (e.g. methadone, buprenorphine) — mixing up the
+  // guidance here would be a real patient-safety error, not just a wording issue.
+  const isOpioidAgonist = /opioid agonist/i.test(med.class);
+  const isOverdoseReversal = /overdose reversal/i.test(med.class);
+  const isOpioidAntagonistOnly = !isOpioidAgonist && /opioid antagonist/i.test(med.class);
+  if (isOpioidAgonist) {
+    extraSafety.push("This medication carries a risk of dependence and, in overdose, can be fatal. Never combine it with alcohol, benzodiazepines, or other sedatives without your provider's explicit approval. Store it securely and do not share it.");
+    extraWarnings.push("Seek emergency care for slow or difficult breathing, extreme drowsiness, blue lips or fingertips, or unresponsiveness.");
+  } else if (isOverdoseReversal) {
+    extraSafety.push("This medication is used to reverse a suspected opioid overdose in an emergency — it is not taken on a regular schedule. Keep it accessible to household members or others who may need to use it, and make sure they know how.");
+    extraWarnings.push("Call 911 immediately after giving this medication, even if the person seems to recover — overdose effects can return once it wears off.");
+  } else if (isOpioidAntagonistOnly) {
+    extraSafety.push("This medication blocks the effects of opioids and is not itself an opioid — it does not cause dependence. You generally must be opioid-free for a period your provider specifies before starting it, and you should avoid using opioids while taking it.");
+    extraWarnings.push("Carry or wear medical identification noting that you take this medication — it changes how opioid pain medications and opioid-overdose treatment work if you ever need them in an emergency.");
+  }
+  if (c.includes("antipsychotic")) {
+    extraSafety.push("This medication may require periodic monitoring of your weight, blood sugar, and cholesterol. Keep your scheduled lab and follow-up appointments.");
+    extraWarnings.push("Seek emergency care for high fever, severe muscle stiffness, confusion, or a fast/irregular heartbeat (rare, but can signal a medical emergency called neuroleptic malignant syndrome). Tell your provider about any new, uncontrollable movements of the face, tongue, or limbs — this can be a sign of tardive dyskinesia.");
+  }
+  if (c.includes("tricyclic")) {
+    extraSafety.push("This medication can be dangerous in overdose. Store it securely, keep it away from children, and take only your prescribed amount.");
+    extraWarnings.push("Seek care for irregular heartbeat, fainting, or severe dizziness when standing up.");
+  }
+  if (med.name.toLowerCase() === "lithium") {
+    extraSafety.push("Stay consistently hydrated and keep your salt intake steady — dehydration and low sodium can raise lithium levels to unsafe amounts. Avoid NSAIDs (ibuprofen, naproxen) unless your provider approves. Routine blood levels and kidney/thyroid monitoring are required.");
+    extraWarnings.push("Seek immediate care for signs of toxicity: persistent vomiting or diarrhea, severe tremor, confusion, slurred speech, or loss of coordination.");
+  }
+  if (c.includes("maoi")) {
+    extraSafety.push("Certain foods high in tyramine (aged cheeses, cured or fermented meats, tap beer, soy sauce) and many other medications can cause a dangerous blood pressure spike. Ask your provider or pharmacist for a full dietary and medication list before starting.");
+  }
+
+  return { extraSafety, extraWarnings };
+}
+
+function expectationText(med) {
+  const c = med.class.toLowerCase();
+  if ((c.includes("stimulant") && !c.includes("non-stimulant")) || c.includes("wakefulness")) {
+    return "This medication typically begins working within 30–60 minutes of a dose, with effects lasting several hours depending on the specific formulation. Talk to your provider about timing doses around your daily schedule.";
+  }
+  if (c.includes("benzodiazepine") || c.includes("z-drug") || c.includes("orexin") || c.includes("melatonin")) {
+    return "This medication usually takes effect within 30–60 minutes. Depending on what it's prescribed for, your provider may intend it for short-term, as-needed, or ongoing use — ask which applies to you.";
+  }
+  if (c.includes("antipsychotic")) {
+    return "Calming or sedating effects may be noticeable within hours to days. Full benefit for mood, psychotic, or other target symptoms can take 1–6 weeks of consistent use — don't judge effectiveness too early.";
+  }
+  if (/(ssri|snri|tricyclic|nassa|ndri|spari|sari|mood stabilizer|anticonvulsant|maoi)/.test(c)) {
+    return "Side effects often show up before benefits do — this is normal and usually temporary. Full benefit for mood or anxiety symptoms typically takes 2–8 weeks of consistent use. Partial improvement earlier is a good sign — keep taking it and stay in touch with your provider.";
+  }
+  return "Ask your provider what timeline to expect for this specific medication — some medications act within hours, while others take days to weeks to reach full effect.";
+}
+
+function buildMedHandout(med) {
+  const { extraSafety, extraWarnings } = classSafetyGuidance(med);
+  const sections = [];
+
+  sections.push({
+    heading: "What this medication is and why it's prescribed",
+    content: `${med.name} (brand name: ${med.brand}) is classified as a ${med.class.replace(/\s*\(.*?\)\s*/g," ").trim()} medication. Your provider prescribes it based on your specific diagnosis and history — not every use listed below will apply to you.`,
+  });
+
+  sections.push({ heading: "FDA-approved uses", bullets: med.fdaUses });
+
+  if (med.offLabel && med.offLabel.length) {
+    sections.push({
+      heading: "Other uses your provider may prescribe it for",
+      content: "Your provider may prescribe this medication for a condition not officially listed on the FDA label, based on clinical evidence and your individual situation. This is a common and accepted practice in psychiatry.",
+      bullets: med.offLabel,
+    });
+  }
+
+  sections.push({
+    heading: "How to take it",
+    bullets: [
+      `Typical dosing range: ${med.dosing}. Your provider will set your specific starting and target dose — do not adjust it on your own.`,
+      "Take it at the same time each day, exactly as prescribed.",
+      "If you miss a dose, take it as soon as you remember unless it's almost time for your next dose — do not double up.",
+      "Do not stop this medication on your own, even if you feel better or feel it isn't helping — talk to your provider first.",
+      ...extraSafety,
+    ],
+  });
+
+  sections.push({ heading: "What to expect", content: expectationText(med) });
+
+  sections.push({ heading: "Common side effects", bullets: med.sideEffects });
+
+  sections.push({
+    heading: "Warning signs — contact your provider or seek care",
+    content: med.safety,
+    bullets: [
+      "New or worsening thoughts of self-harm or suicide — call or text 988 (Suicide & Crisis Lifeline) or go to the nearest emergency room.",
+      "Signs of a severe allergic reaction: rash, swelling of the face or throat, difficulty breathing.",
+      ...extraWarnings,
+    ],
+  });
+
+  if (med.interactions && med.interactions.length) {
+    sections.push({
+      heading: "Medications and substances to be careful with",
+      content: "Tell every prescriber, dentist, and pharmacist that you take this medication. Do not start a new prescription, over-the-counter medication, or supplement without checking first.",
+      bullets: med.interactions,
+    });
+  }
+
+  if (med.pregnancy) {
+    sections.push({
+      heading: "Pregnancy & breastfeeding",
+      content: `${med.pregnancy}. If you are pregnant, breastfeeding, or planning a pregnancy, discuss the risks and benefits with your provider — do not stop this medication on your own.`,
+    });
+  }
+
+  return {
+    id: `med-${med.id}`,
+    category: "Medication Education",
+    lang: "en",
+    title: `${med.name} (${med.brand}) — Patient Medication Guide`,
+    subtitle: `${med.class} · What to know before you start`,
+    color: "#22c55e",
+    sections,
+  };
+}
+
+const MED_HANDOUTS = MEDICATIONS.map(buildMedHandout);
+const ALL_HANDOUTS = [...HANDOUTS, ...MED_HANDOUTS];
+
 function printHandoutWindow(handout) {
   const esc = s => String(s).replace(/</g,"&lt;").replace(/>/g,"&gt;");
   let body = "";
@@ -4087,11 +4237,11 @@ function HandoutsModule() {
   const [catFilter, setCatFilter] = useState("All");
   const [langFilter, setLangFilter] = useState("en");
 
-  const categories = ["All", ...Array.from(new Set(HANDOUTS.filter(h=>h.lang===langFilter).map(h=>h.category)))];
+  const categories = ["All", ...Array.from(new Set(ALL_HANDOUTS.filter(h=>h.lang===langFilter).map(h=>h.category)))];
 
   const filtered = useMemo(()=>{
     const q = search.toLowerCase();
-    return HANDOUTS.filter(h=>{
+    return ALL_HANDOUTS.filter(h=>{
       const matchLang = h.lang===langFilter;
       const matchCat = catFilter==="All"||h.category===catFilter;
       const matchSearch = !q||h.title.toLowerCase().includes(q)||h.category.toLowerCase().includes(q)||h.subtitle.toLowerCase().includes(q);
