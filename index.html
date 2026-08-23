@@ -4153,6 +4153,35 @@ function buildMedHandout(med) {
 const MED_HANDOUTS = MEDICATIONS.map(buildMedHandout);
 const ALL_HANDOUTS = [...HANDOUTS, ...MED_HANDOUTS];
 
+// ─── INTERACTION CHECKER — RISK-TAG HEURISTICS ────────────────────────────────
+// These tags are derived from fields already curated per medication (class,
+// side effects, interactions, safety notes) — not a separate pharmacology
+// database. They flag ADDITIVE/CLASS-LEVEL risk (e.g. two serotonergic drugs
+// together) so a reviewer can spot burden at a glance. They intentionally do
+// NOT attempt CYP450 or other pharmacokinetic interaction modeling, since that
+// data isn't part of this dataset — see the disclaimer in the module itself.
+
+const RISK_TAGS = {
+  serotonergic: { label: "Serotonergic", color: "#f87171", note: "Combining serotonergic agents raises the risk of serotonin syndrome (agitation, tremor, hyperreflexia, autonomic instability). Risk is highest at initiation, dose increases, or when adding a new serotonergic agent to an existing one." },
+  qtc: { label: "QTc-Prolonging", color: "#fb923c", note: "Combining QTc-prolonging agents has an additive effect on cardiac repolarization. Consider baseline/interval ECG monitoring, especially with other cardiac risk factors, electrolyte abnormalities, or higher doses." },
+  sedating: { label: "Sedating / CNS-Depressant", color: "#a78bfa", note: "Combining sedating agents increases fall risk, cognitive slowing, and respiratory depression risk (especially with opioids or alcohol). Use particular caution in elderly patients." },
+  anticholinergic: { label: "Anticholinergic", color: "#38bdf8", note: "Anticholinergic burden is cumulative — combining these agents increases risk of confusion, constipation, urinary retention, dry mouth, and (especially in older adults) cognitive impairment and delirium." },
+};
+
+function medRiskTags(med) {
+  const c = med.class.toLowerCase();
+  const blob = (med.safety + " " + med.interactions.join(" ") + " " + med.sideEffects.join(" ")).toLowerCase();
+  const isOpioidAgonist = /opioid agonist/i.test(med.class);
+  const isSedatingClass = /benzodiazepine|z-drug|orexin|antihistamine/.test(c) || (c.includes("melatonin") && !c.includes("non-"));
+  const anticholinergicHits = ["dry mouth", "constipation", "urinary retention", "blurred vision"].filter(s => blob.includes(s)).length;
+  return {
+    serotonergic: blob.includes("serotonin") || /\bssri\b|\bsnri\b|tricyclic|\bsari\b|nassa|spari|azapirone/.test(c),
+    qtc: blob.includes("qtc"),
+    sedating: isSedatingClass || blob.includes("sedation") || blob.includes("somnolence") || blob.includes("drowsiness") || /benzodiazepine|z-drug/.test(c) || isOpioidAgonist,
+    anticholinergic: c.includes("tricyclic") || anticholinergicHits >= 2,
+  };
+}
+
 function printHandoutWindow(handout) {
   const esc = s => String(s).replace(/</g,"&lt;").replace(/>/g,"&gt;");
   let body = "";
@@ -4318,6 +4347,113 @@ function HandoutsModule() {
 }
 
 // ─── APP ─────────────────────────────────────────────────────────────────────
+// ─── INTERACTION CHECKER MODULE ───────────────────────────────────────────────
+
+function InteractionCheckerModule() {
+  const [selectedIds, setSelectedIds] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const selected = selectedIds.map(id => MEDICATIONS.find(m => m.id === id)).filter(Boolean);
+
+  const suggestions = useMemo(() => {
+    const q = search.toLowerCase().trim();
+    if (!q) return [];
+    return MEDICATIONS.filter(m =>
+      !selectedIds.includes(m.id) &&
+      (m.name.toLowerCase().includes(q) || m.brand.toLowerCase().includes(q))
+    ).slice(0, 8);
+  }, [search, selectedIds]);
+
+  const addMed = (id) => { setSelectedIds([...selectedIds, id]); setSearch(""); };
+  const removeMed = (id) => setSelectedIds(selectedIds.filter(x => x !== id));
+
+  const tagged = selected.map(m => ({ med: m, tags: medRiskTags(m) }));
+  const burdens = Object.keys(RISK_TAGS).map(key => ({
+    key,
+    ...RISK_TAGS[key],
+    meds: tagged.filter(t => t.tags[key]).map(t => t.med),
+  })).filter(b => b.meds.length >= 2);
+
+  return (
+    <div>
+      <div style={{background:"#1a0505",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#fca5a5",fontSize:"0.82rem",lineHeight:1.6}}>
+        ⚠ This tool cross-references data already curated elsewhere in this app, plus basic pharmacologic-class heuristics (serotonergic, QTc, sedating, anticholinergic burden). It does <b>not</b> model CYP450 or other pharmacokinetic interactions, and it does not check against non-psychiatric medications. It's a screening aid to surface additive risk at a glance — not a substitute for a full interaction database (e.g. Lexicomp/Epocrates) or pharmacist review.
+      </div>
+
+      <div style={{marginBottom:"20px"}}>
+        <div style={{position:"relative"}}>
+          <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search a medication to add (e.g. sertraline, Zoloft)..."
+            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 14px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
+          {suggestions.length > 0 && (
+            <div style={{position:"absolute",top:"100%",left:0,right:0,background:"#0f1724",border:"1px solid #1e293b",borderRadius:"10px",marginTop:"4px",zIndex:10,overflow:"hidden"}}>
+              {suggestions.map(m => (
+                <div key={m.id} onClick={()=>addMed(m.id)}
+                  style={{padding:"10px 14px",cursor:"pointer",borderBottom:"1px solid #1e293b"}}
+                  onMouseEnter={e=>e.currentTarget.style.background="#1e293b"}
+                  onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
+                  <span style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.875rem"}}>{m.name}</span>
+                  <span style={{color:"#64748b",fontSize:"0.78rem"}}> · {m.brand} · {m.class}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+
+        {selected.length > 0 && (
+          <div style={{display:"flex",flexWrap:"wrap",gap:"8px",marginTop:"12px"}}>
+            {selected.map(m => (
+              <div key={m.id} style={{display:"flex",alignItems:"center",gap:"8px",background:"#0ea5e920",border:"1px solid #0ea5e940",borderRadius:"20px",padding:"6px 8px 6px 14px"}}>
+                <span style={{color:"#e2e8f0",fontSize:"0.82rem",fontWeight:600}}>{m.name}</span>
+                <button onClick={()=>removeMed(m.id)} style={{background:"none",border:"none",color:"#64748b",cursor:"pointer",fontSize:"1rem",lineHeight:1,padding:"2px 4px"}}>✕</button>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {selected.length === 0 && (
+        <div style={{color:"#475569",fontSize:"0.85rem",padding:"20px 0"}}>Add two or more medications to check for shared-class risk and review each one's curated interaction list side by side.</div>
+      )}
+
+      {selected.length >= 2 && (
+        <div style={{marginBottom:"28px"}}>
+          <div style={{color:"#e2e8f0",fontSize:"1rem",fontWeight:700,marginBottom:"12px"}}>Shared-risk flags</div>
+          {burdens.length === 0 && (
+            <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",color:"#86efac",fontSize:"0.82rem"}}>
+              No shared-class risk burden detected among the selected medications by this tool's heuristics. This does not rule out an interaction — see the disclaimer above.
+            </div>
+          )}
+          {burdens.map(b => (
+            <div key={b.key} style={{background:"#0a0e17",border:`1px solid ${b.color}40`,borderLeft:`3px solid ${b.color}`,borderRadius:"10px",padding:"14px 16px",marginBottom:"10px"}}>
+              <div style={{color:b.color,fontWeight:700,fontSize:"0.9rem",marginBottom:"6px"}}>{b.label} burden — {b.meds.map(m=>m.name).join(", ")}</div>
+              <div style={{color:"#cbd5e1",fontSize:"0.82rem",lineHeight:1.6}}>{b.note}</div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {selected.length >= 1 && (
+        <div>
+          <div style={{color:"#e2e8f0",fontSize:"1rem",fontWeight:700,marginBottom:"12px"}}>Per-medication interactions &amp; safety notes</div>
+          {selected.map(m => (
+            <div key={m.id} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"16px",marginBottom:"12px"}}>
+              <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:"10px"}}>
+                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"1rem"}}>{m.name} <span style={{color:"#64748b",fontWeight:400,fontSize:"0.8rem"}}>· {m.brand} · {m.class}</span></div>
+              </div>
+              <div style={{display:"flex",flexWrap:"wrap",gap:"6px",marginBottom:"10px"}}>
+                {m.interactions.map(item => (
+                  <span key={item} style={{background:"#f8717115",border:"1px solid #f8717130",color:"#cbd5e1",borderRadius:"6px",padding:"3px 10px",fontSize:"0.78rem"}}>{item}</span>
+                ))}
+              </div>
+              <div style={{color:"#94a3b8",fontSize:"0.8rem",lineHeight:1.6}}>{m.safety}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── CRISIS REFERENCE MODULE ──────────────────────────────────────────────────
 
 const CRISIS_DATA = {
@@ -5011,6 +5147,7 @@ const TABS = [
   {id:"labs",label:"Lab Monitoring",icon:"🧪"},
   {id:"aug",label:"Augmentation",icon:"📈"},
   {id:"compare",label:"Drug Comparisons",icon:"⚖️"},
+  {id:"interactions",label:"Interaction Checker",icon:"🔀"},
   {id:"tapers",label:"Tapers",icon:"📉"},
   {id:"handouts",label:"Patient Handouts",icon:"🖨"},
   {id:"crisis",label:"Crisis Reference",icon:"🚨"},
@@ -5051,6 +5188,7 @@ function App() {
         {tab==="labs"&&<LabsModule/>}
         {tab==="aug"&&<AugmentationModule/>}
         {tab==="compare"&&<ComparisonsModule/>}
+        {tab==="interactions"&&<InteractionCheckerModule/>}
         {tab==="tapers"&&<TapersModule/>}
         {tab==="handouts"&&<HandoutsModule/>}
         {tab==="crisis"&&<CrisisModule/>}
