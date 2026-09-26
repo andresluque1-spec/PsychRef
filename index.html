@@ -58,7 +58,7 @@ const MEDICATIONS = [
     offLabel: ["Premature ejaculation", "Hot flashes (low-dose Brisdelle formulation is FDA-approved for this specifically)", "Binge eating disorder"],
     sideEffects: ["Sedation (most sedating SSRI)", "Weight gain (most weight gain among SSRIs)", "Sexual dysfunction (highest rate among SSRIs)", "Anticholinergic effects (dry mouth, constipation)", "Nausea", "Sweating", "Severe discontinuation syndrome"],
     interactions: ["MAOIs (contraindicated)", "Thioridazine, pimozide (contraindicated)", "Potent CYP2D6 inhibitor — increases levels of tamoxifen (reduces its efficacy significantly), many antipsychotics, TCAs, codeine (reduces conversion to active metabolite)", "Linezolid", "Tramadol", "NSAIDs/warfarin (bleeding risk)"],
-    safety: "Most anticholinergic and most sedating SSRI — useful when sedation desired, problematic otherwise. Highest discontinuation syndrome risk among SSRIs due to short half-life and potent serotonin reuptake inhibition — taper slowly and consider switching to fluoxetine first for difficult tapers. Potent CYP2D6 inhibitor — significant DDI burden, especially with tamoxifen (avoid combination in breast cancer patients on tamoxifen). Category D in pregnancy — avoid, particularly first trimester (cardiac malformation signal) and third trimester (neonatal adaptation syndrome). Black box: suicidality <25. Avoid abrupt discontinuation.",
+    safety: "Most anticholinergic and most sedating SSRI — useful when sedation desired, problematic otherwise. Highest discontinuation syndrome risk among SSRIs due to short half-life and potent serotonin reuptake inhibition — taper slowly. Potent CYP2D6 inhibitor — significant DDI burden, especially with tamoxifen. Pregnancy requires an individualized risk–benefit discussion using current labeling. Black box: suicidality in younger patients. Avoid abrupt discontinuation.",
     dosing: "IR: Start 10–20mg/day, target 20–60mg/day | CR: Start 12.5–25mg/day, target 25–62.5mg/day",
     halfLife: "21 hours (24h CR)",
     pregnancy: "Category D — AVOID, especially first and third trimester",
@@ -367,7 +367,7 @@ const MEDICATIONS = [
     offLabel: ["Treatment-resistant bipolar disorder", "Parkinson's disease psychosis", "Violent/aggressive behavior"],
     sideEffects: ["Agranulocytosis (BLACK BOX)", "Metabolic syndrome", "Myocarditis (BLACK BOX)", "Sialorrhea", "Seizures (dose-dependent)", "Constipation (can be fatal)", "Sedation", "Orthostasis"],
     interactions: ["Cigarette smoking (CYP1A2 induction — reduces levels)", "Fluvoxamine (increases levels dramatically)", "Cimetidine", "Carbamazepine (avoid)", "Benzodiazepines"],
-    safety: "CLOZAPINE REMS MANDATORY. ANC monitoring required. Agranulocytosis risk. Myocarditis — monitor CRP/troponin first 4 weeks. Constipation bowel regimen essential. Smoking cessation dramatically increases levels.",
+    safety: "FDA removed the clozapine REMS effective June 13, 2025. ANC monitoring remains clinically important for severe neutropenia risk; follow the current product label and local protocol. Myocarditis, severe constipation, seizures, and smoking-related level changes also require careful monitoring.",
     dosing: "Start 12.5–25mg/day; titrate slowly; target 300–600mg/day", halfLife: "12 hours", pregnancy: "Category B",
   },
   {
@@ -1447,7 +1447,7 @@ function MedCard({ med, onClose }) {
           </div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"12px",marginBottom:"24px"}}>
-          {[["Dosing",med.dosing],["Half-Life",med.halfLife],["Pregnancy",med.pregnancy]].map(([label,val])=>(
+          {[["Dosing",med.dosing],["Half-Life",med.halfLife],["Pregnancy / lactation","Consult current FDA labeling (sections 8.1–8.3) for an individualized risk–benefit assessment; legacy letter categories in source data are obsolete."]].map(([label,val])=>(
             <div key={label} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px"}}>
               <div style={{color:"#64748b",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"4px"}}>{label}</div>
               <div style={{color:"#cbd5e1",fontSize:"0.8rem",lineHeight:1.5}}>{val}</div>
@@ -1488,6 +1488,9 @@ function MedicationsModule() {
   },[search,classFilter]);
   return (
     <div>
+      <div style={{background:"#352314",border:"1px solid #9a6227",borderRadius:"10px",padding:"14px 16px",marginBottom:"18px",color:"#f7dfb3",fontSize:"0.84rem",lineHeight:1.55}}>
+        <b>Medication content review in progress.</b> This static reference is not automatically synchronized with FDA labels. Verify indications, dosing, interactions, pregnancy/lactation information, and safety changes before prescribing. <a href="medication-updates.html" target="_blank" rel="noopener" style={{color:"#9fe3dc"}}>Review status and primary sources →</a>
+      </div>
       <div style={{marginBottom:"24px"}}>
         <div style={{position:"relative",marginBottom:"12px"}}>
           <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}><SearchIcon/></div>
@@ -1844,7 +1847,7 @@ const LAB_PROTOCOLS = [
           {test:"Ammonia level",reason:"Hyperammonemia can occur even with normal LFTs; can cause encephalopathy"},
           {test:"Coagulation panel (PT/INR)",reason:"Valproate inhibits platelet aggregation and affects coagulation"},
           {test:"BMP",reason:"Renal function; electrolytes baseline"},
-          {test:"Pregnancy test + counseling (MANDATORY)",reason:"MAJOR TERATOGEN — neural tube defects, fetal valproate syndrome, cognitive impairment. REMS program required for women of reproductive potential"},
+          {test:"Pregnancy test + counseling (MANDATORY)",reason:"MAJOR TERATOGEN — neural tube defects and neurodevelopmental risks. Discuss alternatives, pregnancy prevention, and current product labeling; no FDA valproate REMS enrollment is required."},
           {test:"Weight / BMI",reason:"Weight gain is common; baseline needed to track"},
         ]
       },
@@ -1884,15 +1887,15 @@ const LAB_PROTOCOLS = [
   {
     id:"clozapine", name:"Clozapine", category:"Atypical Antipsychotic",
     color:"#f87171",
-    rationale:"REMS-mandated ANC monitoring for agranulocytosis. Myocarditis risk (early). Metabolic effects. Seizure threshold lowering. Severe constipation.",
+    rationale:"ANC monitoring remains important for severe neutropenia risk. FDA removed the clozapine REMS in 2025. Also assess myocarditis, metabolic effects, seizures, and severe constipation.",
     therapeuticRange:"350–600 ng/mL (plasma level, non-REMS — but used clinically for optimization)",
-    toxicityLevel:"Agranulocytosis: ANC <500/mm³ (severe neutropenia). Myocarditis: CRP, troponin elevation weeks 1–4.",
-    timingNote:"ANC must be verified in REMS registry before each dispense. Plasma levels: trough, morning before dose.",
+    toxicityLevel:"Severe neutropenia (ANC below 500/mm³) requires urgent assessment. Myocarditis risk is greatest early in treatment.",
+    timingNote:"Follow current label and local ANC monitoring protocol; REMS registry verification is no longer required. Obtain plasma levels when clinically indicated.",
     panels:[
       {
         name:"Baseline (mandatory before first dose)",
         tests:[
-          {test:"ANC (Absolute Neutrophil Count)",reason:"CLOZAPINE REMS REQUIREMENT. Must be ≥1500/mm³ (≥1000 for Benign Ethnic Neutropenia patients) before initiating"},
+          {test:"ANC (Absolute Neutrophil Count)",reason:"Follow the current clozapine label and local monitoring protocol for severe neutropenia risk. FDA removed the REMS in 2025; REMS enrollment is no longer required."},
           {test:"CBC with differential",reason:"Full baseline blood count"},
           {test:"CMP / LFTs",reason:"Metabolic baseline; hepatic impairment affects clozapine metabolism"},
           {test:"Fasting glucose / HbA1c",reason:"Highest metabolic risk antipsychotic — diabetes risk significant"},
@@ -1906,25 +1909,25 @@ const LAB_PROTOCOLS = [
       {
         name:"Weeks 1–4 (Myocarditis Surveillance)",
         tests:[
-          {test:"ANC — WEEKLY (REMS mandatory)",reason:"Highest agranulocytosis risk is first 18 weeks"},
+          {test:"ANC — follow current label/local protocol",reason:"Highest agranulocytosis risk is first 18 weeks"},
           {test:"CRP — weekly weeks 1–4",reason:"CRP >100 mg/L suggests myocarditis — hold clozapine, cardiology referral"},
           {test:"Troponin — weekly weeks 1–4",reason:"Troponin elevation with CRP = myocarditis signal; may need to permanently discontinue"},
           {test:"Vital signs / HR monitoring",reason:"Persistent tachycardia (>120 BPM resting) is a myocarditis warning sign"},
         ]
       },
       {
-        name:"Months 1–6 (REMS Phase)",
+        name:"Early treatment monitoring",
         tests:[
-          {test:"ANC — WEEKLY (weeks 1–26)",reason:"REMS mandatory — cannot dispense without current ANC in registry"},
+          {test:"ANC — follow current label/local protocol",reason:"FDA REMS enrollment is no longer required; monitor ANC according to the current label and local protocol"},
           {test:"Fasting glucose",reason:"Monthly — diabetes risk is highest in first 3–4 months"},
           {test:"Weight",reason:"Monthly — rapid weight gain common early"},
           {test:"BP",reason:"Monthly — orthostatic hypotension common, especially during titration"},
         ]
       },
       {
-        name:"Month 6+ (Stable Monitoring)",
+        name:"Ongoing monitoring",
         tests:[
-          {test:"ANC — every 4 weeks (after 6 months stable)",reason:"REMS mandatory — must remain in registry; frequency reduces after 6 months if ANC stable"},
+          {test:"ANC — follow current label/local protocol",reason:"FDA REMS enrollment is no longer required; follow current labeling and individual clinical needs"},
           {test:"Fasting glucose / HbA1c",reason:"Every 3–6 months"},
           {test:"Fasting lipid panel",reason:"Every 6 months"},
           {test:"Weight / metabolic panel",reason:"Every 3 months"},
@@ -1935,9 +1938,9 @@ const LAB_PROTOCOLS = [
       {
         name:"ANC Thresholds — Action Required",
         tests:[
-          {test:"ANC 1000–1499/mm³",reason:"Interrupt clozapine. Check ANC daily until ≥1500, then twice weekly for 4 weeks"},
-          {test:"ANC 500–999/mm³",reason:"HOLD clozapine. Daily ANC monitoring. Hematology consult. Do NOT rechallenge until hematology clearance"},
-          {test:"ANC <500/mm³",reason:"DISCONTINUE PERMANENTLY. Do not rechallenge. Hematology consult immediately. Report to REMS"},
+          {test:"ANC below expected range",reason:"Evaluate promptly using the current label and hematology guidance; actions vary with baseline ANC and clinical context"},
+          {test:"Moderate neutropenia",reason:"Use current labeling and urgent clinical assessment to determine interruption, monitoring, and hematology consultation"},
+          {test:"Severe neutropenia",reason:"Urgent evaluation and interruption per current labeling; consult hematology regarding management and any future rechallenge"},
           {test:"Smoking status change",reason:"Smoking induces CYP1A2 — cessation can increase clozapine levels 30–50%. Check levels within 2 weeks of cessation"},
         ]
       }
@@ -2666,7 +2669,7 @@ const AUGMENTATION_DATA = [
       },
       { step:"Clozapine — Gold Standard for TRS", rationale:"Clozapine is the only evidence-based treatment for TRS. Superior efficacy vs all other antipsychotics. Do not delay unnecessarily due to monitoring burden.",
         options:[
-          {name:"Clozapine initiation",detail:"Start 12.5–25mg/day. Titrate slowly to 300–450mg/day. REMS enrollment mandatory before prescribing.",evidence:"Level A · Only proven TRS treatment",caution:"REMS mandatory. ANC monitoring. Myocarditis risk weeks 1–4. Seizure risk >600mg. Constipation protocol essential."},
+          {name:"Clozapine initiation",detail:"Start low and titrate carefully according to the current label and patient factors. FDA removed the REMS effective June 13, 2025.",evidence:"Level A · Treatment-resistant schizophrenia",caution:"ANC monitoring remains important. Assess myocarditis, seizure, and severe constipation risks; follow current labeling and local protocol."},
           {name:"Clozapine plasma level optimization",detail:"Target 350–600 ng/mL. Levels <250 ng/mL = subtherapeutic regardless of dose.",evidence:"Level A",caution:"Smoking cessation dramatically raises levels. Check level with any smoking status change."},
         ]
       },
@@ -2779,7 +2782,7 @@ const COMPARISON_TABLES = [
       {property:"Food required",values:["No","No","No","No","Yes (500 cal)","Yes (350 cal)"]},
       {property:"Best for",values:["Acute agitation/IM","Sedation/bipolar dep","Cost-effective","Low metabolic risk","Weight-conscious","Bipolar dep / low metabolic"]},
     ],
-    footnotes:["Clozapine omitted — reserved for TRS with REMS; incomparable efficacy profile","Metabolic monitoring per APA/ADA protocol required for all SGAs"]
+    footnotes:["Clozapine omitted — reserved for treatment-resistant schizophrenia; FDA removed the REMS in 2025, but ANC monitoring remains important","Metabolic monitoring per current clinical guidance for all SGAs"]
   },
   {
     id:"benzo-compare", name:"Benzodiazepines — Side-by-Side", color:"#fb923c",
@@ -2810,7 +2813,7 @@ const COMPARISON_TABLES = [
       {property:"Antisuicidal effect",values:["Yes — independent","No data","No data","No data"]},
       {property:"Target level",values:["0.6–1.2 mEq/L","50–125 mcg/mL","3–15 mcg/mL (optional)","4–12 mcg/mL"]},
       {property:"Monitoring burden",values:["High (renal/thyroid)","High (LFTs/CBC)","Low (SJS watch)","High (CBC/Na/LFTs)"]},
-      {property:"Teratogenicity",values:["Category D (Ebstein's)","Category X (NTD — REMS)","Category C","Category D (NTD)"]},
+      {property:"Teratogenicity",values:["See current pregnancy labeling","See current pregnancy labeling","Category C","See current pregnancy labeling"]},
       {property:"Weight effects",values:["Gain common","Gain common","Neutral/mild loss","Neutral"]},
       {property:"Key DDIs",values:["NSAIDs/ACEi/diuretics","Lamotrigine/carbapenems","VPA doubles levels/OCPs","CYP3A4 inducer — many drugs"]},
       {property:"Unique strength",values:["Antisuicidal/longest evidence","Rapid mania control","Best bipolar dep/maint","Neuropathic pain comorbidity"]},
@@ -4132,12 +4135,10 @@ function buildMedHandout(med) {
     });
   }
 
-  if (med.pregnancy) {
-    sections.push({
-      heading: "Pregnancy & breastfeeding",
-      content: `${med.pregnancy}. If you are pregnant, breastfeeding, or planning a pregnancy, discuss the risks and benefits with your provider — do not stop this medication on your own.`,
-    });
-  }
+  sections.push({
+    heading: "Pregnancy & breastfeeding",
+    content: "If you are pregnant, breastfeeding, or planning a pregnancy, ask your prescriber to review the current product information with you. Do not stop this medication on your own.",
+  });
 
   return {
     id: `med-${med.id}`,
@@ -5074,12 +5075,14 @@ const LIBRARY_PAGES = [
     {t:"Palm Beach County Crisis Card", d:"Local receiving facilities, 988/211, 60-second telehealth drill", u:"crisis-card-pbc.html"},
   ]},
   {group:"Medication Deep Dives", color:"#38bdf8", pages:[
+    {t:"Medication Update Status", d:"FDA sources, review workflow, and verified corrections", u:"medication-updates.html"},
     {t:"Lithium Handbook", d:"Levels, toxicity bands, interactions, kidney/thyroid, sick-day rules", u:"lithium.html"},
     {t:"Perinatal Prescribing", d:"Pregnancy & lactation by agent; zuranolone; postpartum psychosis", u:"perinatal.html"},
     {t:"Serotonin Syndrome vs NMS", d:"Side-by-side discriminators, Hunter criteria, triage, rechallenge", u:"ss-nms.html"},
     {t:"Switching & Cross-Titration", d:"Four strategies, MAOI washouts, discontinuation vs relapse", u:"switching.html"},
   ]},
   {group:"Therapy Modules", color:"#818cf8", pages:[
+    {t:"Brief Therapy Toolkit", d:"20–25 minute workflow and four printable English/Spanish worksheets", u:"brief-therapy.html"},
     {t:"Behavioral Activation", d:"Brief BA protocol, session skeletons, activity menu, Spanish", u:"behavioral-activation.html"},
     {t:"Supportive Psychotherapy", d:"Ten named techniques, session shape, traps, documentation", u:"supportive-therapy.html"},
     {t:"DBT Skills Sampler", d:"STOP, TIPP, opposite action, paced breathing, teaching loop", u:"dbt-skills.html"},
