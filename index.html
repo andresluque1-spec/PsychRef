@@ -1068,6 +1068,46 @@ const MEDICATIONS = [
     halfLife: "Naltrexone 4h; bupropion 21h",
     pregnancy: "Category X — weight loss contraindicated in pregnancy",
   },
+  {
+    id: 100, name: "Milsaperidone", brand: "Bysanti", class: "Atypical Antipsychotic",
+    fdaUses: ["Schizophrenia in adults", "Acute manic or mixed episodes associated with bipolar I disorder in adults"],
+    offLabel: [],
+    sideEffects: ["Dizziness", "Dry mouth", "Somnolence", "Tachycardia", "Orthostatic hypotension", "Weight gain", "Nasal congestion"],
+    interactions: ["Avoid drugs that prolong QTc", "Strong CYP2D6 inhibitors — dose adjustment", "Strong CYP3A4 inhibitors — dose adjustment", "Avoid alpha-adrenergic blockers; review other blood-pressure-lowering drugs"],
+    safety: "FDA-approved February 2026. Boxed warning: increased mortality in elderly patients with dementia-related psychosis; not approved for that use. Titrate to limit orthostatic hypotension. Assess QTc and cardiac risk, metabolic effects, and CYP2D6 status/interactions; monitor potassium and magnesium in patients at risk of electrolyte disturbance. Restart titration if more than 3 days of treatment are missed. Consult the current label for hepatic impairment and interaction-specific dosing.",
+    dosing: "Oral twice daily, with or without food. Start 1 mg twice daily and titrate per label; after titration, schizophrenia 6–12 mg twice daily, bipolar mania 12 mg twice daily. Lower schedules apply to CYP2D6 poor metabolizers and with strong CYP inhibitors.",
+    halfLife: "Milsaperidone: 26 hours (CYP2D6 normal metabolizers); 37 hours (poor metabolizers)",
+    pregnancy: "See current FDA pregnancy and lactation labeling",
+    labelUrl: "https://dailymed.nlm.nih.gov/dailymed/drugInfo.cfm?setid=254a1c01-4a4c-4bdd-85d6-1f23f2e4e6f8",
+    labelReviewed: "2026-10-01",
+  },
+  {
+    id: 101, name: "Xanomeline/Trospium Chloride", brand: "Cobenfy", class: "Muscarinic Agonist + Antagonist",
+    fdaUses: ["Schizophrenia in adults"],
+    offLabel: [],
+    sideEffects: ["Nausea", "Dyspepsia", "Constipation", "Vomiting", "Hypertension", "Abdominal pain", "Diarrhea", "Tachycardia", "Dizziness", "Gastroesophageal reflux"],
+    interactions: ["Strong CYP2D6 inhibitors — monitor adverse effects", "Other antimuscarinic drugs — additive adverse effects", "Drugs eliminated by active tubular secretion — monitor both drugs", "Sensitive oral CYP3A4 or P-glycoprotein substrates — monitor for increased effects"],
+    safety: "Assess liver enzymes, bilirubin, and heart rate before treatment and as clinically indicated. Contraindicated with urinary retention, gastric retention, moderate/severe hepatic impairment, untreated narrow-angle glaucoma, or prior hypersensitivity. Not recommended in mild hepatic impairment or moderate/severe renal impairment. Monitor for urinary retention, biliary symptoms, reduced gastrointestinal motility, and increased heart rate. Follow the current label for geriatric dosing.",
+    dosing: "50/20 mg orally twice daily for at least 2 days, then 100/20 mg twice daily for at least 5 days; may increase to 125/30 mg twice daily based on response and tolerability. Take at least 1 hour before or 2 hours after a meal; do not open capsules.",
+    halfLife: "Xanomeline 5 hours; trospium 6 hours",
+    pregnancy: "See current FDA pregnancy and lactation labeling",
+    labelUrl: "https://dailymed.nlm.nih.gov/dailymed/fda/fdaDrugXsl.cfm?setid=8f0e73bf-6025-44f6-ab64-0983322de0df&type=display",
+    labelReviewed: "2026-10-01",
+  },
+  {
+    id: 102, name: "Centanafadine ER", brand: "Simtriyo", class: "Norepinephrine-Dopamine-Serotonin Reuptake Inhibitor (CNS Stimulant)",
+    fdaUses: ["ADHD in adults", "ADHD in pediatric patients age 6 years and older weighing at least 20 kg"],
+    offLabel: [],
+    sideEffects: ["Headache", "Decreased appetite", "Insomnia", "Nausea", "Dry mouth", "Diarrhea", "Rash (pediatric patients)"],
+    interactions: ["MAOIs, including linezolid or IV methylene blue — contraindicated during use and for 14 days after stopping MAOI", "Other serotonergic drugs — serotonin syndrome risk", "Other CNS stimulants — additive cardiovascular effects", "CYP1A2 substrates — monitor for adverse effects", "Alcohol — avoid at dosing and for at least 2 hours afterward"],
+    safety: "FDA approved July 2026; manufacturer reports DEA scheduling pending and not commercially available as of October 1, 2026. Boxed warnings: suicidal ideation and behaviors in pediatric patients and abuse, misuse, and addiction. Before use, assess cardiac disease, blood pressure/heart rate, misuse risk, manic risk, and tics. Monitor blood pressure/heart rate, mood and suicidality in pediatric patients, and growth. Avoid in serious cardiac disease; contraindicated with MAOIs and pheochromocytoma. Recheck current scheduling and availability before prescribing.",
+    dosing: "Morning, once daily, with or without food. Adults: 210 mg starting dose; may increase to 280 mg daily. Ages 13–17: 280 mg daily. Ages 6–12: weight-based dosing per label (20 to <35 kg: 140 mg; 35–50 kg: 210 mg; >50 kg: 280 mg).",
+    halfLife: "5.2 hours (mean)",
+    pregnancy: "See current FDA pregnancy and lactation labeling",
+    labelUrl: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/218145s000lbl.pdf",
+    labelReviewed: "2026-10-01",
+    availabilityNote: "DEA scheduling pending; not commercially available as of October 1, 2026 (manufacturer).",
+  },
 ];
 
 const QUESTIONNAIRES = [
@@ -1437,12 +1477,14 @@ function MedCard({ med, onClose }) {
           <div>
             <h2 style={{color:"#e2e8f0",fontSize:"1.5rem",fontWeight:700,margin:0}}>{med.name}</h2>
             <div style={{color:"#64748b",fontSize:"0.875rem",marginTop:"4px"}}>{med.brand} · <span style={{color:"#38bdf8"}}>{med.class}</span></div>
+            {med.labelUrl&&<div style={{marginTop:"8px",fontSize:"0.78rem"}}><a href={med.labelUrl} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()} style={{color:"#67e8f9"}}>Current product label ↗</a><span style={{color:"#94a3b8"}}> · Entry checked {med.labelReviewed}</span></div>}
+            {med.availabilityNote&&<div style={{color:"#fbbf24",fontSize:"0.78rem",marginTop:"6px"}}>{med.availabilityNote}</div>}
           </div>
           <div style={{display:"flex",gap:"8px"}}>
-            <button onClick={()=>printHandoutWindow(buildMedHandout(med))}
+            {!med.availabilityNote&&<button onClick={()=>printHandoutWindow(buildMedHandout(med))}
               style={{background:"#22c55e",border:"none",color:"#06210f",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
               🖨 Print Patient Handout
-            </button>
+            </button>}
             <button onClick={onClose} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"8px 12px",cursor:"pointer",fontSize:"0.875rem"}}>✕ Close</button>
           </div>
         </div>
@@ -1517,6 +1559,7 @@ function MedicationsModule() {
               <div>
                 <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"1rem"}}>{med.name}</div>
                 <div style={{color:"#64748b",fontSize:"0.78rem"}}>{med.brand}</div>
+                {med.availabilityNote&&<div style={{color:"#fbbf24",fontSize:"0.72rem",marginTop:"5px"}}>FDA approved · Availability pending</div>}
               </div>
               <span style={{background:"#0ea5e920",border:"1px solid #0ea5e940",color:"#38bdf8",borderRadius:"6px",padding:"2px 8px",fontSize:"0.7rem",whiteSpace:"nowrap"}}>{med.class}</span>
             </div>
@@ -4151,7 +4194,7 @@ function buildMedHandout(med) {
   };
 }
 
-const MED_HANDOUTS = MEDICATIONS.map(buildMedHandout);
+const MED_HANDOUTS = MEDICATIONS.filter(m=>!m.availabilityNote).map(buildMedHandout);
 const ALL_HANDOUTS = [...HANDOUTS, ...MED_HANDOUTS];
 
 // ─── INTERACTION CHECKER — RISK-TAG HEURISTICS ────────────────────────────────
