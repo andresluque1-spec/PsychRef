@@ -1,8 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<script>
+try { const savedTheme = localStorage.getItem("psychref-theme"); document.documentElement.dataset.theme = savedTheme === "dark" ? "dark" : "light"; } catch (_) { document.documentElement.dataset.theme = "light"; }
+</script>
 <title>PsychRef — Outpatient Psychiatry Reference</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
@@ -17,6 +20,45 @@ body { background: #070b14; }
 ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
 input::placeholder { color: #334155; }
 input:focus { border-color: #0ea5e9 !important; box-shadow: 0 0 0 3px #0ea5e920; }
+
+/* Theme tokens: dark retains the original palette; light is the default. */
+:root{color-scheme:light;--fill-0f1724:#ffffff;--fill-1e293b:#d7e0eb;--ink-e2e8f0:#172433;--ink-64748b:#526277;--ink-38bdf8:#0369a1;--ink-67e8f9:#0e7490;--ink-94a3b8:#475569;--ink-fbbf24:#92400e;--ink-06210f:#06210f;--fill-0a0e17:#ffffff;--ink-cbd5e1:#334155;--fill-1e1a0a:#fffbeb;--ink-f59e0b:#92400e;--ink-f7dfb3:#854d0e;--fill-352314:#fff7ed;--ink-475569:#526277;--ink-fff:#ffffff;--fill-0ea5e9:#0369a1;--fill-16213a:#e7eef8;--fill-2d3748:#d7e0eb;--fill-0a0f1a:#f8fafc;--ink-a78bfa:#6d28d9;--fill-1a0a0a:#fff1f2;--fill-3b1515:#ffe4e6;--ink-f87171:#b91c1c;--ink-22c55e:#166534;--ink-86efac:#166534;--fill-0a1a0a:#ecfdf5;--fill-070b14:#f3f6fa;--ink-334155:#526277;--ink-fca5a5:#b91c1c;--fill-0a1a10:#ecfdf5;--fill-1a1a2e:#dbe2ed;--ink-fde68a:#854d0e;--fill-1a0505:#fff1f2;--fill-1c1200:#fffbeb;--ink-34d399:#047857;}
+html[data-theme="dark"]{color-scheme:dark;--fill-0f1724:#0f1724;--fill-1e293b:#1e293b;--ink-e2e8f0:#e2e8f0;--ink-64748b:#64748b;--ink-38bdf8:#38bdf8;--ink-67e8f9:#67e8f9;--ink-94a3b8:#94a3b8;--ink-fbbf24:#fbbf24;--ink-06210f:#06210f;--fill-0a0e17:#0a0e17;--ink-cbd5e1:#cbd5e1;--fill-1e1a0a:#1e1a0a;--ink-f59e0b:#f59e0b;--ink-f7dfb3:#f7dfb3;--fill-352314:#352314;--ink-475569:#475569;--ink-fff:#fff;--fill-0ea5e9:#0ea5e9;--fill-16213a:#16213a;--fill-2d3748:#2d3748;--fill-0a0f1a:#0a0f1a;--ink-a78bfa:#a78bfa;--fill-1a0a0a:#1a0a0a;--fill-3b1515:#3b1515;--ink-f87171:#f87171;--ink-22c55e:#22c55e;--ink-86efac:#86efac;--fill-0a1a0a:#0a1a0a;--fill-070b14:#070b14;--ink-334155:#334155;--ink-fca5a5:#fca5a5;--fill-0a1a10:#0a1a10;--fill-1a1a2e:#1a1a2e;--ink-fde68a:#fde68a;--fill-1a0505:#1a0505;--fill-1c1200:#1c1200;--ink-34d399:#34d399;}
+body{background:var(--fill-070b14)}
+::-webkit-scrollbar-track{background:var(--fill-0a0e17)}
+::-webkit-scrollbar-thumb{background:var(--fill-1e293b)}
+input::placeholder,textarea::placeholder{color:var(--ink-64748b)}
+html[data-theme="light"] #root [style*="color: rgb(226, 232, 240)"]{color:#172433 !important}
+html[data-theme="light"] #root [style*="color: rgb(203, 213, 225)"]{color:#334155 !important}
+html[data-theme="light"] #root [style*="color: rgb(148, 163, 184)"]{color:#475569 !important}
+html[data-theme="light"] #root [style*="color: rgb(100, 116, 139)"]{color:#526277 !important}
+html[data-theme="light"] #root [style*="color: rgb(71, 85, 105)"]{color:#526277 !important}
+html[data-theme="light"] #root [style*="color: rgb(51, 65, 85)"]{color:#526277 !important}
+html[data-theme="light"] #root [style*="color: rgb(241, 245, 249)"]{color:#172433 !important}
+html[data-theme="light"] #root [style*="color: rgb(30, 41, 59)"]{color:#172433 !important}
+html[data-theme="light"] #root [style*="color: rgb(247, 223, 179)"]{color:#854d0e !important}
+html[data-theme="light"] #root [style*="color: rgb(56, 189, 248)"]{color:#0369a1 !important}
+html[data-theme="light"] #root [style*="color: rgb(103, 232, 249)"]{color:#0e7490 !important}
+html[data-theme="light"] #root [style*="color: rgb(248, 113, 113)"]{color:#b91c1c !important}
+html[data-theme="light"] #root [style*="color: rgb(252, 165, 165)"]{color:#b91c1c !important}
+html[data-theme="light"] #root [style*="color: rgb(245, 158, 11)"]{color:#92400e !important}
+html[data-theme="light"] #root [style*="color: rgb(251, 191, 36)"]{color:#92400e !important}
+html[data-theme="light"] #root [style*="color: rgb(253, 230, 138)"]{color:#854d0e !important}
+html[data-theme="light"] #root [style*="color: rgb(34, 197, 94)"]{color:#166534 !important}
+html[data-theme="light"] #root [style*="color: rgb(52, 211, 153)"]{color:#047857 !important}
+html[data-theme="light"] #root [style*="color: rgb(134, 239, 172)"]{color:#166534 !important}
+html[data-theme="light"] #root [style*="color: rgb(167, 139, 250)"]{color:#6d28d9 !important}
+html[data-theme="light"] #root [style*="color: rgb(129, 140, 248)"]{color:#4338ca !important}
+html[data-theme="light"] #root [style*="color: rgb(251, 146, 60)"]{color:#9a3412 !important}
+html[data-theme="light"] #root [style*="color: rgb(14, 165, 233)"]{color:#0369a1 !important}
+html[data-theme="light"] #root [style*="color: rgb(165, 180, 252)"]{color:#4338ca !important}
+html[data-theme="light"] #root [style*="color: rgb(147, 197, 253)"]{color:#1d4ed8 !important}
+html[data-theme="light"] #root [style*="color: rgb(240, 171, 252)"]{color:#a21caf !important}
+html[data-theme="light"] #root [style*="color: rgb(244, 114, 182)"]{color:#be185d !important}
+button:focus-visible,a:focus-visible{outline:3px solid #b45309;outline-offset:3px}
+@media(max-width:650px){.site-header{flex-wrap:wrap;gap:12px}.site-identity{display:none}}
+:root{--fill-1a1200:#fffbeb;--fill-0a1a1a:#ecfeff;--ink-9fe3dc:#0f766e;--ink-7dd3fc:#0369a1;--ink-fcd34d:#92400e}
+html[data-theme="dark"]{--fill-1a1200:#1a1200;--fill-0a1a1a:#0a1a1a;--ink-9fe3dc:#9fe3dc;--ink-7dd3fc:#7dd3fc;--ink-fcd34d:#fcd34d}
 </style>
 </head>
 <body>
@@ -1472,27 +1514,27 @@ const ChevronRight = () => (React.createElement("svg",{xmlns:"http://www.w3.org/
 function MedCard({ med, onClose }) {
   return (
     <div style={{position:"fixed",inset:0,background:"rgba(10,14,23,0.9)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center",padding:"16px"}} onClick={onClose}>
-      <div style={{background:"#0f1724",border:"1px solid #1e293b",borderRadius:"16px",maxWidth:"720px",width:"100%",maxHeight:"90vh",overflowY:"auto",padding:"32px"}} onClick={e=>e.stopPropagation()}>
+      <div style={{background:"var(--fill-0f1724)",border:"1px solid var(--fill-1e293b)",borderRadius:"16px",maxWidth:"720px",width:"100%",maxHeight:"90vh",overflowY:"auto",padding:"32px"}} onClick={e=>e.stopPropagation()}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"24px"}}>
           <div>
-            <h2 style={{color:"#e2e8f0",fontSize:"1.5rem",fontWeight:700,margin:0}}>{med.name}</h2>
-            <div style={{color:"#64748b",fontSize:"0.875rem",marginTop:"4px"}}>{med.brand} · <span style={{color:"#38bdf8"}}>{med.class}</span></div>
-            {med.labelUrl&&<div style={{marginTop:"8px",fontSize:"0.78rem"}}><a href={med.labelUrl} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()} style={{color:"#67e8f9"}}>Current product label ↗</a><span style={{color:"#94a3b8"}}> · Entry checked {med.labelReviewed}</span></div>}
-            {med.availabilityNote&&<div style={{color:"#fbbf24",fontSize:"0.78rem",marginTop:"6px"}}>{med.availabilityNote}</div>}
+            <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.5rem",fontWeight:700,margin:0}}>{med.name}</h2>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.875rem",marginTop:"4px"}}>{med.brand} · <span style={{color:"var(--ink-38bdf8)"}}>{med.class}</span></div>
+            {med.labelUrl&&<div style={{marginTop:"8px",fontSize:"0.78rem"}}><a href={med.labelUrl} target="_blank" rel="noopener noreferrer" onClick={e=>e.stopPropagation()} style={{color:"var(--ink-67e8f9)"}}>Current product label ↗</a><span style={{color:"var(--ink-94a3b8)"}}> · Entry checked {med.labelReviewed}</span></div>}
+            {med.availabilityNote&&<div style={{color:"var(--ink-fbbf24)",fontSize:"0.78rem",marginTop:"6px"}}>{med.availabilityNote}</div>}
           </div>
           <div style={{display:"flex",gap:"8px"}}>
             {!med.availabilityNote&&<button onClick={()=>printHandoutWindow(buildMedHandout(med))}
-              style={{background:"#22c55e",border:"none",color:"#06210f",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
+              style={{background:"#22c55e",border:"none",color:"var(--ink-06210f)",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
               🖨 Print Patient Handout
             </button>}
-            <button onClick={onClose} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"8px 12px",cursor:"pointer",fontSize:"0.875rem"}}>✕ Close</button>
+            <button onClick={onClose} style={{background:"var(--fill-1e293b)",border:"none",color:"var(--ink-94a3b8)",borderRadius:"8px",padding:"8px 12px",cursor:"pointer",fontSize:"0.875rem"}}>✕ Close</button>
           </div>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"12px",marginBottom:"24px"}}>
           {[["Dosing",med.dosing],["Half-Life",med.halfLife],["Pregnancy / lactation","Consult current FDA labeling (sections 8.1–8.3) for an individualized risk–benefit assessment; legacy letter categories in source data are obsolete."]].map(([label,val])=>(
-            <div key={label} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px"}}>
-              <div style={{color:"#64748b",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"4px"}}>{label}</div>
-              <div style={{color:"#cbd5e1",fontSize:"0.8rem",lineHeight:1.5}}>{val}</div>
+            <div key={label} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"12px"}}>
+              <div style={{color:"var(--ink-64748b)",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"4px"}}>{label}</div>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.8rem",lineHeight:1.5}}>{val}</div>
             </div>
           ))}
         </div>
@@ -1501,14 +1543,14 @@ function MedCard({ med, onClose }) {
             <div style={{color,fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"10px"}}>{title}</div>
             <div style={{display:"flex",flexWrap:"wrap",gap:"6px"}}>
               {items.map(item=>(
-                <span key={item} style={{background:`${color}15`,border:`1px solid ${color}30`,color:"#cbd5e1",borderRadius:"6px",padding:"3px 10px",fontSize:"0.8rem"}}>{item}</span>
+                <span key={item} style={{background:`${color}15`,border:`1px solid ${color}30`,color:"var(--ink-cbd5e1)",borderRadius:"6px",padding:"3px 10px",fontSize:"0.8rem"}}>{item}</span>
               ))}
             </div>
           </div>
         ))}
-        <div style={{background:"#1e1a0a",border:"1px solid #92400e40",borderRadius:"10px",padding:"16px"}}>
-          <div style={{color:"#f59e0b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"8px"}}>⚠ Safety & Clinical Notes</div>
-          <div style={{color:"#cbd5e1",fontSize:"0.85rem",lineHeight:1.7}}>{med.safety}</div>
+        <div style={{background:"var(--fill-1e1a0a)",border:"1px solid #92400e40",borderRadius:"10px",padding:"16px"}}>
+          <div style={{color:"var(--ink-f59e0b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"8px"}}>⚠ Safety & Clinical Notes</div>
+          <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.85rem",lineHeight:1.7}}>{med.safety}</div>
         </div>
       </div>
     </div>
@@ -1530,42 +1572,42 @@ function MedicationsModule() {
   },[search,classFilter]);
   return (
     <div>
-      <div style={{background:"#352314",border:"1px solid #9a6227",borderRadius:"10px",padding:"14px 16px",marginBottom:"18px",color:"#f7dfb3",fontSize:"0.84rem",lineHeight:1.55}}>
-        <b>Medication content review in progress.</b> This static reference is not automatically synchronized with FDA labels. Verify indications, dosing, interactions, pregnancy/lactation information, and safety changes before prescribing. <a href="medication-updates.html" target="_blank" rel="noopener" style={{color:"#9fe3dc"}}>Review status and primary sources →</a>
+      <div style={{background:"var(--fill-352314)",border:"1px solid #9a6227",borderRadius:"10px",padding:"14px 16px",marginBottom:"18px",color:"var(--ink-f7dfb3)",fontSize:"0.84rem",lineHeight:1.55}}>
+        <b>Medication content review in progress.</b> This static reference is not automatically synchronized with FDA labels. Verify indications, dosing, interactions, pregnancy/lactation information, and safety changes before prescribing. <a href="medication-updates.html" target="_blank" rel="noopener" style={{color:"var(--ink-9fe3dc)"}}>Review status and primary sources →</a>
       </div>
       <div style={{marginBottom:"24px"}}>
         <div style={{position:"relative",marginBottom:"12px"}}>
-          <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}><SearchIcon/></div>
+          <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"var(--ink-475569)"}}><SearchIcon/></div>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search by name, class, indication, or side effect..."
-            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 12px 12px 44px",color:"#e2e8f0",fontSize:"0.9rem",outline:"none",boxSizing:"border-box"}}/>
+            style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"12px 12px 12px 44px",color:"var(--ink-e2e8f0)",fontSize:"0.9rem",outline:"none",boxSizing:"border-box"}}/>
         </div>
         <div style={{display:"flex",gap:"8px",flexWrap:"wrap"}}>
           {classes.map(c=>(
             <button key={c} onClick={()=>setClassFilter(c)}
-              style={{background:classFilter===c?"#0ea5e9":"#0a0e17",border:`1px solid ${classFilter===c?"#0ea5e9":"#1e293b"}`,color:classFilter===c?"#fff":"#94a3b8",borderRadius:"20px",padding:"5px 14px",fontSize:"0.78rem",cursor:"pointer",fontWeight:classFilter===c?600:400}}>
+              style={{background:classFilter===c?"var(--fill-0ea5e9)":"var(--fill-0a0e17)",border:`1px solid ${classFilter===c?"var(--fill-0ea5e9)":"var(--fill-1e293b)"}`,color:classFilter===c?"var(--ink-fff)":"var(--ink-94a3b8)",borderRadius:"20px",padding:"5px 14px",fontSize:"0.78rem",cursor:"pointer",fontWeight:classFilter===c?600:400}}>
               {c}
             </button>
           ))}
         </div>
       </div>
-      <div style={{fontSize:"0.8rem",color:"#475569",marginBottom:"16px"}}>{filtered.length} medication{filtered.length!==1?"s":""}</div>
+      <div style={{fontSize:"0.8rem",color:"var(--ink-475569)",marginBottom:"16px"}}>{filtered.length} medication{filtered.length!==1?"s":""}</div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(280px,1fr))",gap:"12px"}}>
         {filtered.map(med=>(
           <div key={med.id} onClick={()=>setSelected(med)}
-            style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"16px",cursor:"pointer",transition:"border-color 0.15s"}}
+            style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"16px",cursor:"pointer",transition:"border-color 0.15s"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor="#0ea5e9"}
-            onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+            onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"8px"}}>
               <div>
-                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"1rem"}}>{med.name}</div>
-                <div style={{color:"#64748b",fontSize:"0.78rem"}}>{med.brand}</div>
-                {med.availabilityNote&&<div style={{color:"#fbbf24",fontSize:"0.72rem",marginTop:"5px"}}>FDA approved · Availability pending</div>}
+                <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"1rem"}}>{med.name}</div>
+                <div style={{color:"var(--ink-64748b)",fontSize:"0.78rem"}}>{med.brand}</div>
+                {med.availabilityNote&&<div style={{color:"var(--ink-fbbf24)",fontSize:"0.72rem",marginTop:"5px"}}>FDA approved · Availability pending</div>}
               </div>
-              <span style={{background:"#0ea5e920",border:"1px solid #0ea5e940",color:"#38bdf8",borderRadius:"6px",padding:"2px 8px",fontSize:"0.7rem",whiteSpace:"nowrap"}}>{med.class}</span>
+              <span style={{background:"#0ea5e920",border:"1px solid #0ea5e940",color:"var(--ink-38bdf8)",borderRadius:"6px",padding:"2px 8px",fontSize:"0.7rem",whiteSpace:"nowrap"}}>{med.class}</span>
             </div>
             <div style={{display:"flex",flexWrap:"wrap",gap:"4px",marginTop:"10px"}}>
-              {med.fdaUses.slice(0,3).map(use=>(<span key={use} style={{background:"#16213a",color:"#94a3b8",borderRadius:"4px",padding:"2px 7px",fontSize:"0.7rem"}}>{use}</span>))}
-              {med.fdaUses.length>3&&<span style={{color:"#475569",fontSize:"0.7rem",padding:"2px 4px"}}>+{med.fdaUses.length-3} more</span>}
+              {med.fdaUses.slice(0,3).map(use=>(<span key={use} style={{background:"var(--fill-16213a)",color:"var(--ink-94a3b8)",borderRadius:"4px",padding:"2px 7px",fontSize:"0.7rem"}}>{use}</span>))}
+              {med.fdaUses.length>3&&<span style={{color:"var(--ink-475569)",fontSize:"0.7rem",padding:"2px 4px"}}>+{med.fdaUses.length-3} more</span>}
             </div>
           </div>
         ))}
@@ -1590,48 +1632,48 @@ function QuestionnaireRunner({ q, onBack }) {
   };
   return (
     <div>
-      <button onClick={onBack} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to questionnaires</button>
-      <h2 style={{color:"#e2e8f0",fontSize:"1.3rem",fontWeight:700,marginBottom:"4px"}}>{q.name} — {q.fullName}</h2>
-      <div style={{color:"#64748b",fontSize:"0.85rem",marginBottom:"8px"}}>Target: {q.target} · Timeframe: {q.timeframe}</div>
-      {q.note&&<div style={{background:"#0a0e17",border:"1px solid #1e2d45",borderRadius:"8px",padding:"12px",marginBottom:"24px",color:"#94a3b8",fontSize:"0.82rem",lineHeight:1.6}}>ℹ {q.note}</div>}
+      <button onClick={onBack} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to questionnaires</button>
+      <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.3rem",fontWeight:700,marginBottom:"4px"}}>{q.name} — {q.fullName}</h2>
+      <div style={{color:"var(--ink-64748b)",fontSize:"0.85rem",marginBottom:"8px"}}>Target: {q.target} · Timeframe: {q.timeframe}</div>
+      {q.note&&<div style={{background:"var(--fill-0a0e17)",border:"1px solid #1e2d45",borderRadius:"8px",padding:"12px",marginBottom:"24px",color:"var(--ink-94a3b8)",fontSize:"0.82rem",lineHeight:1.6}}>ℹ {q.note}</div>}
       {!done?(
         <div>
           {q.questions.map((question,i)=>(
-            <div key={i} style={{background:"#0a0e17",border:`1px solid ${answers[i]!==undefined?"#1e3a5f":"#1e293b"}`,borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
-              <div style={{color:"#cbd5e1",fontSize:"0.88rem",marginBottom:"14px",lineHeight:1.6}}>
-                <span style={{color:"#38bdf8",fontWeight:700,marginRight:"8px"}}>{i+1}.</span>{question}
+            <div key={i} style={{background:"var(--fill-0a0e17)",border:`1px solid ${answers[i]!==undefined?"#1e3a5f":"var(--fill-1e293b)"}`,borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.88rem",marginBottom:"14px",lineHeight:1.6}}>
+                <span style={{color:"var(--ink-38bdf8)",fontWeight:700,marginRight:"8px"}}>{i+1}.</span>{question}
               </div>
               <div style={{display:"flex",gap:"8px",flexWrap:"wrap"}}>
                 {(q.maxPerQuestion ? q.options.filter((opt,j)=>q.optionValues[j]<=q.maxPerQuestion[i]) : q.options).map((opt,j)=>(
                   <button key={j} onClick={()=>setAnswers(prev=>({...prev,[i]:q.optionValues[j]}))}
-                    style={{background:answers[i]===q.optionValues[j]?"#0ea5e9":"#0f1724",border:`1px solid ${answers[i]===q.optionValues[j]?"#0ea5e9":"#2d3748"}`,color:answers[i]===q.optionValues[j]?"#fff":"#94a3b8",borderRadius:"8px",padding:"6px 12px",fontSize:"0.78rem",cursor:"pointer"}}>
+                    style={{background:answers[i]===q.optionValues[j]?"var(--fill-0ea5e9)":"var(--fill-0f1724)",border:`1px solid ${answers[i]===q.optionValues[j]?"var(--fill-0ea5e9)":"var(--fill-2d3748)"}`,color:answers[i]===q.optionValues[j]?"var(--ink-fff)":"var(--ink-94a3b8)",borderRadius:"8px",padding:"6px 12px",fontSize:"0.78rem",cursor:"pointer"}}>
                     {opt}
                   </button>
                 ))}
               </div>
             </div>
           ))}
-          {allAnswered&&<button onClick={()=>setDone(true)} style={{width:"100%",background:"#0ea5e9",border:"none",color:"#fff",borderRadius:"10px",padding:"14px",fontSize:"1rem",fontWeight:700,cursor:"pointer",marginTop:"8px"}}>View Score & Interpretation</button>}
+          {allAnswered&&<button onClick={()=>setDone(true)} style={{width:"100%",background:"var(--fill-0ea5e9)",border:"none",color:"var(--ink-fff)",borderRadius:"10px",padding:"14px",fontSize:"1rem",fontWeight:700,cursor:"pointer",marginTop:"8px"}}>View Score & Interpretation</button>}
         </div>
       ):(
         <div>
-          <div style={{background:"#0a0e17",border:`2px solid ${bandColor(band?.label)}40`,borderRadius:"16px",padding:"32px",textAlign:"center",marginBottom:"24px"}}>
-            <div style={{color:"#64748b",fontSize:"0.8rem",textTransform:"uppercase",letterSpacing:"0.1em",marginBottom:"8px"}}>Total Score</div>
+          <div style={{background:"var(--fill-0a0e17)",border:`2px solid ${bandColor(band?.label)}40`,borderRadius:"16px",padding:"32px",textAlign:"center",marginBottom:"24px"}}>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",textTransform:"uppercase",letterSpacing:"0.1em",marginBottom:"8px"}}>Total Score</div>
             <div style={{fontSize:"4rem",fontWeight:800,color:bandColor(band?.label),lineHeight:1}}>{total}</div>
-            <div style={{color:"#e2e8f0",fontSize:"1.2rem",fontWeight:700,marginTop:"12px"}}>{band?.label}</div>
-            <div style={{color:"#94a3b8",fontSize:"0.85rem",marginTop:"8px",lineHeight:1.6}}>{band?.action}</div>
+            <div style={{color:"var(--ink-e2e8f0)",fontSize:"1.2rem",fontWeight:700,marginTop:"12px"}}>{band?.label}</div>
+            <div style={{color:"var(--ink-94a3b8)",fontSize:"0.85rem",marginTop:"8px",lineHeight:1.6}}>{band?.action}</div>
           </div>
-          <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px",marginBottom:"16px"}}>
-            <div style={{color:"#64748b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"14px"}}>Scoring Ranges</div>
+          <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px",marginBottom:"16px"}}>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"14px"}}>Scoring Ranges</div>
             {q.scoring.map((s,i)=>(
-              <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 0",borderBottom:i<q.scoring.length-1?"1px solid #1e293b":"none"}}>
-                <span style={{color:"#94a3b8",fontSize:"0.82rem"}}>{s.range[0]}–{s.range[1]}</span>
+              <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"8px 0",borderBottom:i<q.scoring.length-1?"1px solid var(--fill-1e293b)":"none"}}>
+                <span style={{color:"var(--ink-94a3b8)",fontSize:"0.82rem"}}>{s.range[0]}–{s.range[1]}</span>
                 <span style={{color:bandColor(s.label),fontWeight:band?.label===s.label?700:400,fontSize:"0.82rem"}}>{s.label}</span>
-                <span style={{color:"#64748b",fontSize:"0.75rem",maxWidth:"200px",textAlign:"right"}}>{s.action}</span>
+                <span style={{color:"var(--ink-64748b)",fontSize:"0.75rem",maxWidth:"200px",textAlign:"right"}}>{s.action}</span>
               </div>
             ))}
           </div>
-          <button onClick={()=>{setAnswers({});setDone(false);}} style={{background:"#1e293b",border:"1px solid #2d3748",color:"#94a3b8",borderRadius:"10px",padding:"12px 24px",cursor:"pointer",fontSize:"0.875rem"}}>Retake</button>
+          <button onClick={()=>{setAnswers({});setDone(false);}} style={{background:"var(--fill-1e293b)",border:"1px solid var(--fill-2d3748)",color:"var(--ink-94a3b8)",borderRadius:"10px",padding:"12px 24px",cursor:"pointer",fontSize:"0.875rem"}}>Retake</button>
         </div>
       )}
     </div>
@@ -1645,18 +1687,18 @@ function QuestionnairesModule() {
     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
       {QUESTIONNAIRES.map(q=>(
         <div key={q.id} onClick={()=>setActive(q)}
-          style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
+          style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
           onMouseEnter={e=>e.currentTarget.style.borderColor="#0ea5e9"}
-          onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+          onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"10px"}}>
-            <div style={{color:"#38bdf8",fontWeight:800,fontSize:"1.1rem"}}>{q.name}</div>
+            <div style={{color:"var(--ink-38bdf8)",fontWeight:800,fontSize:"1.1rem"}}>{q.name}</div>
             <ChevronRight/>
           </div>
-          <div style={{color:"#e2e8f0",fontSize:"0.85rem",marginBottom:"6px"}}>{q.fullName}</div>
-          <div style={{color:"#64748b",fontSize:"0.78rem",marginBottom:"10px"}}>{q.target}</div>
+          <div style={{color:"var(--ink-e2e8f0)",fontSize:"0.85rem",marginBottom:"6px"}}>{q.fullName}</div>
+          <div style={{color:"var(--ink-64748b)",fontSize:"0.78rem",marginBottom:"10px"}}>{q.target}</div>
           <div style={{display:"flex",gap:"8px"}}>
-            <span style={{background:"#1e293b",color:"#94a3b8",borderRadius:"6px",padding:"3px 10px",fontSize:"0.72rem"}}>{q.questions.length} items</span>
-            <span style={{background:"#1e293b",color:"#94a3b8",borderRadius:"6px",padding:"3px 10px",fontSize:"0.72rem"}}>{q.timeframe}</span>
+            <span style={{background:"var(--fill-1e293b)",color:"var(--ink-94a3b8)",borderRadius:"6px",padding:"3px 10px",fontSize:"0.72rem"}}>{q.questions.length} items</span>
+            <span style={{background:"var(--fill-1e293b)",color:"var(--ink-94a3b8)",borderRadius:"6px",padding:"3px 10px",fontSize:"0.72rem"}}>{q.timeframe}</span>
           </div>
         </div>
       ))}
@@ -1698,43 +1740,43 @@ function FDAModule() {
     <div>
       <div style={{display:"flex",gap:"12px",marginBottom:"16px",flexWrap:"wrap"}}>
         <div style={{position:"relative",flex:1,minWidth:"200px"}}>
-          <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}><SearchIcon/></div>
+          <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"var(--ink-475569)"}}><SearchIcon/></div>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search diagnosis or medication..."
-            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"11px 12px 11px 44px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
+            style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"11px 12px 11px 44px",color:"var(--ink-e2e8f0)",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
         </div>
-        <div style={{display:"flex",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",overflow:"hidden"}}>
+        <div style={{display:"flex",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",overflow:"hidden"}}>
           {["diagnosis","medication"].map(v=>(
             <button key={v} onClick={()=>setView(v)}
-              style={{background:view===v?"#0ea5e9":"transparent",border:"none",color:view===v?"#fff":"#64748b",padding:"11px 18px",cursor:"pointer",fontSize:"0.82rem",fontWeight:view===v?700:400,textTransform:"capitalize"}}>
+              style={{background:view===v?"var(--fill-0ea5e9)":"transparent",border:"none",color:view===v?"var(--ink-fff)":"var(--ink-64748b)",padding:"11px 18px",cursor:"pointer",fontSize:"0.82rem",fontWeight:view===v?700:400,textTransform:"capitalize"}}>
               By {v}
             </button>
           ))}
         </div>
       </div>
       {view==="diagnosis"?Object.entries(filteredDiag).map(([diag,meds])=>(
-        <div key={diag} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
+        <div key={diag} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
           <div onClick={()=>toggle(diag)} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"16px 20px",cursor:"pointer"}}>
-            <span style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.9rem"}}>{diag}</span>
+            <span style={{color:"var(--ink-e2e8f0)",fontWeight:600,fontSize:"0.9rem"}}>{diag}</span>
             <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
-              <span style={{color:"#475569",fontSize:"0.78rem"}}>{meds.length} agents</span>
-              <div style={{color:"#475569",transform:expanded[diag]?"rotate(180deg)":"none",transition:"transform 0.2s"}}><ChevronDown/></div>
+              <span style={{color:"var(--ink-475569)",fontSize:"0.78rem"}}>{meds.length} agents</span>
+              <div style={{color:"var(--ink-475569)",transform:expanded[diag]?"rotate(180deg)":"none",transition:"transform 0.2s"}}><ChevronDown/></div>
             </div>
           </div>
           {expanded[diag]&&<div style={{padding:"0 20px 16px",display:"flex",flexWrap:"wrap",gap:"6px"}}>
-            {meds.map(med=>(<span key={med} style={{background:"#0ea5e915",border:"1px solid #0ea5e930",color:"#7dd3fc",borderRadius:"6px",padding:"4px 12px",fontSize:"0.8rem"}}>{med}</span>))}
+            {meds.map(med=>(<span key={med} style={{background:"#0ea5e915",border:"1px solid #0ea5e930",color:"var(--ink-7dd3fc)",borderRadius:"6px",padding:"4px 12px",fontSize:"0.8rem"}}>{med}</span>))}
           </div>}
         </div>
       )):Object.entries(filteredMed).sort(([a],[b])=>a.localeCompare(b)).map(([med,diags])=>(
-        <div key={med} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
+        <div key={med} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
           <div onClick={()=>toggle(med)} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"16px 20px",cursor:"pointer"}}>
-            <span style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.9rem"}}>{med}</span>
+            <span style={{color:"var(--ink-e2e8f0)",fontWeight:600,fontSize:"0.9rem"}}>{med}</span>
             <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
-              <span style={{color:"#475569",fontSize:"0.78rem"}}>{diags.length} indication{diags.length!==1?"s":""}</span>
-              <div style={{color:"#475569",transform:expanded[med]?"rotate(180deg)":"none",transition:"transform 0.2s"}}><ChevronDown/></div>
+              <span style={{color:"var(--ink-475569)",fontSize:"0.78rem"}}>{diags.length} indication{diags.length!==1?"s":""}</span>
+              <div style={{color:"var(--ink-475569)",transform:expanded[med]?"rotate(180deg)":"none",transition:"transform 0.2s"}}><ChevronDown/></div>
             </div>
           </div>
           {expanded[med]&&<div style={{padding:"0 20px 16px",display:"flex",flexWrap:"wrap",gap:"6px"}}>
-            {diags.map(d=>(<span key={d} style={{background:"#16213a",color:"#94a3b8",borderRadius:"6px",padding:"4px 12px",fontSize:"0.8rem"}}>{d}</span>))}
+            {diags.map(d=>(<span key={d} style={{background:"var(--fill-16213a)",color:"var(--ink-94a3b8)",borderRadius:"6px",padding:"4px 12px",fontSize:"0.8rem"}}>{d}</span>))}
           </div>}
         </div>
       ))}
@@ -1746,36 +1788,36 @@ function DiagnosticDetail({ d, onBack }) {
   const [openDomain, setOpenDomain] = useState(0);
   return (
     <div>
-      <button onClick={onBack} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to diagnoses</button>
-      <h2 style={{color:"#e2e8f0",fontSize:"1.3rem",fontWeight:700,marginBottom:"4px"}}>{d.name}</h2>
-      <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"8px"}}>{d.dsm}</div>
-      <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"14px 18px",marginBottom:"24px",color:"#94a3b8",fontSize:"0.83rem",lineHeight:1.7}}>
-        <strong style={{color:"#38bdf8"}}>Diagnostic Criteria: </strong>{d.criteria}
+      <button onClick={onBack} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to diagnoses</button>
+      <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.3rem",fontWeight:700,marginBottom:"4px"}}>{d.name}</h2>
+      <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",marginBottom:"8px"}}>{d.dsm}</div>
+      <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"14px 18px",marginBottom:"24px",color:"var(--ink-94a3b8)",fontSize:"0.83rem",lineHeight:1.7}}>
+        <strong style={{color:"var(--ink-38bdf8)"}}>Diagnostic Criteria: </strong>{d.criteria}
       </div>
       {d.domains.map((domain,i)=>(
-        <div key={i} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
+        <div key={i} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
           <div onClick={()=>setOpenDomain(openDomain===i?-1:i)} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"14px 18px",cursor:"pointer"}}>
-            <span style={{color:openDomain===i?"#38bdf8":"#cbd5e1",fontWeight:600,fontSize:"0.875rem"}}>{domain.name}</span>
-            <div style={{color:"#475569",transform:openDomain===i?"rotate(180deg)":"none",transition:"transform 0.2s"}}><ChevronDown/></div>
+            <span style={{color:openDomain===i?"var(--ink-38bdf8)":"var(--ink-cbd5e1)",fontWeight:600,fontSize:"0.875rem"}}>{domain.name}</span>
+            <div style={{color:"var(--ink-475569)",transform:openDomain===i?"rotate(180deg)":"none",transition:"transform 0.2s"}}><ChevronDown/></div>
           </div>
           {openDomain===i&&<div style={{padding:"0 18px 16px"}}>
             {domain.questions.map((q,j)=>(
-              <div key={j} style={{display:"flex",gap:"12px",padding:"10px 0",borderTop:"1px solid #1e293b"}}>
-                <div style={{color:"#38bdf8",fontWeight:700,fontSize:"0.75rem",minWidth:"20px",paddingTop:"2px"}}>{j+1}</div>
-                <div style={{color:"#cbd5e1",fontSize:"0.85rem",lineHeight:1.7}}>{q}</div>
+              <div key={j} style={{display:"flex",gap:"12px",padding:"10px 0",borderTop:"1px solid var(--fill-1e293b)"}}>
+                <div style={{color:"var(--ink-38bdf8)",fontWeight:700,fontSize:"0.75rem",minWidth:"20px",paddingTop:"2px"}}>{j+1}</div>
+                <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.85rem",lineHeight:1.7}}>{q}</div>
               </div>
             ))}
           </div>}
         </div>
       ))}
       <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",marginTop:"20px"}}>
-        <div style={{background:"#0a0f1a",border:"1px solid #1e293b",borderRadius:"12px",padding:"16px"}}>
-          <div style={{color:"#a78bfa",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"12px"}}>Differentials</div>
-          {d.differentials.map((diff,i)=>(<div key={i} style={{color:"#94a3b8",fontSize:"0.82rem",padding:"4px 0",borderBottom:i<d.differentials.length-1?"1px solid #1e293b":"none"}}>• {diff}</div>))}
+        <div style={{background:"var(--fill-0a0f1a)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"16px"}}>
+          <div style={{color:"var(--ink-a78bfa)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"12px"}}>Differentials</div>
+          {d.differentials.map((diff,i)=>(<div key={i} style={{color:"var(--ink-94a3b8)",fontSize:"0.82rem",padding:"4px 0",borderBottom:i<d.differentials.length-1?"1px solid var(--fill-1e293b)":"none"}}>• {diff}</div>))}
         </div>
-        <div style={{background:"#1a0a0a",border:"1px solid #3b1515",borderRadius:"12px",padding:"16px"}}>
-          <div style={{color:"#f87171",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"12px"}}>⚑ Red Flags</div>
-          {d.redFlags.map((flag,i)=>(<div key={i} style={{color:"#94a3b8",fontSize:"0.82rem",padding:"4px 0",borderBottom:i<d.redFlags.length-1?"1px solid #3b1515":"none"}}>• {flag}</div>))}
+        <div style={{background:"var(--fill-1a0a0a)",border:"1px solid var(--fill-3b1515)",borderRadius:"12px",padding:"16px"}}>
+          <div style={{color:"var(--ink-f87171)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"12px"}}>⚑ Red Flags</div>
+          {d.redFlags.map((flag,i)=>(<div key={i} style={{color:"var(--ink-94a3b8)",fontSize:"0.82rem",padding:"4px 0",borderBottom:i<d.redFlags.length-1?"1px solid var(--fill-3b1515)":"none"}}>• {flag}</div>))}
         </div>
       </div>
     </div>
@@ -1790,25 +1832,25 @@ function DiagnosticModule() {
   return (
     <div>
       <div style={{position:"relative",marginBottom:"20px"}}>
-        <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}><SearchIcon/></div>
+        <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"var(--ink-475569)"}}><SearchIcon/></div>
         <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search diagnoses..."
-          style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 12px 12px 44px",color:"#e2e8f0",fontSize:"0.9rem",outline:"none",boxSizing:"border-box"}}/>
+          style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"12px 12px 12px 44px",color:"var(--ink-e2e8f0)",fontSize:"0.9rem",outline:"none",boxSizing:"border-box"}}/>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
         {filtered.map(d=>(
           <div key={d.id} onClick={()=>setActive(d)}
-            style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
+            style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor="#a78bfa"}
-            onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+            onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"8px"}}>
-              <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.95rem"}}>{d.name}</div>
+              <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"0.95rem"}}>{d.name}</div>
               <ChevronRight/>
             </div>
-            <div style={{color:"#64748b",fontSize:"0.75rem",marginBottom:"12px"}}>{d.dsm}</div>
-            <div style={{color:"#94a3b8",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"12px"}}>{d.criteria.slice(0,100)}…</div>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.75rem",marginBottom:"12px"}}>{d.dsm}</div>
+            <div style={{color:"var(--ink-94a3b8)",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"12px"}}>{d.criteria.slice(0,100)}…</div>
             <div style={{display:"flex",gap:"6px",flexWrap:"wrap"}}>
-              <span style={{background:"#1e293b",color:"#64748b",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{d.domains.length} domains</span>
-              <span style={{background:"#1e293b",color:"#64748b",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{d.differentials.length} differentials</span>
+              <span style={{background:"var(--fill-1e293b)",color:"var(--ink-64748b)",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{d.domains.length} domains</span>
+              <span style={{background:"var(--fill-1e293b)",color:"var(--ink-64748b)",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{d.differentials.length} differentials</span>
             </div>
           </div>
         ))}
@@ -2270,12 +2312,12 @@ function LabDetail({ protocol, onBack }) {
   const [tab, setTab] = useState("panels");
   return (
     <div>
-      <button onClick={onBack} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to lab protocols</button>
+      <button onClick={onBack} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to lab protocols</button>
       <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"8px"}}>
-        <h2 style={{color:"#e2e8f0",fontSize:"1.3rem",fontWeight:700,margin:0}}>{protocol.name}</h2>
+        <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.3rem",fontWeight:700,margin:0}}>{protocol.name}</h2>
         <span style={{background:`${protocol.color}20`,border:`1px solid ${protocol.color}40`,color:protocol.color,borderRadius:"6px",padding:"3px 10px",fontSize:"0.75rem",fontWeight:600}}>{protocol.category}</span>
       </div>
-      <div style={{color:"#64748b",fontSize:"0.82rem",marginBottom:"20px",lineHeight:1.6}}>{protocol.rationale}</div>
+      <div style={{color:"var(--ink-64748b)",fontSize:"0.82rem",marginBottom:"20px",lineHeight:1.6}}>{protocol.rationale}</div>
 
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(220px,1fr))",gap:"10px",marginBottom:"20px"}}>
         {[
@@ -2283,29 +2325,29 @@ function LabDetail({ protocol, onBack }) {
           ["Toxicity / Alarm Level",protocol.toxicityLevel,"#f87171"],
           ["Timing Note",protocol.timingNote,"#f59e0b"],
         ].map(([label,val,col])=>(
-          <div key={label} style={{background:"#0a0e17",border:`1px solid ${col}25`,borderRadius:"10px",padding:"12px"}}>
+          <div key={label} style={{background:"var(--fill-0a0e17)",border:`1px solid ${col}25`,borderRadius:"10px",padding:"12px"}}>
             <div style={{color:col,fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"6px"}}>{label}</div>
-            <div style={{color:"#cbd5e1",fontSize:"0.78rem",lineHeight:1.6}}>{val}</div>
+            <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.78rem",lineHeight:1.6}}>{val}</div>
           </div>
         ))}
       </div>
 
-      <div style={{display:"flex",gap:"4px",marginBottom:"16px",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"4px",width:"fit-content"}}>
+      <div style={{display:"flex",gap:"4px",marginBottom:"16px",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"4px",width:"fit-content"}}>
         {["panels","interactions","counseling"].map(t=>(
           <button key={t} onClick={()=>setTab(t)}
-            style={{background:tab===t?"#1e293b":"transparent",border:"none",color:tab===t?"#e2e8f0":"#64748b",borderRadius:"7px",padding:"8px 16px",cursor:"pointer",fontSize:"0.8rem",fontWeight:tab===t?600:400,textTransform:"capitalize"}}>
+            style={{background:tab===t?"var(--fill-1e293b)":"transparent",border:"none",color:tab===t?"var(--ink-e2e8f0)":"var(--ink-64748b)",borderRadius:"7px",padding:"8px 16px",cursor:"pointer",fontSize:"0.8rem",fontWeight:tab===t?600:400,textTransform:"capitalize"}}>
             {t==="panels"?"Monitoring Panels":t==="interactions"?"Drug Interactions":"Patient Counseling"}
           </button>
         ))}
       </div>
 
       {tab==="panels"&&protocol.panels.map((panel,i)=>(
-        <div key={i} style={{background:"#0a0e17",border:`1px solid ${openPanel===i?protocol.color+"50":"#1e293b"}`,borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
+        <div key={i} style={{background:"var(--fill-0a0e17)",border:`1px solid ${openPanel===i?protocol.color+"50":"var(--fill-1e293b)"}`,borderRadius:"12px",marginBottom:"10px",overflow:"hidden"}}>
           <div onClick={()=>setOpenPanel(openPanel===i?-1:i)} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"14px 18px",cursor:"pointer"}}>
-            <span style={{color:openPanel===i?protocol.color:"#cbd5e1",fontWeight:600,fontSize:"0.875rem"}}>{panel.name}</span>
+            <span style={{color:openPanel===i?protocol.color:"var(--ink-cbd5e1)",fontWeight:600,fontSize:"0.875rem"}}>{panel.name}</span>
             <div style={{display:"flex",alignItems:"center",gap:"8px"}}>
-              <span style={{color:"#475569",fontSize:"0.72rem"}}>{panel.tests.length} tests/checks</span>
-              <div style={{color:"#475569",transform:openPanel===i?"rotate(180deg)":"none",transition:"transform 0.2s"}}>
+              <span style={{color:"var(--ink-475569)",fontSize:"0.72rem"}}>{panel.tests.length} tests/checks</span>
+              <div style={{color:"var(--ink-475569)",transform:openPanel===i?"rotate(180deg)":"none",transition:"transform 0.2s"}}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
               </div>
             </div>
@@ -2313,9 +2355,9 @@ function LabDetail({ protocol, onBack }) {
           {openPanel===i&&(
             <div style={{padding:"0 18px 16px"}}>
               {panel.tests.map((item,j)=>(
-                <div key={j} style={{display:"grid",gridTemplateColumns:"220px 1fr",gap:"12px",padding:"10px 0",borderTop:"1px solid #1e293b",alignItems:"start"}}>
+                <div key={j} style={{display:"grid",gridTemplateColumns:"220px 1fr",gap:"12px",padding:"10px 0",borderTop:"1px solid var(--fill-1e293b)",alignItems:"start"}}>
                   <div style={{color:protocol.color,fontWeight:600,fontSize:"0.82rem",paddingTop:"1px"}}>{item.test}</div>
-                  <div style={{color:"#94a3b8",fontSize:"0.82rem",lineHeight:1.6}}>{item.reason}</div>
+                  <div style={{color:"var(--ink-94a3b8)",fontSize:"0.82rem",lineHeight:1.6}}>{item.reason}</div>
                 </div>
               ))}
             </div>
@@ -2324,24 +2366,24 @@ function LabDetail({ protocol, onBack }) {
       ))}
 
       {tab==="interactions"&&(
-        <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px"}}>
-          <div style={{color:"#f87171",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"14px"}}>Key Drug Interactions</div>
+        <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px"}}>
+          <div style={{color:"var(--ink-f87171)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"14px"}}>Key Drug Interactions</div>
           {protocol.ddis.map((ddi,i)=>(
-            <div key={i} style={{display:"flex",gap:"10px",padding:"10px 0",borderBottom:i<protocol.ddis.length-1?"1px solid #1e293b":"none",alignItems:"flex-start"}}>
-              <div style={{color:"#f87171",fontSize:"1rem",marginTop:"1px"}}>⚠</div>
-              <div style={{color:"#cbd5e1",fontSize:"0.85rem",lineHeight:1.6}}>{ddi}</div>
+            <div key={i} style={{display:"flex",gap:"10px",padding:"10px 0",borderBottom:i<protocol.ddis.length-1?"1px solid var(--fill-1e293b)":"none",alignItems:"flex-start"}}>
+              <div style={{color:"var(--ink-f87171)",fontSize:"1rem",marginTop:"1px"}}>⚠</div>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.85rem",lineHeight:1.6}}>{ddi}</div>
             </div>
           ))}
         </div>
       )}
 
       {tab==="counseling"&&(
-        <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px"}}>
-          <div style={{color:"#22c55e",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"14px"}}>Patient Counseling Points</div>
+        <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px"}}>
+          <div style={{color:"var(--ink-22c55e)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",fontWeight:600,marginBottom:"14px"}}>Patient Counseling Points</div>
           {protocol.patientCounseling.map((point,i)=>(
-            <div key={i} style={{display:"flex",gap:"10px",padding:"10px 0",borderBottom:i<protocol.patientCounseling.length-1?"1px solid #1e293b":"none",alignItems:"flex-start"}}>
-              <div style={{color:"#22c55e",fontSize:"0.875rem",marginTop:"1px"}}>✓</div>
-              <div style={{color:"#cbd5e1",fontSize:"0.85rem",lineHeight:1.6}}>{point}</div>
+            <div key={i} style={{display:"flex",gap:"10px",padding:"10px 0",borderBottom:i<protocol.patientCounseling.length-1?"1px solid var(--fill-1e293b)":"none",alignItems:"flex-start"}}>
+              <div style={{color:"var(--ink-22c55e)",fontSize:"0.875rem",marginTop:"1px"}}>✓</div>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.85rem",lineHeight:1.6}}>{point}</div>
             </div>
           ))}
         </div>
@@ -2360,31 +2402,31 @@ function LabsModule() {
   if(active)return<LabDetail protocol={active} onBack={()=>setActive(null)}/>;
   return (
     <div>
-      <div style={{background:"#0a1a0a",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-0a1a0a)",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-86efac)",fontSize:"0.82rem",lineHeight:1.6}}>
         🧪 Lab protocols follow APA, ADA, and manufacturer guidelines. Verify against current prescribing information and institutional protocols. Individualize based on patient risk factors.
       </div>
       <div style={{position:"relative",marginBottom:"20px"}}>
-        <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}>
+        <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"var(--ink-475569)"}}>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
         </div>
         <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search protocols..."
-          style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 12px 12px 44px",color:"#e2e8f0",fontSize:"0.9rem",outline:"none",boxSizing:"border-box"}}/>
+          style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"12px 12px 12px 44px",color:"var(--ink-e2e8f0)",fontSize:"0.9rem",outline:"none",boxSizing:"border-box"}}/>
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
         {filtered.map(p=>(
           <div key={p.id} onClick={()=>setActive(p)}
-            style={{background:"#0a0e17",border:`1px solid #1e293b`,borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
+            style={{background:"var(--fill-0a0e17)",border:`1px solid var(--fill-1e293b)`,borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor=p.color}
-            onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+            onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"10px"}}>
               <div style={{color:p.color,fontWeight:700,fontSize:"1rem"}}>{p.name}</div>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
-            <div style={{color:"#64748b",fontSize:"0.75rem",marginBottom:"10px"}}>{p.category}</div>
-            <div style={{color:"#94a3b8",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"12px"}}>{p.rationale.slice(0,110)}…</div>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.75rem",marginBottom:"10px"}}>{p.category}</div>
+            <div style={{color:"var(--ink-94a3b8)",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"12px"}}>{p.rationale.slice(0,110)}…</div>
             <div style={{display:"flex",gap:"6px",flexWrap:"wrap"}}>
               <span style={{background:`${p.color}15`,border:`1px solid ${p.color}30`,color:p.color,borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{p.panels.length} monitoring phases</span>
-              <span style={{background:"#1e293b",color:"#64748b",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{p.ddis.length} DDIs</span>
+              <span style={{background:"var(--fill-1e293b)",color:"var(--ink-64748b)",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{p.ddis.length} DDIs</span>
             </div>
           </div>
         ))}
@@ -2449,39 +2491,39 @@ function NotesModule() {
   if(view==="new") return (
     <div>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"24px"}}>
-        <h2 style={{color:"#e2e8f0",fontSize:"1.2rem",fontWeight:700,margin:0}}>{editId!==null?"Edit Note":"New Note"}</h2>
-        <button onClick={()=>{setView("list");setEditId(null);setForm({title:"",category:"Clinical Pearl",tags:"",body:"",ref:""}); }} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.82rem"}}>Cancel</button>
+        <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.2rem",fontWeight:700,margin:0}}>{editId!==null?"Edit Note":"New Note"}</h2>
+        <button onClick={()=>{setView("list");setEditId(null);setForm({title:"",category:"Clinical Pearl",tags:"",body:"",ref:""}); }} style={{background:"var(--fill-1e293b)",border:"none",color:"var(--ink-94a3b8)",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.82rem"}}>Cancel</button>
       </div>
       <div style={{display:"flex",flexDirection:"column",gap:"14px"}}>
         <div>
-          <label style={{color:"#64748b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Title *</label>
+          <label style={{color:"var(--ink-64748b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Title *</label>
           <input value={form.title} onChange={e=>setForm(p=>({...p,title:e.target.value}))} placeholder="e.g. Lithium + NSAID interaction pearl" style={inputStyle}/>
         </div>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px"}}>
           <div>
-            <label style={{color:"#64748b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Category</label>
+            <label style={{color:"var(--ink-64748b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Category</label>
             <select value={form.category} onChange={e=>setForm(p=>({...p,category:e.target.value}))}
               style={{...inputStyle,appearance:"none",cursor:"pointer"}}>
               {NOTES_CATEGORIES.map(c=><option key={c} value={c}>{c}</option>)}
             </select>
           </div>
           <div>
-            <label style={{color:"#64748b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Tags (comma-separated)</label>
+            <label style={{color:"var(--ink-64748b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Tags (comma-separated)</label>
             <input value={form.tags} onChange={e=>setForm(p=>({...p,tags:e.target.value}))} placeholder="lithium, renal, elderly" style={inputStyle}/>
           </div>
         </div>
         <div>
-          <label style={{color:"#64748b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Note / Content *</label>
+          <label style={{color:"var(--ink-64748b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Note / Content *</label>
           <textarea value={form.body} onChange={e=>setForm(p=>({...p,body:e.target.value}))} placeholder="Write your clinical pearl, observation, protocol note, or reminder here..."
             rows={8} style={{...inputStyle,resize:"vertical",lineHeight:1.7}}/>
         </div>
         <div>
-          <label style={{color:"#64748b",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Reference / Source (optional)</label>
+          <label style={{color:"var(--ink-64748b)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em",display:"block",marginBottom:"6px"}}>Reference / Source (optional)</label>
           <input value={form.ref} onChange={e=>setForm(p=>({...p,ref:e.target.value}))} placeholder="e.g. APA Practice Guideline 2023, Stahl's, case from 6/2025" style={inputStyle}/>
         </div>
         <div style={{display:"flex",gap:"10px",paddingTop:"4px"}}>
           <button onClick={handleSave} disabled={!form.title.trim()||!form.body.trim()}
-            style={{background:form.title.trim()&&form.body.trim()?"#0ea5e9":"#1e293b",border:"none",color:form.title.trim()&&form.body.trim()?"#fff":"#475569",borderRadius:"10px",padding:"12px 28px",cursor:form.title.trim()&&form.body.trim()?"pointer":"not-allowed",fontSize:"0.9rem",fontWeight:700}}>
+            style={{background:form.title.trim()&&form.body.trim()?"var(--fill-0ea5e9)":"var(--fill-1e293b)",border:"none",color:form.title.trim()&&form.body.trim()?"var(--ink-fff)":"var(--ink-475569)",borderRadius:"10px",padding:"12px 28px",cursor:form.title.trim()&&form.body.trim()?"pointer":"not-allowed",fontSize:"0.9rem",fontWeight:700}}>
             {editId!==null?"Save Changes":"Save Note"}
           </button>
         </div>
@@ -2495,37 +2537,37 @@ function NotesModule() {
     const catColor = CAT_COLORS[note.category]||"#64748b";
     return (
       <div>
-        <button onClick={()=>setView("list")} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to notes</button>
+        <button onClick={()=>setView("list")} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to notes</button>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"16px",flexWrap:"wrap",gap:"10px"}}>
           <div style={{flex:1}}>
-            <h2 style={{color:"#e2e8f0",fontSize:"1.25rem",fontWeight:700,margin:"0 0 8px 0"}}>{note.title}</h2>
+            <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.25rem",fontWeight:700,margin:"0 0 8px 0"}}>{note.title}</h2>
             <div style={{display:"flex",gap:"8px",flexWrap:"wrap",alignItems:"center"}}>
               <span style={{background:`${catColor}20`,border:`1px solid ${catColor}40`,color:catColor,borderRadius:"6px",padding:"3px 10px",fontSize:"0.75rem",fontWeight:600}}>{note.category}</span>
-              {note.tags.map(t=>(<span key={t} style={{background:"#1e293b",color:"#64748b",borderRadius:"5px",padding:"2px 8px",fontSize:"0.72rem"}}>#{t}</span>))}
+              {note.tags.map(t=>(<span key={t} style={{background:"var(--fill-1e293b)",color:"var(--ink-64748b)",borderRadius:"5px",padding:"2px 8px",fontSize:"0.72rem"}}>#{t}</span>))}
             </div>
           </div>
           <div style={{display:"flex",gap:"8px"}}>
-            <button onClick={()=>handleEdit(note)} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.82rem"}}>Edit</button>
-            <button onClick={()=>setConfirmDelete(note.id)} style={{background:"#2a0a0a",border:"1px solid #7f1d1d40",color:"#f87171",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.82rem"}}>Delete</button>
+            <button onClick={()=>handleEdit(note)} style={{background:"var(--fill-1e293b)",border:"none",color:"var(--ink-94a3b8)",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.82rem"}}>Edit</button>
+            <button onClick={()=>setConfirmDelete(note.id)} style={{background:"#2a0a0a",border:"1px solid #7f1d1d40",color:"var(--ink-f87171)",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.82rem"}}>Delete</button>
           </div>
         </div>
-        <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"24px",marginBottom:"16px",color:"#cbd5e1",fontSize:"0.9rem",lineHeight:1.85,whiteSpace:"pre-wrap"}}>
+        <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"24px",marginBottom:"16px",color:"var(--ink-cbd5e1)",fontSize:"0.9rem",lineHeight:1.85,whiteSpace:"pre-wrap"}}>
           {note.body}
         </div>
-        {note.ref&&<div style={{background:"#070b14",border:"1px solid #1e293b",borderRadius:"8px",padding:"12px 16px",marginBottom:"16px"}}>
-          <span style={{color:"#475569",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em"}}>Source / Reference: </span>
-          <span style={{color:"#64748b",fontSize:"0.82rem"}}>{note.ref}</span>
+        {note.ref&&<div style={{background:"var(--fill-070b14)",border:"1px solid var(--fill-1e293b)",borderRadius:"8px",padding:"12px 16px",marginBottom:"16px"}}>
+          <span style={{color:"var(--ink-475569)",fontSize:"0.75rem",textTransform:"uppercase",letterSpacing:"0.08em"}}>Source / Reference: </span>
+          <span style={{color:"var(--ink-64748b)",fontSize:"0.82rem"}}>{note.ref}</span>
         </div>}
-        <div style={{color:"#334155",fontSize:"0.75rem"}}>Created {fmtDate(note.created)} · Last updated {fmtDate(note.updated)}</div>
+        <div style={{color:"var(--ink-334155)",fontSize:"0.75rem"}}>Created {fmtDate(note.created)} · Last updated {fmtDate(note.updated)}</div>
         {confirmDelete&&(
           <div style={{position:"fixed",inset:0,background:"rgba(10,14,23,0.9)",zIndex:1000,display:"flex",alignItems:"center",justifyContent:"center",padding:"16px"}}>
-            <div style={{background:"#0f1724",border:"1px solid #7f1d1d",borderRadius:"14px",padding:"28px",maxWidth:"380px",width:"100%",textAlign:"center"}}>
-              <div style={{color:"#f87171",fontSize:"1.5rem",marginBottom:"12px"}}>🗑</div>
-              <div style={{color:"#e2e8f0",fontWeight:700,marginBottom:"8px"}}>Delete this note?</div>
-              <div style={{color:"#64748b",fontSize:"0.85rem",marginBottom:"20px"}}>This cannot be undone.</div>
+            <div style={{background:"var(--fill-0f1724)",border:"1px solid #7f1d1d",borderRadius:"14px",padding:"28px",maxWidth:"380px",width:"100%",textAlign:"center"}}>
+              <div style={{color:"var(--ink-f87171)",fontSize:"1.5rem",marginBottom:"12px"}}>🗑</div>
+              <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,marginBottom:"8px"}}>Delete this note?</div>
+              <div style={{color:"var(--ink-64748b)",fontSize:"0.85rem",marginBottom:"20px"}}>This cannot be undone.</div>
               <div style={{display:"flex",gap:"10px",justifyContent:"center"}}>
-                <button onClick={()=>setConfirmDelete(null)} style={{background:"#1e293b",border:"none",color:"#94a3b8",borderRadius:"8px",padding:"10px 20px",cursor:"pointer"}}>Cancel</button>
-                <button onClick={()=>handleDelete(confirmDelete)} style={{background:"#7f1d1d",border:"none",color:"#fca5a5",borderRadius:"8px",padding:"10px 20px",cursor:"pointer",fontWeight:600}}>Delete</button>
+                <button onClick={()=>setConfirmDelete(null)} style={{background:"var(--fill-1e293b)",border:"none",color:"var(--ink-94a3b8)",borderRadius:"8px",padding:"10px 20px",cursor:"pointer"}}>Cancel</button>
+                <button onClick={()=>handleDelete(confirmDelete)} style={{background:"#7f1d1d",border:"none",color:"var(--ink-fca5a5)",borderRadius:"8px",padding:"10px 20px",cursor:"pointer",fontWeight:600}}>Delete</button>
               </div>
             </div>
           </div>
@@ -2538,22 +2580,22 @@ function NotesModule() {
     <div>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"20px",flexWrap:"wrap",gap:"12px"}}>
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.1rem",fontWeight:700,margin:"0 0 2px 0"}}>Personal Notes</h2>
-          <div style={{color:"#475569",fontSize:"0.78rem"}}>Your clinical pearls, observations, and reminders. Stored locally in this browser.</div>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.1rem",fontWeight:700,margin:"0 0 2px 0"}}>Personal Notes</h2>
+          <div style={{color:"var(--ink-475569)",fontSize:"0.78rem"}}>Your clinical pearls, observations, and reminders. Stored locally in this browser.</div>
         </div>
         <button onClick={()=>{setForm({title:"",category:"Clinical Pearl",tags:"",body:"",ref:""});setEditId(null);setView("new");}}
-          style={{background:"#0ea5e9",border:"none",color:"#fff",borderRadius:"10px",padding:"10px 20px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
+          style={{background:"var(--fill-0ea5e9)",border:"none",color:"var(--ink-fff)",borderRadius:"10px",padding:"10px 20px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
           + New Note
         </button>
       </div>
 
       <div style={{display:"flex",gap:"10px",marginBottom:"14px",flexWrap:"wrap"}}>
         <div style={{position:"relative",flex:1,minWidth:"200px"}}>
-          <div style={{position:"absolute",left:"12px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}>
+          <div style={{position:"absolute",left:"12px",top:"50%",transform:"translateY(-50%)",color:"var(--ink-475569)"}}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search notes..."
-            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"10px 10px 10px 38px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
+            style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"10px 10px 10px 38px",color:"var(--ink-e2e8f0)",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
         </div>
       </div>
 
@@ -2563,7 +2605,7 @@ function NotesModule() {
           const active = catFilter===c;
           return (
             <button key={c} onClick={()=>setCatFilter(c)}
-              style={{background:active?`${col}20`:"#0a0e17",border:`1px solid ${active?col+"50":"#1e293b"}`,color:active?col:"#64748b",borderRadius:"20px",padding:"4px 12px",fontSize:"0.75rem",cursor:"pointer",fontWeight:active?600:400}}>
+              style={{background:active?`${col}20`:"var(--fill-0a0e17)",border:`1px solid ${active?col+"50":"var(--fill-1e293b)"}`,color:active?col:"var(--ink-64748b)",borderRadius:"20px",padding:"4px 12px",fontSize:"0.75rem",cursor:"pointer",fontWeight:active?600:400}}>
               {c}
             </button>
           );
@@ -2571,10 +2613,10 @@ function NotesModule() {
       </div>
 
       {filtered.length===0&&(
-        <div style={{textAlign:"center",padding:"60px 20px",color:"#334155"}}>
+        <div style={{textAlign:"center",padding:"60px 20px",color:"var(--ink-334155)"}}>
           <div style={{fontSize:"2rem",marginBottom:"12px"}}>📝</div>
-          <div style={{fontSize:"0.9rem",color:"#475569",marginBottom:"6px"}}>{notes.length===0?"No notes yet — add your first clinical pearl":"No notes match your search"}</div>
-          {notes.length===0&&<div style={{fontSize:"0.8rem",color:"#334155"}}>Notes are saved locally in this browser across sessions.</div>}
+          <div style={{fontSize:"0.9rem",color:"var(--ink-475569)",marginBottom:"6px"}}>{notes.length===0?"No notes yet — add your first clinical pearl":"No notes match your search"}</div>
+          {notes.length===0&&<div style={{fontSize:"0.8rem",color:"var(--ink-334155)"}}>Notes are saved locally in this browser across sessions.</div>}
         </div>
       )}
 
@@ -2583,24 +2625,24 @@ function NotesModule() {
           const col = CAT_COLORS[note.category]||"#64748b";
           return (
             <div key={note.id} onClick={()=>{setSelected(note.id);setView("detail");}}
-              style={{background:"#0a0e17",border:`1px solid #1e293b`,borderLeft:`3px solid ${col}`,borderRadius:"12px",padding:"16px",cursor:"pointer",transition:"border-color 0.15s"}}
+              style={{background:"var(--fill-0a0e17)",border:`1px solid var(--fill-1e293b)`,borderLeft:`3px solid ${col}`,borderRadius:"12px",padding:"16px",cursor:"pointer",transition:"border-color 0.15s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor=col}
-              onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+              onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"8px"}}>
                 <div style={{color:col,fontSize:"0.7rem",fontWeight:600,textTransform:"uppercase",letterSpacing:"0.07em"}}>{note.category}</div>
-                <div style={{color:"#334155",fontSize:"0.7rem"}}>{fmtDate(note.updated)}</div>
+                <div style={{color:"var(--ink-334155)",fontSize:"0.7rem"}}>{fmtDate(note.updated)}</div>
               </div>
-              <div style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.9rem",marginBottom:"8px",lineHeight:1.4}}>{note.title}</div>
-              <div style={{color:"#64748b",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"10px",overflow:"hidden",display:"-webkit-box",WebkitLineClamp:3,WebkitBoxOrient:"vertical"}}>{note.body}</div>
+              <div style={{color:"var(--ink-e2e8f0)",fontWeight:600,fontSize:"0.9rem",marginBottom:"8px",lineHeight:1.4}}>{note.title}</div>
+              <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"10px",overflow:"hidden",display:"-webkit-box",WebkitLineClamp:3,WebkitBoxOrient:"vertical"}}>{note.body}</div>
               {note.tags.length>0&&<div style={{display:"flex",gap:"4px",flexWrap:"wrap"}}>
-                {note.tags.slice(0,3).map(t=>(<span key={t} style={{background:"#1e293b",color:"#475569",borderRadius:"4px",padding:"1px 6px",fontSize:"0.68rem"}}>#{t}</span>))}
-                {note.tags.length>3&&<span style={{color:"#334155",fontSize:"0.68rem",padding:"1px 4px"}}>+{note.tags.length-3}</span>}
+                {note.tags.slice(0,3).map(t=>(<span key={t} style={{background:"var(--fill-1e293b)",color:"var(--ink-475569)",borderRadius:"4px",padding:"1px 6px",fontSize:"0.68rem"}}>#{t}</span>))}
+                {note.tags.length>3&&<span style={{color:"var(--ink-334155)",fontSize:"0.68rem",padding:"1px 4px"}}>+{note.tags.length-3}</span>}
               </div>}
             </div>
           );
         })}
       </div>
-      {notes.length>0&&<div style={{marginTop:"20px",color:"#334155",fontSize:"0.75rem",textAlign:"center"}}>{notes.length} note{notes.length!==1?"s":""} · Stored locally in this browser</div>}
+      {notes.length>0&&<div style={{marginTop:"20px",color:"var(--ink-334155)",fontSize:"0.75rem",textAlign:"center"}}>{notes.length} note{notes.length!==1?"s":""} · Stored locally in this browser</div>}
     </div>
   );
 }
@@ -3039,42 +3081,42 @@ function AugDetail({ dx, onBack }) {
   };
   return (
     <div>
-      <button onClick={onBack} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back</button>
+      <button onClick={onBack} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back</button>
       <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"20px",flexWrap:"wrap"}}>
-        <h2 style={{color:"#e2e8f0",fontSize:"1.25rem",fontWeight:700,margin:0}}>{dx.diagnosis}</h2>
+        <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.25rem",fontWeight:700,margin:0}}>{dx.diagnosis}</h2>
         <span style={{background:`${dx.color}20`,border:`1px solid ${dx.color}40`,color:dx.color,borderRadius:"6px",padding:"3px 10px",fontSize:"0.75rem",fontWeight:600}}>Augmentation Guide</span>
       </div>
       {dx.stages.map((stage, si) => (
-        <div key={si} style={{marginBottom:"12px",background:"#0a0e17",border:`1px solid ${openStep===si?dx.color+"60":"#1e293b"}`,borderRadius:"12px",overflow:"hidden"}}>
+        <div key={si} style={{marginBottom:"12px",background:"var(--fill-0a0e17)",border:`1px solid ${openStep===si?dx.color+"60":"var(--fill-1e293b)"}`,borderRadius:"12px",overflow:"hidden"}}>
           <div onClick={()=>setOpenStep(openStep===si?-1:si)} style={{padding:"16px 20px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
             <div>
-              <div style={{color:openStep===si?dx.color:"#e2e8f0",fontWeight:700,fontSize:"0.9rem"}}>{stage.step}</div>
-              <div style={{color:"#475569",fontSize:"0.78rem",marginTop:"3px"}}>{stage.options.length} option{stage.options.length!==1?"s":""}</div>
+              <div style={{color:openStep===si?dx.color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"0.9rem"}}>{stage.step}</div>
+              <div style={{color:"var(--ink-475569)",fontSize:"0.78rem",marginTop:"3px"}}>{stage.options.length} option{stage.options.length!==1?"s":""}</div>
             </div>
-            <div style={{color:"#475569",transform:openStep===si?"rotate(180deg)":"none",transition:"transform 0.2s"}}>
+            <div style={{color:"var(--ink-475569)",transform:openStep===si?"rotate(180deg)":"none",transition:"transform 0.2s"}}>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
             </div>
           </div>
           {openStep===si&&(
             <div style={{padding:"0 20px 16px"}}>
-              <div style={{color:"#64748b",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"14px",borderTop:"1px solid #1e293b",paddingTop:"12px"}}>{stage.rationale}</div>
+              <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"14px",borderTop:"1px solid var(--fill-1e293b)",paddingTop:"12px"}}>{stage.rationale}</div>
               {stage.options.map((opt, oi) => {
                 const key=`${si}-${oi}`;
                 return (
-                  <div key={oi} style={{background:"#070b14",border:"1px solid #1e293b",borderRadius:"10px",marginBottom:"8px",overflow:"hidden"}}>
+                  <div key={oi} style={{background:"var(--fill-070b14)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",marginBottom:"8px",overflow:"hidden"}}>
                     <div onClick={()=>toggleOpt(si,oi)} style={{padding:"12px 16px",cursor:"pointer",display:"flex",justifyContent:"space-between",alignItems:"center"}}>
                       <div style={{display:"flex",alignItems:"center",gap:"10px",flex:1,flexWrap:"wrap"}}>
-                        <span style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.875rem"}}>{opt.name}</span>
+                        <span style={{color:"var(--ink-e2e8f0)",fontWeight:600,fontSize:"0.875rem"}}>{opt.name}</span>
                         {opt.evidence&&<span style={{background:`${evColor(opt.evidence)}15`,border:`1px solid ${evColor(opt.evidence)}30`,color:evColor(opt.evidence),borderRadius:"4px",padding:"1px 8px",fontSize:"0.68rem",fontWeight:600,whiteSpace:"nowrap"}}>{opt.evidence}</span>}
                       </div>
-                      <div style={{color:"#475569",marginLeft:"8px",flexShrink:0}}>
+                      <div style={{color:"var(--ink-475569)",marginLeft:"8px",flexShrink:0}}>
                         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points={openOpt[key]?"18 15 12 9 6 15":"6 9 12 15 18 9"}/></svg>
                       </div>
                     </div>
                     {openOpt[key]&&(
-                      <div style={{padding:"0 16px 14px",borderTop:"1px solid #1e293b"}}>
-                        <div style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.7,marginTop:"10px"}}>{opt.detail}</div>
-                        {opt.caution&&<div style={{background:"#1a1200",border:"1px solid #78350f40",borderRadius:"8px",padding:"10px 12px",marginTop:"10px",color:"#fcd34d",fontSize:"0.78rem",lineHeight:1.6}}>⚠ {opt.caution}</div>}
+                      <div style={{padding:"0 16px 14px",borderTop:"1px solid var(--fill-1e293b)"}}>
+                        <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.7,marginTop:"10px"}}>{opt.detail}</div>
+                        {opt.caution&&<div style={{background:"var(--fill-1a1200)",border:"1px solid #78350f40",borderRadius:"8px",padding:"10px 12px",marginTop:"10px",color:"var(--ink-fcd34d)",fontSize:"0.78rem",lineHeight:1.6}}>⚠ {opt.caution}</div>}
                       </div>
                     )}
                   </div>
@@ -3093,21 +3135,21 @@ function AugmentationModule() {
   if(active) return <AugDetail dx={active} onBack={()=>setActive(null)}/>;
   return (
     <div>
-      <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-0a1a10)",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-86efac)",fontSize:"0.82rem",lineHeight:1.6}}>
         📊 Evidence levels: Level A = multiple RCTs or meta-analyses · Level B = at least one RCT or strong observational data · Level C = expert consensus · FDA-approved = regulatory approval for that specific indication.
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
         {AUGMENTATION_DATA.map(dx=>(
           <div key={dx.id} onClick={()=>setActive(dx)}
-            style={{background:"#0a0e17",border:"1px solid #1e293b",borderLeft:`3px solid ${dx.color}`,borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
+            style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderLeft:`3px solid ${dx.color}`,borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor=dx.color}
-            onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+            onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"8px"}}>
               <div style={{color:dx.color,fontWeight:700,fontSize:"1rem"}}>{dx.diagnosis}</div>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
             <div style={{display:"flex",gap:"6px",flexWrap:"wrap",marginTop:"10px"}}>
-              {dx.stages.map((s,i)=><span key={i} style={{background:"#1e293b",color:"#64748b",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{s.step.split("—")[0].trim()}</span>)}
+              {dx.stages.map((s,i)=><span key={i} style={{background:"var(--fill-1e293b)",color:"var(--ink-64748b)",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{s.step.split("—")[0].trim()}</span>)}
             </div>
           </div>
         ))}
@@ -3120,26 +3162,26 @@ function AugmentationModule() {
 function CompareDetail({ table, onBack }) {
   return (
     <div>
-      <button onClick={onBack} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back</button>
-      <h2 style={{color:"#e2e8f0",fontSize:"1.25rem",fontWeight:700,marginBottom:"6px"}}>{table.name}</h2>
-      <div style={{color:"#64748b",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"20px"}}>{table.description}</div>
+      <button onClick={onBack} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back</button>
+      <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.25rem",fontWeight:700,marginBottom:"6px"}}>{table.name}</h2>
+      <div style={{color:"var(--ink-64748b)",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"20px"}}>{table.description}</div>
       <div style={{overflowX:"auto",marginBottom:"16px"}}>
         <table style={{width:"100%",borderCollapse:"collapse",minWidth:"600px"}}>
           <thead>
             <tr>
               {table.columns.map((col,i)=>(
-                <th key={i} style={{background:i===0?"#0a0e17":`${table.color}15`,color:i===0?"#475569":table.color,padding:"10px 14px",fontSize:"0.75rem",fontWeight:700,textAlign:"left",borderBottom:"1px solid #1e293b",whiteSpace:"nowrap"}}>{col}</th>
+                <th key={i} style={{background:i===0?"var(--fill-0a0e17)":`${table.color}15`,color:i===0?"var(--ink-475569)":table.color,padding:"10px 14px",fontSize:"0.75rem",fontWeight:700,textAlign:"left",borderBottom:"1px solid var(--fill-1e293b)",whiteSpace:"nowrap"}}>{col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {table.rows.map((row,ri)=>(
-              <tr key={ri} style={{background:ri%2===0?"#070b14":"#0a0e17"}}>
-                <td style={{padding:"10px 14px",color:"#94a3b8",fontSize:"0.8rem",fontWeight:600,borderBottom:"1px solid #1e293b10",whiteSpace:"nowrap",verticalAlign:"top"}}>{row.property}</td>
+              <tr key={ri} style={{background:ri%2===0?"var(--fill-070b14)":"var(--fill-0a0e17)"}}>
+                <td style={{padding:"10px 14px",color:"var(--ink-94a3b8)",fontSize:"0.8rem",fontWeight:600,borderBottom:"1px solid #1e293b10",whiteSpace:"nowrap",verticalAlign:"top"}}>{row.property}</td>
                 {row.values.map((val,vi)=>{
                   const isDanger=val&&(val.includes("Highest")||val.includes("Worst")||val.includes("Most +")||val.includes("CONTRAINDICATED")||val.includes("+++"));
                   const isGood=val&&(val.includes("Best")||val.includes("Minimal")||val.includes("Low")||val==="None"||val.includes("Neutral")||val.includes("Lowest"));
-                  return <td key={vi} style={{padding:"10px 14px",color:isDanger?"#f87171":isGood?"#86efac":"#cbd5e1",fontSize:"0.78rem",borderBottom:"1px solid #1e293b10",verticalAlign:"top",lineHeight:1.5}}>{val}</td>;
+                  return <td key={vi} style={{padding:"10px 14px",color:isDanger?"var(--ink-f87171)":isGood?"var(--ink-86efac)":"var(--ink-cbd5e1)",fontSize:"0.78rem",borderBottom:"1px solid #1e293b10",verticalAlign:"top",lineHeight:1.5}}>{val}</td>;
                 })}
               </tr>
             ))}
@@ -3147,9 +3189,9 @@ function CompareDetail({ table, onBack }) {
         </table>
       </div>
       {table.footnotes&&table.footnotes.length>0&&(
-        <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"14px 16px"}}>
+        <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"14px 16px"}}>
           {table.footnotes.map((fn,i)=>(
-            <div key={i} style={{color:"#64748b",fontSize:"0.78rem",lineHeight:1.6,marginBottom:i<table.footnotes.length-1?"8px":0}}>* {fn}</div>
+            <div key={i} style={{color:"var(--ink-64748b)",fontSize:"0.78rem",lineHeight:1.6,marginBottom:i<table.footnotes.length-1?"8px":0}}>* {fn}</div>
           ))}
         </div>
       )}
@@ -3164,14 +3206,14 @@ function ComparisonsModule() {
     <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
       {COMPARISON_TABLES.map(t=>(
         <div key={t.id} onClick={()=>setActive(t)}
-          style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
+          style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
           onMouseEnter={e=>e.currentTarget.style.borderColor=t.color}
-          onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+          onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
           <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"10px"}}>
             <div style={{color:t.color,fontWeight:700,fontSize:"1rem"}}>{t.name}</div>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
           </div>
-          <div style={{color:"#94a3b8",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"12px"}}>{t.description}</div>
+          <div style={{color:"var(--ink-94a3b8)",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"12px"}}>{t.description}</div>
           <span style={{background:`${t.color}15`,border:`1px solid ${t.color}30`,color:t.color,borderRadius:"5px",padding:"3px 10px",fontSize:"0.72rem",fontWeight:600}}>{t.columns.length-1} agents · {t.rows.length} properties</span>
         </div>
       ))}
@@ -3184,42 +3226,42 @@ function TaperDetail({ protocol, onBack }) {
   const [tab, setTab] = useState("protocol");
   return (
     <div>
-      <button onClick={onBack} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back</button>
+      <button onClick={onBack} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"24px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back</button>
       <div style={{display:"flex",alignItems:"center",gap:"12px",marginBottom:"8px",flexWrap:"wrap"}}>
-        <h2 style={{color:"#e2e8f0",fontSize:"1.25rem",fontWeight:700,margin:0}}>{protocol.name}</h2>
+        <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.25rem",fontWeight:700,margin:0}}>{protocol.name}</h2>
         <span style={{background:`${protocol.color}20`,border:`1px solid ${protocol.color}40`,color:protocol.color,borderRadius:"6px",padding:"3px 10px",fontSize:"0.75rem",fontWeight:600}}>Taper Protocol</span>
       </div>
-      <div style={{color:"#64748b",fontSize:"0.82rem",lineHeight:1.6,marginBottom:"12px"}}>{protocol.indication}</div>
-      <div style={{background:"#1a0a0a",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#fca5a5",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{color:"var(--ink-64748b)",fontSize:"0.82rem",lineHeight:1.6,marginBottom:"12px"}}>{protocol.indication}</div>
+      <div style={{background:"var(--fill-1a0a0a)",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-fca5a5)",fontSize:"0.82rem",lineHeight:1.6}}>
         ⚠ <strong>Risk factors:</strong> {protocol.riskFactors}
       </div>
-      <div style={{display:"flex",gap:"4px",marginBottom:"16px",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"4px",flexWrap:"wrap"}}>
+      <div style={{display:"flex",gap:"4px",marginBottom:"16px",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"4px",flexWrap:"wrap"}}>
         {["protocol","syndrome","agents","pearls"].map(t=>(
           <button key={t} onClick={()=>setTab(t)}
-            style={{background:tab===t?"#1e293b":"transparent",border:"none",color:tab===t?"#e2e8f0":"#64748b",borderRadius:"7px",padding:"8px 14px",cursor:"pointer",fontSize:"0.78rem",fontWeight:tab===t?600:400}}>
+            style={{background:tab===t?"var(--fill-1e293b)":"transparent",border:"none",color:tab===t?"var(--ink-e2e8f0)":"var(--ink-64748b)",borderRadius:"7px",padding:"8px 14px",cursor:"pointer",fontSize:"0.78rem",fontWeight:tab===t?600:400}}>
             {t==="syndrome"?"Withdrawal Sx":t==="agents"?"By Agent":t==="pearls"?"Pearls":"Protocol Steps"}
           </button>
         ))}
       </div>
       {tab==="protocol"&&protocol.protocol.map((step,i)=>(
-        <div key={i} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",marginBottom:"10px",padding:"16px"}}>
+        <div key={i} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",marginBottom:"10px",padding:"16px"}}>
           <div style={{color:protocol.color,fontWeight:700,fontSize:"0.82rem",marginBottom:"8px"}}>{step.phase}</div>
-          <div style={{color:"#cbd5e1",fontSize:"0.84rem",lineHeight:1.7}}>{step.detail}</div>
+          <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.84rem",lineHeight:1.7}}>{step.detail}</div>
         </div>
       ))}
       {tab==="syndrome"&&(
-        <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px"}}>
-          <div style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem",marginBottom:"14px"}}>{protocol.syndrome.name}</div>
+        <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px"}}>
+          <div style={{color:"var(--ink-f87171)",fontWeight:700,fontSize:"0.875rem",marginBottom:"14px"}}>{protocol.syndrome.name}</div>
           <div style={{marginBottom:"16px"}}>
-            <div style={{color:"#64748b",fontSize:"0.72rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px"}}>Symptoms</div>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.72rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px"}}>Symptoms</div>
             {protocol.syndrome.symptoms.map((s,i)=>(
-              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",padding:"6px 0",borderBottom:i<protocol.syndrome.symptoms.length-1?"1px solid #1e293b":"none",lineHeight:1.6}}>• {s}</div>
+              <div key={i} style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",padding:"6px 0",borderBottom:i<protocol.syndrome.symptoms.length-1?"1px solid var(--fill-1e293b)":"none",lineHeight:1.6}}>• {s}</div>
             ))}
           </div>
           {[["Onset",protocol.syndrome.onset],["Duration",protocol.syndrome.duration],["How to differentiate",protocol.syndrome.differentiate]].map(([label,val])=>(
-            <div key={label} style={{background:"#070b14",border:"1px solid #1e293b",borderRadius:"8px",padding:"12px",marginBottom:"8px"}}>
-              <div style={{color:"#64748b",fontSize:"0.72rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"5px"}}>{label}</div>
-              <div style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6}}>{val}</div>
+            <div key={label} style={{background:"var(--fill-070b14)",border:"1px solid var(--fill-1e293b)",borderRadius:"8px",padding:"12px",marginBottom:"8px"}}>
+              <div style={{color:"var(--ink-64748b)",fontSize:"0.72rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"5px"}}>{label}</div>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6}}>{val}</div>
             </div>
           ))}
         </div>
@@ -3229,16 +3271,16 @@ function TaperDetail({ protocol, onBack }) {
           <table style={{width:"100%",borderCollapse:"collapse"}}>
             <thead>
               <tr>{["Agent","Withdrawal Risk","Half-life","Notes"].map((h,i)=>(
-                <th key={i} style={{background:"#0a0e17",color:"#475569",padding:"10px 14px",fontSize:"0.72rem",fontWeight:700,textAlign:"left",borderBottom:"1px solid #1e293b"}}>{h}</th>
+                <th key={i} style={{background:"var(--fill-0a0e17)",color:"var(--ink-475569)",padding:"10px 14px",fontSize:"0.72rem",fontWeight:700,textAlign:"left",borderBottom:"1px solid var(--fill-1e293b)"}}>{h}</th>
               ))}</tr>
             </thead>
             <tbody>
               {protocol.riskByAgent.map((a,i)=>(
-                <tr key={i} style={{background:i%2===0?"#070b14":"#0a0e17"}}>
-                  <td style={{padding:"10px 14px",color:"#e2e8f0",fontSize:"0.82rem",fontWeight:600,borderBottom:"1px solid #1a1a2e"}}>{a.agent}</td>
-                  <td style={{padding:"10px 14px",fontSize:"0.8rem",borderBottom:"1px solid #1a1a2e",color:a.risk.includes("Highest")?"#f87171":a.risk.includes("High")?"#f59e0b":a.risk.includes("Moderate")?"#fde68a":"#86efac",fontWeight:600}}>{a.risk}</td>
-                  <td style={{padding:"10px 14px",color:"#64748b",fontSize:"0.8rem",borderBottom:"1px solid #1a1a2e"}}>{a.halfLife}</td>
-                  <td style={{padding:"10px 14px",color:"#94a3b8",fontSize:"0.78rem",lineHeight:1.6,borderBottom:"1px solid #1a1a2e"}}>{a.notes}</td>
+                <tr key={i} style={{background:i%2===0?"var(--fill-070b14)":"var(--fill-0a0e17)"}}>
+                  <td style={{padding:"10px 14px",color:"var(--ink-e2e8f0)",fontSize:"0.82rem",fontWeight:600,borderBottom:"1px solid var(--fill-1a1a2e)"}}>{a.agent}</td>
+                  <td style={{padding:"10px 14px",fontSize:"0.8rem",borderBottom:"1px solid var(--fill-1a1a2e)",color:a.risk.includes("Highest")?"var(--ink-f87171)":a.risk.includes("High")?"var(--ink-f59e0b)":a.risk.includes("Moderate")?"var(--ink-fde68a)":"var(--ink-86efac)",fontWeight:600}}>{a.risk}</td>
+                  <td style={{padding:"10px 14px",color:"var(--ink-64748b)",fontSize:"0.8rem",borderBottom:"1px solid var(--fill-1a1a2e)"}}>{a.halfLife}</td>
+                  <td style={{padding:"10px 14px",color:"var(--ink-94a3b8)",fontSize:"0.78rem",lineHeight:1.6,borderBottom:"1px solid var(--fill-1a1a2e)"}}>{a.notes}</td>
                 </tr>
               ))}
             </tbody>
@@ -3246,11 +3288,11 @@ function TaperDetail({ protocol, onBack }) {
         </div>
       )}
       {tab==="pearls"&&(
-        <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px"}}>
+        <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px"}}>
           {protocol.pearls.map((p,i)=>(
-            <div key={i} style={{display:"flex",gap:"12px",padding:"10px 0",borderBottom:i<protocol.pearls.length-1?"1px solid #1e293b":"none",alignItems:"flex-start"}}>
+            <div key={i} style={{display:"flex",gap:"12px",padding:"10px 0",borderBottom:i<protocol.pearls.length-1?"1px solid var(--fill-1e293b)":"none",alignItems:"flex-start"}}>
               <div style={{color:protocol.color,fontWeight:700,fontSize:"1rem",marginTop:"-1px"}}>→</div>
-              <div style={{color:"#cbd5e1",fontSize:"0.85rem",lineHeight:1.7}}>{p}</div>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.85rem",lineHeight:1.7}}>{p}</div>
             </div>
           ))}
         </div>
@@ -3264,23 +3306,23 @@ function TapersModule() {
   if(active) return <TaperDetail protocol={active} onBack={()=>setActive(null)}/>;
   return (
     <div>
-      <div style={{background:"#1a0a0a",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#fca5a5",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-1a0a0a)",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-fca5a5)",fontSize:"0.82rem",lineHeight:1.6}}>
         ⚠ Taper protocols are guides — individualize based on dose, duration, and patient history. Never abruptly discontinue benzodiazepines or antipsychotics in dependent patients.
       </div>
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
         {TAPER_PROTOCOLS.map(p=>(
           <div key={p.id} onClick={()=>setActive(p)}
-            style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
+            style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"20px",cursor:"pointer",transition:"border-color 0.15s"}}
             onMouseEnter={e=>e.currentTarget.style.borderColor=p.color}
-            onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+            onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:"10px"}}>
               <div style={{color:p.color,fontWeight:700,fontSize:"1rem"}}>{p.name}</div>
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
-            <div style={{color:"#94a3b8",fontSize:"0.79rem",lineHeight:1.6,marginBottom:"12px"}}>{p.indication}</div>
+            <div style={{color:"var(--ink-94a3b8)",fontSize:"0.79rem",lineHeight:1.6,marginBottom:"12px"}}>{p.indication}</div>
             <div style={{display:"flex",gap:"6px",flexWrap:"wrap"}}>
               <span style={{background:`${p.color}15`,border:`1px solid ${p.color}30`,color:p.color,borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{p.protocol.length} protocol steps</span>
-              <span style={{background:"#1e293b",color:"#64748b",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{p.riskByAgent.length} agents profiled</span>
+              <span style={{background:"var(--fill-1e293b)",color:"var(--ink-64748b)",borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{p.riskByAgent.length} agents profiled</span>
             </div>
           </div>
         ))}
@@ -4328,16 +4370,16 @@ function HandoutsModule() {
     <div>
       {preview&&<HandoutPrint handout={preview} onClose={()=>setPreview(null)}/>}
 
-      <div style={{display:"flex",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"4px",width:"fit-content",marginBottom:"16px"}}>
+      <div style={{display:"flex",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"4px",width:"fit-content",marginBottom:"16px"}}>
         {[["en","🇺🇸 English"],["es","🇪🇸 Español"]].map(([code,label])=>(
           <button key={code} onClick={()=>{setLangFilter(code);setCatFilter("All");}}
-            style={{background:langFilter===code?"#0ea5e9":"transparent",border:"none",color:langFilter===code?"#fff":"#64748b",borderRadius:"7px",padding:"9px 18px",cursor:"pointer",fontSize:"0.85rem",fontWeight:langFilter===code?700:400,fontFamily:"inherit"}}>
+            style={{background:langFilter===code?"var(--fill-0ea5e9)":"transparent",border:"none",color:langFilter===code?"var(--ink-fff)":"var(--ink-64748b)",borderRadius:"7px",padding:"9px 18px",cursor:"pointer",fontSize:"0.85rem",fontWeight:langFilter===code?700:400,fontFamily:"inherit"}}>
             {label}
           </button>
         ))}
       </div>
 
-      <div style={{background:"#0a1a0a",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-0a1a0a)",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-86efac)",fontSize:"0.82rem",lineHeight:1.6}}>
         {langFilter==="es"
           ? "🖨 Haga clic en cualquier folleto para verlo e imprimirlo. Cada uno está formateado para una sola página. Use Imprimir → Guardar como PDF en su navegador para enviarlo digitalmente."
           : "🖨 Click any handout to preview and print. Each is formatted for a clean single-page printout. Use browser Print → Save as PDF to send digitally. All handouts include your name and practice information."}
@@ -4345,11 +4387,11 @@ function HandoutsModule() {
 
       <div style={{display:"flex",gap:"10px",marginBottom:"14px",flexWrap:"wrap"}}>
         <div style={{position:"relative",flex:1,minWidth:"200px"}}>
-          <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"#475569"}}>
+          <div style={{position:"absolute",left:"14px",top:"50%",transform:"translateY(-50%)",color:"var(--ink-475569)"}}>
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           </div>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder={langFilter==="es"?"Buscar folletos...":"Search handouts..."}
-            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"10px 10px 10px 40px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
+            style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"10px 10px 10px 40px",color:"var(--ink-e2e8f0)",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
         </div>
       </div>
 
@@ -4359,7 +4401,7 @@ function HandoutsModule() {
           const active = catFilter===c;
           return (
             <button key={c} onClick={()=>setCatFilter(c)}
-              style={{background:active?`${col}20`:"#0a0e17",border:`1px solid ${active?col+"50":"#1e293b"}`,color:active?col:"#64748b",borderRadius:"20px",padding:"5px 14px",fontSize:"0.75rem",cursor:"pointer",fontWeight:active?600:400}}>
+              style={{background:active?`${col}20`:"var(--fill-0a0e17)",border:`1px solid ${active?col+"50":"var(--fill-1e293b)"}`,color:active?col:"var(--ink-64748b)",borderRadius:"20px",padding:"5px 14px",fontSize:"0.75rem",cursor:"pointer",fontWeight:active?600:400}}>
               {c}
             </button>
           );
@@ -4371,15 +4413,15 @@ function HandoutsModule() {
           const col = catColors[h.category]||"#64748b";
           return (
             <div key={h.id} onClick={()=>setPreview(h)}
-              style={{background:"#0a0e17",border:"1px solid #1e293b",borderLeft:`3px solid ${col}`,borderRadius:"12px",padding:"18px",cursor:"pointer",transition:"border-color 0.15s"}}
+              style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderLeft:`3px solid ${col}`,borderRadius:"12px",padding:"18px",cursor:"pointer",transition:"border-color 0.15s"}}
               onMouseEnter={e=>e.currentTarget.style.borderColor=col}
-              onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+              onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
               <div style={{color:col,fontSize:"0.7rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"6px"}}>{h.category}</div>
-              <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.95rem",marginBottom:"5px"}}>{h.title}</div>
-              <div style={{color:"#64748b",fontSize:"0.78rem",lineHeight:1.5,marginBottom:"12px"}}>{h.subtitle}</div>
+              <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"0.95rem",marginBottom:"5px"}}>{h.title}</div>
+              <div style={{color:"var(--ink-64748b)",fontSize:"0.78rem",lineHeight:1.5,marginBottom:"12px"}}>{h.subtitle}</div>
               <div style={{display:"flex",alignItems:"center",gap:"6px"}}>
                 <span style={{background:`${col}15`,border:`1px solid ${col}30`,color:col,borderRadius:"5px",padding:"2px 8px",fontSize:"0.7rem"}}>{h.lang==="es"?"🖨 Ver e Imprimir":"🖨 Preview & Print"}</span>
-                <span style={{color:"#334155",fontSize:"0.7rem"}}>{h.sections.length} {h.lang==="es"?"secciones":"sections"}</span>
+                <span style={{color:"var(--ink-334155)",fontSize:"0.7rem"}}>{h.sections.length} {h.lang==="es"?"secciones":"sections"}</span>
               </div>
             </div>
           );
@@ -4420,23 +4462,23 @@ function InteractionCheckerModule() {
 
   return (
     <div>
-      <div style={{background:"#1a0505",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#fca5a5",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-1a0505)",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-fca5a5)",fontSize:"0.82rem",lineHeight:1.6}}>
         ⚠ This tool cross-references data already curated elsewhere in this app, plus basic pharmacologic-class heuristics (serotonergic, QTc, sedating, anticholinergic burden). It does <b>not</b> model CYP450 or other pharmacokinetic interactions, and it does not check against non-psychiatric medications. It's a screening aid to surface additive risk at a glance — not a substitute for a full interaction database (e.g. Lexicomp/Epocrates) or pharmacist review.
       </div>
 
       <div style={{marginBottom:"20px"}}>
         <div style={{position:"relative"}}>
           <input value={search} onChange={e=>setSearch(e.target.value)} placeholder="Search a medication to add (e.g. sertraline, Zoloft)..."
-            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 14px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
+            style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"12px 14px",color:"var(--ink-e2e8f0)",fontSize:"0.875rem",outline:"none",boxSizing:"border-box"}}/>
           {suggestions.length > 0 && (
-            <div style={{position:"absolute",top:"100%",left:0,right:0,background:"#0f1724",border:"1px solid #1e293b",borderRadius:"10px",marginTop:"4px",zIndex:10,overflow:"hidden"}}>
+            <div style={{position:"absolute",top:"100%",left:0,right:0,background:"var(--fill-0f1724)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",marginTop:"4px",zIndex:10,overflow:"hidden"}}>
               {suggestions.map(m => (
                 <div key={m.id} onClick={()=>addMed(m.id)}
-                  style={{padding:"10px 14px",cursor:"pointer",borderBottom:"1px solid #1e293b"}}
+                  style={{padding:"10px 14px",cursor:"pointer",borderBottom:"1px solid var(--fill-1e293b)"}}
                   onMouseEnter={e=>e.currentTarget.style.background="#1e293b"}
                   onMouseLeave={e=>e.currentTarget.style.background="transparent"}>
-                  <span style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.875rem"}}>{m.name}</span>
-                  <span style={{color:"#64748b",fontSize:"0.78rem"}}> · {m.brand} · {m.class}</span>
+                  <span style={{color:"var(--ink-e2e8f0)",fontWeight:600,fontSize:"0.875rem"}}>{m.name}</span>
+                  <span style={{color:"var(--ink-64748b)",fontSize:"0.78rem"}}> · {m.brand} · {m.class}</span>
                 </div>
               ))}
             </div>
@@ -4447,8 +4489,8 @@ function InteractionCheckerModule() {
           <div style={{display:"flex",flexWrap:"wrap",gap:"8px",marginTop:"12px"}}>
             {selected.map(m => (
               <div key={m.id} style={{display:"flex",alignItems:"center",gap:"8px",background:"#0ea5e920",border:"1px solid #0ea5e940",borderRadius:"20px",padding:"6px 8px 6px 14px"}}>
-                <span style={{color:"#e2e8f0",fontSize:"0.82rem",fontWeight:600}}>{m.name}</span>
-                <button onClick={()=>removeMed(m.id)} style={{background:"none",border:"none",color:"#64748b",cursor:"pointer",fontSize:"1rem",lineHeight:1,padding:"2px 4px"}}>✕</button>
+                <span style={{color:"var(--ink-e2e8f0)",fontSize:"0.82rem",fontWeight:600}}>{m.name}</span>
+                <button onClick={()=>removeMed(m.id)} style={{background:"none",border:"none",color:"var(--ink-64748b)",cursor:"pointer",fontSize:"1rem",lineHeight:1,padding:"2px 4px"}}>✕</button>
               </div>
             ))}
           </div>
@@ -4456,21 +4498,21 @@ function InteractionCheckerModule() {
       </div>
 
       {selected.length === 0 && (
-        <div style={{color:"#475569",fontSize:"0.85rem",padding:"20px 0"}}>Add two or more medications to check for shared-class risk and review each one's curated interaction list side by side.</div>
+        <div style={{color:"var(--ink-475569)",fontSize:"0.85rem",padding:"20px 0"}}>Add two or more medications to check for shared-class risk and review each one's curated interaction list side by side.</div>
       )}
 
       {selected.length >= 2 && (
         <div style={{marginBottom:"28px"}}>
-          <div style={{color:"#e2e8f0",fontSize:"1rem",fontWeight:700,marginBottom:"12px"}}>Shared-risk flags</div>
+          <div style={{color:"var(--ink-e2e8f0)",fontSize:"1rem",fontWeight:700,marginBottom:"12px"}}>Shared-risk flags</div>
           {burdens.length === 0 && (
-            <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",color:"#86efac",fontSize:"0.82rem"}}>
+            <div style={{background:"var(--fill-0a1a10)",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",color:"var(--ink-86efac)",fontSize:"0.82rem"}}>
               No shared-class risk burden detected among the selected medications by this tool's heuristics. This does not rule out an interaction — see the disclaimer above.
             </div>
           )}
           {burdens.map(b => (
-            <div key={b.key} style={{background:"#0a0e17",border:`1px solid ${b.color}40`,borderLeft:`3px solid ${b.color}`,borderRadius:"10px",padding:"14px 16px",marginBottom:"10px"}}>
+            <div key={b.key} style={{background:"var(--fill-0a0e17)",border:`1px solid ${b.color}40`,borderLeft:`3px solid ${b.color}`,borderRadius:"10px",padding:"14px 16px",marginBottom:"10px"}}>
               <div style={{color:b.color,fontWeight:700,fontSize:"0.9rem",marginBottom:"6px"}}>{b.label} burden — {b.meds.map(m=>m.name).join(", ")}</div>
-              <div style={{color:"#cbd5e1",fontSize:"0.82rem",lineHeight:1.6}}>{b.note}</div>
+              <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.82rem",lineHeight:1.6}}>{b.note}</div>
             </div>
           ))}
         </div>
@@ -4478,18 +4520,18 @@ function InteractionCheckerModule() {
 
       {selected.length >= 1 && (
         <div>
-          <div style={{color:"#e2e8f0",fontSize:"1rem",fontWeight:700,marginBottom:"12px"}}>Per-medication interactions &amp; safety notes</div>
+          <div style={{color:"var(--ink-e2e8f0)",fontSize:"1rem",fontWeight:700,marginBottom:"12px"}}>Per-medication interactions &amp; safety notes</div>
           {selected.map(m => (
-            <div key={m.id} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"16px",marginBottom:"12px"}}>
+            <div key={m.id} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"16px",marginBottom:"12px"}}>
               <div style={{display:"flex",justifyContent:"space-between",alignItems:"baseline",marginBottom:"10px"}}>
-                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"1rem"}}>{m.name} <span style={{color:"#64748b",fontWeight:400,fontSize:"0.8rem"}}>· {m.brand} · {m.class}</span></div>
+                <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"1rem"}}>{m.name} <span style={{color:"var(--ink-64748b)",fontWeight:400,fontSize:"0.8rem"}}>· {m.brand} · {m.class}</span></div>
               </div>
               <div style={{display:"flex",flexWrap:"wrap",gap:"6px",marginBottom:"10px"}}>
                 {m.interactions.map(item => (
-                  <span key={item} style={{background:"#f8717115",border:"1px solid #f8717130",color:"#cbd5e1",borderRadius:"6px",padding:"3px 10px",fontSize:"0.78rem"}}>{item}</span>
+                  <span key={item} style={{background:"#f8717115",border:"1px solid #f8717130",color:"var(--ink-cbd5e1)",borderRadius:"6px",padding:"3px 10px",fontSize:"0.78rem"}}>{item}</span>
                 ))}
               </div>
-              <div style={{color:"#94a3b8",fontSize:"0.8rem",lineHeight:1.6}}>{m.safety}</div>
+              <div style={{color:"var(--ink-94a3b8)",fontSize:"0.8rem",lineHeight:1.6}}>{m.safety}</div>
             </div>
           ))}
         </div>
@@ -4759,23 +4801,23 @@ function CrisisModule() {
   return (
     <div>
       {/* Emergency banner */}
-      <div style={{background:"#1a0505",border:"1px solid #7f1d1d",borderRadius:"10px",padding:"12px 18px",marginBottom:"20px",display:"flex",alignItems:"center",gap:"12px"}}>
+      <div style={{background:"var(--fill-1a0505)",border:"1px solid #7f1d1d",borderRadius:"10px",padding:"12px 18px",marginBottom:"20px",display:"flex",alignItems:"center",gap:"12px"}}>
         <div style={{fontSize:"1.2rem"}}>🚨</div>
         <div>
-          <span style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem"}}>Imminent danger: </span>
-          <span style={{color:"#fca5a5",fontSize:"0.875rem"}}>Call 911 · </span>
-          <span style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem"}}>Crisis line: </span>
-          <span style={{color:"#fca5a5",fontSize:"0.875rem"}}>988 · </span>
-          <span style={{color:"#f87171",fontWeight:700,fontSize:"0.875rem"}}>FL Crisis: </span>
-          <span style={{color:"#fca5a5",fontSize:"0.875rem"}}>1-844-352-7474</span>
+          <span style={{color:"var(--ink-f87171)",fontWeight:700,fontSize:"0.875rem"}}>Imminent danger: </span>
+          <span style={{color:"var(--ink-fca5a5)",fontSize:"0.875rem"}}>Call 911 · </span>
+          <span style={{color:"var(--ink-f87171)",fontWeight:700,fontSize:"0.875rem"}}>Crisis line: </span>
+          <span style={{color:"var(--ink-fca5a5)",fontSize:"0.875rem"}}>988 · </span>
+          <span style={{color:"var(--ink-f87171)",fontWeight:700,fontSize:"0.875rem"}}>FL Crisis: </span>
+          <span style={{color:"var(--ink-fca5a5)",fontSize:"0.875rem"}}>1-844-352-7474</span>
         </div>
       </div>
 
       {/* Sub-nav */}
-      <div style={{display:"flex",gap:"4px",marginBottom:"24px",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"4px",flexWrap:"wrap"}}>
+      <div style={{display:"flex",gap:"4px",marginBottom:"24px",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"4px",flexWrap:"wrap"}}>
         {navItems.map(n=>(
           <button key={n.id} onClick={()=>setSection(n.id)}
-            style={{background:section===n.id?"#1e293b":"transparent",border:"none",color:section===n.id?"#e2e8f0":"#64748b",borderRadius:"7px",padding:"9px 14px",cursor:"pointer",fontSize:"0.82rem",fontWeight:section===n.id?600:400,display:"flex",alignItems:"center",gap:"6px"}}>
+            style={{background:section===n.id?"var(--fill-1e293b)":"transparent",border:"none",color:section===n.id?"var(--ink-e2e8f0)":"var(--ink-64748b)",borderRadius:"7px",padding:"9px 14px",cursor:"pointer",fontSize:"0.82rem",fontWeight:section===n.id?600:400,display:"flex",alignItems:"center",gap:"6px"}}>
             <span>{n.icon}</span>{n.label}
           </button>
         ))}
@@ -4784,8 +4826,8 @@ function CrisisModule() {
       {/* Suicide Risk Section */}
       {section==="risk"&&(
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.suicideRisk.title}</h2>
-          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"20px"}}>{CRISIS_DATA.suicideRisk.framework}</div>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.suicideRisk.title}</h2>
+          <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",marginBottom:"20px"}}>{CRISIS_DATA.suicideRisk.framework}</div>
 
           {/* Risk levels */}
           {CRISIS_DATA.suicideRisk.levels.map((level,i)=>(
@@ -4793,15 +4835,15 @@ function CrisisModule() {
               <div style={{color:level.color,fontWeight:800,fontSize:"1rem",marginBottom:"14px",letterSpacing:"0.03em"}}>{level.level}</div>
               <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:"16px"}}>
                 <div>
-                  <div style={{color:"#94a3b8",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px",fontWeight:600}}>Criteria</div>
+                  <div style={{color:"var(--ink-94a3b8)",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px",fontWeight:600}}>Criteria</div>
                   {level.criteria.map((c,j)=>(
-                    <div key={j} style={{color:"#cbd5e1",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"5px",paddingLeft:"10px",borderLeft:`2px solid ${level.color}40`}}>{c}</div>
+                    <div key={j} style={{color:"var(--ink-cbd5e1)",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"5px",paddingLeft:"10px",borderLeft:`2px solid ${level.color}40`}}>{c}</div>
                   ))}
                 </div>
                 <div>
-                  <div style={{color:"#94a3b8",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px",fontWeight:600}}>Actions</div>
+                  <div style={{color:"var(--ink-94a3b8)",fontSize:"0.7rem",textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"8px",fontWeight:600}}>Actions</div>
                   {level.action.map((a,j)=>(
-                    <div key={j} style={{color:"#cbd5e1",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"5px",paddingLeft:"10px",borderLeft:`2px solid ${level.color}40`}}>{a}</div>
+                    <div key={j} style={{color:"var(--ink-cbd5e1)",fontSize:"0.8rem",lineHeight:1.6,marginBottom:"5px",paddingLeft:"10px",borderLeft:`2px solid ${level.color}40`}}>{a}</div>
                   ))}
                 </div>
               </div>
@@ -4817,18 +4859,18 @@ function CrisisModule() {
             ].map(([title,items,col,bg,border])=>(
               <div key={title} style={{background:bg,border:`1px solid ${border}`,borderRadius:"10px",padding:"14px"}}>
                 <div style={{color:col,fontSize:"0.72rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"10px"}}>{title}</div>
-                {items.map((item,i)=><div key={i} style={{color:"#94a3b8",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"4px"}}>• {item}</div>)}
+                {items.map((item,i)=><div key={i} style={{color:"var(--ink-94a3b8)",fontSize:"0.78rem",lineHeight:1.6,marginBottom:"4px"}}>• {item}</div>)}
               </div>
             ))}
           </div>
 
           {/* Safety plan */}
-          <div style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",padding:"18px",marginTop:"14px"}}>
-            <div style={{color:"#38bdf8",fontWeight:700,fontSize:"0.875rem",marginBottom:"12px"}}>{CRISIS_DATA.suicideRisk.safetyPlan.heading}</div>
+          <div style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",padding:"18px",marginTop:"14px"}}>
+            <div style={{color:"var(--ink-38bdf8)",fontWeight:700,fontSize:"0.875rem",marginBottom:"12px"}}>{CRISIS_DATA.suicideRisk.safetyPlan.heading}</div>
             {CRISIS_DATA.suicideRisk.safetyPlan.steps.map((step,i)=>(
-              <div key={i} style={{display:"flex",gap:"12px",padding:"8px 0",borderBottom:i<CRISIS_DATA.suicideRisk.safetyPlan.steps.length-1?"1px solid #1e293b":"none"}}>
-                <div style={{color:"#38bdf8",fontWeight:800,fontSize:"0.85rem",minWidth:"20px"}}>{i+1}</div>
-                <div style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6}}>{step}</div>
+              <div key={i} style={{display:"flex",gap:"12px",padding:"8px 0",borderBottom:i<CRISIS_DATA.suicideRisk.safetyPlan.steps.length-1?"1px solid var(--fill-1e293b)":"none"}}>
+                <div style={{color:"var(--ink-38bdf8)",fontWeight:800,fontSize:"0.85rem",minWidth:"20px"}}>{i+1}</div>
+                <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6}}>{step}</div>
               </div>
             ))}
           </div>
@@ -4838,13 +4880,13 @@ function CrisisModule() {
       {/* Baker Act Section */}
       {section==="baker"&&(
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.bakerAct.title}</h2>
-          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"20px"}}>{CRISIS_DATA.bakerAct.statute}</div>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.bakerAct.title}</h2>
+          <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",marginBottom:"20px"}}>{CRISIS_DATA.bakerAct.statute}</div>
 
-          <div style={{background:"#1a0a0a",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"16px",marginBottom:"16px"}}>
-            <div style={{color:"#f87171",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.bakerAct.criteria.heading}</div>
+          <div style={{background:"var(--fill-1a0a0a)",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"16px",marginBottom:"16px"}}>
+            <div style={{color:"var(--ink-f87171)",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.bakerAct.criteria.heading}</div>
             {CRISIS_DATA.bakerAct.criteria.items.map((item,i)=>(
-              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.7,marginBottom:"8px",paddingLeft:"12px",borderLeft:"2px solid #f8717140"}}>{item}</div>
+              <div key={i} style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.7,marginBottom:"8px",paddingLeft:"12px",borderLeft:"2px solid #f8717140"}}>{item}</div>
             ))}
           </div>
 
@@ -4852,10 +4894,10 @@ function CrisisModule() {
             ["Who Can Initiate", CRISIS_DATA.bakerAct.who_can_initiate, "#38bdf8"],
             ["Process Steps", CRISIS_DATA.bakerAct.process, "#a78bfa"],
           ].map(([title, items, col])=>(
-            <div key={title} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+            <div key={title} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
               <div style={{color:col,fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{title}</div>
               {items.map((item,i)=>(
-                <div key={i} style={{display:"flex",gap:"10px",color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px"}}>
+                <div key={i} style={{display:"flex",gap:"10px",color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px"}}>
                   <span style={{color:col,fontWeight:700,minWidth:"16px"}}>{title==="Process Steps"?`${i+1}.`:"•"}</span>
                   <span>{item}</span>
                 </div>
@@ -4863,17 +4905,17 @@ function CrisisModule() {
             </div>
           ))}
 
-          <div style={{background:"#0a1a0a",border:"1px solid #14532d40",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
-            <div style={{color:"#22c55e",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.bakerAct.documentation.heading}</div>
+          <div style={{background:"var(--fill-0a1a0a)",border:"1px solid #14532d40",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+            <div style={{color:"var(--ink-22c55e)",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.bakerAct.documentation.heading}</div>
             {CRISIS_DATA.bakerAct.documentation.items.map((item,i)=>(
-              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"6px",paddingLeft:"12px",borderLeft:"2px solid #22c55e40"}}>✓ {item}</div>
+              <div key={i} style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"6px",paddingLeft:"12px",borderLeft:"2px solid #22c55e40"}}>✓ {item}</div>
             ))}
           </div>
 
-          <div style={{background:"#1c1200",border:"1px solid #92400e40",borderRadius:"10px",padding:"16px"}}>
-            <div style={{color:"#f59e0b",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>⚠ Common Pitfalls</div>
+          <div style={{background:"var(--fill-1c1200)",border:"1px solid #92400e40",borderRadius:"10px",padding:"16px"}}>
+            <div style={{color:"var(--ink-f59e0b)",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>⚠ Common Pitfalls</div>
             {CRISIS_DATA.bakerAct.pitfalls.map((item,i)=>(
-              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px",paddingLeft:"12px",borderLeft:"2px solid #f59e0b40"}}>• {item}</div>
+              <div key={i} style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px",paddingLeft:"12px",borderLeft:"2px solid #f59e0b40"}}>• {item}</div>
             ))}
           </div>
         </div>
@@ -4882,14 +4924,14 @@ function CrisisModule() {
       {/* Marchman Act Section */}
       {section==="marchman"&&(
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.marchmanAct.title}</h2>
-          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"8px"}}>{CRISIS_DATA.marchmanAct.statute}</div>
-          <div style={{color:"#94a3b8",fontSize:"0.84rem",lineHeight:1.6,marginBottom:"20px"}}>{CRISIS_DATA.marchmanAct.summary}</div>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>{CRISIS_DATA.marchmanAct.title}</h2>
+          <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",marginBottom:"8px"}}>{CRISIS_DATA.marchmanAct.statute}</div>
+          <div style={{color:"var(--ink-94a3b8)",fontSize:"0.84rem",lineHeight:1.6,marginBottom:"20px"}}>{CRISIS_DATA.marchmanAct.summary}</div>
 
-          <div style={{background:"#1a0a0a",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"16px",marginBottom:"14px"}}>
-            <div style={{color:"#f87171",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.marchmanAct.criteria.heading}</div>
+          <div style={{background:"var(--fill-1a0a0a)",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"16px",marginBottom:"14px"}}>
+            <div style={{color:"var(--ink-f87171)",fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{CRISIS_DATA.marchmanAct.criteria.heading}</div>
             {CRISIS_DATA.marchmanAct.criteria.items.map((item,i)=>(
-              <div key={i} style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.7,marginBottom:"8px",paddingLeft:"12px",borderLeft:"2px solid #f8717140"}}>{item}</div>
+              <div key={i} style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.7,marginBottom:"8px",paddingLeft:"12px",borderLeft:"2px solid #f8717140"}}>{item}</div>
             ))}
           </div>
 
@@ -4897,10 +4939,10 @@ function CrisisModule() {
             ["Who Can Initiate", CRISIS_DATA.marchmanAct.who_can_initiate, "#38bdf8"],
             ["Process", CRISIS_DATA.marchmanAct.process, "#a78bfa"],
           ].map(([title, items, col])=>(
-            <div key={title} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
+            <div key={title} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"16px",marginBottom:"12px"}}>
               <div style={{color:col,fontWeight:700,fontSize:"0.82rem",marginBottom:"10px"}}>{title}</div>
               {items.map((item,i)=>(
-                <div key={i} style={{display:"flex",gap:"10px",color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px"}}>
+                <div key={i} style={{display:"flex",gap:"10px",color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6,marginBottom:"7px"}}>
                   <span style={{color:col,fontWeight:700,minWidth:"16px"}}>•</span>
                   <span>{item}</span>
                 </div>
@@ -4908,9 +4950,9 @@ function CrisisModule() {
             </div>
           ))}
 
-          <div style={{background:"#0a1a1a",border:"1px solid #0e4040",borderRadius:"10px",padding:"16px"}}>
-            <div style={{color:"#34d399",fontWeight:700,fontSize:"0.82rem",marginBottom:"8px"}}>Key difference from Baker Act</div>
-            <div style={{color:"#cbd5e1",fontSize:"0.83rem",lineHeight:1.6}}>{CRISIS_DATA.marchmanAct.key_difference}</div>
+          <div style={{background:"var(--fill-0a1a1a)",border:"1px solid #0e4040",borderRadius:"10px",padding:"16px"}}>
+            <div style={{color:"var(--ink-34d399)",fontWeight:700,fontSize:"0.82rem",marginBottom:"8px"}}>Key difference from Baker Act</div>
+            <div style={{color:"var(--ink-cbd5e1)",fontSize:"0.83rem",lineHeight:1.6}}>{CRISIS_DATA.marchmanAct.key_difference}</div>
           </div>
         </div>
       )}
@@ -4918,7 +4960,7 @@ function CrisisModule() {
       {/* Crisis Resources Section */}
       {section==="resources"&&(
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"20px"}}>{CRISIS_DATA.crisisResources.title}</h2>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.15rem",fontWeight:700,marginBottom:"20px"}}>{CRISIS_DATA.crisisResources.title}</h2>
           {[
             ["🚨 Emergency", CRISIS_DATA.crisisResources.emergency, "#f87171"],
             ["Florida Resources", CRISIS_DATA.crisisResources.florida, "#38bdf8"],
@@ -4927,10 +4969,10 @@ function CrisisModule() {
             <div key={title} style={{marginBottom:"20px"}}>
               <div style={{color:col,fontSize:"0.75rem",fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:"10px"}}>{title}</div>
               {items.map((r,i)=>(
-                <div key={i} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"14px 16px",marginBottom:"8px",display:"grid",gridTemplateColumns:"1fr auto",alignItems:"start",gap:"12px"}}>
+                <div key={i} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"14px 16px",marginBottom:"8px",display:"grid",gridTemplateColumns:"1fr auto",alignItems:"start",gap:"12px"}}>
                   <div>
-                    <div style={{color:"#e2e8f0",fontWeight:600,fontSize:"0.875rem",marginBottom:"3px"}}>{r.name}</div>
-                    <div style={{color:"#64748b",fontSize:"0.78rem",lineHeight:1.5}}>{r.notes}</div>
+                    <div style={{color:"var(--ink-e2e8f0)",fontWeight:600,fontSize:"0.875rem",marginBottom:"3px"}}>{r.name}</div>
+                    <div style={{color:"var(--ink-64748b)",fontSize:"0.78rem",lineHeight:1.5}}>{r.notes}</div>
                   </div>
                   <div style={{color:col,fontWeight:700,fontSize:"0.875rem",textAlign:"right",whiteSpace:"nowrap"}}>{r.contact}</div>
                 </div>
@@ -4943,18 +4985,18 @@ function CrisisModule() {
       {/* Documentation Templates Section */}
       {section==="templates"&&(
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"6px"}}>{CRISIS_DATA.documentationTemplates.title}</h2>
-          <div style={{color:"#64748b",fontSize:"0.8rem",marginBottom:"20px"}}>Click Copy to paste directly into your note. Customize bracketed fields.</div>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.15rem",fontWeight:700,marginBottom:"6px"}}>{CRISIS_DATA.documentationTemplates.title}</h2>
+          <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",marginBottom:"20px"}}>Click Copy to paste directly into your note. Customize bracketed fields.</div>
           {CRISIS_DATA.documentationTemplates.templates.map((t,i)=>(
-            <div key={i} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"12px",marginBottom:"16px",overflow:"hidden"}}>
-              <div style={{padding:"14px 16px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid #1e293b"}}>
-                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.875rem"}}>{t.name}</div>
+            <div key={i} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",marginBottom:"16px",overflow:"hidden"}}>
+              <div style={{padding:"14px 16px",display:"flex",justifyContent:"space-between",alignItems:"center",borderBottom:"1px solid var(--fill-1e293b)"}}>
+                <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"0.875rem"}}>{t.name}</div>
                 <button onClick={()=>copyTemplate(t.text,i)}
-                  style={{background:copiedIdx===i?"#22c55e":"#1e293b",border:"none",color:copiedIdx===i?"#fff":"#94a3b8",borderRadius:"7px",padding:"6px 14px",cursor:"pointer",fontSize:"0.78rem",fontWeight:600,transition:"background 0.2s",fontFamily:"inherit"}}>
+                  style={{background:copiedIdx===i?"#22c55e":"var(--fill-1e293b)",border:"none",color:copiedIdx===i?"var(--ink-fff)":"var(--ink-94a3b8)",borderRadius:"7px",padding:"6px 14px",cursor:"pointer",fontSize:"0.78rem",fontWeight:600,transition:"background 0.2s",fontFamily:"inherit"}}>
                   {copiedIdx===i?"✓ Copied":"Copy"}
                 </button>
               </div>
-              <div style={{padding:"16px",fontFamily:"'SF Mono', 'Fira Code', monospace",fontSize:"0.75rem",lineHeight:1.8,color:"#94a3b8",whiteSpace:"pre-wrap",maxHeight:"220px",overflowY:"auto"}}>
+              <div style={{padding:"16px",fontFamily:"'SF Mono', 'Fira Code', monospace",fontSize:"0.75rem",lineHeight:1.8,color:"var(--ink-94a3b8)",whiteSpace:"pre-wrap",maxHeight:"220px",overflowY:"auto"}}>
                 {t.text}
               </div>
             </div>
@@ -5016,7 +5058,7 @@ function FDALookup() {
 
   return (
     <div>
-      <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-0a1a10)",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-86efac)",fontSize:"0.82rem",lineHeight:1.6}}>
         🔬 Live FDA drug label lookup via openFDA public API. Search any medication by brand or generic name. Data is pulled directly from current FDA labeling.
       </div>
 
@@ -5024,23 +5066,23 @@ function FDALookup() {
         <div style={{position:"relative",flex:1}}>
           <input value={query} onChange={e=>setQuery(e.target.value)} onKeyDown={handleKey}
             placeholder="Enter drug name (brand or generic) — e.g. sertraline, Zoloft, lithium..."
-            style={{width:"100%",background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"12px 14px",color:"#e2e8f0",fontSize:"0.875rem",outline:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
+            style={{width:"100%",background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"12px 14px",color:"var(--ink-e2e8f0)",fontSize:"0.875rem",outline:"none",boxSizing:"border-box",fontFamily:"inherit"}}/>
         </div>
         <button onClick={search} disabled={loading||!query.trim()}
-          style={{background:loading||!query.trim()?"#1e293b":"#0ea5e9",border:"none",color:loading||!query.trim()?"#475569":"#fff",borderRadius:"10px",padding:"12px 24px",cursor:loading||!query.trim()?"not-allowed":"pointer",fontWeight:700,fontSize:"0.875rem",fontFamily:"inherit",whiteSpace:"nowrap"}}>
+          style={{background:loading||!query.trim()?"var(--fill-1e293b)":"var(--fill-0ea5e9)",border:"none",color:loading||!query.trim()?"var(--ink-475569)":"var(--ink-fff)",borderRadius:"10px",padding:"12px 24px",cursor:loading||!query.trim()?"not-allowed":"pointer",fontWeight:700,fontSize:"0.875rem",fontFamily:"inherit",whiteSpace:"nowrap"}}>
           {loading?"Searching...":"Search FDA"}
         </button>
       </div>
 
       {error&&(
-        <div style={{background:"#1a0505",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"14px 16px",color:"#f87171",fontSize:"0.83rem",marginBottom:"16px"}}>
+        <div style={{background:"var(--fill-1a0505)",border:"1px solid #7f1d1d40",borderRadius:"10px",padding:"14px 16px",color:"var(--ink-f87171)",fontSize:"0.83rem",marginBottom:"16px"}}>
           ⚠ {error}
         </div>
       )}
 
       {results&&!selected&&(
         <div>
-          <div style={{color:"#475569",fontSize:"0.78rem",marginBottom:"12px"}}>{results.length} result{results.length!==1?"s":""} from FDA label database — click to view full label</div>
+          <div style={{color:"var(--ink-475569)",fontSize:"0.78rem",marginBottom:"12px"}}>{results.length} result{results.length!==1?"s":""} from FDA label database — click to view full label</div>
           {results.map((r,i)=>{
             const brand = r.openfda?.brand_name?.[0]||"—";
             const generic = r.openfda?.generic_name?.[0]||"—";
@@ -5048,13 +5090,13 @@ function FDALookup() {
             const route = r.openfda?.route?.[0]||"—";
             return (
               <div key={i} onClick={()=>setSelected(r)}
-                style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",padding:"14px 16px",marginBottom:"8px",cursor:"pointer",transition:"border-color 0.15s"}}
+                style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",padding:"14px 16px",marginBottom:"8px",cursor:"pointer",transition:"border-color 0.15s"}}
                 onMouseEnter={e=>e.currentTarget.style.borderColor="#0ea5e9"}
-                onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
+                onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
                 <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start"}}>
                   <div>
-                    <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.925rem"}}>{brand}</div>
-                    <div style={{color:"#64748b",fontSize:"0.78rem",marginTop:"2px"}}>{generic} · {route} · {mfr}</div>
+                    <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"0.925rem"}}>{brand}</div>
+                    <div style={{color:"var(--ink-64748b)",fontSize:"0.78rem",marginTop:"2px"}}>{generic} · {route} · {mfr}</div>
                   </div>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#475569" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
                 </div>
@@ -5066,15 +5108,15 @@ function FDALookup() {
 
       {selected&&(
         <div>
-          <button onClick={()=>setSelected(null)} style={{background:"none",border:"none",color:"#38bdf8",cursor:"pointer",fontSize:"0.875rem",marginBottom:"20px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to results</button>
+          <button onClick={()=>setSelected(null)} style={{background:"none",border:"none",color:"var(--ink-38bdf8)",cursor:"pointer",fontSize:"0.875rem",marginBottom:"20px",display:"flex",alignItems:"center",gap:"6px",padding:0}}>← Back to results</button>
 
           <div style={{marginBottom:"20px"}}>
-            <h2 style={{color:"#e2e8f0",fontSize:"1.25rem",fontWeight:700,margin:"0 0 4px 0"}}>{selected.openfda?.brand_name?.[0]||"Unknown"}</h2>
-            <div style={{color:"#64748b",fontSize:"0.82rem"}}>{selected.openfda?.generic_name?.[0]} · {selected.openfda?.route?.[0]} · {selected.openfda?.manufacturer_name?.[0]}</div>
-            {selected.openfda?.application_number&&<div style={{color:"#334155",fontSize:"0.75rem",marginTop:"3px"}}>FDA Application: {selected.openfda.application_number[0]}</div>}
+            <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.25rem",fontWeight:700,margin:"0 0 4px 0"}}>{selected.openfda?.brand_name?.[0]||"Unknown"}</h2>
+            <div style={{color:"var(--ink-64748b)",fontSize:"0.82rem"}}>{selected.openfda?.generic_name?.[0]} · {selected.openfda?.route?.[0]} · {selected.openfda?.manufacturer_name?.[0]}</div>
+            {selected.openfda?.application_number&&<div style={{color:"var(--ink-334155)",fontSize:"0.75rem",marginTop:"3px"}}>FDA Application: {selected.openfda.application_number[0]}</div>}
           </div>
 
-          <div style={{background:"#1a0505",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"16px",color:"#fca5a5",fontSize:"0.78rem",lineHeight:1.6}}>
+          <div style={{background:"var(--fill-1a0505)",border:"1px solid #7f1d1d30",borderRadius:"10px",padding:"12px 16px",marginBottom:"16px",color:"var(--ink-fca5a5)",fontSize:"0.78rem",lineHeight:1.6}}>
             ⚠ Data sourced directly from FDA label database. Verify against current prescribing information before clinical use. Labels may not reflect the most recent REMS updates.
           </div>
 
@@ -5089,9 +5131,9 @@ function FDALookup() {
             ["Mechanism of Action", getField(selected,"mechanism_of_action")],
             ["Pharmacokinetics", getField(selected,"pharmacokinetics")],
           ].filter(([,val])=>val).map(([label, val])=>(
-            <div key={label} style={{background:"#0a0e17",border:"1px solid #1e293b",borderRadius:"10px",marginBottom:"10px",overflow:"hidden"}}>
-              <div style={{padding:"12px 16px",borderBottom:"1px solid #1e293b",color:"#38bdf8",fontWeight:700,fontSize:"0.8rem",textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</div>
-              <div style={{padding:"14px 16px",color:"#94a3b8",fontSize:"0.82rem",lineHeight:1.75,whiteSpace:"pre-wrap",maxHeight:"280px",overflowY:"auto"}}>
+            <div key={label} style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderRadius:"10px",marginBottom:"10px",overflow:"hidden"}}>
+              <div style={{padding:"12px 16px",borderBottom:"1px solid var(--fill-1e293b)",color:"var(--ink-38bdf8)",fontWeight:700,fontSize:"0.8rem",textTransform:"uppercase",letterSpacing:"0.06em"}}>{label}</div>
+              <div style={{padding:"14px 16px",color:"var(--ink-94a3b8)",fontSize:"0.82rem",lineHeight:1.75,whiteSpace:"pre-wrap",maxHeight:"280px",overflowY:"auto"}}>
                 {clean(val)}
               </div>
             </div>
@@ -5100,10 +5142,10 @@ function FDALookup() {
       )}
 
       {!results&&!loading&&!error&&(
-        <div style={{textAlign:"center",padding:"60px 20px",color:"#334155"}}>
+        <div style={{textAlign:"center",padding:"60px 20px",color:"var(--ink-334155)"}}>
           <div style={{fontSize:"2rem",marginBottom:"12px"}}>🔬</div>
-          <div style={{color:"#475569",fontSize:"0.875rem",marginBottom:"6px"}}>Search any medication to pull its current FDA label</div>
-          <div style={{color:"#334155",fontSize:"0.78rem"}}>Brand names, generic names, and combinations supported</div>
+          <div style={{color:"var(--ink-475569)",fontSize:"0.875rem",marginBottom:"6px"}}>Search any medication to pull its current FDA label</div>
+          <div style={{color:"var(--ink-334155)",fontSize:"0.78rem"}}>Brand names, generic names, and combinations supported</div>
         </div>
       )}
     </div>
@@ -5141,7 +5183,7 @@ const LIBRARY_PAGES = [
 function LibraryModule() {
   return (
     <div>
-      <div style={{background:"#0a1a10",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"#86efac",fontSize:"0.82rem",lineHeight:1.6}}>
+      <div style={{background:"var(--fill-0a1a10)",border:"1px solid #14532d40",borderRadius:"10px",padding:"12px 16px",marginBottom:"20px",color:"var(--ink-86efac)",fontSize:"0.82rem",lineHeight:1.6}}>
         \U0001f4da Standalone reference pages open in a new tab. Each includes a "reviewed" date \u2014 re-verify anything older than 12 months before relying on it.
       </div>
       {LIBRARY_PAGES.map(section=>(
@@ -5150,11 +5192,11 @@ function LibraryModule() {
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fill,minmax(300px,1fr))",gap:"12px"}}>
             {section.pages.map(p=>(
               <a key={p.u} href={p.u} target="_blank" rel="noopener"
-                style={{background:"#0a0e17",border:"1px solid #1e293b",borderLeft:`3px solid ${section.color}`,borderRadius:"12px",padding:"16px",textDecoration:"none",transition:"border-color 0.15s"}}
+                style={{background:"var(--fill-0a0e17)",border:"1px solid var(--fill-1e293b)",borderLeft:`3px solid ${section.color}`,borderRadius:"12px",padding:"16px",textDecoration:"none",transition:"border-color 0.15s"}}
                 onMouseEnter={e=>e.currentTarget.style.borderColor=section.color}
-                onMouseLeave={e=>e.currentTarget.style.borderColor="#1e293b"}>
-                <div style={{color:"#e2e8f0",fontWeight:700,fontSize:"0.95rem",marginBottom:"4px"}}>{p.t}</div>
-                <div style={{color:"#64748b",fontSize:"0.8rem",lineHeight:1.5}}>{p.d}</div>
+                onMouseLeave={e=>e.currentTarget.style.borderColor="var(--fill-1e293b)"}>
+                <div style={{color:"var(--ink-e2e8f0)",fontWeight:700,fontSize:"0.95rem",marginBottom:"4px"}}>{p.t}</div>
+                <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem",lineHeight:1.5}}>{p.d}</div>
               </a>
             ))}
           </div>
@@ -5169,16 +5211,16 @@ function TherapyModule() {
     <div>
       <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",flexWrap:"wrap",gap:"10px",marginBottom:"14px"}}>
         <div>
-          <h2 style={{color:"#e2e8f0",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>Therapy Techniques</h2>
-          <div style={{color:"#64748b",fontSize:"0.8rem"}}>42 techniques across 6 categories — patient-facing prompts + chart-ready documentation snippets.</div>
+          <h2 style={{color:"var(--ink-e2e8f0)",fontSize:"1.15rem",fontWeight:700,marginBottom:"4px"}}>Therapy Techniques</h2>
+          <div style={{color:"var(--ink-64748b)",fontSize:"0.8rem"}}>42 techniques across 6 categories — patient-facing prompts + chart-ready documentation snippets.</div>
         </div>
         <a href="therapy.html" target="_blank" rel="noopener"
-          style={{background:"#0ea5e9",color:"#fff",borderRadius:"8px",padding:"9px 16px",fontSize:"0.82rem",fontWeight:600,textDecoration:"none",whiteSpace:"nowrap"}}>
+          style={{background:"var(--fill-0ea5e9)",color:"var(--ink-fff)",borderRadius:"8px",padding:"9px 16px",fontSize:"0.82rem",fontWeight:600,textDecoration:"none",whiteSpace:"nowrap"}}>
           ↗ Open full page
         </a>
       </div>
       <iframe src="therapy.html" title="Therapy Techniques Module"
-        style={{width:"100%",height:"calc(100vh - 220px)",minHeight:"600px",border:"1px solid #1e293b",borderRadius:"12px",background:"#F6F7F4"}}/>
+        style={{width:"100%",height:"calc(100vh - 220px)",minHeight:"600px",border:"1px solid var(--fill-1e293b)",borderRadius:"12px",background:"#F6F7F4"}}/>
     </div>
   );
 }
@@ -5203,22 +5245,32 @@ const TABS = [
 
 function App() {
   const [tab, setTab] = useState("meds");
+  const [theme, setTheme] = useState(()=>document.documentElement.dataset.theme || "light");
+  function toggleTheme(){
+    const next = theme === "light" ? "dark" : "light";
+    document.documentElement.dataset.theme = next;
+    setTheme(next);
+    try { localStorage.setItem("psychref-theme", next); } catch (_) {}
+  }
   return (
-    <div style={{minHeight:"100vh",background:"#070b14",fontFamily:"'Inter',system-ui,sans-serif",color:"#e2e8f0"}}>
-      <div style={{background:"#0a0e17",borderBottom:"1px solid #1e293b",padding:"0 24px"}}>
-        <div style={{maxWidth:"1200px",margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"18px 0"}}>
+    <div style={{minHeight:"100vh",background:"var(--fill-070b14)",fontFamily:"'Inter',system-ui,sans-serif",color:"var(--ink-e2e8f0)"}}>
+      <div style={{background:"var(--fill-0a0e17)",borderBottom:"1px solid var(--fill-1e293b)",padding:"0 24px"}}>
+        <div className="site-header" style={{maxWidth:"1200px",margin:"0 auto",display:"flex",alignItems:"center",justifyContent:"space-between",padding:"18px 0"}}>
           <div style={{display:"flex",alignItems:"center",gap:"10px"}}>
-            <div style={{width:"32px",height:"32px",background:"linear-gradient(135deg,#0ea5e9,#6366f1)",borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"16px",color:"#fff",fontWeight:700}}>Ψ</div>
-            <span style={{color:"#e2e8f0",fontWeight:800,fontSize:"1.1rem",letterSpacing:"-0.02em"}}>PsychRef</span>
+            <div style={{width:"32px",height:"32px",background:"linear-gradient(135deg,var(--fill-0ea5e9),#6366f1)",borderRadius:"8px",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"16px",color:"var(--ink-fff)",fontWeight:700}}>Ψ</div>
+            <span style={{color:"var(--ink-e2e8f0)",fontWeight:800,fontSize:"1.1rem",letterSpacing:"-0.02em"}}>PsychRef</span>
           </div>
-          <div style={{color:"#475569",fontSize:"0.75rem"}}>Andres Luque, PMHNP-BC · Psychiatry of the Palm Beaches</div>
+          <div style={{display:"flex",alignItems:"center",gap:"16px"}}>
+            <div className="site-identity" style={{color:"var(--ink-475569)",fontSize:"0.75rem"}}>Andres Luque, PMHNP-BC · Psychiatry of the Palm Beaches</div>
+            <button type="button" onClick={toggleTheme} aria-pressed={theme==="dark"} aria-label="Use dark theme" style={{background:"var(--fill-0a0e17)",color:"var(--ink-e2e8f0)",border:"1px solid var(--fill-1e293b)",borderRadius:"8px",padding:"8px 12px",cursor:"pointer",fontFamily:"inherit",whiteSpace:"nowrap"}}>{theme==="light"?"☾ Dark mode":"☀ Light mode"}</button>
+          </div>
         </div>
       </div>
-      <div style={{background:"#0a0e17",borderBottom:"1px solid #1e293b"}}>
+      <div style={{background:"var(--fill-0a0e17)",borderBottom:"1px solid var(--fill-1e293b)"}}>
         <div style={{maxWidth:"1200px",margin:"0 auto",padding:"0 24px",display:"flex",gap:"4px",overflowX:"auto"}}>
           {TABS.map(t=>(
             <button key={t.id} onClick={()=>setTab(t.id)}
-              style={{background:"none",border:"none",borderBottom:tab===t.id?"2px solid #0ea5e9":"2px solid transparent",color:tab===t.id?"#e2e8f0":"#64748b",padding:"14px 16px",cursor:"pointer",fontSize:"0.85rem",fontWeight:tab===t.id?600:400,whiteSpace:"nowrap",transition:"color 0.15s",display:"flex",alignItems:"center",gap:"6px"}}>
+              style={{background:"none",border:"none",borderBottom:tab===t.id?"2px solid var(--fill-0ea5e9)":"2px solid transparent",color:tab===t.id?"var(--ink-e2e8f0)":"var(--ink-64748b)",padding:"14px 16px",cursor:"pointer",fontSize:"0.85rem",fontWeight:tab===t.id?600:400,whiteSpace:"nowrap",transition:"color 0.15s",display:"flex",alignItems:"center",gap:"6px"}}>
               <span>{t.icon}</span>{t.label}
             </button>
           ))}
@@ -5241,7 +5293,7 @@ function App() {
         {tab==="fdalookup"&&<FDALookup/>}
         {tab==="notes"&&<NotesModule/>}
       </div>
-      <div style={{borderTop:"1px solid #1e293b",padding:"16px 24px",textAlign:"center",color:"#334155",fontSize:"0.75rem"}}>
+      <div style={{borderTop:"1px solid var(--fill-1e293b)",padding:"16px 24px",textAlign:"center",color:"var(--ink-334155)",fontSize:"0.75rem"}}>
         Personal clinical reference — Andres Luque, PMHNP-BC · Psychiatry of the Palm Beaches · For clinical reference and education only.
       </div>
     </div>
