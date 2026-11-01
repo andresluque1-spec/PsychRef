@@ -400,7 +400,7 @@ const MEDICATIONS = [
     offLabel: ["PTSD nightmares", "Eating disorders (anorexia)", "Delirium", "OCD augmentation"],
     sideEffects: ["Weight gain (most significant)", "Metabolic syndrome", "Sedation", "Dyslipidemia", "Hyperglycemia/diabetes", "EPS (low)", "QTc prolongation (minimal)"],
     interactions: ["Fluvoxamine (increases olanzapine levels)", "Carbamazepine (decreases levels)", "Antihypertensives", "Alcohol (additive CNS depression)"],
-    safety: "Highest metabolic risk SGA. Monitor weight, glucose, lipids aggressively. Black box in dementia. IM formulation: avoid concurrent IM benzodiazepine (cardiorespiratory depression risk).",
+    safety: "Highest metabolic risk SGA. Monitor weight, glucose, lipids aggressively. Black box in dementia. IM formulation: avoid concurrent IM benzodiazepine (cardiorespiratory depression risk). For the distinct monthly subcutaneous formulation, see the Weltruza entry and its product-specific label.",
     dosing: "Schizophrenia: 10–20mg/day | Bipolar: 5–20mg/day", halfLife: "21–54 hours", pregnancy: "Category C",
   },
   {
@@ -1142,13 +1142,27 @@ const MEDICATIONS = [
     offLabel: [],
     sideEffects: ["Headache", "Decreased appetite", "Insomnia", "Nausea", "Dry mouth", "Diarrhea", "Rash (pediatric patients)"],
     interactions: ["MAOIs, including linezolid or IV methylene blue — contraindicated during use and for 14 days after stopping MAOI", "Other serotonergic drugs — serotonin syndrome risk", "Other CNS stimulants — additive cardiovascular effects", "CYP1A2 substrates — monitor for adverse effects", "Alcohol — avoid at dosing and for at least 2 hours afterward"],
-    safety: "FDA approved July 2026; manufacturer reports DEA scheduling pending and not commercially available as of October 1, 2026. Boxed warnings: suicidal ideation and behaviors in pediatric patients and abuse, misuse, and addiction. Before use, assess cardiac disease, blood pressure/heart rate, misuse risk, manic risk, and tics. Monitor blood pressure/heart rate, mood and suicidality in pediatric patients, and growth. Avoid in serious cardiac disease; contraindicated with MAOIs and pheochromocytoma. Recheck current scheduling and availability before prescribing.",
+    safety: "FDA approved July 2026; manufacturer reports DEA scheduling pending and not commercially available as of November 1, 2026. Boxed warnings: suicidal ideation and behaviors in pediatric patients and abuse, misuse, and addiction. Before use, assess cardiac disease, blood pressure/heart rate, misuse risk, manic risk, and tics. Monitor blood pressure/heart rate, mood and suicidality in pediatric patients, and growth. Avoid in serious cardiac disease; contraindicated with MAOIs and pheochromocytoma. Recheck current scheduling and availability before prescribing.",
     dosing: "Morning, once daily, with or without food. Adults: 210 mg starting dose; may increase to 280 mg daily. Ages 13–17: 280 mg daily. Ages 6–12: weight-based dosing per label (20 to <35 kg: 140 mg; 35–50 kg: 210 mg; >50 kg: 280 mg).",
     halfLife: "5.2 hours (mean)",
     pregnancy: "See current FDA pregnancy and lactation labeling",
     labelUrl: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/218145s000lbl.pdf",
     labelReviewed: "2026-10-01",
-    availabilityNote: "DEA scheduling pending; not commercially available as of October 1, 2026 (manufacturer).",
+    availabilityNote: "DEA scheduling pending; not commercially available as of November 1, 2026 (manufacturer).",
+  },
+  {
+    id: 103, name: "Olanzapine ER injection", brand: "Weltruza", class: "Atypical Antipsychotic (SGA) — long-acting injection",
+    fdaUses: ["Schizophrenia in adults"],
+    offLabel: [],
+    sideEffects: ["Weight gain", "Somnolence", "Headache", "Constipation", "Injection-site reactions"],
+    interactions: ["Strong CYP1A2 or glucuronyl-transferase inducers — may reduce olanzapine exposure", "Strong CYP1A2 inhibitors — may increase exposure; consider lower dose", "Centrally acting drugs or alcohol — may increase orthostatic hypotension", "Anticholinergic drugs — increased risk of severe gastrointestinal hypomotility", "Antihypertensives — may increase hypotension"],
+    safety: "FDA approved October 8, 2026. Boxed warning: increased mortality in elderly patients with dementia-related psychosis; not approved for that use. Establish oral olanzapine tolerability before starting. Administer subcutaneously in the abdomen by a healthcare professional only; do not substitute intramuscular Zyprexa Relprevv procedures or dosing. Post-injection delirium/sedation syndrome (PDSS) was not reported in Weltruza premarketing trials, but its risk remains unknown; assess overdose-like symptoms. Monitor weight, fasting glucose, and lipids at baseline and periodically; also assess orthostasis, abnormal movements, and constipation.",
+    dosing: "Once monthly subcutaneous abdominal injection. Conversion from established oral olanzapine: 10 mg/day → 318 mg monthly; 15 mg/day → 425 mg monthly; 20 mg/day → 531 mg monthly. Give the first injection the day after the last oral dose; no loading dose or oral supplementation is required. See label for missed-dose timing and preparation.",
+    halfLife: "Median apparent half-life 46.5 days after subcutaneous injection",
+    pregnancy: "See current FDA pregnancy and lactation labeling",
+    labelUrl: "https://www.accessdata.fda.gov/drugsatfda_docs/label/2026/219007Orig1s000lbl.pdf",
+    labelReviewed: "2026-11-01",
+    handoutUnavailable: true,
   },
 ];
 
@@ -1523,7 +1537,7 @@ function MedCard({ med, onClose }) {
             {med.availabilityNote&&<div style={{color:"var(--ink-fbbf24)",fontSize:"0.78rem",marginTop:"6px"}}>{med.availabilityNote}</div>}
           </div>
           <div style={{display:"flex",gap:"8px"}}>
-            {!med.availabilityNote&&<button onClick={()=>printHandoutWindow(buildMedHandout(med))}
+            {!med.availabilityNote&&!med.handoutUnavailable&&<button onClick={()=>printHandoutWindow(buildMedHandout(med))}
               style={{background:"#22c55e",border:"none",color:"var(--ink-06210f)",borderRadius:"8px",padding:"8px 14px",cursor:"pointer",fontSize:"0.875rem",fontWeight:700,whiteSpace:"nowrap"}}>
               🖨 Print Patient Handout
             </button>}
@@ -4236,7 +4250,7 @@ function buildMedHandout(med) {
   };
 }
 
-const MED_HANDOUTS = MEDICATIONS.filter(m=>!m.availabilityNote).map(buildMedHandout);
+const MED_HANDOUTS = MEDICATIONS.filter(m=>!m.availabilityNote&&!m.handoutUnavailable).map(buildMedHandout);
 const ALL_HANDOUTS = [...HANDOUTS, ...MED_HANDOUTS];
 
 // ─── INTERACTION CHECKER — RISK-TAG HEURISTICS ────────────────────────────────
